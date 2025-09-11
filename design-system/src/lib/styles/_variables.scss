@@ -1,0 +1,25 @@
+/* Light Mode */
+:root {
+  --color-primary: #1C6EA4;
+  --color-secondary: #FF7A00;
+  --color-background: #FFFFFF;
+  --color-background-soft: #77CDFF;
+  --color-text: #1A1A1A;
+  --color-text-secondary: #555555;
+  --color-feedback-success: #658864;
+  --color-feedback-warning: #FFB300;
+  --color-feedback-error: #E63946;
+}
+
+/* Dark Mode */
+body.dark {
+  --color-primary: #1C6EA4;
+  --color-secondary: #FF7A00;
+  --color-background: #090040;
+  --color-background-soft: #77CDFF;
+  --color-text: #F5F5F5;
+  --color-text-secondary: #B3B3B3;
+  --color-feedback-success: #658864;
+  --color-feedback-warning: #FFB300;
+  --color-feedback-error: #E63946;
+}
