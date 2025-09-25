@@ -2,7 +2,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from "path";
-import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 import { fileURLToPath } from 'node:url';
@@ -11,10 +10,10 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/lib/index.ts"),
+      entry: path.resolve(__dirname, "src/index.ts"),
       name: "DesignSystem",
       fileName: format => `design-system.${format}.js`
     },
@@ -30,7 +29,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@lib": path.resolve(__dirname, "src/lib")
+      "@components": path.resolve(__dirname, "src/components")
     }
   },
   test: {
