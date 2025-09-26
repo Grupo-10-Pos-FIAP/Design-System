@@ -1,9 +1,11 @@
+import { Button } from './components/Button';
+
 function App() {
   return (
     <>
-      <h1>This test</h1>
+      <Button variant="primary" label="Click here" />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
