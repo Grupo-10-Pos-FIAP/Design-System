@@ -9,18 +9,18 @@
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  font-family: var(--default-font-family);
-  font-size: var(--font-size-body);
-  font-weight: 500;
-  line-height: 20px;
+  font-family: $font-family-default;
+  font-size: $fs-small;
+  font-weight: $font-regular;
+  line-height: $lh-caption;
   transition: all 0.2s linear;
 
   &--primary {
-    color: var(--background-base);
-    background-color: var(--color-primary);
+    color: $background-base;
+    background-color: $color-primary;
 
     path {
-      fill: var(--background-base);
+      fill: $background-base;
     }
 
     &:hover:not(:disabled) {
@@ -32,22 +32,22 @@
     }
 
     &:disabled {
-      color: var(--text-disabled);
-      background-color: var(--background-disabled);
+      color: $text-disabled;
+      background-color: $background-disabled;
       cursor: not-allowed;
 
       path {
-        fill: var(--text-disabled);
+        fill: $text-disabled;
       }
     }
   }
 
-   &--secondary {
-    color: var(--background-base);
-    background-color: var(--color-secondary);
+  &--secondary {
+    color: $background-base;
+    background-color: $color-secondary;
 
     path {
-      fill: var(--background-base);
+      fill: $background-base;
     }
 
     &:hover:not(:disabled) {
@@ -59,18 +59,18 @@
     }
 
     &:disabled {
-      color: var(--text-disabled);
-      background-color: var(--background-disabled);
+      color: $text-disabled;
+      background-color: $background-disabled;
       cursor: not-allowed;
 
       path {
-        fill: var(--text-disabled);
+        fill: $text-disabled;
       }
     }
   }
 
   &:focus {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid $color-primary;
     outline-offset: 2px;
   }
 
