@@ -1,20 +1,8 @@
-import { type HTMLAttributes, type ReactNode, useState } from 'react';
-import { X } from 'lucide-react';
-import './Card.scss';
+import { useState } from 'react';
+import { Icon } from 'src/components/Icon';
+import './styles.scss';
 
-export interface CardSectionProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  title?: string;
-  variant?: 'elevated' | 'outlined' | 'flat';
-  children?: ReactNode;
-  className?: string;
-  closable?: boolean;
-  onClose?: () => void;
-}
+import type { CardProps, CardSectionProps } from './interface';
 
 export const CardSection = ({ children, className = '' }: CardSectionProps) => {
   const sectionClasses = ['card__section', className].filter(Boolean).join(' ');
@@ -51,7 +39,7 @@ export const Card = ({
           {title && <h3 className="card__title">{title}</h3>}
           {closable && (
             <button className="card__close-button" onClick={handleClose} aria-label="Fechar card" type="button">
-              <X size={18} />
+              <Icon name="X" color="black" />
             </button>
           )}
         </div>

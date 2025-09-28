@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from '../components/Card/Card';
+import { Card } from 'src/components/Card';
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
@@ -83,7 +83,7 @@ export const CardWithSectionsAndClose: Story = {
         </Card.Section>
         <Card.Section>
           <h1>Teste</h1>
-          <strong>BláBlá</strong>
+          <strong>Tag strong aplicada sem estilos</strong>
         </Card.Section>
       </>
     ),
