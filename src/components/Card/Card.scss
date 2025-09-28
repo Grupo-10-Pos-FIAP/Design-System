@@ -1,0 +1,139 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: $spacing-md;
+  background-color: $background-base;
+  color: $color-black;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    opacity 0.2s ease-out,
+    transform 0.2s ease-out;
+  position: relative;
+  animation: fadeIn 0.2s ease-in;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-md;
+    gap: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-title;
+    font-weight: $font-weight-semibold;
+    flex: 1;
+    margin-top: $spacing-lg;
+  }
+
+  &__close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: $color-black;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.1s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.06);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-body;
+    line-height: $line-height-body;
+  }
+
+  &__section {
+    padding: $spacing-sm 0;
+
+    &:not(:first-child) {
+      border-top: 1px dashed rgba(0, 0, 0, 0.12);
+      padding-top: $spacing-md;
+      margin-top: $spacing-sm;
+    }
+
+    &:last-child {
+      padding-bottom: 5px;
+    }
+  }
+
+  &--elevated {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.096);
+
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.24);
+    }
+  }
+
+  &--outlined {
+    border: 1px solid $border-base;
+
+    .card__section:not(:first-child) {
+      border-top-color: $border-base;
+    }
+  }
+
+  &--dashed {
+    border: 1px dashed rgba(0, 0, 0, 0.12);
+    border-top-color: rgba(0, 0, 0, 0.12);
+  }
+
+  &--flat {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    padding: $spacing-sm;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-sm;
+
+    &__header {
+      margin-bottom: $spacing-sm;
+    }
+
+    &__section {
+      padding: $spacing-xs 0;
+
+      &:not(:first-child) {
+        padding-top: $spacing-sm;
+        margin-top: $spacing-xs;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
