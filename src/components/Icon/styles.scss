@@ -1,0 +1,99 @@
+$icon-color-map: (
+  'base': $color-base,
+  'primary': $color-primary,
+  'secondary': $color-secondary,
+  'success': $color-success,
+  'warning': $color-warning,
+  'error': $color-error,
+  'info': $color-info,
+  'white': $color-white,
+  'black': $color-black,
+);
+
+$icon-disabled-color-map: (
+  'base': $color-disabled,
+  'primary': lighten($color-primary, 30%),
+  'secondary': lighten($color-secondary, 30%),
+  'success': lighten($color-success, 30%),
+  'warning': lighten($color-warning, 30%),
+  'error': lighten($color-error, 30%),
+  'info': lighten($color-info, 30%),
+  'white': $gray-300,
+  'black': $gray-600,
+);
+
+@function icon-color($color: 'base', $disabled: false) {
+  $color-map: if($disabled, $icon-disabled-color-map, $icon-color-map);
+  
+  @if map-has-key($color-map, $color) {
+    @return map-get($color-map, $color);
+  }
+  
+  @warn "Cor '#{$color}' não encontrada no mapa de cores do ícone";
+  @return map-get($color-map, 'base');
+}
+
+@mixin icon-colors($disabled: false) {
+  @each $name, $color in $icon-color-map {
+    &--#{$name} {
+      color: icon-color($name, $disabled);
+    }
+  }
+}
+
+@mixin icon-sizes {
+  &--extra-small {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--small {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--medium {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--large {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--extra-large {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
+
+  @include icon-sizes;
+
+  @include icon-colors;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    
+    @include icon-colors(true);
+  }
+
+  &:not(&--disabled) {
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+    
+    &:active {
+      opacity: 0.6;
+      transform: scale(0.95);
+    }
+  }
+}
