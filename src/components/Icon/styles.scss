@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:map";
+
 $icon-color-map: (
   'base': $color-base,
   'primary': $color-primary,
@@ -12,12 +15,12 @@ $icon-color-map: (
 
 $icon-disabled-color-map: (
   'base': $color-disabled,
-  'primary': lighten($color-primary, 30%),
-  'secondary': lighten($color-secondary, 30%),
-  'success': lighten($color-success, 30%),
-  'warning': lighten($color-warning, 30%),
-  'error': lighten($color-error, 30%),
-  'info': lighten($color-info, 30%),
+  'primary': color.adjust($color-primary, $lightness: 30%),
+  'secondary': color.adjust($color-secondary, $lightness: 30%),
+  'success': color.adjust($color-success, $lightness: 30%),
+  'warning': color.adjust($color-warning, $lightness: 30%),
+  'error': color.adjust($color-error, $lightness: 30%),
+  'info': color.adjust($color-info, $lightness: 30%),
   'white': $gray-300,
   'black': $gray-600,
 );
@@ -25,12 +28,12 @@ $icon-disabled-color-map: (
 @function icon-color($color: 'base', $disabled: false) {
   $color-map: if($disabled, $icon-disabled-color-map, $icon-color-map);
   
-  @if map-has-key($color-map, $color) {
-    @return map-get($color-map, $color);
+  @if map.has-key($color-map, $color) {
+    @return map.get($color-map, $color);
   }
   
   @warn "Cor '#{$color}' não encontrada no mapa de cores do ícone";
-  @return map-get($color-map, 'base');
+  @return map.get($color-map, 'base');
 }
 
 @mixin icon-colors($disabled: false) {
