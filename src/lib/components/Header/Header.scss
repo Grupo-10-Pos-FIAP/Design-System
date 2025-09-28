@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 1.5rem;
+  background-color: $color-base;
+  color: $color-white;
+  border-bottom: 1px solid $color-disabled;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: auto;
+      max-height: 40px;
+    }
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+  }
+}
