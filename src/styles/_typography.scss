@@ -95,7 +95,7 @@ a {
 // ===========================================
 // MEDIA QUERIES
 // ===========================================
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-tablet) {
   h1,
   .h1 {
     font-size: $font-size-h2;
@@ -118,7 +118,7 @@ a {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $breakpoint-mobile) {
   h1,
   .h1 {
     font-size: $font-size-h3;
