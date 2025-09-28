@@ -1,9 +1,11 @@
+import { Button } from './components/Button';
+
 function App() {
   return (
-    <>
-      <h1>This test</h1>
-    </>
-  )
+    <div className="app">
+      <Button onClick={() => alert('Hello World!')} variant="primary" label="Click here" />
+    </div>
+  );
 }
 
-export default App
+export default App;
