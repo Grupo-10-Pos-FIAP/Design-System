@@ -1,13 +1,7 @@
 import { Slot } from "@radix-ui/react-slot"
-import "./Button.scss"
-import { ButtonHTMLAttributes, forwardRef } from "react"
-
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  asChild?: boolean
-  variant?: "default" | "outline" | "ghost"
-  size?: "sm" | "md" | "lg"
-}
+import "./styles.scss"
+import { forwardRef } from "react"
+import { ButtonProps } from "./interface"
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (

@@ -1,26 +1,21 @@
-import { icons } from 'lucide-react';
-import { LegacyRef, forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 import { IconProps } from './interfaces';
+import { icons } from 'lucide-react';
+import './styles.scss';
 
-const Icon = forwardRef<LegacyRef<SVGSVGElement>, IconProps>(
-  ({ name, color = 'base', size = 'medium', disabled, ...props }, ref) => {
+const Icon = forwardRef<SVGSVGElement, IconProps>(
+  ({ 
+    name, 
+    color = 'base', 
+    size = 'medium', 
+    disabled = false,
+    ...props 
+  }, ref) => {
 
     const SelectedIcon = useMemo(
       () => icons[name as keyof typeof icons],
       [name],
     );
-
-    const colorMap = {
-      base: 'var(--color-base)',
-      primary: 'var(--color-primary)',
-      secondary: 'var(--color-secondary)'
-    };
-
-    const disabledColorMap = {
-      base: 'var(--color-base-disabled)',
-      primary: 'var(--color-primary-disabled)',
-      secondary: 'var(--color-secondary-disabled)'
-    };
 
     const sizeMap = {
       'extra-small': 16,
@@ -30,25 +25,33 @@ const Icon = forwardRef<LegacyRef<SVGSVGElement>, IconProps>(
       'extra-large': 40
     };
 
-    const iconColor = disabled ? disabledColorMap[color] : colorMap[color];
     const iconSize = sizeMap[size];
 
+    const iconClasses = [
+      'icon',
+      `icon--${color}`,
+      `icon--${size}`,
+      disabled && 'icon--disabled',
+    ].filter(Boolean).join(' ');
+
     if (!SelectedIcon) {
-      console.warn(`Icon "${name}" not found in either lucide-react`);
+      console.warn(`Icon "${name}" not found in lucide-react`);
       return null;
     }
 
     return (
       <SelectedIcon
         aria-disabled={disabled}
-        ref={ref as LegacyRef<SVGSVGElement>}
-        color={iconColor}
+        ref={ref}
         size={iconSize}
+        className={iconClasses}
         {...props}
       />
     );
   },
 );
+
+Icon.displayName = 'Icon';
 
 export { Icon };
 export type { IconProps } from './interfaces';

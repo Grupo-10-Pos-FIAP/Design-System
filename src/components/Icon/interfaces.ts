@@ -1,26 +1,26 @@
-import { icons } from 'lucide-react';
-import { ComponentProps } from 'react';
+import { SVGProps } from 'react';
 
-type LucideIcons = keyof typeof icons;
-type IconKeys = LucideIcons;
-
-interface IconProps extends ComponentProps<'svg'> {
+export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size'> {
   /**
-   * Os estilos prefixados de ícone.
+   * Name of the icon from lucide-react library
    */
-  name: IconKeys;
+  name: string;
+  
   /**
-   * O token de cor do ícone.
+   * Color variant of the icon
+   * @default 'base'
    */
-  color?: 'base' | 'primary' | 'secondary';
+  color?: 'base' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'white' | 'black';
+  
   /**
-   * O tamanho do ícone.
+   * Size variant of the icon
+   * @default 'medium'
    */
   size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+  
   /**
-   * Desabilita o ícone.
+   * Whether the icon is disabled
+   * @default false
    */
   disabled?: boolean;
 }
-
-export type { IconProps, LucideIcons, IconKeys };
