@@ -2,9 +2,9 @@ import { Button } from './components/Button';
 
 function App() {
   return (
-    <>
-      <Button variant="primary" label="Click here" />
-    </>
+    <div className="app">
+      <Button onClick={() => alert('Hello World!')} variant="primary" label="Click here" />
+    </div>
   );
 }
 

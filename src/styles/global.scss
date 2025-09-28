@@ -4,6 +4,18 @@
 @import '@radix-ui/themes/styles.css';
 
 body {
-  font-family: $font-family-default;
   background-color: $background-base;
+  min-width: 100vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  font-family: $font-family-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }

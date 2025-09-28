@@ -1,125 +1,56 @@
 @use './variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-// Font Sizes
-.fs-1 {
-  font-size: $fs-caption;
-  line-height: $lh-caption;
-}
-.fs-2 {
-  font-size: $fs-small;
-  line-height: $lh-body;
-}
-.fs-3 {
-  font-size: $fs-body;
-  line-height: $lh-body;
-}
-.fs-4 {
-  font-size: $fs-subtitle;
-  line-height: $lh-subtitle;
-}
-.fs-5 {
-  font-size: $fs-title;
-  line-height: $lh-title;
-}
-.fs-6 {
-  font-size: $fs-heading4;
-  line-height: $lh-heading;
-}
-.fs-7 {
-  font-size: $fs-heading3;
-  line-height: $lh-heading;
-}
-.fs-8 {
-  font-size: $fs-heading2;
-  line-height: $lh-heading;
-}
-.fs-9 {
-  font-size: $fs-heading1;
-  line-height: $lh-heading;
-}
-
-// Font Weights
-.fw-regular {
-  font-weight: $font-regular;
-}
-.fw-medium {
-  font-weight: $font-medium;
-}
-.fw-semibold {
-  font-weight: $font-semibold;
-}
-.fw-bold {
-  font-weight: $font-bold;
-}
-
-// Letter Spacing
-.ls-1 {
-  letter-spacing: $ls-normal;
-}
-.ls-2 {
-  letter-spacing: $ls-tightest;
-}
-.ls-3 {
-  letter-spacing: $ls-tight;
-}
-.ls-4 {
-  letter-spacing: $ls-wide;
-}
-.ls-5 {
-  letter-spacing: $ls-wider;
-}
-
 // ===========================================
 // TITLES
 // ===========================================
 h1,
 .h1 {
-  font-size: $fs-heading1;
-  font-weight: $font-bold;
-  line-height: $lh-heading;
-  letter-spacing: $ls-tight;
+  font-size: $font-size-h1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-tight;
   margin-bottom: 1rem;
 }
 
 h2,
 .h2 {
-  font-size: $fs-heading2;
-  font-weight: $font-semibold;
-  line-height: $lh-heading;
-  letter-spacing: $ls-tight;
+  font-size: $font-size-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-tight;
   margin-bottom: 0.875rem;
 }
 
 h3,
 .h3 {
-  font-size: $fs-heading3;
-  font-weight: $font-semibold;
-  line-height: $lh-heading;
+  font-size: $font-size-h3;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-heading;
   margin-bottom: 0.75rem;
 }
 
 h4,
 .h4 {
-  font-size: $fs-heading4;
-  font-weight: $font-medium;
-  line-height: $lh-title;
+  font-size: $font-size-h4;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-title;
   margin-bottom: 0.625rem;
 }
 
 h5,
 .h5 {
-  font-size: $fs-title;
-  font-weight: $font-medium;
-  line-height: $lh-title;
+  font-size: $font-size-title;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-title;
   margin-bottom: 0.5rem;
 }
 
 h6,
 .h6 {
-  font-size: $fs-body;
-  font-weight: $font-medium;
-  line-height: $lh-body;
+  font-size: $font-size-body;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-body;
   margin-bottom: 0.5rem;
 }
 
@@ -128,21 +59,21 @@ h6,
 // ===========================================
 p,
 .p {
-  font-size: $fs-body;
-  font-weight: $font-regular;
-  line-height: $lh-body;
+  font-size: $font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-body;
   margin-bottom: 1rem;
 }
 
 small,
 .small {
-  font-size: $fs-small;
-  line-height: $lh-body;
+  font-size: $font-size-small;
+  line-height: $line-height-body;
 }
 
 .caption {
-  font-size: $fs-caption;
-  line-height: $lh-caption;
+  font-size: $font-size-caption;
+  line-height: $line-height-caption;
 }
 
 // ===========================================
@@ -151,15 +82,13 @@ small,
 a {
   color: $color-primary;
   text-decoration: none;
-  font-weight: $font-medium;
+  font-weight: $font-weight-medium;
 
   &:hover {
     text-decoration: underline;
   }
-
-  &:focus {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
+  &:visited {
+    color: $color-link-visited;
   }
 }
 
@@ -169,37 +98,37 @@ a {
 @media (max-width: 768px) {
   h1,
   .h1 {
-    font-size: $fs-heading2;
+    font-size: $font-size-h2;
   }
   h2,
   .h2 {
-    font-size: $fs-heading3;
+    font-size: $font-size-h3;
   }
   h3,
   .h3 {
-    font-size: $fs-heading4;
+    font-size: $font-size-h4;
   }
   h4,
   .h4 {
-    font-size: $fs-title;
+    font-size: $font-size-title;
   }
   p,
   .p {
-    font-size: $fs-small;
+    font-size: $font-size-small;
   }
 }
 
 @media (max-width: 480px) {
   h1,
   .h1 {
-    font-size: $fs-heading3;
+    font-size: $font-size-h3;
   }
   h2,
   .h2 {
-    font-size: $fs-heading4;
+    font-size: $font-size-h4;
   }
   h3,
   .h3 {
-    font-size: $fs-title;
+    font-size: $font-size-title;
   }
 }

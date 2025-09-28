@@ -10,9 +10,9 @@
   border-radius: 4px;
   cursor: pointer;
   font-family: $font-family-default;
-  font-size: $fs-small;
-  font-weight: $font-regular;
-  line-height: $lh-caption;
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-caption;
   transition: all 0.2s linear;
 
   &--primary {
@@ -32,12 +32,12 @@
     }
 
     &:disabled {
-      color: $text-disabled;
+      color: $color-disabled;
       background-color: $background-disabled;
       cursor: not-allowed;
 
       path {
-        fill: $text-disabled;
+        fill: $color-disabled;
       }
     }
   }
@@ -59,12 +59,12 @@
     }
 
     &:disabled {
-      color: $text-disabled;
+      color: $color-disabled;
       background-color: $background-disabled;
       cursor: not-allowed;
 
       path {
-        fill: $text-disabled;
+        fill: $color-disabled;
       }
     }
   }
