@@ -1,38 +1,23 @@
-import React, { type ButtonHTMLAttributes, type ReactNode } from 'react';
-import './styles.scss';
+import { Slot } from "@radix-ui/react-slot"
+import "./styles.scss"
+import { forwardRef } from "react"
+import { ButtonProps } from "./interface"
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  primary?: boolean;
-  backgroundColor?: string;
-  label: string;
-  onClick?: () => void;
-  size?: string;
-  variant?: 'primary' | 'secondary';
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
-  children?: ReactNode;
-  className?: string;
-}
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    { className = "", variant = "default", size = "md", asChild = false, ...props },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : "button"
 
-export const Button = ({
-  label,
-  variant = 'primary',
-  leftIcon,
-  rightIcon,
-  children,
-  className = '',
-  disabled,
-  ...rest
-}: ButtonProps) => {
-  const buttonClasses = ['button', `button--${variant}`, className, disabled ? 'button--disabled' : '']
-    .filter(Boolean)
-    .join(' ');
+    return (
+      <Comp
+        ref={ref}
+        className={`btn btn--${variant} btn--${size} ${className}`}
+        {...props}
+      />
+    )
+  }
+)
 
-  return (
-    <button type="button" disabled={disabled} className={buttonClasses} {...rest}>
-      {leftIcon}
-      {label || children}
-      {rightIcon}
-    </button>
-  );
-};
+Button.displayName = "Button"
