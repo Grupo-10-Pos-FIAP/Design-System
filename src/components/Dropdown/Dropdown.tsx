@@ -5,7 +5,7 @@ interface DropdownProps {
   options: string[];
   label?: string;
   onSelect?: (value: string) => void;
-  size?: "small" | "medium" | "large"; // nova prop para tamanho
+  size?: "small" | "medium" | "large"; // Tamanhos suportados
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
