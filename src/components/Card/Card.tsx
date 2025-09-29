@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Icon } from 'src/components/Icon';
-import './styles.scss';
+import { Icon } from '@components/Icon/Icon';
+import './Card.scss';
 
 import type { CardProps, CardSectionProps } from './interface';
 

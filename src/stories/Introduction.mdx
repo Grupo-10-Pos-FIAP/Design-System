@@ -1,0 +1,41 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import packageJson from "../../package.json";
+
+<Meta title="Introduction" />
+
+# Design System
+
+This manual provides common guidelines for all professionals involved in developing, maintaining, and evolving web applications. 
+The goal is to ensure a consistent visual identity according to organizational standards, quality patterns, and institutional policies.
+
+The Design System's tokens and icons can be applied across various web and mobile technologies. 
+Please consult their respective documentation for specific implementations.
+
+**Version:** {packageJson.version}
+
+## Foundation
+
+Beyond ensuring components meet all established documentation guidelines, this library is built on fundamental principles:
+
+- **Maintainability:** Clean, well-structured, and understandable code that makes it easy to find, modify, and add new features—even for developers new to the project.
+- **Scalability:** An architecture that supports easy incorporation of new functionalities, support, and components.
+- **Accessibility:** Components that ensure navigation via mouse, touch, and screen readers, while meeting design specifications that address other accessibility criteria.
+
+## Library Updates
+
+The library receives frequent updates to add features, improve component design, or fix issues. 
+During development, you might notice that components in the layout or Storybook are newer than those in your project.
+
+Since the library is installed via NPM, automatic updates are not recommended (except for bug fixes). 
+Developers should ensure they're using the latest version when working with components.
+
+Each project or team should establish documented policies defining who can perform updates, when, and how.
+
+## Best Practices & Recommendations
+
+- **Don't override component styles externally.** Customize components only through their available properties, 
+theme changes, or approved library adjustments. External style overrides may break during updates when internal structures change.
+
+- **Always verify component property types and usage.** Each component has documentation listing all properties, 
+including required ones. The typing specifies visual and interactive behavior, ensuring components work as expected and reducing issues during updates. 
+Even if a component works without a required property in one version, it may fail in future updates.

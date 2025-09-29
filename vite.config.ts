@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vite.dev/config/
 import { fileURLToPath } from 'node:url';
@@ -10,11 +11,17 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "src/styles/variables" as *;`,
+        additionalData: `@use "@styles/variables" as *;`,
       },
     },
   },
@@ -32,13 +39,6 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
         },
       },
-    },
-  },
-  resolve: {
-    alias: {
-      src: path.resolve(__dirname, 'src'),
-      components: path.resolve(__dirname, 'src/components'),
-      utils: path.resolve(__dirname, 'src/utils'),
     },
   },
   test: {

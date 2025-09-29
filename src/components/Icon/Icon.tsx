@@ -1,7 +1,7 @@
 import { forwardRef, useMemo } from 'react';
 import { IconProps } from './interfaces';
 import { icons } from 'lucide-react';
-import './styles.scss';
+import './Icon.scss';
 
 const Icon = forwardRef<SVGSVGElement, IconProps>(
   ({ 
