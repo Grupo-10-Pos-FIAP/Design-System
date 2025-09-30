@@ -115,19 +115,19 @@
   }
 }
 
-.icon-btn--danger {
-  background-color: $color-danger;
+.icon-btn--alert {
+  background-color: $color-alert;
   color: $color-white;
-  border: 1px solid $color-danger;
+  border: 1px solid $color-alert;
 
   &:hover {
-    background-color: color.adjust($color-danger, $lightness: -8%);
-    border-color: color.adjust($color-danger, $lightness: -8%);
+    background-color: color.adjust($color-alert, $lightness: -8%);
+    border-color: color.adjust($color-alert, $lightness: -8%);
   }
 
   &:active {
-    background-color: color.adjust($color-danger, $lightness: -12%);
-    border-color: color.adjust($color-danger, $lightness: -12%);
+    background-color: color.adjust($color-alert, $lightness: -12%);
+    border-color: color.adjust($color-alert, $lightness: -12%);
   }
 }
 
