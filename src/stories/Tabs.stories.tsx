@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Tabs } from '@components/Tabs';
+import { Tabs } from '@components/Tabs/Tabs';
 import { TabsRootProps } from '@components/Tabs/subcomponents/tabs';
 import { TabsTriggerProps } from '@components/Tabs/subcomponents/tabs-trigger';
 
@@ -63,7 +63,7 @@ export const Default: Story = {
     console.log('Selected Tab:', selectedTab);
 
     return (
-      <Tabs value={selectedTab} defaultValue='tab1' onValueChange={setSelectedTab}>
+      <Tabs value={selectedTab} onValueChange={setSelectedTab}>
         <Tabs.List scrollable>
           {tabs.map((tab) => (
             <Tabs.Trigger
@@ -88,7 +88,7 @@ export const Default: Story = {
         code: `
 const [selectedTab, setSelectedTab] = useState<string>('');
 
-<Tabs value={selectedTab} defaultValue='tab1' onValueChange={setSelectedTab}>
+<Tabs value={selectedTab} onValueChange={setSelectedTab}>
   <Tabs.List scrollable>
     <Tabs.Trigger
       label="Tab 1"

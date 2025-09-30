@@ -52,7 +52,6 @@ function TabsRoot({
         role="tab"
         className="tabs"
         orientation="horizontal"
-        activationMode="manual"
         defaultValue={defaultValue}
         value={value}
         onValueChange={onValueChange}

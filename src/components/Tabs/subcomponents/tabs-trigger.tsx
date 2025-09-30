@@ -1,7 +1,7 @@
 import { Tabs as RTabs } from 'radix-ui';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTabs } from '../tabs-context';
-import { joinClassNames } from '@src/utils/joinClassNames';
+import { joinClassNames } from '@utils/joinClassNames';
 
 interface TabsTriggerProps {
   /**
@@ -23,22 +23,6 @@ interface TabsTriggerProps {
 function TabsTrigger({ label, value, disabled }: TabsTriggerProps) {
   const { registerTab, setActiveTab } = useTabs();
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const [isTabActive, setIsTabActive] = useState(false);
-
-  useEffect(() => {
-    const el = triggerRef.current;
-    if (!el) return;
-
-    const observer = new MutationObserver(() => {
-      setIsTabActive(el.getAttribute('data-state') === 'active');
-    });
-
-    observer.observe(el, { attributes: true, attributeFilter: ['data-state'] });
-
-    setIsTabActive(el.getAttribute('data-state') === 'active');
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     registerTab(value);
@@ -55,13 +39,7 @@ function TabsTrigger({ label, value, disabled }: TabsTriggerProps) {
       aria-disabled={disabled}
       onClick={() => setActiveTab(value)}>
       <div className="tabs__tab-item__content">
-        {isTabActive ? (
-          <p className={joinClassNames(['small-medium', 'tabs__tab-item__label', disabled ? 'disabled' : ''])}>
-            {label}
-          </p>
-        ) : (
-          <p className={joinClassNames(['small', 'tabs__tab-item__label', disabled ? 'disabled' : ''])}>{label}</p>
-        )}
+        <p className={joinClassNames(['tabs__tab-item__label', disabled ? 'disabled' : ''])}>{label}</p>
       </div>
       <div className="tabs__tab-item__tab-border" />
     </RTabs.Trigger>
