@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Header } from "../lib/components/Header/Header";
+import { Header } from "../components/Header/Header";
 
 // Mock simples de avatar
 const MockUserAvatar = () => (
