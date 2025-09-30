@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: $spacing-md;
+    margin: 0 $spacing-sm;
     gap: $spacing-sm;
   }
 
@@ -79,6 +79,14 @@
     &:last-child {
       padding-bottom: 5px;
     }
+  }
+
+  &__section-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   &--elevated {
