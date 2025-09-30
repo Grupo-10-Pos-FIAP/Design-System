@@ -1,7 +1,7 @@
-import { Slot } from "@radix-ui/react-slot"
-import "./styles.scss"
 import { forwardRef } from "react"
+import { Slot } from "@radix-ui/react-slot"
 import { ButtonProps } from "./interface"
+import "./Button.scss"
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (

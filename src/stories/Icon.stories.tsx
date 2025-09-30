@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon } from '../components/Icon';
+import { Icon } from '../components/Icon/Icon';
 import { icons } from 'lucide-react';
 
 const iconKeys = Object.keys(icons) as Array<keyof typeof icons>;
