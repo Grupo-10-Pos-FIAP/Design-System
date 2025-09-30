@@ -1,0 +1,238 @@
+@mixin text-caption {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-caption;
+}
+
+@mixin text-small {
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-body;
+}
+
+@mixin text-body {
+  font-size: $font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-body;
+}
+
+@mixin text-subtitle {
+  font-size: $font-size-subtitle;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-subtitle;
+}
+
+@mixin text-title {
+  font-size: $font-size-title;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-title;
+}
+
+@mixin text-h4 {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-heading;
+}
+
+@mixin text-h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+@mixin text-h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+@mixin text-h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+@mixin text-h5 {
+  font-size: $font-size-h5;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+@mixin text-base {
+  font-family: $font-family-default;
+  margin: 0;
+
+  &.text-caption {
+    @include text-caption;
+  }
+  &.text-small {
+    @include text-small;
+  }
+  &.text-body {
+    @include text-body;
+  }
+  &.text-subtitle {
+    @include text-subtitle;
+  }
+  &.text-title {
+    @include text-title;
+  }
+  &.text-h4 {
+    @include text-h4;
+  }
+  &.text-h3 {
+    @include text-h3;
+  }
+  &.text-h2 {
+    @include text-h2;
+  }
+  &.text-h1 {
+    @include text-h1;
+  }
+  &.text-h5 {
+    @include text-h5;
+  }
+
+  &.color-base {
+    color: $color-base;
+  }
+  &.color-white {
+    color: $color-white;
+  }
+  &.color-black {
+    color: $color-black;
+  }
+  &.color-disabled {
+    color: $color-disabled;
+  }
+  &.color-primary {
+    color: $color-primary;
+  }
+  &.color-secondary {
+    color: $color-secondary;
+  }
+  &.color-accent {
+    color: $color-accent;
+  }
+  &.color-soft {
+    color: $color-soft;
+  }
+  &.color-success {
+    color: $color-success;
+  }
+  &.color-warning {
+    color: $color-warning;
+  }
+  &.color-error {
+    color: $color-error;
+  }
+  &.color-info {
+    color: $color-info;
+  }
+  &.color-link {
+    color: $color-link;
+  }
+
+  &.color-gray-100 {
+    color: $gray-100;
+  }
+  &.color-gray-200 {
+    color: $gray-200;
+  }
+  &.color-gray-300 {
+    color: $gray-300;
+  }
+  &.color-gray-400 {
+    color: $gray-400;
+  }
+  &.color-gray-500 {
+    color: $gray-500;
+  }
+  &.color-gray-600 {
+    color: $gray-600;
+  }
+  &.color-gray-700 {
+    color: $gray-700;
+  }
+  &.color-gray-800 {
+    color: $gray-800;
+  }
+  &.color-gray-900 {
+    color: $gray-900;
+  }
+
+  &.weight-regular {
+    font-weight: $font-weight-regular;
+  }
+  &.weight-medium {
+    font-weight: $font-weight-medium;
+  }
+  &.weight-semibold {
+    font-weight: $font-weight-semibold;
+  }
+  &.weight-bold {
+    font-weight: $font-weight-bold;
+  }
+
+  &.align-left {
+    text-align: left;
+  }
+  &.align-center {
+    text-align: center;
+  }
+  &.align-right {
+    text-align: right;
+  }
+  &.align-justify {
+    text-align: justify;
+  }
+
+  &.letter-spacing-tightest {
+    letter-spacing: $letter-spacing-tightest;
+  }
+  &.letter-spacing-tight {
+    letter-spacing: $letter-spacing-tight;
+  }
+  &.letter-spacing-normal {
+    letter-spacing: $letter-spacing-normal;
+  }
+  &.letter-spacing-relaxed {
+    letter-spacing: $letter-spacing-relaxed;
+  }
+  &.letter-spacing-wide {
+    letter-spacing: $letter-spacing-wide;
+  }
+  &.letter-spacing-wider {
+    letter-spacing: $letter-spacing-wider;
+  }
+
+  &.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &.max-lines-1 {
+    @include max-lines(1);
+  }
+  &.max-lines-2 {
+    @include max-lines(2);
+  }
+  &.max-lines-3 {
+    @include max-lines(3);
+  }
+  &.max-lines-4 {
+    @include max-lines(4);
+  }
+}
+
+@mixin max-lines($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-component {
+  @include text-base;
+}
