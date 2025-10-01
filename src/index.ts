@@ -4,3 +4,4 @@ export * from './components/Header/Header';
 export * from "./components/Icon/Icon";
 export * from './components/Tabs/Tabs';
 export * from "./components/Text/Text";
+export * from "./components/Dropdown/Dropdown";
