@@ -24,7 +24,6 @@ export const Loading: Story = {
     icon: Plus,
     variant: 'default',
     size: 'lg',
-    loading: true,
     'aria-label': 'Carregando',
   },
 };
