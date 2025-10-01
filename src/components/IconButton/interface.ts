@@ -4,7 +4,6 @@ export interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
   icon: LucideIcon;
   variant?: 'default' | 'outline' | 'ghost' | 'secondary' | 'alert' | 'success';
   size?: 'sm' | 'md' | 'lg';
-  loading?: boolean;
   'aria-label': string;
   className?: string;
 }

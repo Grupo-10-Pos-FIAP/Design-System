@@ -27,6 +27,7 @@
   &:not(:disabled):hover {
     transform: translateY(-1px);
   }
+
   &:not(:disabled):active {
     transform: translateY(0);
   }
@@ -34,24 +35,7 @@
   &__icon {
     transition: opacity 0.2s ease-in-out;
   }
-
-  &__spinner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-
-  &--loading {
-    .icon-btn__icon {
-      opacity: 0;
-    }
-  }
 }
-
 .icon-btn--default {
   background-color: $color-primary;
   color: $color-white;
@@ -147,6 +131,7 @@
   }
 }
 
+/* Sizes */
 .icon-btn--sm {
   width: 32px;
   height: 32px;
@@ -170,40 +155,25 @@
 }
 
 .icon-btn--lg {
-  width: 58px;
-  height: 25px;
+  width: 52px;
+  height: 52px;
   padding: $spacing-md;
 
   .icon-btn__icon {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
   }
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .icon-btn {
     transition: none;
 
-    &:hover {
-      transform: none;
-    }
-
+    &:hover,
     &:active {
       transform: none;
     }
-  }
-
-  .icon-btn__spinner {
-    animation: none;
   }
 }
 
