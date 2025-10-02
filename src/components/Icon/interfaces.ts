@@ -3,7 +3,7 @@ import { icons } from 'lucide-react';
 
 type LucideIcons = keyof typeof icons;
 
-type IconName = LucideIcons;
+export type IconName = LucideIcons;
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size'> {
   /**

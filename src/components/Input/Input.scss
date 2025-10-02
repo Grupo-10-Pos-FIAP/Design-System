@@ -1,0 +1,308 @@
+@mixin input-focus {
+  outline: none;
+  border-color: $color-primary;
+  box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+}
+
+@mixin input-disabled {
+  background-color: $background-disabled;
+  border-color: $border-disabled;
+  color: $color-disabled;
+  cursor: not-allowed;
+  
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.input-label {
+  font-family: $font-family-default;
+  font-size: $font-size-small;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-body;
+  color: $color-base;
+  margin-bottom: $spacing-xs;
+  
+  .input--disabled + & {
+    color: $color-disabled;
+  }
+}
+
+.input-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  font-family: $font-family-default;
+  font-size: $font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-body;
+  letter-spacing: $letter-spacing-normal;
+  
+  border: 1px solid $border-base;
+  border-radius: 4px;
+  background-color: $background-base;
+  color: $color-base;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  
+  // Estados
+  &:focus {
+    @include input-focus;
+  }
+  
+  &:hover:not(:disabled, .input--error) {
+    border-color: $gray-400;
+  }
+  
+  &:disabled {
+    @include input-disabled;
+  }
+  
+  // Placeholder
+  &::placeholder {
+    color: $gray-500;
+    font-weight: $font-weight-regular;
+  }
+  
+  
+  &--filled {
+    background-color: $gray-100;
+    border-color: transparent;
+    
+    &:focus {
+      background-color: $background-base;
+      border-color: $color-primary;
+    }
+  }
+  
+  &--outlined {
+    background-color: transparent;
+    border-width: 2px;
+    
+    &:focus {
+      border-width: 2px;
+    }
+  }
+  
+  &--small {
+    font-size: $font-size-small;
+    padding: $spacing-xs $spacing-sm;
+    height: 32px;
+  }
+  
+  &--medium {
+    font-size: $font-size-body;
+    padding: $spacing-sm $spacing-md;
+    height: 40px;
+  }
+  
+  &--large {
+    font-size: $font-size-subtitle;
+    padding: $spacing-md $spacing-lg;
+    height: 48px;
+  }
+  
+  &--success {
+    border-color: $feedback-success;
+    
+    &:focus {
+      border-color: $feedback-success;
+      box-shadow: 0 0 0 2px rgba($feedback-success, 0.1);
+    }
+  }
+  
+  &--warning {
+    border-color: $feedback-warning;
+    
+    &:focus {
+      border-color: $feedback-warning;
+      box-shadow: 0 0 0 2px rgba($feedback-warning, 0.1);
+    }
+  }
+  
+  &--error {
+    border-color: $feedback-error;
+    
+    &:focus {
+      border-color: $feedback-error;
+      box-shadow: 0 0 0 2px rgba($feedback-error, 0.1);
+    }
+  }
+  
+  &--full-width {
+    width: 100%;
+  }
+}
+
+.input {
+  &.input--has-start-icon {
+    &.input--small {
+      padding-left: $spacing-lg;
+    }
+    
+    &.input--medium {
+      padding-left: $spacing-xl;
+    }
+    
+    &.input--large {
+      padding-left: $spacing-2xl;
+    }
+  }
+  
+  &.input--has-end-icon {
+    &.input--small {
+      padding-right: $spacing-lg;
+    }
+    
+    &.input--medium {
+      padding-right: $spacing-xl;
+    }
+    
+    &.input--large {
+      padding-right: $spacing-2xl;
+    }
+  }
+  
+  &.input--has-start-icon.input--has-end-icon {
+    &.input--small {
+      padding-left: $spacing-lg;
+      padding-right: $spacing-lg;
+    }
+    
+    &.input--medium {
+      padding-left: $spacing-xl;
+      padding-right: $spacing-xl;
+    }
+    
+    &.input--large {
+      padding-left: $spacing-2xl;
+      padding-right: $spacing-2xl;
+    }
+  }
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $gray-500;
+  pointer-events: none;
+  z-index: 1;
+  
+  &--start {
+    left: $spacing-sm;
+    
+    .input--small & {
+      left: $spacing-xs;
+    }
+    
+    .input--large & {
+      left: $spacing-md;
+    }
+  }
+  
+  &--end {
+    right: $spacing-sm;
+    
+    .input--small & {
+      right: $spacing-xs;
+    }
+    
+    .input--large & {
+      right: $spacing-md;
+    }
+  }
+  
+  .input:disabled ~ & {
+    color: $color-disabled;
+  }
+  
+  .input--success ~ & {
+    color: $feedback-success;
+  }
+  
+  .input--warning ~ & {
+    color: $feedback-warning;
+  }
+  
+  .input--error ~ & {
+    color: $feedback-error;
+  }
+}
+
+// Texto de ajuda
+.input-helper-text {
+  font-family: $font-family-default;
+  font-size: $font-size-caption;
+  line-height: $line-height-caption;
+  letter-spacing: $letter-spacing-normal;
+  margin-top: $spacing-xs;
+  
+  &--default {
+    color: $gray-600;
+  }
+  
+  &--success {
+    color: $feedback-success;
+  }
+  
+  &--warning {
+    color: $feedback-warning;
+  }
+  
+  &--error {
+    color: $feedback-error;
+  }
+}
+
+// Responsividade
+@media (max-width: $breakpoint-mobile) {
+  .input {
+    &--medium,
+    &--large {
+      font-size: $font-size-body;
+      height: 44px;
+    }
+    
+    // Ajustes de padding para mobile
+    &.input--has-start-icon {
+      &.input--medium,
+      &.input--large {
+        padding-left: $spacing-xl;
+      }
+    }
+    
+    &.input--has-end-icon {
+      &.input--medium,
+      &.input--large {
+        padding-right: $spacing-xl;
+      }
+    }
+  }
+  
+  .input-icon {
+    &--start {
+      .input--medium &,
+      .input--large & {
+        left: $spacing-sm;
+      }
+    }
+    
+    &--end {
+      .input--medium &,
+      .input--large & {
+        right: $spacing-sm;
+      }
+    }
+  }
+}
