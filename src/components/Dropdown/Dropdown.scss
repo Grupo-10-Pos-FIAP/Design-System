@@ -1,0 +1,95 @@
+.dropdown {
+  position: relative;
+  font-family: $font-family-default;
+  display: inline-block;
+
+  .dropdown-label {
+    margin-bottom: $spacing-xs;
+    font-weight: $font-weight-bold;
+    color: $gray-700;
+    font-size: $font-size-small;
+  }
+
+  .dropdown-header {
+    border: 1px solid $border-base;
+    border-radius: $spacing-sm;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-primary; // azul
+    color: $color-white;
+    font-weight: $font-weight-medium;
+    padding: $spacing-sm $spacing-md;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &:hover {
+      background-color: $color-secondary; // laranja
+      transform: translateY(-1px);
+    }
+
+    .arrow {
+      border: solid $color-white;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      margin-left: $spacing-sm;
+      transition: transform 0.3s;
+      transform: rotate(45deg);
+    }
+
+    &.open .arrow {
+      transform: rotate(-135deg);
+    }
+  }
+
+  .dropdown-list {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid $border-base;
+    border-radius: 0 0 $spacing-sm $spacing-sm;
+    background: $background-base;
+    box-shadow: 0 6px 12px rgba($color-black, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    z-index: $z-index-dropdown;
+
+    &.open {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .dropdown-item {
+      padding: $spacing-sm $spacing-md;
+      cursor: pointer;
+      font-size: $font-size-body;
+      transition: background-color 0.2s;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: $color-secondary;
+        color: $color-white;
+      }
+
+      &.active {
+        background-color: $color-primary;
+        color: $color-white;
+        font-weight: $font-weight-semibold;
+      }
+
+      &.disabled {
+        color: $color-disabled;
+        cursor: not-allowed;
+        background-color: $background-disabled;
+      }
+    }
+  }
+
+  &.small { min-width: 160px; }
+  &.medium { min-width: 220px; }
+  &.large { min-width: 280px; }
+}

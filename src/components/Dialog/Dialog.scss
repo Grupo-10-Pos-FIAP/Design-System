@@ -1,0 +1,78 @@
+// src/components/Dialog/Dialog.scss
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $z-index-modal-backdrop;
+}
+
+.dialog-box {
+  background-color: $background-base;
+  border-radius: $spacing-sm;
+  padding: $spacing-lg;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 500px;
+  }
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-size: $font-size-title;
+    font-weight: $font-weight-bold;
+    margin: 0;
+  }
+
+  .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $color-black;
+
+    &:hover {
+      color: $color-error;
+    }
+  }
+}
+
+.dialog-content {
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+}
+
+.dialog-options {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+
+  .dialog-option {
+    flex: 1 1 calc(50% - #{$spacing-sm});
+    padding: $spacing-sm;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: $spacing-xs;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-secondary;
+    }
+  }
+}
