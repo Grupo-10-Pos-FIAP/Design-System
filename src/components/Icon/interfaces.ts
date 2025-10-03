@@ -16,13 +16,13 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size
    * @default 'base'
    */
   color?: 'base' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'white' | 'black';
-  
+
   /**
    * Size variant of the icon
    * @default 'medium'
    */
   size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-  
+
   /**
    * Whether the icon is disabled
    * @default false
