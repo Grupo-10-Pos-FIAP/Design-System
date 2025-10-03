@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Icon } from '../components/Icon/Icon';
-import { icons } from 'lucide-react';
-
-const iconKeys = Object.keys(icons) as Array<keyof typeof icons>;
+import { Icon } from '@components/Icon/Icon';
+import { iconKeys } from '@utils/iconKeys';
 
 const meta = {
   title: 'Components/Icon',

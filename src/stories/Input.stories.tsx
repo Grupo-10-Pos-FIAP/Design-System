@@ -1,9 +1,7 @@
 // stories/Input.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Input from '../components/Input/Input';
-import { icons } from 'lucide-react';
-
-const iconKeys = Object.keys(icons) as Array<keyof typeof icons>;
+import Input from '@components/Input/Input';
+import { iconKeys } from '@utils/iconKeys';
 
 const meta = {
   title: 'Components/Input',
@@ -82,7 +80,6 @@ export const Default: Story = {
   },
 };
 
-// Variantes
 export const Variants: Story = {
   args: {
     placeholder: 'Digite algo...',
@@ -103,7 +100,6 @@ export const Variants: Story = {
   ),
 };
 
-// Tamanhos
 export const Sizes: Story = {
   args: {
     placeholder: 'Digite algo...',
@@ -124,7 +120,6 @@ export const Sizes: Story = {
   ),
 };
 
-// Estados
 export const Status: Story = {
   args: {
     placeholder: 'Digite algo...',
@@ -149,7 +144,6 @@ export const Status: Story = {
   ),
 };
 
-// Com ícones
 export const WithIcons: Story = {
   args: {
     placeholder: 'Digite algo...',
@@ -192,7 +186,6 @@ export const WithIcons: Story = {
   ),
 };
 
-// Estados especiais
 export const States: Story = {
   args: {
     placeholder: 'Digite algo...',
@@ -221,7 +214,6 @@ export const States: Story = {
   ),
 };
 
-// Diferentes tipos
 export const InputTypes: Story = {
   args: {
     label: 'Diferentes tipos de input',
@@ -247,7 +239,6 @@ export const InputTypes: Story = {
   ),
 };
 
-// Exemplo de uso em formulário
 export const FormExample: Story = {
   render: () => (
     <div style={{ width: '400px', padding: '24px', background: 'white', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
@@ -318,7 +309,6 @@ export const FormExample: Story = {
   ),
 };
 
-// Grid de exemplos
 export const Playground: Story = {
   args: {
     variant: 'default',

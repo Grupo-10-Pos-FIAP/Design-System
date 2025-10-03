@@ -1,9 +1,8 @@
-// components/Input/Input.tsx
 import { forwardRef } from 'react';
 import { Icon } from '../Icon/Icon';
 import './Input.scss';
 import { InputProps } from './interfaces';
-import { joinClassNames } from '@/utils/joinClassNames';
+import { joinClassNames } from '@utils/joinClassNames';
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
