@@ -1,0 +1,103 @@
+.snackbar__viewport {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  width: 320px;
+  max-width: 100%;
+  z-index: $z-index-tooltip;
+}
+
+.snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  border-radius: 8px;
+  font-family: $font-family-default;
+  font-size: $font-size-body;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+  box-shadow: 0 4px 12px rgba($color-black, 0.25);
+  
+  &[data-state='open'] {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  &[data-state='closed'] {
+    animation: slideOut 0.3s ease-out forwards;
+  }
+  
+  &__content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-right: $spacing-sm;
+  }
+
+  &__icon {
+    margin-right: $spacing-sm;
+    min-width: 20px;
+  }
+  
+  &__message {
+    flex: 1;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: $spacing-xs;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &--info {
+    background-color: $feedback-info;
+  }
+
+  &--success {
+    background-color: $feedback-success;
+  }
+
+  &--warning {
+    background-color: $feedback-warning;
+    color: $color-black; 
+  }
+
+  &--error {
+    background-color: $feedback-error;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(120%); 
+    opacity: 0;
+  }
+}

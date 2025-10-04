@@ -6,3 +6,4 @@ export * from "./components/Icon/Icon";
 export * from "./components/Input/Input";
 export * from './components/Tabs/Tabs';
 export * from "./components/Text/Text";
+export * from "./components/Snackbar/Snackbar";
