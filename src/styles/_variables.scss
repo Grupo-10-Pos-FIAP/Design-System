@@ -62,6 +62,9 @@ $color-primary: #1c6ea4;
 $color-secondary: #ff7a00;
 $color-accent: #3aafa9;
 $color-soft: #e1f0fb;
+$color-neutral: $gray-500;
+$color-base-gray: #6b7280; 
+
 
 // Semantic colors
 $color-success: #658864;
@@ -69,6 +72,11 @@ $color-warning: #ffb300;
 $color-error: #e63946;
 $color-info: #2196f3;
 $color-alert: #d32f2f;
+
+
+// Background colors Overlay
+$overlay-bg-color: rgba(255, 255, 255, 0.8);
+$fullscreen-bg-color: rgba(255, 255, 255, 0.9);
 
 // Link colors
 $color-link: #1a5f90;
@@ -117,3 +125,4 @@ $z-index-modal-backdrop: 1040;
 $z-index-modal: 1050;
 $z-index-popover: 1060;
 $z-index-tooltip: 1070;
+$z-index-loading: 9999;
