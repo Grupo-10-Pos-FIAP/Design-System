@@ -4,6 +4,7 @@ export * from './components/Divider/Divider';
 export * from './components/Header/Header';
 export * from "./components/Icon/Icon";
 export * from "./components/Input/Input";
+export * from "./components/Loading/Loading";
 export * from './components/Tabs/Tabs';
 export * from "./components/Text/Text";
 export * from "./components/Snackbar/Snackbar";
