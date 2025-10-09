@@ -1,0 +1,162 @@
+import { useEffect, useState, useCallback, CSSProperties } from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { IconButton } from '@components/IconButton/IconButton';
+import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './Interface';
+import './Dialog.scss';
+
+const SIZE_MAP: Record<DialogSize, string> = {
+  sm: '360px',
+  md: '600px',
+  lg: '900px',
+  xl: '1200px',
+  full: '100%',
+};
+
+const getPositionStyle = (position: DialogPosition): CSSProperties => {
+  switch (position) {
+    case 'center':
+      return { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' };
+    case 'top':
+      return { top: '8%', left: '50%', transform: 'translateX(-50%)' };
+    case 'bottom':
+      return { bottom: '8%', left: '50%', transform: 'translateX(-50%)' };
+    case 'left':
+      return { top: '50%', left: '8%', transform: 'translateY(-50%)' };
+    case 'right':
+      return { top: '50%', right: '8%', transform: 'translateY(-50%)' };
+    default:
+      return {};
+  }
+};
+
+const ALIGN_MAP: Record<ContentAlign, string> = {
+  start: 'flex-start',
+  center: 'center',
+  end: 'flex-end',
+};
+
+export const Dialog = ({
+  isOpen = false,
+  onClose,
+  children,
+  className = '',
+  position = 'center',
+  size = 'md',
+  contentAlign = 'center',
+  headerAlign,
+  bodyAlign,
+  footerAlign,
+  overlay = true,
+  overlayOpacity = 0.5,
+  closeOnOverlayClick = true,
+  showCloseButton = true,
+  title = 'Dialog',
+  description = '',
+  width,
+  maxWidth,
+  fullScreenBreakpoint = 768,
+}: DialogProps) => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsFullScreen(window.innerWidth <= fullScreenBreakpoint);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [fullScreenBreakpoint]);
+
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      if (!open) onClose?.();
+    },
+    [onClose]
+  );
+
+  const handleOverlayPointerDown = useCallback(
+    (e: React.PointerEvent) => {
+      if (closeOnOverlayClick && e.target === e.currentTarget) onClose?.();
+    },
+    [closeOnOverlayClick, onClose]
+  );
+
+  const finalHeaderAlign = headerAlign ?? contentAlign;
+  const finalBodyAlign = bodyAlign ?? contentAlign;
+  const finalFooterAlign = footerAlign ?? contentAlign;
+
+  const positionStyle = getPositionStyle(position);
+  const fallbackWidth = width || SIZE_MAP[size] || 'auto';
+
+  const contentStyle: React.CSSProperties = {
+    ...positionStyle,
+    width: width || fallbackWidth,
+    maxWidth: isFullScreen ? '100%' : maxWidth || fallbackWidth,
+    maxHeight: isFullScreen ? '100vh' : '80vh',
+    borderRadius: isFullScreen ? 0 : undefined,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: ALIGN_MAP[contentAlign] ?? 'center',
+    overflowY: 'auto',
+  };
+
+  return (
+    <DialogPrimitive.Root open={isOpen} onOpenChange={handleOpenChange}>
+      <DialogPrimitive.Portal>
+        {overlay && (
+          <DialogPrimitive.Overlay
+            className="dialog__overlay"
+            style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
+            onPointerDown={handleOverlayPointerDown}
+          />
+        )}
+
+        <DialogPrimitive.Content
+          className={['dialog__content', `dialog--${size}`, className].filter(Boolean).join(' ')}
+          data-fullscreen={isFullScreen}
+          data-align={contentAlign}
+          data-header-align={finalHeaderAlign}
+          data-body-align={finalBodyAlign}
+          data-footer-align={finalFooterAlign}
+          style={contentStyle}
+          onInteractOutside={(e) => {
+            if (!closeOnOverlayClick) e.preventDefault();
+          }}>
+          <DialogPrimitive.Title asChild>
+            <VisuallyHidden>{title}</VisuallyHidden>
+          </DialogPrimitive.Title>
+
+          <DialogPrimitive.Description asChild>
+            <VisuallyHidden>{description || ' '}</VisuallyHidden>
+          </DialogPrimitive.Description>
+
+          {showCloseButton && (
+            <DialogPrimitive.Close asChild>
+              <IconButton icon="X" variant="ghost" className="dialog__close" aria-label="Fechar" />
+            </DialogPrimitive.Close>
+          )}
+
+          {children}
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
+  );
+};
+
+export const DialogHeader: React.FC<SectionProps> = ({ children, className = '', align }) => {
+  const classes = ['dialog__header', className, align ? `dialog__header--align-${align}` : '']
+    .filter(Boolean)
+    .join(' ');
+  return <div className={classes}>{children}</div>;
+};
+
+export const DialogBody: React.FC<SectionProps> = ({ children, className = '', align }) => {
+  const classes = ['dialog__body', className, align ? `dialog__body--align-${align}` : ''].filter(Boolean).join(' ');
+  return <div className={classes}>{children}</div>;
+};
+
+export const DialogFooter: React.FC<SectionProps> = ({ children, className = '', align }) => {
+  const classes = ['dialog__footer', className, align ? `dialog__footer--align-${align}` : '']
+    .filter(Boolean)
+    .join(' ');
+  return <div className={classes}>{children}</div>;
+};

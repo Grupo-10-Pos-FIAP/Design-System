@@ -8,3 +8,5 @@ export * from "./components/Loading/Loading";
 export * from './components/Tabs/Tabs';
 export * from "./components/Text/Text";
 export * from "./components/Snackbar/Snackbar";
+export * from "./components/Dropdown/Dropdown";
+export * from './components/Dialog/Dialog';
