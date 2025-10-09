@@ -29,12 +29,12 @@ jobs:
     
     - name: Verify build output
       run: |
-        echo "Checking dist directory:"
-        ls -la dist/ || echo "dist directory doesn't exist"
-        echo "Checking for storybook files:"
-        find . -name "*storybook*" -type d || echo "No storybook directories found"
+        echo "Checking storybook-static directory:"
+        ls -la storybook-static/ || echo "storybook-static directory doesn't exist"
+        echo "Current directory contents:"
+        ls -la
     
     - id: build-publish
       uses: bitovi/github-actions-storybook-to-github-pages@v1.0.0
       with:
-        path: dist/storybook
+        path: storybook-static
