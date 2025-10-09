@@ -1,1 +1,134 @@
+@use 'variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// ===========================================
+// TITLES
+// ===========================================
+h1,
+.h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-tight;
+  margin-bottom: 1rem;
+}
+
+h2,
+.h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-tight;
+  margin-bottom: 0.875rem;
+}
+
+h3,
+.h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-heading;
+  margin-bottom: 0.75rem;
+}
+
+h4,
+.h4 {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-title;
+  margin-bottom: 0.625rem;
+}
+
+h5,
+.h5 {
+  font-size: $font-size-title;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-title;
+  margin-bottom: 0.5rem;
+}
+
+h6,
+.h6 {
+  font-size: $font-size-body;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-body;
+  margin-bottom: 0.5rem;
+}
+
+// ===========================================
+// PARÁGRAFOS E TEXTOS
+// ===========================================
+p,
+.p {
+  font-size: $font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-body;
+  margin-bottom: 1rem;
+}
+
+small,
+.small {
+  font-size: $font-size-small;
+  line-height: $line-height-body;
+}
+
+.caption {
+  font-size: $font-size-caption;
+  line-height: $line-height-caption;
+}
+
+// ===========================================
+// LINKS
+// ===========================================
+a {
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: $color-link-visited;
+  }
+}
+
+// ===========================================
+// MEDIA QUERIES
+// ===========================================
+@media (max-width: $breakpoint-tablet) {
+  h1,
+  .h1 {
+    font-size: $font-size-h2;
+  }
+  h2,
+  .h2 {
+    font-size: $font-size-h3;
+  }
+  h3,
+  .h3 {
+    font-size: $font-size-h4;
+  }
+  h4,
+  .h4 {
+    font-size: $font-size-title;
+  }
+  p,
+  .p {
+    font-size: $font-size-small;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  h1,
+  .h1 {
+    font-size: $font-size-h3;
+  }
+  h2,
+  .h2 {
+    font-size: $font-size-h4;
+  }
+  h3,
+  .h3 {
+    font-size: $font-size-title;
+  }
+}

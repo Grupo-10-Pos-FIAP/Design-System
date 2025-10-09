@@ -1,0 +1,102 @@
+@use "sass:color";
+@use "sass:map";
+
+$icon-color-map: (
+  'base': $color-base,
+  'primary': $color-primary,
+  'secondary': $color-secondary,
+  'success': $color-success,
+  'warning': $color-warning,
+  'error': $color-error,
+  'info': $color-info,
+  'white': $color-white,
+  'black': $color-black,
+);
+
+$icon-disabled-color-map: (
+  'base': $color-disabled,
+  'primary': color.adjust($color-primary, $lightness: 30%),
+  'secondary': color.adjust($color-secondary, $lightness: 30%),
+  'success': color.adjust($color-success, $lightness: 30%),
+  'warning': color.adjust($color-warning, $lightness: 30%),
+  'error': color.adjust($color-error, $lightness: 30%),
+  'info': color.adjust($color-info, $lightness: 30%),
+  'white': $gray-300,
+  'black': $gray-600,
+);
+
+@function icon-color($color: 'base', $disabled: false) {
+  $color-map: if($disabled, $icon-disabled-color-map, $icon-color-map);
+  
+  @if map.has-key($color-map, $color) {
+    @return map.get($color-map, $color);
+  }
+  
+  @warn "Cor '#{$color}' não encontrada no mapa de cores do ícone";
+  @return map.get($color-map, 'base');
+}
+
+@mixin icon-colors($disabled: false) {
+  @each $name, $color in $icon-color-map {
+    &--#{$name} {
+      color: icon-color($name, $disabled);
+    }
+  }
+}
+
+@mixin icon-sizes {
+  &--extra-small {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--small {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--medium {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--large {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--extra-large {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
+
+  @include icon-sizes;
+
+  @include icon-colors;
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    
+    @include icon-colors(true);
+  }
+
+  &:not(&--disabled) {
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+    
+    &:active {
+      opacity: 0.6;
+      transform: scale(0.95);
+    }
+  }
+}

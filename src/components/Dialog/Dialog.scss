@@ -1,0 +1,172 @@
+.dialog {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color-black, 0.5);
+    animation: fadeIn 200ms ease-out;
+    z-index: $z-index-modal-backdrop;
+  }
+
+  &__content {
+    position: fixed;
+    background: $background-base;
+    border-radius: $spacing-sm;
+    box-shadow: 0 $spacing-sm $spacing-xl rgba($color-black, 0.12);
+    border: 1px solid $border-base;
+    padding: $spacing-lg;
+    z-index: $z-index-modal;
+
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    max-height: 80vh;
+    overflow-y: auto;
+
+    &[data-fullscreen='true'] {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      max-height: 100vh;
+      padding: $spacing-md;
+    }
+
+    &[data-header-align='start'] .dialog__header {
+      align-self: flex-start;
+      text-align: left;
+    }
+    &[data-header-align='center'] .dialog__header {
+      align-self: center;
+      text-align: center;
+    }
+    &[data-header-align='end'] .dialog__header {
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    &[data-body-align='start'] .dialog__body {
+      align-self: flex-start;
+      text-align: left;
+    }
+    &[data-body-align='center'] .dialog__body {
+      align-self: center;
+      text-align: center;
+    }
+    &[data-body-align='end'] .dialog__body {
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    &[data-footer-align='start'] .dialog__footer {
+      justify-content: flex-start;
+      align-self: flex-start;
+    }
+    &[data-footer-align='center'] .dialog__footer {
+      justify-content: center;
+      align-self: center;
+    }
+    &[data-footer-align='end'] .dialog__footer {
+      justify-content: flex-end;
+      align-self: flex-end;
+    }
+  }
+
+  .dialog__header,
+  .dialog__body,
+  .dialog__footer {
+    width: 100%;
+  }
+
+  &__header {
+    margin-bottom: $spacing-md;
+    padding-right: $spacing-2xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__body {
+    font-size: $font-size-body;
+    line-height: $line-height-body;
+    color: $gray-700;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: $spacing-md;
+    justify-content: flex-end; // default
+    align-self: stretch;
+
+    &--align-start {
+      justify-content: flex-start;
+      align-self: flex-start;
+    }
+    &--align-center {
+      justify-content: center;
+      align-self: center;
+    }
+    &--align-end {
+      justify-content: flex-end;
+      align-self: flex-end;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    color: $gray-500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $gray-700;
+    }
+  }
+
+  &--sm {
+    max-width: 360px;
+    width: 90%;
+  }
+  &--md {
+    max-width: 600px;
+    width: 90%;
+  }
+  &--lg {
+    max-width: 900px;
+    width: 90%;
+  }
+  &--xl {
+    height: 600px;
+    max-width: 1200px;
+    width: 95%;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    &__content {
+      width: 100%;
+      padding: $spacing-md;
+    }
+
+    &__footer {
+      flex-direction: column;
+      gap: $spacing-xs;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
