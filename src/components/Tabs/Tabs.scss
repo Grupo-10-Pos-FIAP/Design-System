@@ -27,7 +27,7 @@
     position: relative;
     width: 100%;
     cursor: pointer;
-    background-color: $color-white;
+    background-color: $background-base;
     transition: background-color 0.2s ease;
 
     &__content {
@@ -42,7 +42,7 @@
     }
 
     &__label {
-      color: $gray-700 !important;
+      color: $color-disabled !important;
       font-size: $font-size-small;
       font-weight: $font-weight-regular;
       overflow: hidden;
@@ -50,7 +50,7 @@
       white-space: nowrap;
 
       &.disabled {
-        color: $gray-400 !important;
+        color: $color-disabled !important;
       }
     }
 
@@ -74,7 +74,7 @@
     }
 
     &:active:not([data-disabled]) {
-      background-color: $gray-100;
+      background-color: $color-primary;
     }
 
     &:focus-visible {
@@ -82,7 +82,7 @@
     }
 
     &:hover:not([data-disabled]) {
-      background-color: $gray-500;
+      background-color: $gray-200;
     }
 
     &[data-state='active'] {
