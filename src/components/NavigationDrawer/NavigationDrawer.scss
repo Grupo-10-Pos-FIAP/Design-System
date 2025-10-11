@@ -24,7 +24,7 @@ $drawer-sizes: (
   left: 0;
   right: 0;
   bottom: 0;
-  background: $overlay-bg;
+  background: $color-base-gray;
   backdrop-filter: blur(2px);
   z-index: $z-index-modal-backdrop;
   opacity: 0;
@@ -193,7 +193,7 @@ $drawer-sizes: (
 }
 
 .navdrawer__label {
-  color: $color-black;
+  color: $color-disabled;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -209,7 +209,7 @@ $drawer-sizes: (
   transition: all 0.2s ease;
 
   .navdrawer__button:hover & {
-    color: $color-black;
+    color: $color-base;
   }
 }
 

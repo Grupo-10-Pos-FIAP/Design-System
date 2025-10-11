@@ -54,39 +54,40 @@ $gray-800: #202020;
 $gray-900: #101010;
 
 // Base colors
-$color-base: #1a1a1a;
-$color-disabled: #a9a9a9;
+$color-base: #1A1A1A;
+$color-disabled: #555555; 
 
 // Brand palette
-$color-primary: #1c6ea4;
-$color-secondary: #ff7a00;
-$color-accent: #3aafa9;
-$color-soft: #e1f0fb;
-$color-neutral: $gray-500;
-$color-base-gray: #6b7280; 
-
+$color-primary: #1c6ea4;   
+$color-secondary: #658864; 
+$color-accent: #1c6ea4;    
+$color-soft: #e1f0fb;      
+$color-neutral: #6b7280;   
+$color-base-gray: #F4F4F4; 
 
 // Semantic colors
-$color-success: #658864;
-$color-warning: #ffb300;
-$color-error: #e63946;
-$color-info: #2196f3;
-$color-alert: #d32f2f;
+$color-success: #81BE7F;   
+$color-warning: #debb51;   
+$color-error: #e53935;     
+$color-info: #1c6ea4;      
+$color-alert: #d32f2f;    
 
+// Gradient card
+$gradient-card: linear-gradient(135deg, #1c6ea4 0%, #658864 100%);
 
 // Background colors Overlay
 $overlay-bg-color: rgba(255, 255, 255, 0.8);
 $fullscreen-bg-color: rgba(255, 255, 255, 0.9);
 
 // Link colors
-$color-link: #1a5f90;
+$color-link: #1c6ea4;
 $color-link-hover: #144b70;
 $color-link-visited: #0f3c5c;
 
 // Backgrounds
 $background-primary: $color-primary;
 $background-base: $color-white;
-$background-secondary: $gray-400;
+$background-secondary: $color-soft;
 $background-disabled: $color-disabled;
 
 // System Feedback
