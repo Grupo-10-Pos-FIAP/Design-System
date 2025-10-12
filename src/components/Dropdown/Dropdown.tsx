@@ -1,6 +1,7 @@
-import { DropdownProps } from "@/components/Dropdown/interfaces";
+import { DropdownProps } from "@components/Dropdown/interfaces";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import "./Dropdown.scss";
+
 
 export const Dropdown = ({ trigger, items, className }: DropdownProps) => {
   return (

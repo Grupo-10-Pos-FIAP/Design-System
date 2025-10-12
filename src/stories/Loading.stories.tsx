@@ -1,8 +1,7 @@
-// src/components/Loading/Loading.stories.tsx
 import { Meta, StoryObj } from "@storybook/react-vite";
-import { Loading } from "@/components/Loading/Loading";
-import { LoadingProps } from "@/components/Loading/interface";
-import { Button } from "@/components/Button/Button";
+import { Loading } from "@components/Loading/Loading";
+import { LoadingProps } from "@components/Loading/interface";
+import { Button } from "@components/Button/Button";
 import { useState } from "react";
 
 const ControlledLoading = (args: LoadingProps) => {
