@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 // https://vite.dev/config/
 import { fileURLToPath } from 'node:url';
@@ -15,7 +16,7 @@ export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
-    // Gera arquivos .d.ts automaticamente
+    libInjectCss(),
     dts({
       include: ['src'],
       exclude: ['src/**/*.stories.tsx'],
@@ -56,6 +57,7 @@ export default defineConfig({
         },
       },
     },
+    cssCodeSplit: false,
     outDir: 'dist',
     emptyOutDir: true,
   },
