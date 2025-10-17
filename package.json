@@ -1,12 +1,13 @@
 {
-  "name": "@helencrism/design-system",
-  "version": "0.0.2",
+  "name": "@grupo-10-pos-fiap/design-system",
+  "version": "0.0.5",
+  "description": "Design System do Grupo 10",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "README.md"
+    "dist"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
@@ -57,6 +58,8 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.7",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-lib-inject-css": "^2.2.2",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   }

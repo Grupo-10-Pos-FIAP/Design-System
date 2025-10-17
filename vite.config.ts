@@ -3,6 +3,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 // https://vite.dev/config/
 import { fileURLToPath } from 'node:url';
@@ -11,7 +13,15 @@ import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    libInjectCss(),
+    dts({
+      include: ['src'],
+      exclude: ['src/**/*.stories.tsx'],
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
@@ -47,6 +57,7 @@ export default defineConfig({
         },
       },
     },
+    cssCodeSplit: false,
     outDir: 'dist',
     emptyOutDir: true,
   },

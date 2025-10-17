@@ -4,8 +4,6 @@ on:
   push:
     branches: [main]
     paths: ['src/**', 'package.json']
-  release:
-    types: [published]
 
 jobs:
   test-and-publish:
@@ -23,6 +21,8 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@grupo-10-pos-fiap'
 
       - name: Install dependencies
         run: npm ci
@@ -30,17 +30,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup .npmrc
+      - name: Verify build output
         run: |
-          echo "@helencrism:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          echo "📁 Conteúdo do dist:"
+          ls -la dist/ || echo "Dist não encontrado"
+          echo "📄 Package.json:"
+          cat package.json | grep -E '"name|"version|"publishConfig'
 
-      - name: Verify package
-        run: |
-          npm pack
-          ls -la *.tgz
-
-      - name: Publish
+      - name: Publish to GitHub Packages
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
