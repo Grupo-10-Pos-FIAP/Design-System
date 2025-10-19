@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Dialog, DialogHeader, DialogBody, DialogFooter } from '@components/Dialog/Dialog';
 import { Button } from '@components/Button/Button';

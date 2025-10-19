@@ -68,14 +68,18 @@ export const Dialog = ({
 
   const handleOpenChange = useCallback(
     (open: boolean) => {
-      if (!open) onClose?.();
+      if (!open) {
+        onClose?.();
+      }
     },
     [onClose]
   );
 
   const handleOverlayPointerDown = useCallback(
     (e: React.PointerEvent) => {
-      if (closeOnOverlayClick && e.target === e.currentTarget) onClose?.();
+      if (closeOnOverlayClick && e.target === e.currentTarget) {
+        onClose?.();
+      }
     },
     [closeOnOverlayClick, onClose]
   );
@@ -119,7 +123,9 @@ export const Dialog = ({
           data-footer-align={finalFooterAlign}
           style={contentStyle}
           onInteractOutside={(e) => {
-            if (!closeOnOverlayClick) e.preventDefault();
+            if (!closeOnOverlayClick) {
+              e.preventDefault();
+            }
           }}>
           <DialogPrimitive.Title asChild>
             <VisuallyHidden>{title}</VisuallyHidden>

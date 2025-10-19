@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { NavigationDrawer } from '@components/NavigationDrawer/NavigationDrawer';
 import { Button } from '@components/Button/Button';
@@ -49,16 +49,16 @@ export const Default: StoryObj = {
             {
               label: 'Início',
               icon: 'House',
-              onClick: () => alert('➡️ Navegar para /inicio'),
+              onClick: () => {},
             },
             {
               label: 'Financeiro',
               icon: 'Banknote',
-              onClick: () => alert('Acessar financeiro'),
+              onClick: () => {},
               children: [
                 {
                   label: 'Resumo',
-                  onClick: () => alert('➡️ Navegar para /financeiro/resumo'),
+                  onClick: () => {},
                 },
                 { label: 'Relatórios', href: '/financeiro/relatorios' },
               ],
@@ -99,16 +99,16 @@ export const Playground: StoryObj<typeof NavigationDrawer> = {
         label: 'Financeiro',
         icon: 'Banknote',
         children: [
-          { label: 'Resumo', onClick: () => alert('Navegar para Resumo'), href: '/financeiro/resumo' },
-          { label: 'Relatórios', onClick: () => alert('Navegar para Relatórios'), href: '/financeiro/relatorios' },
+          { label: 'Resumo', onClick: () => {}, href: '/financeiro/resumo' },
+          { label: 'Relatórios', onClick: () => {}, href: '/financeiro/relatorios' },
         ],
       },
       {
         label: 'Perfil',
         icon: 'Users',
         children: [
-          { label: 'Investimentos', href: '/perfil/investimentos', onClick: () => alert('Navegar para Investimentos') },
-          { label: 'Caixinha', href: '/perfil/caixinha', onClick: () => alert('Navegar para Caixinha') },
+          { label: 'Investimentos', href: '/perfil/investimentos', onClick: () => {} },
+          { label: 'Caixinha', href: '/perfil/caixinha', onClick: () => {} },
         ],
       },
     ],
