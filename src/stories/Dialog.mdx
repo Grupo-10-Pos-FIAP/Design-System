@@ -1,0 +1,34 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as DialogStories from './Dialog.stories';
+
+<Meta of={DialogStories} />
+
+# Dialog
+
+O **Dialog** é baseado no Radix UI e permite criar modais e drawers acessíveis e responsivos.
+Cada story abaixo demonstra um cenário diferente (posição, tamanho, alinhamento, overlay, etc.),
+com interação real através de botões dentro do próprio Storybook.
+
+<Controls />
+
+## Exemplos
+
+### Padrão (Centro)
+O dialog padrão é exibido no centro da tela.
+<Canvas of={DialogStories.Default} />
+
+### Drawer (Direita)
+Ao definir a posição como `right` ou `left`, o dialog se comporta como um drawer.
+<Canvas of={DialogStories.RightDialog} />
+
+### Tamanho Grande
+Exemplo de um dialog com o tamanho `lg`.
+<Canvas of={DialogStories.LargeDialog} />
+
+### Alinhado ao Início
+O conteúdo do dialog pode ser alinhado ao início (`start`).
+<Canvas of={DialogStories.StartAligned} />
+
+### Sem Overlay
+O dialog pode ser exibido sem a camada de fundo (overlay).
+<Canvas of={DialogStories.NoOverlay} />

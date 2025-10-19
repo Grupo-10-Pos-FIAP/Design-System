@@ -8,17 +8,7 @@ const meta: Meta<typeof Dialog> = {
   component: Dialog,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: `
-            O **Dialog** é baseado no Radix UI e permite criar modais e drawers acessíveis e responsivos.  
-            Cada story abaixo demonstra um cenário diferente (posição, tamanho, alinhamento, overlay, etc.),  
-            com interação real através de botões dentro do próprio Storybook.
-        `,
-      },
-    },
   },
-  tags: ['autodocs'],
 };
 export default meta;
 
