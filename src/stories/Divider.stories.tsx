@@ -7,7 +7,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
   argTypes: {
     orientation: {
       control: 'select',
@@ -42,28 +41,6 @@ export const Default: Story = {
         <span style={{ fontSize: '14px', color: '#666' }}>Conteúdo acima</span>
         <Divider {...args} />
         <span style={{ fontSize: '14px', color: '#666' }}>Conteúdo abaixo</span>
-      </div>
-    </div>
-  ),
-};
-
-export const Horizontal: Story = {
-  args: {
-    orientation: 'horizontal',
-    color: 'primary',
-  },
-  render: (args) => (
-    <div style={{ 
-      width: '400px',
-      padding: '24px',
-      background: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <span style={{ fontSize: '14px', color: '#666' }}>Seção superior</span>
-        <Divider {...args} />
-        <span style={{ fontSize: '14px', color: '#666' }}>Seção inferior</span>
       </div>
     </div>
   ),
