@@ -1,59 +1,46 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button } from "../components/Button/Button";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Button } from '../components/Button/Button';
 
-const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+const meta = {
+  title: 'Components/Button',
   component: Button,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: "select" },
-      options: ["default", "outline", "ghost"],
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'outline', 'negative'],
     },
-    size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
-    },
-    onClick: { action: "clicked" },
+    onClick: { action: 'clicked' },
+    disabled: { control: 'boolean' },
+  },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Primary: Story = {
+  args: {
+    children: 'Default Button',
+    variant: 'primary',
   },
 };
 
-export default meta;
-type Story = StoryObj<typeof Button>;
-
-export const Default: Story = {
+export const Secondary: Story = {
   args: {
-    children: "Default Button",
-    variant: "default",
-    size: "md",
+    children: 'Default Button',
+    variant: 'secondary',
   },
 };
 
 export const Outline: Story = {
   args: {
-    children: "Outline Button",
-    variant: "outline",
-    size: "md",
+    children: 'Outline Button',
+    variant: 'outline',
   },
 };
 
-export const Ghost: Story = {
+export const Negative: Story = {
   args: {
-    children: "Ghost Button",
-    variant: "ghost",
-    size: "md",
+    children: 'Negative Button',
+    variant: 'negative',
   },
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "1rem" }}>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-    </div>
-  ),
 };
