@@ -1,0 +1,18 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Tabs } from '../components/Tabs/Tabs';
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+O componente Tabs organiza conteúdo em diferentes seções visualmente distintas, permitindo aos usuários alternar entre visualizações sem sair da página atual.
+
+## Exemplos
+
+### Tabs Padrão com Scroll
+
+Exemplo com múltiplas tabs e comportamento scrollable:
+
+<Canvas of={TabsStories.Default} />
+

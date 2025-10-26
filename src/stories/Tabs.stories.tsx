@@ -8,10 +8,6 @@ import { TabsTriggerProps } from '@components/Tabs/subcomponents/tabs-trigger';
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
 } satisfies Meta<typeof Tabs>;
 
 export default meta;

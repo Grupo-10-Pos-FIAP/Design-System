@@ -7,9 +7,6 @@ import { Icon } from '../components/Icon/Icon';
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
   component: Dropdown,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     trigger: {
       table: { disable: true },

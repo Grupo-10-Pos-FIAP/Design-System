@@ -6,9 +6,6 @@ import { Button } from '@components/Button/Button';
 const meta: Meta<typeof NavigationDrawer> = {
   title: 'Components/NavigationDrawer',
   component: NavigationDrawer,
-  parameters: {
-    layout: 'fullscreen',
-  },
   argTypes: {
     position: {
       control: 'select',
@@ -29,7 +26,8 @@ export const Default: StoryObj = {
     const [open, setOpen] = useState(false);
 
     return (
-      <div style={{ padding: '2rem' }}>
+      <div
+        style={{ padding: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
         <Button onClick={() => setOpen(true)}>Abrir menu</Button>
 
         <NavigationDrawer
@@ -60,7 +58,7 @@ export const Default: StoryObj = {
                   label: 'Resumo',
                   onClick: () => {},
                 },
-                { label: 'Relatórios', href: '/financeiro/relatorios' },
+                { label: 'Relatórios', href: '' },
               ],
             },
             {

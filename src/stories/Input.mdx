@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Input from '../components/Input/Input';
+import * as InputStories from './Input.stories';
+
+<Meta of={InputStories} />
+
+# Input
+
+O componente Input é um campo de entrada de dados versátil e acessível para formulários, com suporte a múltiplas variantes visuais, estados de validação e ícones.
+
+
+## Exemplos
+
+### Input Padrão
+
+<Canvas of={InputStories.Default} />
+
+### Variantes Visuais
+
+O Input oferece três variantes visuais para diferentes contextos de design:
+
+<Canvas of={InputStories.Variants} />
+
+### Tamanhos Disponíveis
+
+Disponível em três tamanhos para diferentes densidades de interface:
+
+<Canvas of={InputStories.Sizes} />
+
+### Estados de Validação
+
+Feedback visual claro para diferentes estados de validação:
+
+<Canvas of={InputStories.Status} />
+
+### Inputs com Ícones
+
+Suporte a ícones no início e final do campo para melhor contexto:
+
+<Canvas of={InputStories.WithIcons} />
+
+### Diferentes Estados
+
+<Canvas of={InputStories.States} />
+
+### Tipos de Input
+
+Suporte nativo a todos os tipos de input HTML5:
+
+<Canvas of={InputStories.InputTypes} />
+
+### Exemplo de Formulário
+
+<Canvas of={InputStories.FormExample} />
+
+### Playground
+
+<Canvas of={InputStories.Playground} />

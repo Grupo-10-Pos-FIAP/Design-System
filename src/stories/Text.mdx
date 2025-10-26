@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Text } from '@components/Text/Text';
+import * as TextStories from './Text.stories';
+
+<Meta of={TextStories} />
+
+# Text
+
+O componente Text é a base tipográfica do sistema de design, fornecendo controle consistente sobre hierarquia visual, legibilidade e acessibilidade em toda a aplicação.
+
+## Exemplos
+
+### Texto Padrão
+
+<Canvas of={TextStories.Default} />
+
+### Todas as Variantes Tipográficas
+
+Hierarquia completa de variantes tipográficas do sistema:
+
+<Canvas of={TextStories.AllVariants} />
+
+### Variantes de Cor
+
+Paleta completa de cores semanticamente nomeadas:
+
+<Canvas of={TextStories.ColorVariants} />
+
+### Variantes de Peso
+
+<Canvas of={TextStories.WeightVariants} />
+
+### Alinhamentos de Texto
+
+<Canvas of={TextStories.AlignmentVariants} />
+
+### Texto Truncado
+
+<Canvas of={TextStories.TruncateExample} />
+
+### Limite de Linhas
+
+<Canvas of={TextStories.MaxLinesExample} />
+
+### Espaçamento entre Letras
+
+<Canvas of={TextStories.LetterSpacingVariants} />
+
+### Elementos HTML Customizados
+
+<Canvas of={TextStories.CustomElement} />
+

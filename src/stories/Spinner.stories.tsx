@@ -4,19 +4,6 @@ import { Spinner } from '@components/Spinner/Spinner';
 const meta: Meta<typeof Spinner> = {
   title: 'Components/Spinner',
   component: Spinner,
-  tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: `
-          O **Spinner** é um componente visual de carregamento utilizado para indicar que uma ação está em andamento.  
-          Ele pode ser usado de forma independente ou em conjunto com outros componentes (ex: **IconButton**) para reforçar o estado de *loading*.  
-          Agora o componente conta com diferentes **variantes visuais** (\`default\`, \`pulse\`, \`dots\` e \`ring\`) que podem ser utilizadas de acordo com o contexto da aplicação.
-        `,
-      },
-    },
-  },
 };
 
 export default meta;
@@ -29,9 +16,26 @@ export const Default: Story = {
     variant: 'default',
     ariaLabel: 'Carregando...',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando..." />'
+      }
+    }
+  },
 };
 
 export const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Spinner size="sm" color="primary" variant="default" ariaLabel="Carregando pequeno" />
+<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando médio" />
+<Spinner size="lg" color="primary" variant="default" ariaLabel="Carregando grande" />`
+      }
+    }
+  },
   render: () => (
     <div style={{ display: 'flex', gap: '26px', alignItems: 'center' }}>
       <Spinner size="sm" color="primary" variant="default" ariaLabel="Carregando pequeno" />
@@ -39,34 +43,42 @@ export const Sizes: Story = {
       <Spinner size="lg" color="primary" variant="default" ariaLabel="Carregando grande" />
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Exemplo dos três tamanhos disponíveis: `sm`, `md` e `lg`.',
-      },
-    },
-  },
 };
 
 export const Colors: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Spinner size="md" color="secondary" variant="dots" ariaLabel="Carregando secundário" />
+<Spinner size="md" color="primary" variant="ring" ariaLabel="Carregando primário" />
+<Spinner size="md" color="success" variant="pulse" ariaLabel="Carregando sucesso" />
+<Spinner size="md" color="alert" variant="default" ariaLabel="Carregando alerta" />`
+      }
+    }
+  },
   render: () => (
     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
       <Spinner size="md" color="secondary" variant="dots" ariaLabel="Carregando secundário" />
-      <Spinner size="md" color="primary" variant="ring" ariaLabel="Carregando alerta" />
+      <Spinner size="md" color="primary" variant="ring" ariaLabel="Carregando primário" />
       <Spinner size="md" color="success" variant="pulse" ariaLabel="Carregando sucesso" />
-      <Spinner size="md" color="alert" variant="default" ariaLabel="Carregando primário" />
+      <Spinner size="md" color="alert" variant="default" ariaLabel="Carregando alerta" />
     </div>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Exemplo de todas as variações de cor suportadas pelo componente.',
-      },
-    },
-  },
 };
 
 export const Variants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Spinner size="md" color="primary" variant="default" ariaLabel="Spinner padrão" />
+<Spinner size="md" color="primary" variant="pulse" ariaLabel="Spinner pulsante" />
+<Spinner size="md" color="primary" variant="dots" ariaLabel="Spinner com pontos" />
+<Spinner size="lg" color="primary" variant="ring" ariaLabel="Spinner em anel" />`
+      }
+    }
+  },
   render: () => (
     <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
       <div style={{ textAlign: 'center' }}>
@@ -87,11 +99,180 @@ export const Variants: Story = {
       </div>
     </div>
   ),
+};
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+    color: 'primary',
+    variant: 'default',
+    ariaLabel: 'Carregando pequeno',
+  },
   parameters: {
     docs: {
-      description: {
-        story: 'Demonstração das quatro variantes disponíveis: `default`, `pulse`, `dots` e `ring`.',
-      },
-    },
+      source: {
+        code: '<Spinner size="sm" color="primary" variant="default" ariaLabel="Carregando pequeno" />'
+      }
+    }
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: 'md',
+    color: 'primary',
+    variant: 'default',
+    ariaLabel: 'Carregando médio',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando médio" />'
+      }
+    }
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+    color: 'primary',
+    variant: 'default',
+    ariaLabel: 'Carregando grande',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="lg" color="primary" variant="default" ariaLabel="Carregando grande" />'
+      }
+    }
+  },
+};
+
+export const PrimaryColor: Story = {
+  args: {
+    size: 'md',
+    color: 'primary',
+    variant: 'default',
+    ariaLabel: 'Carregando primário',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando primário" />'
+      }
+    }
+  },
+};
+
+export const SecondaryColor: Story = {
+  args: {
+    size: 'md',
+    color: 'secondary',
+    variant: 'default',
+    ariaLabel: 'Carregando secundário',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="secondary" variant="default" ariaLabel="Carregando secundário" />'
+      }
+    }
+  },
+};
+
+export const SuccessColor: Story = {
+  args: {
+    size: 'md',
+    color: 'success',
+    variant: 'default',
+    ariaLabel: 'Carregando sucesso',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="success" variant="default" ariaLabel="Carregando sucesso" />'
+      }
+    }
+  },
+};
+
+export const AlertColor: Story = {
+  args: {
+    size: 'md',
+    color: 'alert',
+    variant: 'default',
+    ariaLabel: 'Carregando alerta',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="alert" variant="default" ariaLabel="Carregando alerta" />'
+      }
+    }
+  },
+};
+
+export const DefaultVariant: Story = {
+  args: {
+    size: 'md',
+    color: 'primary',
+    variant: 'default',
+    ariaLabel: 'Spinner padrão',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Spinner padrão" />'
+      }
+    }
+  },
+};
+
+export const PulseVariant: Story = {
+  args: {
+    size: 'md',
+    color: 'primary',
+    variant: 'pulse',
+    ariaLabel: 'Spinner pulsante',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="primary" variant="pulse" ariaLabel="Spinner pulsante" />'
+      }
+    }
+  },
+};
+
+export const DotsVariant: Story = {
+  args: {
+    size: 'md',
+    color: 'primary',
+    variant: 'dots',
+    ariaLabel: 'Spinner com pontos',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="md" color="primary" variant="dots" ariaLabel="Spinner com pontos" />'
+      }
+    }
+  },
+};
+
+export const RingVariant: Story = {
+  args: {
+    size: 'lg',
+    color: 'primary',
+    variant: 'ring',
+    ariaLabel: 'Spinner em anel',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Spinner size="lg" color="primary" variant="ring" ariaLabel="Spinner em anel" />'
+      }
+    }
   },
 };

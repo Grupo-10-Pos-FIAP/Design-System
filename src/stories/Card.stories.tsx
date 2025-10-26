@@ -4,13 +4,11 @@ import { Button } from '@components/Button/Button';
 import Input from '@components/Input/Input';
 import { Dropdown } from '@components/Dropdown/Dropdown';
 import { Icon } from '@components/Icon/Icon';
+import { Text } from '@components/Text/Text';
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
   component: Card,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     variant: {
       control: { type: 'radio' },
@@ -38,10 +36,10 @@ export const WithSections: Story = {
     children: (
       <>
         <Card.Section>
-          <p>Seção 1: conteúdo introdutório.</p>
+          <Text>Seção 1: conteúdo introdutório.</Text>
         </Card.Section>
         <Card.Section>
-          <p>Seção 2: informações adicionais.</p>
+          <Text>Seção 2: informações adicionais.</Text>
         </Card.Section>
       </>
     ),
