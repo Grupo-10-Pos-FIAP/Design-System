@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback, CSSProperties } from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { Dialog as RadixDialog } from "radix-ui";
 import { IconButton } from '@components/IconButton/IconButton';
 import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './Interface';
 import './Dialog.scss';
@@ -104,17 +103,17 @@ export const Dialog = ({
   };
 
   return (
-    <DialogPrimitive.Root open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogPrimitive.Portal>
+    <RadixDialog.Root open={isOpen} onOpenChange={handleOpenChange}>
+      <RadixDialog.Portal>
         {overlay && (
-          <DialogPrimitive.Overlay
+          <RadixDialog.Overlay
             className="dialog__overlay"
             style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
             onPointerDown={handleOverlayPointerDown}
           />
         )}
 
-        <DialogPrimitive.Content
+        <RadixDialog.Content
           className={['dialog__content', `dialog--${size}`, className].filter(Boolean).join(' ')}
           data-fullscreen={isFullScreen}
           data-align={contentAlign}
@@ -127,24 +126,24 @@ export const Dialog = ({
               e.preventDefault();
             }
           }}>
-          <DialogPrimitive.Title asChild>
-            <VisuallyHidden>{title}</VisuallyHidden>
-          </DialogPrimitive.Title>
+          <RadixDialog.Title asChild>
+            {title}
+          </RadixDialog.Title>
 
-          <DialogPrimitive.Description asChild>
-            <VisuallyHidden>{description || ' '}</VisuallyHidden>
-          </DialogPrimitive.Description>
+          <RadixDialog.Description asChild>
+            {description || ' '}
+          </RadixDialog.Description>
 
           {showCloseButton && (
-            <DialogPrimitive.Close asChild>
+            <RadixDialog.Close asChild>
               <IconButton icon="X" variant="ghost" className="dialog__close" aria-label="Fechar" />
-            </DialogPrimitive.Close>
+            </RadixDialog.Close>
           )}
 
           {children}
-        </DialogPrimitive.Content>
-      </DialogPrimitive.Portal>
-    </DialogPrimitive.Root>
+        </RadixDialog.Content>
+      </RadixDialog.Portal>
+    </RadixDialog.Root>
   );
 };
 
