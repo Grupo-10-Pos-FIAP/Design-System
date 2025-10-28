@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Dialog, DialogHeader, DialogBody, DialogFooter } from '@components/Dialog/Dialog';
 import { Button } from '@components/Button/Button';
@@ -6,19 +6,6 @@ import { Button } from '@components/Button/Button';
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
   component: Dialog,
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: `
-            O **Dialog** é baseado no Radix UI e permite criar modais e drawers acessíveis e responsivos.  
-            Cada story abaixo demonstra um cenário diferente (posição, tamanho, alinhamento, overlay, etc.),  
-            com interação real através de botões dentro do próprio Storybook.
-        `,
-      },
-    },
-  },
-  tags: ['autodocs'],
 };
 export default meta;
 
@@ -41,7 +28,7 @@ const DialogTemplate = (args: React.ComponentProps<typeof Dialog>) => {
           <p>Alinhamento: {args.contentAlign}</p>
         </DialogBody>
         <DialogFooter align={args.footerAlign ?? 'end'}>
-          <Button variant="outline" onClick={() => setIsOpen(false)}>
+          <Button variant="outlined" onClick={() => setIsOpen(false)}>
             Cancelar
           </Button>
           <Button onClick={() => setIsOpen(false)}>Confirmar</Button>
@@ -50,6 +37,38 @@ const DialogTemplate = (args: React.ComponentProps<typeof Dialog>) => {
     </>
   );
 };
+
+const defaultDialogCode = `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="md"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog padrão</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+`;
 
 export const Default: Story = {
   render: (args) => <DialogTemplate {...args} />,
@@ -65,7 +84,9 @@ export const Default: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Dialog centralizado com configurações padrão.',
+      source: {
+        code: defaultDialogCode,
+      },
     },
   },
 };
@@ -79,7 +100,39 @@ export const TopDialog: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de dialog fixado no topo da tela.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="top"
+  size="md"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog no topo</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: top</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -93,7 +146,39 @@ export const BottomDialog: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de dialog fixado na parte inferior da tela.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="bottom"
+  size="md"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog na parte inferior</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: bottom</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -108,7 +193,39 @@ export const LeftDialog: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de drawer surgindo a partir da esquerda.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="left"
+  size="lg"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog à esquerda (drawer)</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: left</p>
+    <p>Tamanho: lg</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -123,7 +240,39 @@ export const RightDialog: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de drawer surgindo a partir da direita.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="right"
+  size="lg"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog à direita (drawer)</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: right</p>
+    <p>Tamanho: lg</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -137,7 +286,39 @@ export const LargeDialog: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de dialog com tamanho grande (lg).',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="lg"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog grande</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: lg</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -151,7 +332,39 @@ export const ExtraLargeDialog: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de dialog com tamanho extra grande (xl).',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="xl"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog extra grande</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: xl</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -165,7 +378,39 @@ export const StartAligned: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Dialog com conteúdo do corpo alinhado à esquerda.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="md"
+  contentAlign="start"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Conteúdo alinhado à esquerda</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: start</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -179,7 +424,39 @@ export const EndAligned: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Dialog com conteúdo do corpo alinhado à direita.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="md"
+  contentAlign="end"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Conteúdo alinhado à direita</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: end</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -193,7 +470,39 @@ export const FooterCentered: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Dialog com botões do rodapé centralizados.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="md"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Footer centralizado</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="center">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -208,7 +517,39 @@ export const NoOverlay: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Exemplo de dialog exibido sem camada de overlay.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="md"
+  contentAlign="center"
+  overlay={false}
+  overlayOpacity={0}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Dialog sem overlay</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -222,7 +563,39 @@ export const NoCloseOnOverlayClick: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Dialog configurado para não ser fechado ao clicar fora (overlay).',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="md"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={false}
+  showCloseButton={true}
+>
+  <DialogHeader>
+    <h3>Overlay não fecha</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: md</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };
@@ -237,7 +610,40 @@ export const FullScreenResponsive: Story = {
   },
   parameters: {
     docs: {
-      storyDescription: 'Dialog que se expande para tela cheia em dispositivos menores que 1024px.',
+      source: {
+        code: `
+<Dialog
+  isOpen={true}
+  onClose={() => {}}
+  position="center"
+  size="xl"
+  contentAlign="center"
+  overlay={true}
+  overlayOpacity={0.25}
+  closeOnOverlayClick={true}
+  showCloseButton={true}
+  fullScreenBreakpoint={1024}
+>
+  <DialogHeader>
+    <h3>Dialog responsivo em tela cheia</h3>
+  </DialogHeader>
+  <DialogBody>
+    <p>Este é um exemplo de conteúdo do Dialog.</p>
+    <p>Posição: center</p>
+    <p>Tamanho: xl</p>
+    <p>Alinhamento: center</p>
+  </DialogBody>
+  <DialogFooter align="end">
+    <Button variant="outlined" onClick={() => {}}>
+      Cancelar
+    </Button>
+    <Button onClick={() => {}}>
+      Confirmar
+    </Button>
+  </DialogFooter>
+</Dialog>
+        `,
+      },
     },
   },
 };

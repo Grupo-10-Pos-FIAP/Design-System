@@ -1,4 +1,3 @@
-// stories/Input.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Input from '@components/Input/Input';
 import { iconKeys } from '@utils/iconKeys';
@@ -6,15 +5,6 @@ import { iconKeys } from '@utils/iconKeys';
 const meta = {
   title: 'Components/Input',
   component: Input,
-  parameters: {
-    layout: 'centered',
-    docs: {
-      description: {
-        component: 'Componente de input para formulários com múltiplas variantes e estados.',
-      },
-    },
-  },
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
@@ -72,18 +62,52 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Story básica
+const iconNames = {
+  Search: 'Search' as const,
+  Eye: 'Eye' as const,
+  User: 'User' as const,
+  Check: 'Check' as const,
+  Mail: 'Mail' as const,
+  Lock: 'Lock' as const,
+  Phone: 'Phone' as const,
+};
+
 export const Default: Story = {
   args: {
     placeholder: 'Digite algo...',
     label: 'Input padrão',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Input placeholder="Digite algo..." label="Input padrão" />'
+      }
+    }
+  },
 };
 
 export const Variants: Story = {
-  args: {
-    placeholder: 'Digite algo...',
-    label: 'Label do input',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input 
+  variant="default" 
+  placeholder="Digite algo..." 
+  label="Variante Default" 
+/>
+<Input 
+  variant="filled" 
+  placeholder="Digite algo..." 
+  label="Variante Filled" 
+/>
+<Input 
+  variant="outlined" 
+  placeholder="Digite algo..." 
+  label="Variante Outlined" 
+/>`
+      }
+    }
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '300px' }}>
@@ -101,35 +125,79 @@ export const Variants: Story = {
 };
 
 export const Sizes: Story = {
-  args: {
-    placeholder: 'Digite algo...',
-    label: 'Label do input',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input 
+  size="small" 
+  placeholder="Digite algo..." 
+  label="Input Small" 
+/>
+<Input 
+  size="medium" 
+  placeholder="Digite algo..." 
+  label="Input Medium" 
+/>
+<Input 
+  size="large" 
+  placeholder="Digite algo..." 
+  label="Input Large" 
+/>`
+      }
+    }
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
       <div>
-        <Input {...args} size="small" label="Small" />
+        <Input {...args} size="small" label="Input Small" />
       </div>
       <div>
-        <Input {...args} size="medium" label="Medium" />
+        <Input {...args} size="medium" label="Input Medium" />
       </div>
       <div>
-        <Input {...args} size="large" label="Large" />
+        <Input {...args} size="large" label="Input Large" />
       </div>
     </div>
   ),
 };
 
 export const Status: Story = {
-  args: {
-    placeholder: 'Digite algo...',
-    label: 'Label do input',
-    helperText: 'Texto de ajuda',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input 
+  status="default" 
+  placeholder="Digite algo..." 
+  label="Status Default" 
+  helperText="Texto de ajuda" 
+/>
+<Input 
+  status="success" 
+  placeholder="Digite algo..." 
+  label="Status Success" 
+  helperText="Tudo certo!" 
+/>
+<Input 
+  status="warning" 
+  placeholder="Digite algo..." 
+  label="Status Warning" 
+  helperText="Atenção necessária" 
+/>
+<Input 
+  status="error" 
+  placeholder="Digite algo..." 
+  label="Status Error" 
+  helperText="Erro no campo" 
+/>`
+      }
+    }
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
       <div>
-        <Input {...args} status="default" label="Status Default" />
+        <Input {...args} status="default" label="Status Default" helperText="Texto de ajuda" />
       </div>
       <div>
         <Input {...args} status="success" label="Status Success" helperText="Tudo certo!" />
@@ -145,20 +213,40 @@ export const Status: Story = {
 };
 
 export const WithIcons: Story = {
-  args: {
-    placeholder: 'Digite algo...',
-    label: 'Input com ícones',
-    startIcon: 'Search',
-    endIcon: 'Eye',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input 
+  startIcon="Search" 
+  placeholder="Buscar..." 
+  label="Input com ícone no início" 
+/>
+<Input 
+  endIcon="Eye" 
+  type="password" 
+  placeholder="Digite sua senha..." 
+  label="Input com ícone no final" 
+/>
+<Input 
+  startIcon="User" 
+  endIcon="Check" 
+  status="success" 
+  placeholder="Digite seu nome..." 
+  label="Input com ícones em ambos" 
+  helperText="Usuário válido" 
+/>`
+      }
+    }
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
       <div>
         <Input
           {...args}
-          startIcon="Search"
+          startIcon={iconNames.Search}
           endIcon={undefined}
-          label="Com ícone no início"
+          label="Input com ícone no início"
           placeholder="Buscar..."
         />
       </div>
@@ -166,19 +254,20 @@ export const WithIcons: Story = {
         <Input
           {...args}
           startIcon={undefined}
-          endIcon="Eye"
-          label="Com ícone no final"
+          endIcon={iconNames.Eye}
+          label="Input com ícone no final"
           type="password"
-          placeholder="Sua senha"
+          placeholder="Digite sua senha..."
         />
       </div>
       <div>
         <Input
           {...args}
-          startIcon="User"
-          endIcon="Check"
-          label="Com ícones em ambos"
+          startIcon={iconNames.User}
+          endIcon={iconNames.Check}
+          label="Input com ícones em ambos"
           status="success"
+          placeholder="Digite seu nome..."
           helperText="Usuário válido"
         />
       </div>
@@ -187,26 +276,50 @@ export const WithIcons: Story = {
 };
 
 export const States: Story = {
-  args: {
-    placeholder: 'Digite algo...',
-    label: 'Label do input',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input 
+  placeholder="Digite algo..." 
+  label="Input normal" 
+/>
+<Input 
+  disabled 
+  placeholder="Campo desabilitado..." 
+  label="Input desabilitado" 
+/>
+<Input 
+  fullWidth 
+  placeholder="Digite algo..." 
+  label="Input com largura total" 
+/>
+<Input 
+  required 
+  placeholder="Digite algo..." 
+  label="Input obrigatório" 
+  helperText="Este campo é obrigatório" 
+/>`
+      }
+    }
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
       <div>
-        <Input {...args} label="Input normal" />
+        <Input {...args} label="Input normal" placeholder="Digite algo..." />
       </div>
       <div>
-        <Input {...args} disabled label="Input desabilitado" />
+        <Input {...args} disabled label="Input desabilitado" placeholder="Campo desabilitado..." />
       </div>
       <div>
-        <Input {...args} fullWidth label="Input largura total" />
+        <Input {...args} fullWidth label="Input com largura total" placeholder="Digite algo..." />
       </div>
       <div>
         <Input
           {...args}
           required
           label="Input obrigatório"
+          placeholder="Digite algo..."
           helperText="Este campo é obrigatório"
         />
       </div>
@@ -215,31 +328,100 @@ export const States: Story = {
 };
 
 export const InputTypes: Story = {
-  args: {
-    label: 'Diferentes tipos de input',
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Input 
+  type="email" 
+  placeholder="email@exemplo.com" 
+  label="Campo de email" 
+/>
+<Input 
+  type="password" 
+  placeholder="Digite sua senha..." 
+  label="Campo de senha" 
+/>
+<Input 
+  type="number" 
+  placeholder="Digite um número..." 
+  label="Campo numérico" 
+/>
+<Input 
+  type="tel" 
+  placeholder="(11) 99999-9999" 
+  label="Campo de telefone" 
+/>
+<Input 
+  type="url" 
+  placeholder="https://exemplo.com" 
+  label="Campo de URL" 
+/>`
+      }
+    }
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
       <div>
-        <Input {...args} type="email" placeholder="email@exemplo.com" label="Email" />
+        <Input {...args} type="email" placeholder="email@exemplo.com" label="Campo de email" />
       </div>
       <div>
-        <Input {...args} type="password" placeholder="Sua senha" label="Senha" />
+        <Input {...args} type="password" placeholder="Digite sua senha..." label="Campo de senha" />
       </div>
       <div>
-        <Input {...args} type="number" placeholder="123" label="Número" />
+        <Input {...args} type="number" placeholder="Digite um número..." label="Campo numérico" />
       </div>
       <div>
-        <Input {...args} type="tel" placeholder="(11) 99999-9999" label="Telefone" />
+        <Input {...args} type="tel" placeholder="(11) 99999-9999" label="Campo de telefone" />
       </div>
       <div>
-        <Input {...args} type="url" placeholder="https://exemplo.com" label="URL" />
+        <Input {...args} type="url" placeholder="https://exemplo.com" label="Campo de URL" />
       </div>
     </div>
   ),
 };
 
 export const FormExample: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+  <Input
+    label="Nome completo"
+    placeholder="Digite seu nome completo..."
+    startIcon="User"
+    required
+  />
+  
+  <Input
+    label="Email"
+    type="email"
+    placeholder="seu@email.com"
+    startIcon="Mail"
+    status="success"
+    helperText="Email válido"
+  />
+  
+  <Input
+    label="Senha"
+    type="password"
+    placeholder="Crie uma senha segura..."
+    startIcon="Lock"
+    status="error"
+    helperText="Senha deve ter pelo menos 8 caracteres"
+  />
+  
+  <Input
+    label="Telefone"
+    type="tel"
+    placeholder="(11) 99999-9999"
+    startIcon="Phone"
+  />
+</form>`
+      }
+    }
+  },
   render: () => (
     <div style={{ width: '400px', padding: '24px', background: 'white', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
       <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -247,8 +429,8 @@ export const FormExample: Story = {
         
         <Input
           label="Nome completo"
-          placeholder="Seu nome completo"
-          startIcon="User"
+          placeholder="Digite seu nome completo..."
+          startIcon={iconNames.User}
           required
         />
         
@@ -256,7 +438,7 @@ export const FormExample: Story = {
           label="Email"
           type="email"
           placeholder="seu@email.com"
-          startIcon="Mail"
+          startIcon={iconNames.Mail}
           status="success"
           helperText="Email válido"
         />
@@ -264,8 +446,8 @@ export const FormExample: Story = {
         <Input
           label="Senha"
           type="password"
-          placeholder="Sua senha"
-          startIcon="Lock"
+          placeholder="Crie uma senha segura..."
+          startIcon={iconNames.Lock}
           status="error"
           helperText="Senha deve ter pelo menos 8 caracteres"
         />
@@ -274,7 +456,7 @@ export const FormExample: Story = {
           label="Telefone"
           type="tel"
           placeholder="(11) 99999-9999"
-          startIcon="Phone"
+          startIcon={iconNames.Phone}
         />
         
         <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
@@ -321,5 +503,21 @@ export const Playground: Story = {
     helperText: 'Texto de ajuda opcional',
     startIcon: undefined,
     endIcon: undefined,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Input
+  variant="default"
+  size="medium"
+  status="default"
+  disabled={false}
+  fullWidth={false}
+  label="Label do input"
+  placeholder="Digite algo..."
+  helperText="Texto de ajuda opcional"
+/>`
+      }
+    }
   },
 };

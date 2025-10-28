@@ -4,10 +4,6 @@ import { Text } from '@components/Text/Text';
 const meta = {
   title: 'Components/Text',
   component: Text,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',

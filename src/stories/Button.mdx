@@ -1,0 +1,39 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+O componente Button é usado para acionar ações e interações do usuário.
+
+## Exemplos de Uso
+
+### Primary
+<Canvas of={ButtonStories.Primary} />
+
+### Secondary
+<Canvas of={ButtonStories.Secondary} />
+
+### Outlined
+<Canvas of={ButtonStories.Outlined} />
+
+### Negative
+<Canvas of={ButtonStories.Negative} />
+
+### Larguras Customizadas
+
+#### Largura Total
+<Canvas of={ButtonStories.FullWidth} />
+
+#### Largura Específica
+<Canvas of={ButtonStories.WithCustomWidth} />
+
+### Estados
+
+#### Desabilitado
+<Canvas of={ButtonStories.Disabled} />
+
+### Exemplo Completo
+
+<Canvas of={ButtonStories.AllVariants} />

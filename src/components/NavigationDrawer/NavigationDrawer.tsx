@@ -48,7 +48,9 @@ export const NavigationDrawer: FC<NavigationDrawerProps> & {
     }));
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <>
@@ -85,7 +87,9 @@ export const NavigationDrawer: FC<NavigationDrawerProps> & {
                   toggleSubmenu(item.label);
                 }
                 item.onClick?.();
-                if (!hasChildren) handleClose();
+                if (!hasChildren) {
+                  handleClose();
+                }
               };
 
               const ButtonOrLink = item.href ? 'a' : 'button';

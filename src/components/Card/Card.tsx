@@ -30,7 +30,9 @@ export const Card = ({
     }
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div className={cardClasses} {...rest}>

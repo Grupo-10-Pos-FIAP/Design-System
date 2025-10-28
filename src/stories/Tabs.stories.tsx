@@ -8,10 +8,6 @@ import { TabsTriggerProps } from '@components/Tabs/subcomponents/tabs-trigger';
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
@@ -60,18 +56,12 @@ export const Default: Story = {
   args: {} satisfies TabsRootProps,
   render: () => {
     const [selectedTab, setSelectedTab] = useState<string>('');
-    console.log('Selected Tab:', selectedTab);
 
     return (
       <Tabs value={selectedTab} onValueChange={setSelectedTab}>
         <Tabs.List scrollable>
           {tabs.map((tab) => (
-            <Tabs.Trigger
-              key={tab.value}
-              value={tab.value}
-              disabled={tab.disabled}
-              label={tab.label}
-            />
+            <Tabs.Trigger key={tab.value} value={tab.value} disabled={tab.disabled} label={tab.label} />
           ))}
         </Tabs.List>
         {tabs.map((tab) => (

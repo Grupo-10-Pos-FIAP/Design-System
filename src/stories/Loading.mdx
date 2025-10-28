@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Loading } from '../components/Loading/Loading';
+import * as LoadingStories from './Loading.stories';
+
+<Meta of={LoadingStories} />
+
+# Loading
+
+O componente Loading fornece indicadores visuais de carregamento para diferentes cenários da aplicação, desde pequenas ações até carregamentos em tela cheia.
+
+## Exemplos
+
+### Loading Padrão
+
+<Canvas of={LoadingStories.Default} />
+
+### Variantes de Spinner
+
+Diferentes estilos de animação para diversos contextos:
+
+<Canvas of={LoadingStories.SpinnerVariants} />
+
+
+### Tamanhos Disponíveis
+
+<Canvas of={LoadingStories.Sizes} />
+
+### Loading com Overlay
+
+Ideal para carregamentos que bloqueiam conteúdo específico:
+
+<Canvas of={LoadingStories.WithOverlay} />
+
+### Loading em Tela Cheia
+
+Para transições de página ou carregamentos críticos:
+
+<Canvas of={LoadingStories.FullScreen} />
+
+### Loading sem Texto
+
+<Canvas of={LoadingStories.WithoutText} />

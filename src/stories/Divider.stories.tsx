@@ -4,10 +4,6 @@ import { Divider } from '@components/Divider/Divider';
 const meta = {
   title: 'Components/Divider',
   component: Divider,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
   argTypes: {
     orientation: {
       control: 'select',
@@ -30,6 +26,13 @@ export const Default: Story = {
     orientation: 'horizontal',
     color: 'default',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Divider orientation="horizontal" color="default" />'
+      }
+    }
+  },
   render: (args) => (
     <div style={{ 
       width: '300px',
@@ -47,32 +50,17 @@ export const Default: Story = {
   ),
 };
 
-export const Horizontal: Story = {
-  args: {
-    orientation: 'horizontal',
-    color: 'primary',
-  },
-  render: (args) => (
-    <div style={{ 
-      width: '400px',
-      padding: '24px',
-      background: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <span style={{ fontSize: '14px', color: '#666' }}>Seção superior</span>
-        <Divider {...args} />
-        <span style={{ fontSize: '14px', color: '#666' }}>Seção inferior</span>
-      </div>
-    </div>
-  ),
-};
-
 export const Vertical: Story = {
   args: {
     orientation: 'vertical',
     color: 'default',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<Divider orientation="vertical" color="default" />'
+      }
+    }
   },
   render: (args) => (
     <div style={{ 
@@ -93,6 +81,18 @@ export const Vertical: Story = {
 };
 
 export const ColorVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Divider orientation="horizontal" color="default" />
+
+<Divider orientation="horizontal" color="primary" />
+
+<Divider orientation="horizontal" color="base" />`
+      }
+    }
+  },
   render: () => {
     const colors = ['default', 'primary', 'base'] as const;
     
@@ -129,39 +129,44 @@ export const ColorVariants: Story = {
   },
 };
 
-export const InNavigation: Story = {
-  render: () => (
-    <div style={{ 
-      padding: '20px',
-      background: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    }}>
-      <nav style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '16px',
-        padding: '16px',
-        background: '#f8f9fa',
-        borderRadius: '4px'
-      }}>
-        <span style={{ fontSize: '16px', fontWeight: '600', color: '#333' }}>Logo</span>
-        <Divider orientation="vertical" color="default" />
-        <a href="#" style={{ fontSize: '14px', color: '#666', textDecoration: 'none' }}>Home</a>
-        <a href="#" style={{ fontSize: '14px', color: '#666', textDecoration: 'none' }}>About</a>
-        <a href="#" style={{ fontSize: '14px', color: '#666', textDecoration: 'none' }}>Services</a>
-        
-        <div style={{ flex: 1 }} />
-        
-        <Divider orientation="vertical" color="default" />
-        <a href="#" style={{ fontSize: '14px', color: '#666', textDecoration: 'none' }}>Login</a>
-        <a href="#" style={{ fontSize: '14px', color: '#666', textDecoration: 'none' }}>Register</a>
-      </nav>
-    </div>
-  ),
-};
 
 export const MultipleDividers: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+  <div>
+    <h3>Título Principal</h3>
+    <p>Esta é uma descrição ou conteúdo introdutório.</p>
+  </div>
+  
+  <Divider orientation="horizontal" color="primary" />
+  
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <h4>Seção 1</h4>
+    <p>Conteúdo da primeira seção.</p>
+  </div>
+  
+  <Divider orientation="horizontal" color="default" />
+  
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <h4>Seção 2</h4>
+    <p>Conteúdo da segunda seção.</p>
+  </div>
+  
+  <Divider orientation="horizontal" color="default" />
+  
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <span>Item 1</span>
+    <Divider orientation="vertical" color="default" />
+    <span>Item 2</span>
+    <Divider orientation="vertical" color="default" />
+    <span>Item 3</span>
+  </div>
+</div>`
+      }
+    }
+  },
   render: () => (
     <div style={{ 
       padding: '32px',

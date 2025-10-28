@@ -1,0 +1,67 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as CardStories from './Card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+O componente Card é usado para agrupar conteúdo e ações sobre um único tópico.
+Ele pode ser configurado para ter diferentes estilos visuais, como elevado, contornado ou plano,
+e pode incluir um ou mais subcomponentes conforme a necessidade.
+
+
+## Principais Variantes
+
+### Elevated
+
+A variante `elevated` usa uma sombra para destacar o card do fundo.
+
+<Canvas of={CardStories.Elevated} />
+
+### Outlined
+
+A variante `outlined` usa uma borda para delinear o card.
+
+<Canvas of={CardStories.Outlined} />
+
+### Flat
+
+A variante `flat` não tem sombra nem borda, integrando-se mais ao fundo.
+
+<Canvas of={CardStories.Flat} />
+
+## Funcionalidades e Composições
+
+### Com Seções
+
+O card pode ser dividido em várias seções para organizar o conteúdo.
+
+<Canvas of={CardStories.WithSections} />
+
+### Fechável
+
+É possível adicionar um botão de fechar ao card.
+
+<Canvas of={CardStories.Closable} />
+
+### Com Seções e Fechável
+
+Exemplo combinando seções e a funcionalidade de fechar.
+
+<Canvas of={CardStories.CardWithSectionsAndClose} />
+
+### Com Classe Customizada
+
+Você pode adicionar uma classe CSS customizada para estilizações específicas.
+
+<Canvas of={CardStories.CustomClassName} />
+
+### Exemplo de Formulário
+
+Um exemplo de como compor um formulário simples dentro de um card.
+
+<Canvas of={CardStories.FormCard} />
+
+### Exemplo de Transferência
+Um exemplo mais complexo de formulário para simular uma transferência bancária.
+<Canvas of={CardStories.TransferCard} />

@@ -1,0 +1,26 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as DropdownStories from './Dropdown.stories';
+
+<Meta of={DropdownStories} />
+
+# Dropdown
+
+O componente `Dropdown` é usado para exibir uma lista de ações ou opções que o usuário pode escolher. Ele é acionado por um elemento `trigger`.
+
+## Exemplos
+
+### Padrão
+Um dropdown simples com itens de texto, acionado por um `Button`.
+<Canvas of={DropdownStories.SelectTransactionType} />
+
+### Com Ícones
+É possível adicionar ícones ao lado do texto de cada item para melhorar a identificação visual.
+<Canvas of={DropdownStories.WithIcons} />
+
+### Com Item Desabilitado
+Qualquer item da lista pode ser desabilitado.
+<Canvas of={DropdownStories.WithDisabledItem} />
+
+### Com Gatilho de Ícone
+O `trigger` é uma propriedade flexível e pode ser qualquer elemento, como um `IconButton`.
+<Canvas of={DropdownStories.CustomTrigger} />

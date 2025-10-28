@@ -1,20 +1,87 @@
-@use "./typography";
-@use "./reset";
+@use './variables';
+@use './reset';
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import '@radix-ui/themes/styles.css';
 
-body {
-  background-color: $background-base;
-  min-width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h1,
+.h1 {
+  font-size: $font-size-h1;
+}
+h2,
+.h2 {
+  font-size: $font-size-h2;
+}
+h3,
+.h3 {
+  font-size: $font-size-h3;
+}
+h4,
+.h4 {
+  font-size: $font-size-h4;
+}
+p,
+.p {
+  font-size: $font-size-body;
+}
+.small {
+  font-size: $font-size-small;
+}
+.caption {
+  font-size: $font-size-caption;
+}
+.subtitle {
+  font-size: $font-size-subtitle;
 }
 
-#root {
-  font-family: $font-family-default;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-widescreen: 1200px;
+
+@media (max-width: $breakpoint-tablet) {
+  h1,
+  .h1 {
+    font-size: 30px;
+  }
+  h2,
+  .h2 {
+    font-size: 26px;
+  }
+  h3,
+  .h3 {
+    font-size: 24px;
+  }
+  p,
+  .p {
+    font-size: 17px;
+  }
+  .small {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  h1,
+  .h1 {
+    font-size: 32px;
+  }
+  h2,
+  .h2 {
+    font-size: 28px;
+  }
+  h3,
+  .h3 {
+    font-size: 24px;
+  }
+  p,
+  .p {
+    font-size: 18px;
+  }
+  .small {
+    font-size: 16px;
+  }
+  .caption {
+    font-size: 14px;
+  }
 }

@@ -3,67 +3,99 @@
   align-items: center;
   justify-content: center;
   border-radius: $spacing-sm;
-  font-weight: 500;
-  font-family: $font-family-default;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  border: $button-border-width solid;
+  width: 179px;
+  height: 48px;
+  gap: 12px;
+  padding: 16px 8px;
   cursor: pointer;
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px $color-primary, 0 0 0 4px $background-base;
-  }
+  box-sizing: border-box; 
 
   &:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-    background: $background-disabled;
-    color: $color-disabled;
-    border-color: $border-disabled;
+    cursor: not-allowed;
   }
 
-  &--default {
-    background-color: $background-primary;
-    color: $color-white;
+  &--primary {
+    background-color: $button-color-brand-bg-default;
+    color: $button-color-brand-content-default;
+    border: none;
 
     &:hover {
-      background-color: $color-link-hover;
+      background-color: $button-color-brand-bg-hovered;
+    }
+
+    &:focus-within {
+      background-color: $button-color-brand-bg-pressed;
+    }
+
+    &:disabled {
+      background-color: $button-color-brand-bg-disabled;
+      color: $button-color-brand-content-disabled
     }
   }
 
-  &--outline {
-    border: 1px solid $border-base;
-    color: $color-base;
-    background: transparent;
+  &--secondary {
+    background-color: $button-color-secondary-bg-default;
+    color: $button-color-secondary-content-default;
+    border-color: none;
 
     &:hover {
-      background-color: $color-soft;
+      background-color: $button-color-secondary-bg-hovered;
+    }
+
+    &:focus {
+      background-color: $button-color-secondary-bg-pressed;
+    }
+
+    &:disabled {
+      background-color: $button-color-secondary-bg-disabled;
+      color: $button-color-secondary-content-disabled;
     }
   }
 
-  &--ghost {
-    background: transparent;
-    color: $color-base;
+  &--outlined {
+    background-color: $button-color-outlined-bg-default;
+    color: $button-color-outlined-content-default;
+    border-color: $button-color-outlined-border-default;
 
     &:hover {
-      background-color: $color-soft;
+      background-color: $button-color-outlined-bg-hovered;
+      color: $button-color-outlined-content-hovered;
+      border-color: $button-color-outlined-border-hovered;
+    }
+
+    &:focus {
+      background-color: $button-color-outlined-bg-pressed;
+      color: $button-color-outlined-content-pressed;
+      border-color: $button-color-outlined-border-pressed;
+    }
+
+    &:disabled {
+      background-color: $button-color-outlined-bg-disabled;
+      color: $button-color-outlined-content-disabled;
+      border-color: $button-color-outlined-border-disabled
     }
   }
 
-  &--sm {
-    height: 1.5rem;
-    padding: 1rem 1.5rem;
-    font-size: $font-size-caption;
-  }
+  &--negative {
+    background-color: $button-color-negative-bg-default;
+    color: $button-color-negative-content-default;
+    border-color: $button-color-negative-border-default;
 
-  &--md {
-    height: 2.5rem;
-    padding: 1.5rem 2rem;
-    font-size: calc($font-size-body * 1.1);
-  }
+    &:hover {
+      background-color: $button-color-negative-bg-hovered;
+      border-color: $button-color-negative-border-hovered
+    }
 
-  &--lg {
-    height: 3.5rem;
-    padding: 2rem 2.5rem;
-    font-size: calc($font-size-body * 1.2);
+    &:focus {
+      background-color: $button-color-negative-bg-pressed;
+      border-color: $button-color-negative-border-pressed;
+    }
+
+    &:disabled {
+      background-color: $button-color-negative-bg-disabled;
+      color: $button-color-negative-content-disabled;
+      border-color: $button-color-negative-border-disabled;
+    }
   }
 }
