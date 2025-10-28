@@ -7,10 +7,27 @@ const meta = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'outline', 'negative'],
+      options: ['primary', 'secondary', 'outlined', 'negative'],
     },
-    onClick: { action: 'clicked' },
-    disabled: { control: 'boolean' },
+    width: {
+      control: { type: 'text' },
+      description: 'Largura do botão (ex: 100%, 200px, 50%) - default: 179px',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Estado desabilitado do botão',
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Callback quando o botão é clicado',
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Botão com múltiplas variações e suporte a largura customizada.',
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -19,22 +36,43 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Default Button',
+    children: 'Primary Button',
     variant: 'primary',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão primário com estilo padrão da marca.',
+      },
+    },
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Default Button',
+    children: 'Secondary Button',
     variant: 'secondary',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão secundário para ações menos proeminentes.',
+      },
+    },
   },
 };
 
-export const Outline: Story = {
+export const Outlined: Story = {
   args: {
-    children: 'Outline Button',
-    variant: 'outline',
+    children: 'Outlined Button',
+    variant: 'outlined',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão com borda e fundo transparente.',
+      },
+    },
   },
 };
 
@@ -42,5 +80,95 @@ export const Negative: Story = {
   args: {
     children: 'Negative Button',
     variant: 'negative',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão para ações destrutivas ou negativas.',
+      },
+    },
+  },
+};
+
+export const WithCustomWidth: Story = {
+  args: {
+    children: 'Custom Width Button',
+    variant: 'primary',
+    width: '300px',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão com largura customizada de 300px.',
+      },
+    },
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    children: 'Full Width Button',
+    variant: 'primary',
+    width: '100%',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão que ocupa 100% da largura disponível.',
+      },
+    },
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: 'Disabled Button',
+    variant: 'primary',
+    disabled: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Botão desabilitado - não pode ser interagido.',
+      },
+    },
+  },
+};
+
+export const AllVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '300px' }}>
+      <Button variant="primary" width="100%">
+        Primary Full Width
+      </Button>
+      <Button variant="secondary" width="250px">
+        Secondary 250px
+      </Button>
+      <Button variant="outlined" width="200px">
+        Outlined 200px
+      </Button>
+      <Button variant="negative" width="150px">
+        Negative 150px
+      </Button>
+      <Button variant="primary" disabled width="100%">
+        Disabled Full Width
+      </Button>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exemplo de todos os variants com diferentes larguras em um container.',
+      },
+      source: {
+        code: `
+<Button variant="primary" width="100%">Primary Full Width</Button>
+<Button variant="secondary" width="250px">Secondary 250px</Button>
+<Button variant="outlined" width="200px">Outlined 200px</Button>
+<Button variant="negative" width="150px">Negative 150px</Button>
+<Button variant="primary" disabled width="100%">Disabled Full Width</Button>
+        `,
+      },
+    },
   },
 };

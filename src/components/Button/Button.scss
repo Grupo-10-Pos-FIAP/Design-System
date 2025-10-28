@@ -9,6 +9,7 @@
   gap: 12px;
   padding: 16px 8px;
   cursor: pointer;
+  box-sizing: border-box; 
 
   &:disabled {
     cursor: not-allowed;
@@ -37,7 +38,6 @@
     background-color: $button-color-secondary-bg-default;
     color: $button-color-secondary-content-default;
     border-color: none;
-
 
     &:hover {
       background-color: $button-color-secondary-bg-hovered;
