@@ -55,7 +55,7 @@ design-system-base/
 
 ## Documentação
 
-A documentação completa está disponível no Storybook: <https://grupo-10-pos-fiap.github.io/Design-System/>
+A documentação completa está disponível no Storybook: [https://grupo-10-pos-fiap.github.io/Design-System/](https://grupo-10-pos-fiap.github.io/Design-System/?path=/docs/introdução--docs)
 
 ## Contribuição
 
