@@ -28,7 +28,7 @@ const DialogTemplate = (args: React.ComponentProps<typeof Dialog>) => {
           <p>Alinhamento: {args.contentAlign}</p>
         </DialogBody>
         <DialogFooter align={args.footerAlign ?? 'end'}>
-          <Button variant="outline" onClick={() => setIsOpen(false)}>
+          <Button variant="outlined" onClick={() => setIsOpen(false)}>
             Cancelar
           </Button>
           <Button onClick={() => setIsOpen(false)}>Confirmar</Button>
@@ -60,7 +60,7 @@ const defaultDialogCode = `
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -123,7 +123,7 @@ export const TopDialog: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -169,7 +169,7 @@ export const BottomDialog: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -216,7 +216,7 @@ export const LeftDialog: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -263,7 +263,7 @@ export const RightDialog: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -309,7 +309,7 @@ export const LargeDialog: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -355,7 +355,7 @@ export const ExtraLargeDialog: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -401,7 +401,7 @@ export const StartAligned: Story = {
     <p>Alinhamento: start</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -447,7 +447,7 @@ export const EndAligned: Story = {
     <p>Alinhamento: end</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -493,7 +493,7 @@ export const FooterCentered: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="center">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -540,7 +540,7 @@ export const NoOverlay: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -586,7 +586,7 @@ export const NoCloseOnOverlayClick: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>
@@ -634,7 +634,7 @@ export const FullScreenResponsive: Story = {
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
-    <Button variant="outline" onClick={() => {}}>
+    <Button variant="outlined" onClick={() => {}}>
       Cancelar
     </Button>
     <Button onClick={() => {}}>

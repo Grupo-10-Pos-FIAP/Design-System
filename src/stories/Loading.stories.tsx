@@ -14,7 +14,7 @@ const ControlledLoading = (args: LoadingProps) => {
         Show Loading
       </Button>
       
-      <Button variant="outline" onClick={() => setIsLoading(false)}>
+      <Button variant="outlined" onClick={() => setIsLoading(false)}>
         Hide Loading
       </Button>
 
@@ -237,7 +237,7 @@ export const WithOverlay: Story = {
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <p>This container will be covered by the loading overlay</p>
           <Button onClick={() => setIsLoading(true)}>Show Overlay Loading</Button>
-          <Button variant="outline" onClick={() => setIsLoading(false)}>Hide Loading</Button>
+          <Button variant="outlined" onClick={() => setIsLoading(false)}>Hide Loading</Button>
         </div>
 
         {isLoading && (
