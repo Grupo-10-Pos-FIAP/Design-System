@@ -98,7 +98,7 @@
     flex-wrap: wrap;
     gap: 16px;
     padding-top: $spacing-md;
-    justify-content: flex-end; // default
+    justify-content: flex-end;
     align-self: stretch;
 
     &--align-start {

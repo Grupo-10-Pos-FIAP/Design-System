@@ -1,0 +1,35 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Snackbar } from '../components/Snackbar/Snackbar';
+import * as SpinnerStories from './Spinner.stories';
+
+<Meta of={SpinnerStories} />
+
+# Spinner
+
+Componente de loading/spinner para indicar processos em andamento.
+
+## Visão Geral
+
+
+O componente Spinner é usado para fornecer feedback visual durante operações assíncronas, como carregamento de dados, processamento de formulários ou qualquer ação que requeira tempo de espera.
+
+## Exemplos Interativos
+
+### Spinner Padrão
+
+<Canvas of={SpinnerStories.Default} />
+
+### Tamanhos Disponíveis
+
+<Canvas of={SpinnerStories.Sizes} />
+
+### Cores
+
+<Canvas of={SpinnerStories.Colors} />
+
+
+### Variantes de Estilo
+
+<Canvas of={SpinnerStories.Variants} />
+
+

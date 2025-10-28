@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Snackbar } from '../components/Snackbar/Snackbar';
+import * as SnackbarStories from './Snackbar.stories';
+
+<Meta of={SnackbarStories} />
+
+# Snackbar
+
+O componente Snackbar exibe mensagens temporárias e não intrusivas para fornecer feedback aos usuários sobre ações realizadas no sistema.
+
+
+## Exemplos
+
+### Snackbar Padrão
+
+<Canvas of={SnackbarStories.Default} />
+
+### Visão Geral das Variantes
+
+Diferentes tipos de snackbar para diversos contextos:
+
+<Canvas of={SnackbarStories.VariantsOverview} />
+
+### Snackbar Informativo
+
+<Canvas of={SnackbarStories.Info} />
+
+### Snackbar de Sucesso
+
+<Canvas of={SnackbarStories.Success} />
+
+### Snackbar de Aviso
+
+<Canvas of={SnackbarStories.Warning} />
+
+### Snackbar de Erro
+
+<Canvas of={SnackbarStories.Error} />
+
+### Duração Personalizada
+
+<Canvas of={SnackbarStories.CustomDuration} />
+
+### Mensagem Longa
+
+<Canvas of={SnackbarStories.LongMessage} />
+
+### Sem Fechamento Automático
+
+<Canvas of={SnackbarStories.WithoutAutoHide} />
+
+
+## Uso Controlado
+
+Para usar o Snackbar de forma controlada, você precisa gerenciar o estado `open`:
+<Canvas of={SnackbarStories.ControlledExample} />

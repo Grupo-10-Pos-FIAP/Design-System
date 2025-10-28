@@ -3,6 +3,7 @@ import { Loading } from "@components/Loading/Loading";
 import { LoadingProps } from "@components/Loading/interface";
 import { Button } from "@components/Button/Button";
 import { useState } from "react";
+import { SpinnerColor } from "@/components/Spinner/interface";
 
 const ControlledLoading = (args: LoadingProps) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +14,7 @@ const ControlledLoading = (args: LoadingProps) => {
         Show Loading
       </Button>
       
-      <Button variant="outline" onClick={() => setIsLoading(false)}>
+      <Button variant="outlined" onClick={() => setIsLoading(false)}>
         Hide Loading
       </Button>
 
@@ -25,7 +26,6 @@ const ControlledLoading = (args: LoadingProps) => {
 const meta: Meta<typeof Loading> = {
   title: "Components/Loading",
   component: Loading,
-  tags: ["autodocs"],
   argTypes: {
     text: {
       control: "text",
@@ -58,9 +58,65 @@ export const Default: Story = {
       variant: "default",
     },
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Loading 
+  text="Loading..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary", 
+    variant: "default"
+  }} 
+/>`
+      }
+    }
+  },
 };
 
 export const SpinnerVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Loading 
+  text="Loading with default spinner..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary",
+    variant: "default"
+  }} 
+/>
+
+<Loading 
+  text="Loading with dots spinner..." 
+  spinnerProps={{
+    size: "md", 
+    color: "primary",
+    variant: "dots"
+  }} 
+/>
+
+<Loading 
+  text="Loading with ring spinner..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary", 
+    variant: "ring"
+  }} 
+/>
+
+<Loading 
+  text="Loading with pulse spinner..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary",
+    variant: "pulse" 
+  }} 
+/>`
+      }
+    }
+  },
   render: () => {
     const variants = ["default", "dots", "ring", "pulse"] as const;
     const [activeVariant, setActiveVariant] = useState<string | null>(null);
@@ -90,6 +146,39 @@ export const SpinnerVariants: Story = {
 };
 
 export const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Loading 
+  text="Loading (sm)..." 
+  spinnerProps={{
+    size: "sm",
+    color: "primary",
+    variant: "default"
+  }} 
+/>
+
+<Loading 
+  text="Loading (md)..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary", 
+    variant: "default"
+  }} 
+/>
+
+<Loading 
+  text="Loading (lg)..." 
+  spinnerProps={{
+    size: "lg",
+    color: "primary",
+    variant: "default"
+  }} 
+/>`
+      }
+    }
+  },
   render: () => {
     const sizes = ["sm", "md", "lg"] as const;
     const [activeSize, setActiveSize] = useState<string | null>(null);
@@ -119,6 +208,27 @@ export const Sizes: Story = {
 };
 
 export const WithOverlay: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<div style={{ position: "relative", minHeight: "200px" }}>
+  {/* Conteúdo da aplicação */}
+  <p>Conteúdo da aplicação que será coberto pelo overlay</p>
+  
+  <Loading
+    text="Processing..."
+    overlay
+    spinnerProps={{
+      size: "lg",
+      color: "primary", 
+      variant: "ring"
+    }}
+  />
+</div>`
+      }
+    }
+  },
   render: () => {
     const [isLoading, setIsLoading] = useState(false);
 
@@ -127,7 +237,7 @@ export const WithOverlay: Story = {
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <p>This container will be covered by the loading overlay</p>
           <Button onClick={() => setIsLoading(true)}>Show Overlay Loading</Button>
-          <Button variant="outline" onClick={() => setIsLoading(false)}>Hide Loading</Button>
+          <Button variant="outlined" onClick={() => setIsLoading(false)}>Hide Loading</Button>
         </div>
 
         {isLoading && (
@@ -147,6 +257,22 @@ export const WithOverlay: Story = {
 };
 
 export const FullScreen: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Loading
+  text="Loading application..."
+  fullScreen
+  spinnerProps={{
+    size: "lg",
+    color: "primary",
+    variant: "default"
+  }}
+/>`
+      }
+    }
+  },
   render: () => {
     const [isLoading, setIsLoading] = useState(false);
 
@@ -180,5 +306,105 @@ export const WithoutText: Story = {
       color: "primary",
       variant: "default",
     },
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Loading 
+  spinnerProps={{
+    size: "md",
+    color: "primary",
+    variant: "default"
+  }} 
+/>`
+      }
+    }
+  },
+};
+
+export const CustomText: Story = {
+  args: {
+    text: "Carregando dados...",
+    spinnerProps: {
+      size: "md",
+      color: "primary",
+      variant: "default",
+    },
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Loading 
+  text="Carregando dados..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary",
+    variant: "default"
+  }} 
+/>`
+      }
+    }
+  },
+};
+
+export const DifferentColors: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<Loading 
+  text="Loading primary..." 
+  spinnerProps={{
+    size: "md",
+    color: "primary",
+    variant: "default"
+  }} 
+/>
+
+<Loading 
+  text="Loading secondary..." 
+  spinnerProps={{
+    size: "md",
+    color: "secondary", 
+    variant: "default"
+  }} 
+/>
+
+<Loading 
+  text="Loading success..." 
+  spinnerProps={{
+    size: "md",
+    color: "success",
+    variant: "default"
+  }} 
+/>`
+      }
+    }
+  },
+  render: () => {
+    const colors = ["primary", "secondary", "success", "warning", "error"] as SpinnerColor[];
+    const [activeColor, setActiveColor] = useState<string | null>(null);
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem", padding: "2rem" }}>
+        {colors.map((color) => (
+          <div key={color} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+            <Button onClick={() => setActiveColor(color)}>
+              Show {color} color
+            </Button>
+            {activeColor === color && (
+              <Loading
+                text={`Loading ${color}...`}
+                spinnerProps={{
+                  size: "md",
+                  color: color,
+                  variant: "default",
+                }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    );
   },
 };

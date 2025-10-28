@@ -19,7 +19,6 @@ const ControlledSnackbar = (args: SnackbarProps) => {
 const meta: Meta<typeof Snackbar> = {
   title: 'Components/Snackbar',
   component: Snackbar,
-  tags: ['autodocs'],
   argTypes: {
     message: {
       control: 'text',
@@ -49,9 +48,60 @@ export const Default: Story = {
     variant: 'success',
     duration: 4000,
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Operation completed successfully!"
+  variant="success"
+  duration={4000}
+/>`
+      }
+    }
+  },
 };
 
 export const VariantsOverview: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `// Todas as variantes disponíveis
+<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Saved successfully!"
+  variant="success"
+  duration={4000}
+/>
+
+<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Connection error."
+  variant="error"
+  duration={4000}
+/>
+
+<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="New update available."
+  variant="info"
+  duration={4000}
+/>
+
+<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Risk of data loss."
+  variant="warning"
+  duration={4000}
+/>`
+      }
+    }
+  },
   render: () => {
     const variants: SnackbarProps['variant'][] = ['success', 'error', 'info', 'warning'];
 
@@ -84,6 +134,198 @@ export const VariantsOverview: Story = {
             />
           </div>
         ))}
+      </div>
+    );
+  },
+};
+
+export const Info: Story = {
+  args: {
+    message: 'New update available.',
+    variant: 'info',
+    duration: 4000,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="New update available."
+  variant="info"
+  duration={4000}
+/>`
+      }
+    }
+  },
+};
+
+export const Success: Story = {
+  args: {
+    message: 'Saved successfully!',
+    variant: 'success',
+    duration: 4000,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Saved successfully!"
+  variant="success"
+  duration={4000}
+/>`
+      }
+    }
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    message: 'Risk of data loss.',
+    variant: 'warning',
+    duration: 4000,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Risk of data loss."
+  variant="warning"
+  duration={4000}
+/>`
+      }
+    }
+  },
+};
+
+export const Error: Story = {
+  args: {
+    message: 'Connection error.',
+    variant: 'error',
+    duration: 4000,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="Connection error."
+  variant="error"
+  duration={4000}
+/>`
+      }
+    }
+  },
+};
+
+export const CustomDuration: Story = {
+  args: {
+    message: 'This message will disappear in 2 seconds',
+    variant: 'info',
+    duration: 2000,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="This message will disappear in 2 seconds"
+  variant="info"
+  duration={2000}
+/>`
+      }
+    }
+  },
+};
+
+export const LongMessage: Story = {
+  args: {
+    message: 'This is a very long message that should wrap properly in the snackbar component to ensure good user experience.',
+    variant: 'info',
+    duration: 6000,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="This is a very long message that should wrap properly in the snackbar component to ensure good user experience."
+  variant="info"
+  duration={6000}
+/>`
+      }
+    }
+  },
+};
+
+export const WithoutAutoHide: Story = {
+  args: {
+    message: 'This snackbar will not auto-hide',
+    variant: 'warning',
+    duration: 0,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Snackbar
+  open={true}
+  onOpenChange={() => {}}
+  message="This snackbar will not auto-hide"
+  variant="warning"
+  duration={0}
+/>`
+      }
+    }
+  },
+};
+
+// Story para mostrar uso com estado controlado
+export const ControlledExample: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `// Exemplo de uso controlado
+const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+return (
+  <div>
+    <Button onClick={() => setSnackbarOpen(true)}>
+      Show Snackbar
+    </Button>
+    
+    <Snackbar
+      open={snackbarOpen}
+      onOpenChange={setSnackbarOpen}
+      message="Operation completed!"
+      variant="success"
+      duration={4000}
+    />
+  </div>
+);`
+      }
+    }
+  },
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <Button onClick={() => setOpen(true)}>Show Controlled Snackbar</Button>
+
+        <Snackbar
+          open={open}
+          onOpenChange={setOpen}
+          message="Operation completed!"
+          variant="success"
+          duration={4000}
+        />
       </div>
     );
   },

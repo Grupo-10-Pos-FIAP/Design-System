@@ -88,8 +88,6 @@ $icon-disabled-color-map: (
   }
 
   &:not(&--disabled) {
-    cursor: pointer;
-    
     &:hover {
       opacity: 0.8;
     }

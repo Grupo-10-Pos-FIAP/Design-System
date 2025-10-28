@@ -1,41 +1,48 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 import packageJson from "../../package.json";
 
-<Meta title="Introduction" />
+<Meta title="Introdução" />
 
 # Design System
 
-This manual provides common guidelines for all professionals involved in developing, maintaining, and evolving web applications. 
-The goal is to ensure a consistent visual identity according to organizational standards, quality patterns, and institutional policies.
+Este manual fornece diretrizes comuns para todos os profissionais envolvidos no desenvolvimento, manutenção e evolução de aplicações web. 
+O objetivo é garantir uma identidade visual consistente de acordo com os padrões organizacionais, padrões de qualidade e políticas institucionais.
 
-The Design System's tokens and icons can be applied across various web and mobile technologies. 
-Please consult their respective documentation for specific implementations.
 
-**Version:** {packageJson.version}
+**Versão:** {packageJson.version}
 
-## Foundation
+## Fundamentos
 
-Beyond ensuring components meet all established documentation guidelines, this library is built on fundamental principles:
+Além de garantir que os componentes atendam a todas as diretrizes de documentação estabelecidas, esta biblioteca é construída sobre princípios fundamentais:
 
-- **Maintainability:** Clean, well-structured, and understandable code that makes it easy to find, modify, and add new features—even for developers new to the project.
-- **Scalability:** An architecture that supports easy incorporation of new functionalities, support, and components.
-- **Accessibility:** Components that ensure navigation via mouse, touch, and screen readers, while meeting design specifications that address other accessibility criteria.
+- **Manutenibilidade:** Código limpo, bem estruturado e compreensível que facilita encontrar, modificar e adicionar novos recursos — mesmo para desenvolvedores novos no projeto.
+- **Escalabilidade:** Uma arquitetura que suporta a fácil incorporação de novas funcionalidades, suporte e componentes.
+- **Acessibilidade:** Componentes que garantem navegação via mouse, toque e leitores de tela, atendendo às especificações de design que abordam outros critérios de acessibilidade.
 
-## Library Updates
+## Atualizações da Biblioteca
 
-The library receives frequent updates to add features, improve component design, or fix issues. 
-During development, you might notice that components in the layout or Storybook are newer than those in your project.
+A biblioteca recebe atualizações frequentes para adicionar recursos, melhorar o design dos componentes ou corrigir problemas. 
+Durante o desenvolvimento, você pode notar que os componentes no layout ou Storybook são mais recentes do que os do seu projeto.
 
-Since the library is installed via NPM, automatic updates are not recommended (except for bug fixes). 
-Developers should ensure they're using the latest version when working with components.
+Como a biblioteca é instalada via NPM, atualizações automáticas não são recomendadas (exceto para correções de bugs). 
+Os desenvolvedores devem garantir que estão usando a versão mais recente ao trabalhar com componentes.
 
-Each project or team should establish documented policies defining who can perform updates, when, and how.
+Cada projeto ou equipe deve estabelecer políticas documentadas definindo quem pode realizar atualizações, quando e como.
 
-## Best Practices & Recommendations
+## Melhores Práticas & Recomendações
 
-- **Don't override component styles externally.** Customize components only through their available properties, 
-theme changes, or approved library adjustments. External style overrides may break during updates when internal structures change.
+- **Não sobrescreva os estilos dos componentes externamente.** Personalize os componentes apenas através de suas propriedades disponíveis, 
+alterações de tema ou ajustes aprovados na biblioteca. Sobrescritas externas de estilo podem quebrar durante atualizações quando estruturas internas mudarem.
 
-- **Always verify component property types and usage.** Each component has documentation listing all properties, 
-including required ones. The typing specifies visual and interactive behavior, ensuring components work as expected and reducing issues during updates. 
-Even if a component works without a required property in one version, it may fail in future updates.
+- **Sempre verifique os tipos e usos das propriedades dos componentes.** Cada componente possui documentação listando todas as propriedades, 
+incluindo as obrigatórias. A tipificação especifica o comportamento visual e interativo, garantindo que os componentes funcionem como esperado e reduzindo problemas durante atualizações. 
+Mesmo que um componente funcione sem uma propriedade obrigatória em uma versão, ele pode falhar em atualizações futuras.
+
+## Suporte
+
+Caso tenha alguma dúvida, deseja comunicar um problema ou trazer sugestões, entre contato com nosso time responsável pelo desenvolvimento da biblioteca:
+
+- Arthur | [arthurdelima4756@gmail.com](mailto:arthurdelima4756@gmail.com)
+- Felipe | [Fbs.sampaio92@gmail.com](mailto:Fbs.sampaio92@gmail.com)
+- Gabrielle | [gabrielle.martiins.96@gmail.com](mailto:gabrielle.martiins.96@gmail.com)
+- Helen Cris | [helencris_morais@hotmail.com](mailto:helencris_morais@hotmail.com)

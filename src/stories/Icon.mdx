@@ -1,0 +1,50 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Icon } from '../components/Icon/Icon';
+import * as IconStories from './Icon.stories';
+
+<Meta of={IconStories} />
+
+# Icon
+
+O componente Icon fornece uma biblioteca de ícones consistentes, acessíveis e responsivos para uso em toda a aplicação.
+
+## Exemplos
+
+### Ícone Padrão
+
+<Canvas of={IconStories.Default} />
+
+### Variações de Tamanho
+
+O componente Icon oferece cinco tamanhos pré-definidos para diferentes contextos de uso:
+
+<Canvas of={IconStories.SizeVariants} />
+
+#### Exemplos Individuais
+
+**Extra Small** - Ideal para espaços compactos e listas densas
+
+<Canvas of={IconStories.ExtraSmall} />
+
+**Small** - Perfeito para textos e controles secundários
+
+<Canvas of={IconStories.Small} />
+
+**Medium** - Tamanho padrão para a maioria dos casos de uso
+
+<Canvas of={IconStories.Medium} />
+
+**Large** - Destaque moderado para ações importantes
+
+<Canvas of={IconStories.Large} />
+
+**Extra Large** - Máximo destaque para elementos principais
+
+<Canvas of={IconStories.ExtraLarge} />
+
+### Variações de Cor
+
+O sistema oferece uma paleta completa de cores semanticamente nomeadas:
+
+<Canvas of={IconStories.ColorVariants} />
+

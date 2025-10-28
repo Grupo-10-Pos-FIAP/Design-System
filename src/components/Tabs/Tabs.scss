@@ -36,21 +36,21 @@
       align-items: center;
       gap: $spacing-sm;
       padding: $spacing-sm $spacing-md;
-      height: 32px;
+      height: 40px;
       min-height: 40px;
-      max-height: 56px;
+      max-height: 40px;
     }
 
     &__label {
-      color: $color-disabled !important;
-      font-size: $font-size-small;
+      color: $gray-600;
       font-weight: $font-weight-regular;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      max-width: 100%;
 
       &.disabled {
-        color: $color-disabled !important;
+        color: $color-disabled;
       }
     }
 
@@ -87,8 +87,8 @@
 
     &[data-state='active'] {
       .tabs__tab-item__label {
-        color: $color-primary !important;
-        font-weight: $font-weight-semibold;
+        color: $color-base;
+        font-weight: $font-weight-semimedium;
       }
     }
   }
@@ -106,9 +106,5 @@
     padding: $spacing-xs;
     height: 40px;
     gap: $spacing-xs;
-  }
-
-  .tabs__tab-item__label {
-    font-size: $font-size-caption;
   }
 }
