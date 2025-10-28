@@ -41,3 +41,16 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Change package visibility to public
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name.replace('@grupo-10-pos-fiap/', '')")
+          echo "📦 Mudando visibilidade do pacote: $PACKAGE_NAME"
+          
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/orgs/grupo-10-pos-fiap/packages/npm/$PACKAGE_NAME/visibility" \
+            -d '{"visibility":"public"}'
+          
+          echo "✅ Pacote $PACKAGE_NAME agora é público!"
