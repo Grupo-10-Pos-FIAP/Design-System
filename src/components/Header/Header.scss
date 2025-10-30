@@ -6,20 +6,32 @@
   padding: 0 1.5rem;
   background-color: $background-base;
   color: $color-white;
-  border-bottom: 1px solid $color-disabled;
 
   &__logo {
-    display: flex;
-    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
 
-    img {
-      height: auto;
+    img, svg {
       max-height: 40px;
+      width: auto;
+      display: block;
     }
   }
 
   &__avatar {
-    display: flex;
-    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }

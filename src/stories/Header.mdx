@@ -10,6 +10,26 @@ O componente Header é a barra de navegação superior da aplicação, responsá
 
 ## Exemplos
 
-### Header Padrão
+### Header Básico
+
+Exemplo do componente Header com avatar e logo SVG como componente.
 
 <Canvas of={HeaderStories.Default} />
+
+### Header com URL do SVG
+
+Exemplo usando a URL direta do SVG. Útil quando você quer carregar a logo diretamente do diretório público.
+
+<Canvas of={HeaderStories.WithSvgUrl} />
+
+### Header com Ações de Clique
+
+Exemplo com handlers de clique na logo e no avatar. Perfeito para navegação ou abertura de menus.
+
+<Canvas of={HeaderStories.WithClickActions} />
+
+### Header Sem Avatar
+
+Versão minimalista do Header sem o componente de avatar. Ideal para páginas públicas ou quando o usuário não está logado.
+
+<Canvas of={HeaderStories.WithoutAvatar} />
