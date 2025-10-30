@@ -26,13 +26,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## Instalação
 
 ```bash
-npm install @grupo-10-pos-fiap/design-system
+npm install @grupo10-pos-fiap/design-system
 ```
 
 ## Uso Básico
 
 ```jsx
-import { Button, Input } from '@grupo-10-pos-fiap/design-system';
+import { Button, Input } from '@grupo10-pos-fiap/design-system';
 
 export default function App() {
   return (
@@ -96,3 +96,8 @@ Este projeto é desenvolvido para fins acadêmicos como parte do programa de Pó
 ---
 
 **Desenvolvido por Grupo 10 - Pós-graduação em Engineering Frontend FIAP**
+
+
+
+
+
