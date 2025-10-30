@@ -1,28 +1,27 @@
-name: Publish package to GitHub Packages
+name: Publish to npm
 
 on:
-  push:
-    branches: [main]
-    paths: ['src/**', 'package.json']
+  release:
+    types: [published]
 
 jobs:
-  test-and-publish:
+  publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    
+    # Só executa se a release veio da main E é uma tag de versão
+    if: |
+      github.event.release.target_commitish == 'main' &&
+      startsWith(github.ref, 'refs/tags/v')
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
       - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@grupo-10-pos-fiap'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm ci
@@ -30,14 +29,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify build output
-        run: |
-          echo "📁 Conteúdo do dist:"
-          ls -la dist/ || echo "Dist não encontrado"
-          echo "📄 Package.json:"
-          cat package.json | grep -E '"name|"version|"publishConfig'
-
-      - name: Publish to GitHub Packages
+      - name: Publish to npm
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Notify success
+        run: |
+          echo "🎉 Package ${{ github.event.release.tag_name }} published successfully to npm!"
