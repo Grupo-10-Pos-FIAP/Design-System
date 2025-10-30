@@ -1,7 +1,7 @@
 # Design System
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
+![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?logo=typescript)
 
 Uma biblioteca de componentes React moderna e acessível para criação de interfaces consistentes e escaláveis. Desenvolvido como projeto acadêmico para a Pós-graduação em Engineering Frontend da FIAP.
@@ -10,8 +10,6 @@ Uma biblioteca de componentes React moderna e acessível para criação de inter
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
-
-Além disto é importante ter um token do GitHub (com permissão `read:packages`).
 
 ## Tecnologias
 
@@ -27,40 +25,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## Instalação
 
-### Método 1: Configuração por Projeto (Recomendado)
-
-1. **Crie um arquivo `.npmrc` na raiz do seu projeto:**
-
-```ini
-@grupo-10-pos-fiap:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
-```
-
-2. **Configure seu token do GitHub:**
-
-```bash
-# Linux/macOS
-export NODE_AUTH_TOKEN=ghp_seutokenaqui
-
-# Windows (PowerShell)
-$env:NODE_AUTH_TOKEN="ghp_seutokenaqui"
-
-# Windows (CMD)
-set NODE_AUTH_TOKEN=ghp_seutokenaqui
-```
-
-> **Não tem um token?** [Veja como criar um Personal Access Token](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-
-3. **Instale o pacote:**
-
 ```bash
 npm install @grupo-10-pos-fiap/design-system
-```
-
-### Método 2: Instalação Direta
-
-```bash
-npm install @grupo-10-pos-fiap/design-system --registry=https://npm.pkg.github.com/
 ```
 
 ## Uso Básico
@@ -76,17 +42,6 @@ export default function App() {
     </div>
   );
 }
-```
-
-## Estrutura do Projeto
-
-```text
-design-system-base/
-├── src/
-│   ├── components/          # Componentes React
-│   ├── styles/             # Estilos globais e temas
-│   ├── utils/              # Utilitários e helpers
-├── stories/                # Documentação Storybook
 ```
 
 ## Desenvolvimento
@@ -109,15 +64,12 @@ npm run storybook
 
 # Build de produção
 npm run build
-
-# Testes
-npm run test
 ```
 
 ### Documentação Interativa
 
 Acesse nossa documentação completa no Storybook:
-**[https://grupo-10-pos-fiap.github.io/Design-System/](https://grupo-10-pos-fiap.github.io/Design-System/)**
+**[https://grupo-10-pos-fiap.github.io/Design-System/](https://grupo-10-pos-fiap.github.io/Design-System/?path=/docs/introdução--docs)**
 
 ## Contribuição
 
@@ -134,7 +86,7 @@ Contribuições são sempre bem-vindas! Para contribuir:
 Encontrou um problema ou tem uma sugestão?
 
 - 📝 [Abra uma Issue](https://github.com/grupo-10-pos-fiap/Design-System/issues)
-- 📚 [Consulte a Documentação](https://grupo-10-pos-fiap.github.io/Design-System/)
+- 📚 [Consulte a Documentação](https://grupo-10-pos-fiap.github.io/Design-System/?path=/docs/introdução--docs)
 - 💬 Entre em contato com a equipe de desenvolvimento
 
 ## Licença

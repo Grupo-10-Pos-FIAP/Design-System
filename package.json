@@ -1,7 +1,7 @@
 {
-  "name": "@grupo-10-pos-fiap/design-system",
+  "name": "@grupo10-pos-fiap/design-system",
   "version": "1.0.0",
-  "description": "Design System do Grupo 10",
+  "description": "Design System do Grupo 10 - FIAP",
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -9,14 +9,21 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "react",
+    "design-system",
+    "component-library",
+    "fiap"
+  ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Grupo-10-Pos-FIAP/Design-System.git"
   },
+  "homepage": "https://grupo-10-pos-fiap.github.io/Design-System/?path=/docs/introdução--docs",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
