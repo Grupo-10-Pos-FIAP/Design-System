@@ -15,7 +15,28 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size
    * Color variant of the icon
    * @default 'base'
    */
-  color?: 'base' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'white' | 'black';
+  color?:
+    | 'base'
+    | 'white'
+    | 'black'
+    | 'disabled'
+    | 'primary'
+    | 'secondary'
+    | 'accent'
+    | 'soft'
+    | 'success'
+    | 'warning'
+    | 'error'
+    | 'info'
+    | 'gray100'
+    | 'gray200'
+    | 'gray300'
+    | 'gray400'
+    | 'gray500'
+    | 'gray600'
+    | 'gray700'
+    | 'gray800'
+    | 'gray900';
 
   /**
    * Size variant of the icon

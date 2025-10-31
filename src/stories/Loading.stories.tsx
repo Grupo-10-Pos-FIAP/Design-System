@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react-vite";
 import { Loading } from "@components/Loading/Loading";
-import { LoadingProps } from "@components/Loading/interface";
+import { LoadingProps } from "@components/Loading/interfaces";
 import { Button } from "@components/Button/Button";
 import { useState } from "react";
-import { SpinnerColor } from "@/components/Spinner/interface";
+import { SpinnerColor } from "@components/Spinner/interfaces";
 
 const ControlledLoading = (args: LoadingProps) => {
   const [isLoading, setIsLoading] = useState(false);

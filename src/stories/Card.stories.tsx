@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Card } from '@components/Card/Card';
 import { Button } from '@components/Button/Button';
-import Input from '@components/Input/Input';
+import { Input } from '@components/Input/Input';
 import { Dropdown } from '@components/Dropdown/Dropdown';
-import { Icon } from '@components/Icon/Icon';
 import { Text } from '@components/Text/Text';
 
 const meta: Meta<typeof Card> = {
@@ -134,15 +133,7 @@ export const TransferCard: Story = {
       <div style={{ padding: '16px', width: '350px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <Input label="Chave PIX ou dados da conta" placeholder="Digite a chave" />
 
-        <Dropdown
-          items={transferValues}
-          trigger={
-            <Button variant="secondary" style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-              <span>Valor da Transferência</span>
-              <Icon name="ChevronDown" />
-            </Button>
-          }
-        />
+        <Dropdown items={transferValues} placeholder="Selecione o valor da transferência" label="teste" />
 
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button variant="primary">Transferir</Button>

@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Icon } from '@components/Icon/Icon';
 import './Card.scss';
 
-import type { CardProps, CardSectionProps } from './interface';
+import type { CardProps, CardSectionProps } from './interfaces';
 
-export const CardSection = ({ children, className = '' }: CardSectionProps) => {
+const CardSection = ({ children, className = '' }: CardSectionProps) => {
   const sectionClasses = ['card__section', className].filter(Boolean).join(' ');
 
   return <div className={sectionClasses}>{children}</div>;
 };
 
-export const Card = ({
+const Card = ({
   title,
   variant = 'elevated',
   children,
@@ -53,3 +53,6 @@ export const Card = ({
 };
 
 Card.Section = CardSection;
+
+export { Card, CardSection };
+export type { CardProps, CardSectionProps } from './interfaces';

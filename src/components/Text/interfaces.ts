@@ -9,8 +9,8 @@ export interface TextProps {
     | 'base' | 'white' | 'black' | 'disabled'
     | 'primary' | 'secondary' | 'accent' | 'soft'
     | 'success' | 'warning' | 'error' | 'info' | 'link'
-    | 'gray-100' | 'gray-200' | 'gray-300' | 'gray-400' | 'gray-500'
-    | 'gray-600' | 'gray-700' | 'gray-800' | 'gray-900'
+    | 'gray100' | 'gray200' | 'gray300' | 'gray400' | 'gray500'
+    | 'gray600' | 'gray700' | 'gray800' | 'gray900'
     | string;
 
   /** Font Weight */

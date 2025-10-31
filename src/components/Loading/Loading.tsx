@@ -1,9 +1,9 @@
 import React from 'react';
 import { Spinner } from '../Spinner/Spinner';
-import { LoadingProps } from './interface';
+import { LoadingProps } from './interfaces';
 import './Loading.scss';
 
-export const Loading: React.FC<LoadingProps> = ({
+const Loading: React.FC<LoadingProps> = ({
   text,
   overlay = false,
   fullScreen = false,
@@ -30,3 +30,8 @@ export const Loading: React.FC<LoadingProps> = ({
 
   return loadingContent;
 };
+
+Loading.displayName = 'Loading';
+
+export { Loading };
+export type { LoadingProps } from './interfaces';

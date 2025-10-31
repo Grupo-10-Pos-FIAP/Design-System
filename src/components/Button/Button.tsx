@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
-import { ButtonProps } from './interface';
+import { ButtonProps } from './interfaces';
 import './Button.scss';
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', disabled = false, width, ...props }, ref) => {
     const buttonStyle = width ? { width } : {};
 
@@ -19,3 +19,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
+
+export { Button };
+export type { ButtonProps } from './interfaces';

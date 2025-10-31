@@ -16,8 +16,8 @@ const meta = {
         'base', 'white', 'black', 'disabled',
         'primary', 'secondary', 'accent', 'soft',
         'success', 'warning', 'error', 'info', 'link',
-        'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500',
-        'gray-600', 'gray-700', 'gray-800', 'gray-900'
+        'gray100', 'gray200', 'gray300', 'gray400', 'gray500',
+        'gray600', 'gray700', 'gray800', 'gray900'
       ],
       description: 'Cor do texto'
     },
@@ -227,7 +227,7 @@ export const AlignmentVariants: Story = {
       }}>
         {alignments.map(({ align, label }) => (
           <div key={align}>
-            <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+            <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
               {label}:
             </Text>
             <Text {...args} align={align} style={{ border: '1px solid #e0e0e0', padding: '12px', borderRadius: '4px' }}>
@@ -258,14 +258,14 @@ export const TruncateExample: Story = {
       width: '300px'
     }}>
       <div>
-        <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+        <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
           Texto truncado:
         </Text>
         <Text {...args} style={{ border: '1px solid #e0e0e0', padding: '12px', borderRadius: '4px' }} />
       </div>
       
       <div>
-        <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+        <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
           Texto normal:
         </Text>
         <Text 
@@ -298,7 +298,7 @@ export const MaxLinesExample: Story = {
     }}>
       {([1, 2, 3, 4] as const).map((lines) => (
         <div key={lines}>
-          <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+          <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
             Max Lines: {lines}
           </Text>
           <Text 
@@ -345,7 +345,7 @@ export const LetterSpacingVariants: Story = {
       }}>
         {spacings.map(({ spacing, label }) => (
           <div key={spacing}>
-            <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+            <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
               {label}:
             </Text>
             <Text {...args} letterSpacing={spacing} style={{ borderBottom: '2px solid #e0e0e0', paddingBottom: '8px' }}>
@@ -376,14 +376,14 @@ export const CustomElement: Story = {
       minWidth: '400px'
     }}>
       <div>
-        <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+        <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
           Como parágrafo (padrão):
         </Text>
         <Text {...args} as="p" style={{ border: '1px solid #e0e0e0', padding: '12px', borderRadius: '4px' }} />
       </div>
       
       <div>
-        <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+        <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
           Como span (inline):
         </Text>
         <div style={{ border: '1px solid #e0e0e0', padding: '12px', borderRadius: '4px' }}>
@@ -392,7 +392,7 @@ export const CustomElement: Story = {
       </div>
       
       <div>
-        <Text variant="small" color="gray-600" style={{ marginBottom: '8px' }}>
+        <Text variant="small" color="gray600" style={{ marginBottom: '8px' }}>
           Como label:
         </Text>
         <Text {...args} as="label" style={{ border: '1px solid #e0e0e0', padding: '12px', borderRadius: '4px', display: 'block' }} />

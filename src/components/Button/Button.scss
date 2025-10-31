@@ -10,6 +10,8 @@
   padding: 16px 8px;
   cursor: pointer;
   box-sizing: border-box; 
+  font-family: inherit;
+  font-size: inherit;;
 
   &:disabled {
     cursor: not-allowed;

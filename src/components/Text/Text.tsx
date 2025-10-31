@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextProps } from './interface';
+import { TextProps } from './interfaces';
 import './Text.scss';
 
 const Text: React.FC<TextProps> = ({
@@ -45,6 +45,8 @@ const Text: React.FC<TextProps> = ({
     </Component>
   );
 };
+
+Text.displayName = 'Text';
 
 export { Text };
 export type { TextProps };

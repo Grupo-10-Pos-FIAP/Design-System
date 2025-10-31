@@ -1,5 +1,5 @@
 import { Toast } from 'radix-ui';
-import { SnackbarProps } from './interface';
+import { SnackbarProps } from './interfaces';
 import './Snackbar.scss';
 import { CheckCircle, AlertTriangle, Info, XCircle, X } from 'lucide-react';
 
@@ -10,7 +10,7 @@ const variantIconMap = {
   warning: AlertTriangle,
 };
 
-export const Snackbar = ({ message, variant = 'info', open, onOpenChange, duration = 4000 }: SnackbarProps) => {
+const Snackbar = ({ message, variant = 'info', open, onOpenChange, duration = 4000 }: SnackbarProps) => {
   if (open === undefined || onOpenChange === undefined) {
     console.warn("Snackbar: 'open' and 'onOpenChange' must be provided for external control.");
   }
@@ -36,3 +36,8 @@ export const Snackbar = ({ message, variant = 'info', open, onOpenChange, durati
     </Toast.Provider>
   );
 };
+
+Snackbar.displayName = 'Snackbar';
+
+export { Snackbar };
+export type { SnackbarProps } from './interfaces';
