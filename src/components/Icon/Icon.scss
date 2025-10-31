@@ -1,39 +1,38 @@
-@use "sass:color";
-@use "sass:map";
+@use 'sass:color';
+@use 'sass:map';
 
 $icon-color-map: (
   'base': $color-base,
+  'white': $color-white,
+  'black': $color-black,
+  'disabled': $color-disabled,
   'primary': $color-primary,
   'secondary': $color-secondary,
+  'accent': $color-accent,
+  'soft': $color-soft,
   'success': $color-success,
   'warning': $color-warning,
   'error': $color-error,
   'info': $color-info,
-  'white': $color-white,
-  'black': $color-black,
-);
-
-$icon-disabled-color-map: (
-  'base': $color-disabled,
-  'primary': color.adjust($color-primary, $lightness: 30%),
-  'secondary': color.adjust($color-secondary, $lightness: 30%),
-  'success': color.adjust($color-success, $lightness: 30%),
-  'warning': color.adjust($color-warning, $lightness: 30%),
-  'error': color.adjust($color-error, $lightness: 30%),
-  'info': color.adjust($color-info, $lightness: 30%),
-  'white': $gray-300,
-  'black': $gray-600,
+  'gray100': $color-gray100,
+  'gray200': $color-gray200,
+  'gray300': $color-gray300,
+  'gray400': $color-gray400,
+  'gray500': $color-gray500,
+  'gray600': $color-gray600,
 );
 
 @function icon-color($color: 'base', $disabled: false) {
-  $color-map: if($disabled, $icon-disabled-color-map, $icon-color-map);
-  
-  @if map.has-key($color-map, $color) {
-    @return map.get($color-map, $color);
+  @if $disabled {
+    @return $color-disabled;
   }
-  
+
+  @if map.has-key($icon-color-map, $color) {
+    @return map.get($icon-color-map, $color);
+  }
+
   @warn "Cor '#{$color}' não encontrada no mapa de cores do ícone";
-  @return map.get($color-map, 'base');
+  @return map.get($icon-color-map, 'base');
 }
 
 @mixin icon-colors($disabled: false) {
@@ -77,13 +76,12 @@ $icon-disabled-color-map: (
   transition: all 0.2s ease-in-out;
 
   @include icon-sizes;
-
   @include icon-colors;
 
   &--disabled {
     pointer-events: none;
     opacity: 0.6;
-    
+
     @include icon-colors(true);
   }
 
@@ -91,7 +89,7 @@ $icon-disabled-color-map: (
     &:hover {
       opacity: 0.8;
     }
-    
+
     &:active {
       opacity: 0.6;
       transform: scale(0.95);

@@ -1,16 +1,19 @@
-export interface DropdownItem {
+import { IconName } from "../Icon/interfaces";
+
+export interface DropdownItemProps {
   label: string;
-  value: string;
-  onClick?: () => void;
+  value?: string;
+  icon?: IconName;
   disabled?: boolean;
-  icon?: React.ReactNode;
+  onClick?: () => void;
 }
 
 export interface DropdownProps {
-  trigger?: React.ReactNode;
-  items: (DropdownItem | { label: 'divider' })[];
+  items: (DropdownItemProps | { label: 'divider' })[];
   placeholder?: string;
   onValueChange?: (value: string) => void;
-  error?: boolean;
-  disabled?: boolean;
+  label?: string;
+  width?: string | number;
+  status?: 'default' | 'success' | 'warning' | 'error';
+  helperText?: string;
 }

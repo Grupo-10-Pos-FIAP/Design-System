@@ -42,7 +42,7 @@
     }
 
     &__label {
-      color: $gray-600;
+      color: $color-gray600;
       font-weight: $font-weight-regular;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -57,7 +57,7 @@
     &__tab-border {
       width: 100%;
       height: 1px;
-      background-color: $gray-300;
+      background-color: $color-gray300;
       position: absolute;
       bottom: 0;
 
@@ -69,7 +69,7 @@
     }
 
     &[data-disabled] {
-      background-color: $gray-100;
+      background-color: $color-gray100;
       cursor: not-allowed;
     }
 
@@ -82,13 +82,13 @@
     }
 
     &:hover:not([data-disabled]) {
-      background-color: $gray-200;
+      background-color: $color-gray200;
     }
 
     &[data-state='active'] {
       .tabs__tab-item__label {
         color: $color-base;
-        font-weight: $font-weight-semimedium;
+        font-weight: $font-weight-510;
       }
     }
   }

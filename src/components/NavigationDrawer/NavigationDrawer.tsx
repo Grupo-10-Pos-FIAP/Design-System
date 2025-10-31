@@ -1,7 +1,7 @@
 import { useState, useEffect, FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
 import './NavigationDrawer.scss';
-import type { NavigationDrawerProps, NavDrawerHeaderProps, NavDrawerFooterProps } from './interface';
+import type { NavigationDrawerProps, NavDrawerHeaderProps, NavDrawerFooterProps } from './interfaces';
 
 export const NavigationDrawerHeader: FC<NavDrawerHeaderProps> = ({ children, className = '' }) => {
   const headerClasses = ['navdrawer__header', className].filter(Boolean).join(' ');
@@ -13,7 +13,7 @@ export const NavigationDrawerFooter: FC<NavDrawerFooterProps> = ({ children, cla
   return <div className={footerClasses}>{children}</div>;
 };
 
-export const NavigationDrawer: FC<NavigationDrawerProps> & {
+const NavigationDrawer: FC<NavigationDrawerProps> & {
   Header: typeof NavigationDrawerHeader;
   Footer: typeof NavigationDrawerFooter;
 } = ({
@@ -175,3 +175,6 @@ export const NavigationDrawer: FC<NavigationDrawerProps> & {
 NavigationDrawer.Header = NavigationDrawerHeader;
 NavigationDrawer.Footer = NavigationDrawerFooter;
 NavigationDrawer.displayName = 'NavigationDrawer';
+
+export { NavigationDrawer };
+export type { NavigationDrawerProps } from './interfaces';

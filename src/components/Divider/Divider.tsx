@@ -25,5 +25,8 @@ const Divider: React.FC<DividerProps> = ({
   );
 };
 
+Divider.displayName = 'Divider';
+
+
 export { Divider };
 export type { DividerProps } from './interfaces';

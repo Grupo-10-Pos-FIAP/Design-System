@@ -1,3 +1,106 @@
+@use 'sass:map';
+
+$text-types: (
+  'caption': (
+    font-size: $font-size-caption,
+    font-weight: $font-weight-regular,
+    line-height: $line-height-caption
+  ),
+  'small': (
+    font-size: $font-size-small,
+    font-weight: $font-weight-regular,
+    line-height: $line-height-body
+  ),
+  'body': (
+    font-size: $font-size-body,
+    font-weight: $font-weight-regular,
+    line-height: $line-height-body
+  ),
+  'subtitle': (
+    font-size: $font-size-subtitle,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-subtitle
+  ),
+  'title': (
+    font-size: $font-size-title,
+    font-weight: $font-weight-semibold,
+    line-height: $line-height-title
+  ),
+  'h5': (
+    font-size: $font-size-h5,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-heading
+  ),
+  'h4': (
+    font-size: $font-size-h4,
+    font-weight: $font-weight-semibold,
+    line-height: $line-height-heading
+  ),
+  'h3': (
+    font-size: $font-size-h3,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-heading
+  ),
+  'h2': (
+    font-size: $font-size-h2,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-heading
+  ),
+  'h1': (
+    font-size: $font-size-h1,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-heading
+  )
+);
+
+$text-colors: (
+  'base': $color-base,
+  'white': $color-white,
+  'black': $color-black,
+  'disabled': $color-disabled,
+  'primary': $color-primary,
+  'secondary': $color-secondary,
+  'accent': $color-accent,
+  'soft': $color-soft,
+  'success': $color-success,
+  'warning': $color-warning,
+  'error': $color-error,
+  'info': $color-info,
+  'link': $color-link,
+  'gray100': $color-gray100,
+  'gray200': $color-gray200,
+  'gray300': $color-gray300,
+  'gray400': $color-gray400,
+  'gray500': $color-gray500,
+  'gray600': $color-gray600,
+  'gray700': $color-gray700,
+  'gray800': $color-gray800,
+  'gray900': $color-gray900
+);
+
+$font-weights: (
+  'regular': $font-weight-regular,
+  'medium': $font-weight-medium,
+  'semibold': $font-weight-semibold,
+  'bold': $font-weight-bold
+);
+
+$text-alignments: (
+  'left': left,
+  'center': center,
+  'right': right,
+  'justify': justify
+);
+
+$letter-spacings: (
+  'tightest': $letter-spacing-tightest,
+  'tight': $letter-spacing-tight,
+  'normal': $letter-spacing-normal,
+  'relaxed': $letter-spacing-relaxed,
+  'wide': $letter-spacing-wide,
+  'wider': $letter-spacing-wider
+);
+
 @mixin text-caption {
   font-size: $font-size-caption;
   font-weight: $font-weight-regular;
@@ -58,152 +161,50 @@
   line-height: $line-height-heading;
 }
 
+@mixin text-type($type) {
+  @if map.has-key($text-types, $type) {
+    $styles: map.get($text-types, $type);
+    font-size: map.get($styles, 'font-size');
+    font-weight: map.get($styles, 'font-weight');
+    line-height: map.get($styles, 'line-height');
+  } @else {
+    @warn "Tipo de texto '#{$type}' não encontrado no mapa";
+    @include text-body;
+  }
+}
+
 @mixin text-base {
   font-family: $font-family-default;
   margin: 0;
 
-  &.text-caption {
-    @include text-caption;
-  }
-  &.text-small {
-    @include text-small;
-  }
-  &.text-body {
-    @include text-body;
-  }
-  &.text-subtitle {
-    @include text-subtitle;
-  }
-  &.text-title {
-    @include text-title;
-  }
-  &.text-h4 {
-    @include text-h4;
-  }
-  &.text-h3 {
-    @include text-h3;
-  }
-  &.text-h2 {
-    @include text-h2;
-  }
-  &.text-h1 {
-    @include text-h1;
-  }
-  &.text-h5 {
-    @include text-h5;
+  @each $name, $styles in $text-types {
+    &.text-#{$name} {
+      @include text-type($name);
+    }
   }
 
-  &.color-base {
-    color: $color-base;
-  }
-  &.color-white {
-    color: $color-white;
-  }
-  &.color-black {
-    color: $color-black;
-  }
-  &.color-disabled {
-    color: $color-disabled;
-  }
-  &.color-primary {
-    color: $color-primary;
-  }
-  &.color-secondary {
-    color: $color-secondary;
-  }
-  &.color-accent {
-    color: $color-accent;
-  }
-  &.color-soft {
-    color: $color-soft;
-  }
-  &.color-success {
-    color: $color-success;
-  }
-  &.color-warning {
-    color: $color-warning;
-  }
-  &.color-error {
-    color: $color-error;
-  }
-  &.color-info {
-    color: $color-info;
-  }
-  &.color-link {
-    color: $color-link;
+  @each $name, $color in $text-colors {
+    &.color-#{$name} {
+      color: $color;
+    }
   }
 
-  &.color-gray-100 {
-    color: $gray-100;
-  }
-  &.color-gray-200 {
-    color: $gray-200;
-  }
-  &.color-gray-300 {
-    color: $gray-300;
-  }
-  &.color-gray-400 {
-    color: $gray-400;
-  }
-  &.color-gray-500 {
-    color: $gray-500;
-  }
-  &.color-gray-600 {
-    color: $gray-600;
-  }
-  &.color-gray-700 {
-    color: $gray-700;
-  }
-  &.color-gray-800 {
-    color: $gray-800;
-  }
-  &.color-gray-900 {
-    color: $gray-900;
+  @each $name, $weight in $font-weights {
+    &.weight-#{$name} {
+      font-weight: $weight;
+    }
   }
 
-  &.weight-regular {
-    font-weight: $font-weight-regular;
-  }
-  &.weight-medium {
-    font-weight: $font-weight-medium;
-  }
-  &.weight-semibold {
-    font-weight: $font-weight-semibold;
-  }
-  &.weight-bold {
-    font-weight: $font-weight-bold;
+  @each $name, $alignment in $text-alignments {
+    &.align-#{$name} {
+      text-align: $alignment;
+    }
   }
 
-  &.align-left {
-    text-align: left;
-  }
-  &.align-center {
-    text-align: center;
-  }
-  &.align-right {
-    text-align: right;
-  }
-  &.align-justify {
-    text-align: justify;
-  }
-
-  &.letter-spacing-tightest {
-    letter-spacing: $letter-spacing-tightest;
-  }
-  &.letter-spacing-tight {
-    letter-spacing: $letter-spacing-tight;
-  }
-  &.letter-spacing-normal {
-    letter-spacing: $letter-spacing-normal;
-  }
-  &.letter-spacing-relaxed {
-    letter-spacing: $letter-spacing-relaxed;
-  }
-  &.letter-spacing-wide {
-    letter-spacing: $letter-spacing-wide;
-  }
-  &.letter-spacing-wider {
-    letter-spacing: $letter-spacing-wider;
+  @each $name, $spacing in $letter-spacings {
+    &.letter-spacing-#{$name} {
+      letter-spacing: $spacing;
+    }
   }
 
   &.truncate {

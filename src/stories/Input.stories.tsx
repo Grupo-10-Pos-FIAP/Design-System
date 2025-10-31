@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Input from '@components/Input/Input';
+import { Input } from '@components/Input/Input';
 import { iconKeys } from '@utils/iconKeys';
 
 const meta = {
@@ -49,12 +49,12 @@ const meta = {
     startIcon: {
       control: 'select',
       options: iconKeys,
-      description: 'Ícone no início do input'
+      description: 'Ícone no início do input',
     },
     endIcon: {
       control: 'select',
       options: iconKeys,
-      description: 'Ícone no final do input'
+      description: 'Ícone no final do input',
     },
   },
 } satisfies Meta<typeof Input>;
@@ -80,9 +80,9 @@ export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Input placeholder="Digite algo..." label="Input padrão" />'
-      }
-    }
+        code: '<Input placeholder="Digite algo..." label="Input padrão" />',
+      },
+    },
   },
 };
 
@@ -105,9 +105,9 @@ export const Variants: Story = {
   variant="outlined" 
   placeholder="Digite algo..." 
   label="Variante Outlined" 
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '300px' }}>
@@ -143,9 +143,9 @@ export const Sizes: Story = {
   size="large" 
   placeholder="Digite algo..." 
   label="Input Large" 
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
@@ -190,9 +190,9 @@ export const Status: Story = {
   placeholder="Digite algo..." 
   label="Status Error" 
   helperText="Erro no campo" 
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
@@ -235,9 +235,9 @@ export const WithIcons: Story = {
   placeholder="Digite seu nome..." 
   label="Input com ícones em ambos" 
   helperText="Usuário válido" 
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
@@ -299,9 +299,9 @@ export const States: Story = {
   placeholder="Digite algo..." 
   label="Input obrigatório" 
   helperText="Este campo é obrigatório" 
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
@@ -356,9 +356,9 @@ export const InputTypes: Story = {
   type="url" 
   placeholder="https://exemplo.com" 
   label="Campo de URL" 
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
@@ -418,22 +418,24 @@ export const FormExample: Story = {
     placeholder="(11) 99999-9999"
     startIcon="Phone"
   />
-</form>`
-      }
-    }
+</form>`,
+      },
+    },
   },
   render: () => (
-    <div style={{ width: '400px', padding: '24px', background: 'white', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+    <div
+      style={{
+        width: '400px',
+        padding: '24px',
+        background: 'white',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+      }}>
       <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <h3 style={{ margin: '0 0 16px 0', color: '#1a1a1a' }}>Formulário de Exemplo</h3>
-        
-        <Input
-          label="Nome completo"
-          placeholder="Digite seu nome completo..."
-          startIcon={iconNames.User}
-          required
-        />
-        
+
+        <Input label="Nome completo" placeholder="Digite seu nome completo..." startIcon={iconNames.User} required />
+
         <Input
           label="Email"
           type="email"
@@ -442,7 +444,7 @@ export const FormExample: Story = {
           status="success"
           helperText="Email válido"
         />
-        
+
         <Input
           label="Senha"
           type="password"
@@ -451,14 +453,9 @@ export const FormExample: Story = {
           status="error"
           helperText="Senha deve ter pelo menos 8 caracteres"
         />
-        
-        <Input
-          label="Telefone"
-          type="tel"
-          placeholder="(11) 99999-9999"
-          startIcon={iconNames.Phone}
-        />
-        
+
+        <Input label="Telefone" type="tel" placeholder="(11) 99999-9999" startIcon={iconNames.Phone} />
+
         <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
           <button
             type="button"
@@ -468,8 +465,7 @@ export const FormExample: Story = {
               borderRadius: '4px',
               background: 'white',
               cursor: 'pointer',
-            }}
-          >
+            }}>
             Cancelar
           </button>
           <button
@@ -481,8 +477,7 @@ export const FormExample: Story = {
               background: '#1c6ea4',
               color: 'white',
               cursor: 'pointer',
-            }}
-          >
+            }}>
             Enviar
           </button>
         </div>
@@ -516,8 +511,8 @@ export const Playground: Story = {
   label="Label do input"
   placeholder="Digite algo..."
   helperText="Texto de ajuda opcional"
-/>`
-      }
-    }
+/>`,
+      },
+    },
   },
 };

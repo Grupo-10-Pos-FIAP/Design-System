@@ -1,15 +1,7 @@
-// Header.tsx
 import "./Header.scss";
+import { HeaderProps } from "./interfaces";
 
-interface HeaderProps {
-  avatar?: React.ReactNode;
-  logo: string | React.ReactNode;
-  onLogoClick?: () => void;
-  onAvatarClick?: () => void;
-  className?: string;
-}
-
-export function Header({ 
+function Header({ 
   avatar, 
   logo, 
   onLogoClick, 
@@ -71,3 +63,8 @@ export function Header({
     </header>
   );
 }
+
+Header.displayName = 'Header';
+
+export { Header };
+export type { HeaderProps } from './interfaces';

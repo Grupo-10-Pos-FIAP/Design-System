@@ -90,12 +90,12 @@
   border: 1px solid transparent;
 
   &:hover {
-    background-color: $gray-100;
+    background-color: $color-gray100;
     color: $color-primary;
   }
 
   &:active {
-    background-color: $gray-200;
+    background-color: $color-gray200;
   }
 }
 

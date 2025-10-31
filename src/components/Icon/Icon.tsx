@@ -54,4 +54,4 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(
 Icon.displayName = 'Icon';
 
 export { Icon };
-export type { IconProps } from './interfaces';
+export type { IconProps, IconName } from './interfaces';

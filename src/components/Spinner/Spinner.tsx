@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SpinnerProps, SpinnerVariant } from './interface';
+import { SpinnerProps, SpinnerVariant } from './interfaces';
 import './Spinner.scss';
 
 const DefaultSpinner: FC<SpinnerProps> = ({ size, color }) => (
@@ -52,7 +52,7 @@ const SPINNER_VARIANTS: Record<SpinnerVariant, FC<SpinnerProps>> = {
   pulse: PulseSpinner,
 };
 
-export const Spinner: FC<SpinnerProps> = ({
+const Spinner: FC<SpinnerProps> = ({
   variant = 'default',
   size = 'md',
   color = 'primary',
@@ -62,3 +62,8 @@ export const Spinner: FC<SpinnerProps> = ({
   const VariantComponent = SPINNER_VARIANTS[variant];
   return <VariantComponent size={size} color={color} role="status" aria-label={ariaLabel} {...props} />;
 };
+
+Spinner.displayName = 'Spinner';
+
+export { Spinner };
+export type { SpinnerProps } from './interfaces';

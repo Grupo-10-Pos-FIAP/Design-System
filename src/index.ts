@@ -2,6 +2,7 @@ export * from "./components/Button/Button";
 export * from "./components/Card/Card";
 export * from './components/Dialog/Dialog';
 export * from './components/Divider/Divider';
+export * from "./components/Dropdown/Dropdown"
 export * from './components/Header/Header';
 export * from "./components/Icon/Icon";
 export * from "./components/IconButton/IconButton";
@@ -12,4 +13,3 @@ export * from "./components/Snackbar/Snackbar";
 export * from "./components/Spinner/Spinner";
 export * from './components/Tabs/Tabs';
 export * from "./components/Text/Text";
-export * from "./components/Dropdown/Dropdown"

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Snackbar } from '@components/Snackbar/Snackbar';
-import { SnackbarProps } from '@components/Snackbar/interface';
+import { SnackbarProps } from '@components/Snackbar/interfaces';
 import { Button } from '@components/Button/Button';
 import { useState } from 'react';
 

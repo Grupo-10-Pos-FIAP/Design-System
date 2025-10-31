@@ -9,22 +9,20 @@
   border-color: $border-disabled;
   color: $color-disabled;
   cursor: not-allowed;
-  
 }
 
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: $spacing-xs;
+  gap: 8px; 
 }
 
 .input-label {
   font-family: $font-family-default;
   font-size: $font-size-small;
   font-weight: $font-weight-medium;
-  line-height: $line-height-body;
   color: $color-base;
-  margin-bottom: $spacing-xs;
+  margin-bottom: 0;
   
   .input--disabled + & {
     color: $color-disabled;
@@ -40,25 +38,27 @@
 
 .input {
   font-family: $font-family-default;
-  font-size: $font-size-body;
+  font-size: $font-size-small; 
   font-weight: $font-weight-regular;
-  line-height: $line-height-body;
-  letter-spacing: $letter-spacing-normal;
   
-  border: 1px solid $border-base;
-  border-radius: 4px;
-  background-color: $background-base;
-  color: $color-base;
-  transition: all 0.2s ease-in-out;
+  border: 1px solid $border-primary;
+  border-radius: 8px; 
+  background-color: $color-white; 
+  color: $color-gray700;
+  transition: all 0.2s ease;
   width: 100%;
-  
+  min-height: 40px;
+
+  padding: 10px 12px;
+  box-sizing: border-box;
 
   &:focus {
     @include input-focus;
   }
   
   &:hover:not(:disabled, .input--error) {
-    border-color: $gray-400;
+    border-color: $border-base;
+    background: $color-gray100;
   }
   
   &:disabled {
@@ -66,17 +66,16 @@
   }
   
   &::placeholder {
-    color: $gray-500;
+    color: $color-gray600;
     font-weight: $font-weight-regular;
   }
   
-  
   &--filled {
-    background-color: $gray-100;
+    background-color: $color-gray100;
     border-color: transparent;
     
     &:focus {
-      background-color: $background-base;
+      background-color: $color-white;
       border-color: $color-primary;
     }
   }
@@ -92,20 +91,23 @@
   
   &--small {
     font-size: $font-size-small;
-    padding: $spacing-xs $spacing-sm;
-    height: 32px;
+    padding: 8px 12px;
+    height: 36px;
+    min-height: 36px;
   }
   
   &--medium {
-    font-size: $font-size-body;
-    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-small;
+    padding: 10px 12px;
     height: 40px;
+    min-height: 40px;
   }
   
   &--large {
-    font-size: $font-size-subtitle;
-    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-body;
+    padding: 12px 16px;
     height: 48px;
+    min-height: 48px;
   }
   
   &--success {
@@ -127,11 +129,11 @@
   }
   
   &--error {
-    border-color: $feedback-error;
+    border-color: $color-error;
     
     &:focus {
-      border-color: $feedback-error;
-      box-shadow: 0 0 0 2px rgba($feedback-error, 0.1);
+      border-color: $color-error;
+      box-shadow: 0 0 0 2px rgba($color-error, 0.1);
     }
   }
   
@@ -143,46 +145,46 @@
 .input {
   &.input--has-start-icon {
     &.input--small {
-      padding-left: $spacing-lg;
+      padding-left: 40px;
     }
     
     &.input--medium {
-      padding-left: $spacing-xl;
+      padding-left: 40px;
     }
     
     &.input--large {
-      padding-left: $spacing-2xl;
+      padding-left: 48px;
     }
   }
   
   &.input--has-end-icon {
     &.input--small {
-      padding-right: $spacing-lg;
+      padding-right: 40px;
     }
     
     &.input--medium {
-      padding-right: $spacing-xl;
+      padding-right: 40px;
     }
     
     &.input--large {
-      padding-right: $spacing-2xl;
+      padding-right: 48px;
     }
   }
   
   &.input--has-start-icon.input--has-end-icon {
     &.input--small {
-      padding-left: $spacing-lg;
-      padding-right: $spacing-lg;
+      padding-left: 40px;
+      padding-right: 40px;
     }
     
     &.input--medium {
-      padding-left: $spacing-xl;
-      padding-right: $spacing-xl;
+      padding-left: 40px;
+      padding-right: 40px;
     }
     
     &.input--large {
-      padding-left: $spacing-2xl;
-      padding-right: $spacing-2xl;
+      padding-left: 48px;
+      padding-right: 48px;
     }
   }
 }
@@ -194,31 +196,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $gray-500;
+  color: $color-gray600;
   pointer-events: none;
   z-index: 1;
   
   &--start {
-    left: $spacing-sm;
+    left: 12px;
     
     .input--small & {
-      left: $spacing-xs;
+      left: 12px;
     }
     
     .input--large & {
-      left: $spacing-md;
+      left: 16px;
     }
   }
   
   &--end {
-    right: $spacing-sm;
+    right: 12px;
     
     .input--small & {
-      right: $spacing-xs;
+      right: 12px;
     }
     
     .input--large & {
-      right: $spacing-md;
+      right: 16px;
     }
   }
   
@@ -235,19 +237,18 @@
   }
   
   .input--error ~ & {
-    color: $feedback-error;
+    color: $color-error;
   }
 }
 
 .input-helper-text {
   font-family: $font-family-default;
   font-size: $font-size-caption;
-  line-height: $line-height-caption;
-  letter-spacing: $letter-spacing-normal;
-  margin-top: $spacing-xs;
+  color: $color-gray600;
+  margin-top: 4px;
   
   &--default {
-    color: $gray-600;
+    color: $color-gray600;
   }
   
   &--success {
@@ -259,7 +260,16 @@
   }
   
   &--error {
-    color: $feedback-error;
+    color: $color-error;
+  }
+}
+
+.input--with-selection {
+  background: rgba($color-soft, 0.3);
+  border-color: $color-primary;
+  
+  &:hover {
+    background: rgba($color-soft, 0.5);
   }
 }
 
@@ -267,21 +277,21 @@
   .input {
     &--medium,
     &--large {
-      font-size: $font-size-body;
+      font-size: $font-size-small;
       height: 44px;
     }
     
     &.input--has-start-icon {
       &.input--medium,
       &.input--large {
-        padding-left: $spacing-xl;
+        padding-left: 40px;
       }
     }
     
     &.input--has-end-icon {
       &.input--medium,
       &.input--large {
-        padding-right: $spacing-xl;
+        padding-right: 40px;
       }
     }
   }
@@ -290,14 +300,14 @@
     &--start {
       .input--medium &,
       .input--large & {
-        left: $spacing-sm;
+        left: 12px;
       }
     }
     
     &--end {
       .input--medium &,
       .input--large & {
-        right: $spacing-sm;
+        right: 12px;
       }
     }
   }
