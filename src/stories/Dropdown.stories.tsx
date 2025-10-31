@@ -1,19 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Dropdown } from '@components/Dropdown/Dropdown';
-import { Icon } from '@components/Icon/Icon';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
   component: Dropdown,
   argTypes: {
-    trigger: {
-      table: { disable: true },
-    },
     items: {
       control: false,
     },
     placeholder: {
       control: 'text',
+    },
+    label: {
+      control: 'text',
+    },
+    width: {
+      control: 'text',
+      description: 'Largura do dropdown (px, %, auto, etc.)'
+    },
+    status: {
+      control: 'select',
+      options: ['default', 'success', 'warning', 'error'],
+      description: 'Status visual do dropdown'
+    },
+    helperText: {
+      control: 'text',
+      description: 'Texto de ajuda abaixo do dropdown'
     },
   },
 };
@@ -29,35 +41,204 @@ export const SelectTransactionType: Story = {
       { 
         label: 'Transferência', 
         value: 'transfer', 
-        icon: <Icon name="ArrowLeftRight" size="small" />,
+        icon: 'ArrowLeftRight',
         onClick: () => console.log('Transferência selecionada') 
       },
       { 
         label: 'Pagamento', 
         value: 'payment', 
-        icon: <Icon name="CreditCard" size="small" />,
+        icon: 'CreditCard',
         onClick: () => console.log('Pagamento selecionado') 
       },
       { 
         label: 'Depósito', 
         value: 'deposit', 
-        icon: <Icon name="ArrowDownToLine" size="small" />,
+        icon: 'ArrowDownToLine',
         onClick: () => console.log('Depósito selecionado') 
       },
       { 
         label: 'Saque', 
         value: 'withdraw', 
-        icon: <Icon name="ArrowUpFromLine" size="small" />,
+        icon: 'ArrowUpFromLine',
         onClick: () => console.log('Saque selecionado') 
       },
       { 
         label: 'Investimento', 
         value: 'investment', 
-        icon: <Icon name="TrendingUp" size="small" />,
+        icon: 'TrendingUp',
         onClick: () => console.log('Investimento selecionado') 
       },
     ],
   },
+};
+
+export const WithLabel: Story = {
+  args: {
+    label: "Tipo de Transação",
+    placeholder: "Selecione o tipo de transação",
+    items: [
+      { 
+        label: 'Transferência', 
+        value: 'transfer', 
+        icon: 'ArrowLeftRight',
+      },
+      { 
+        label: 'Pagamento', 
+        value: 'payment', 
+        icon: 'CreditCard',
+      },
+      { 
+        label: 'Depósito', 
+        value: 'deposit', 
+        icon: 'ArrowDownToLine',
+      },
+    ],
+  },
+};
+
+export const WithStatusAndHelper: Story = {
+  args: {
+    label: "Status do Pedido",
+    placeholder: "Selecione o status",
+    status: 'success',
+    helperText: "Status atualizado com sucesso!",
+    items: [
+      { 
+        label: 'Pendente', 
+        value: 'pending', 
+        icon: 'Clock',
+      },
+      { 
+        label: 'Processando', 
+        value: 'processing', 
+        icon: 'RefreshCw',
+      },
+      { 
+        label: 'Concluído', 
+        value: 'completed', 
+        icon: 'CircleCheck',
+      },
+      { 
+        label: 'Cancelado', 
+        value: 'cancelled', 
+        icon: 'CircleX',
+      },
+    ],
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    label: "Categoria",
+    placeholder: "Selecione uma categoria",
+    status: 'error',
+    helperText: "Este campo é obrigatório",
+    items: [
+      { 
+        label: 'Eletrônicos', 
+        value: 'electronics', 
+        icon: 'Smartphone',
+      },
+      { 
+        label: 'Roupas', 
+        value: 'clothes', 
+        icon: 'Shirt',
+      },
+      { 
+        label: 'Livros', 
+        value: 'books', 
+        icon: 'Book',
+      },
+    ],
+  },
+};
+
+export const WithWarning: Story = {
+  args: {
+    label: "Nível de Prioridade",
+    placeholder: "Selecione a prioridade",
+    status: 'warning',
+    helperText: "Alerta: prioridade alta selecionada",
+    items: [
+      { 
+        label: 'Baixa', 
+        value: 'low', 
+        icon: 'ArrowDown',
+      },
+      { 
+        label: 'Média', 
+        value: 'medium', 
+        icon: 'Minus',
+      },
+      { 
+        label: 'Alta', 
+        value: 'high', 
+        icon: 'ArrowUp',
+      },
+      { 
+        label: 'Crítica', 
+        value: 'critical', 
+        icon: 'TriangleAlert',
+      },
+    ],
+  },
+};
+
+export const WithCustomWidth: Story = {
+  args: {
+    label: "Dropdown com Largura Customizada",
+    placeholder: "Selecione uma opção",
+    width: "400px",
+    items: [
+      { 
+        label: 'Opção com texto muito longo que deve caber dentro do dropdown', 
+        value: 'long', 
+        icon: 'FileText',
+      },
+      { 
+        label: 'Outra opção', 
+        value: 'other', 
+        icon: 'Folder',
+      },
+      { 
+        label: 'Mais uma opção', 
+        value: 'another', 
+        icon: 'Archive',
+      },
+    ],
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    label: "Dropdown com Largura Total",
+    placeholder: "Selecione uma opção",
+    width: "100%",
+    items: [
+      { 
+        label: 'Opção 1', 
+        value: 'option1', 
+        icon: 'Check',
+      },
+      { 
+        label: 'Opção 2', 
+        value: 'option2', 
+        icon: 'Check',
+      },
+      { 
+        label: 'Opção 3', 
+        value: 'option3', 
+        icon: 'Check',
+      },
+    ],
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: '500px', padding: '20px', border: '1px solid #e0e0e0', borderRadius: '8px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const WithIcons: Story = {
@@ -67,31 +248,31 @@ export const WithIcons: Story = {
       { 
         label: 'Editar', 
         value: 'edit',
-        icon: <Icon name="Pencil" size="small" />, 
+        icon: 'Pencil', 
         onClick: () => console.log('Editar clicado') 
       },
       { 
         label: 'Excluir', 
         value: 'delete',
-        icon: <Icon name="Trash2" size="small" />, 
+        icon: 'Trash2', 
         onClick: () => console.log('Excluir clicado') 
       },
       { 
         label: 'Compartilhar', 
         value: 'share',
-        icon: <Icon name="Share2" size="small" />, 
+        icon: 'Share2', 
         onClick: () => console.log('Compartilhar clicado') 
       },
       { 
         label: 'Download', 
         value: 'download',
-        icon: <Icon name="Download" size="small" />, 
+        icon: 'Download', 
         onClick: () => console.log('Download clicado') 
       },
       { 
         label: 'Imprimir', 
         value: 'print',
-        icon: <Icon name="Printer" size="small" />, 
+        icon: 'Printer', 
         onClick: () => console.log('Imprimir clicado') 
       },
     ],
@@ -105,51 +286,25 @@ export const WithDisabledItem: Story = {
       { 
         label: 'Opção Disponível', 
         value: 'available', 
-        icon: <Icon name="CircleCheck" size="small" />,
+        icon: 'CircleCheck',
         onClick: () => console.log('Opção disponível') 
       },
       { 
         label: 'Opção Desabilitada', 
         value: 'disabled',
-        icon: <Icon name="CircleX" size="small" />,
+        icon: 'CircleX',
         disabled: true,
       },
       { 
         label: 'Outra Opção', 
         value: 'other', 
-        icon: <Icon name="Circle" size="small" />,
+        icon: 'Circle',
         onClick: () => console.log('Outra opção') 
       },
     ],
   },
 };
 
-export const UserMenu: Story = {
-  args: {
-    placeholder: "Menu do usuário",
-    items: [
-      { 
-        label: 'Meu Perfil', 
-        value: 'profile',
-        icon: <Icon name="User" size="small" />, 
-        onClick: () => console.log('Perfil clicado') 
-      },
-      { 
-        label: 'Configurações', 
-        value: 'settings',
-        icon: <Icon name="Settings" size="small" />, 
-        onClick: () => console.log('Configurações clicado') 
-      },
-      { label: 'divider' },
-      { 
-        label: 'Sair', 
-        value: 'logout',
-        icon: <Icon name="LogOut" size="small" />, 
-        onClick: () => console.log('Sair clicado') 
-      },
-    ],
-  },
-};
 
 export const FileActions: Story = {
   args: {
@@ -158,60 +313,181 @@ export const FileActions: Story = {
       { 
         label: 'Abrir', 
         value: 'open',
-        icon: <Icon name="FolderOpen" size="small" />, 
+        icon: 'FolderOpen', 
         onClick: () => console.log('Abrir clicado') 
       },
       { 
         label: 'Salvar', 
         value: 'save',
-        icon: <Icon name="Save" size="small" />, 
+        icon: 'Save', 
         onClick: () => console.log('Salvar clicado') 
       },
       { 
         label: 'Renomear', 
         value: 'rename',
-        icon: <Icon name="Pencil" size="small" />, 
+        icon: 'Pencil', 
         onClick: () => console.log('Renomear clicado') 
       },
       { label: 'divider' },
       { 
         label: 'Exportar', 
         value: 'export',
-        icon: <Icon name="Download" size="small" />, 
+        icon: 'Download', 
         onClick: () => console.log('Exportar clicado') 
       },
     ],
   },
 };
 
-export const CustomTrigger: Story = {
-  args: {
-    trigger: (
-      <button className="dropdown-default-trigger" style={{ minWidth: '250px' }}>
-        <Icon name="Menu" size="small" />
-        <span className="dropdown-trigger-text">Menu personalizado</span>
-        <Icon name="ChevronDown" size="small" className="dropdown-chevron" />
-      </button>
-    ),
-    items: [
-      { 
-        label: 'Item 1', 
-        value: 'item1', 
-        icon: <Icon name="House" size="small" />,
-        onClick: () => console.log('Item 1') 
-      },
-      { 
-        label: 'Item 2', 
-        value: 'item2', 
-        icon: <Icon name="Star" size="small" />,
-        onClick: () => console.log('Item 2') 
-      },
-      { 
-        label: 'Item 3', 
-        value: 'item3', 
-        icon: <Icon name="Heart" size="small" />,
-        onClick: () => console.log('Item 3') 
-      },
-    ],
+export const StatusVariants = {
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+    docs: {
+      source: {
+        code: `
+<Dropdown status="default" helperText="Texto de ajuda padrão" {...props} />
+<Dropdown status="success" helperText="Operação realizada com sucesso" {...props} />
+<Dropdown status="warning" helperText="Atenção: ação necessária" {...props} />
+<Dropdown status="error" helperText="Erro: campo obrigatório" {...props} />`
+      }
+    }
   },
+  render: () => (
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column',
+      gap: '24px', 
+      padding: '32px',
+      background: 'white',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+    }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <h3 style={{ margin: 0, color: '#333' }}>Variações de Status</h3>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Status: Default</strong>
+            <Dropdown 
+              placeholder="Dropdown padrão"
+              helperText="Texto de ajuda padrão"
+              items={[
+                { label: 'Opção 1', value: '1', icon: 'Check' },
+                { label: 'Opção 2', value: '2', icon: 'Check' },
+              ]}
+            />
+          </div>
+          
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Status: Success</strong>
+            <Dropdown 
+              placeholder="Dropdown de sucesso"
+              status="success"
+              helperText="Operação realizada com sucesso"
+              items={[
+                { label: 'Opção 1', value: '1', icon: 'Check' },
+                { label: 'Opção 2', value: '2', icon: 'Check' },
+              ]}
+            />
+          </div>
+          
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Status: Warning</strong>
+            <Dropdown 
+              placeholder="Dropdown de alerta"
+              status="warning"
+              helperText="Atenção: ação necessária"
+              items={[
+                { label: 'Opção 1', value: '1', icon: 'Check' },
+                { label: 'Opção 2', value: '2', icon: 'Check' },
+              ]}
+            />
+          </div>
+          
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Status: Error</strong>
+            <Dropdown 
+              placeholder="Dropdown de erro"
+              status="error"
+              helperText="Erro: campo obrigatório"
+              items={[
+                { label: 'Opção 1', value: '1', icon: 'Check' },
+                { label: 'Opção 2', value: '2', icon: 'Check' },
+              ]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const WidthVariants = {
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+    docs: {
+      source: {
+        code: `
+<Dropdown width="200px" {...props} />
+<Dropdown width="300px" {...props} />
+<Dropdown width="100%" {...props} />
+<Dropdown width="auto" {...props} />`
+      }
+    }
+  },
+  render: () => (
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column',
+      gap: '24px', 
+      padding: '32px',
+      background: 'white',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+    }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <h3 style={{ margin: 0, color: '#333' }}>Variações de Largura</h3>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Largura 200px</strong>
+            <Dropdown 
+              width="200px"
+              placeholder="Dropdown estreito"
+              items={[
+                { label: 'Opção 1', value: '1', icon: 'Check' },
+                { label: 'Opção 2', value: '2', icon: 'Check' },
+              ]}
+            />
+          </div>
+          
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Largura 300px</strong>
+            <Dropdown 
+              width="300px"
+              placeholder="Dropdown médio"
+              items={[
+                { label: 'Opção com texto mais longo', value: '1', icon: 'FileText' },
+                { label: 'Outra opção', value: '2', icon: 'Folder' },
+              ]}
+            />
+          </div>
+          
+          <div>
+            <strong style={{ display: 'block', marginBottom: '8px', color: '#666' }}>Largura 100%</strong>
+            <div style={{ width: '400px', border: '1px solid #e0e0e0', padding: '16px', borderRadius: '8px' }}>
+              <Dropdown 
+                width="100%"
+                placeholder="Dropdown que preenche o container"
+                items={[
+                  { label: 'Opção 1', value: '1', icon: 'Check' },
+                  { label: 'Opção 2', value: '2', icon: 'Check' },
+                ]}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
 };

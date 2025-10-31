@@ -1,14 +1,10 @@
 import { InputHTMLAttributes } from "react";
 import { IconName } from "../Icon/interfaces";
 
-export type InputVariant = 'default' | 'filled' | 'outlined';
-export type InputSize = 'small' | 'medium' | 'large';
-export type InputStatus = 'default' | 'success' | 'warning' | 'error';
-
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  variant?: InputVariant;
-  size?: InputSize;
-  status?: InputStatus;
+  variant?: 'default' | 'filled' | 'outlined';
+  size?: 'small' | 'medium' | 'large';
+  status?: 'default' | 'success' | 'warning' | 'error';
   label?: string;
   helperText?: string;
   fullWidth?: boolean;

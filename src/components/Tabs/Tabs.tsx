@@ -10,6 +10,7 @@ const Tabs = Object.assign(TabsRoot, {
   Trigger: TabsTrigger,
 });
 
+
 export { Tabs };
 export type {
   TabsRootProps,

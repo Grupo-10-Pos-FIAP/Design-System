@@ -13,7 +13,11 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: ['base', 'primary', 'secondary', 'success', 'warning', 'error', 'info', 'white', 'black'],
+      options: [
+        'base', 'white', 'black', 'disabled', 'primary', 'secondary', 
+        'accent', 'soft', 'success', 'warning', 'error', 'info',
+        'gray100', 'gray200', 'gray300', 'gray400', 'gray500', 'gray600'
+      ],
       description: 'Cor do ícone'
     },
     size: {
@@ -116,8 +120,6 @@ export const ExtraLarge: Story = {
   },
 };
 
-type StoryWithoutArgs = StoryObj<typeof meta>;
-
 export const SizeVariants = {
   parameters: {
     controls: { hideNoControlsWarning: true },
@@ -160,104 +162,90 @@ export const ColorVariants = {
     docs: {
       source: {
         code: `
-<Icon name="Heart" color="base" size="large" />
+// Cores principais
 <Icon name="Heart" color="primary" size="large" />
 <Icon name="Heart" color="secondary" size="large" />
+<Icon name="Heart" color="accent" size="large" />
+
+// Cores de estado
 <Icon name="Heart" color="success" size="large" />
 <Icon name="Heart" color="warning" size="large" />
 <Icon name="Heart" color="error" size="large" />
 <Icon name="Heart" color="info" size="large" />
-<Icon name="Heart" color="white" size="large" />
-<Icon name="Heart" color="black" size="large" />`
-      }
-    }
-  },
-  render: () => {
-    const colors = ['base', 'primary', 'secondary', 'success', 'warning', 'error', 'info', 'white', 'black'] as const;
-    
-    return (
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '24px', 
-        padding: '32px',
-        background: 'white',
-        borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-      }}>
-        {colors.map((color) => (
-          <div 
-            key={color} 
-            style={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              gap: '12px',
-              padding: '16px',
-              backgroundColor: color === 'white' ? '#1a1a1a' : 'transparent',
-              borderRadius: '8px',
-              border: color === 'white' ? '1px solid #e0e0e0' : 'none'
-            }}
-          >
-            <Icon name="Heart" color={color} size="large" />
-            <span style={{ 
-              fontSize: '14px', 
-              fontWeight: '600',
-              textTransform: 'capitalize',
-              color: color === 'white' ? '#fff' : '#333'
-            }}>
-              {color}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  },
-};
+<Icon name="Heart" color="disabled" size="large" />
 
-export const AllIcons = {
-  parameters: {
-    controls: { hideNoControlsWarning: true },
-    docs: {
-      source: {
-        code: `
-<Icon name="House" size="medium" color="primary" />
-<Icon name="Star" size="medium" color="primary" />
-<Icon name="Heart" size="medium" color="primary" />
-<Icon name="User" size="medium" color="primary" />
-<Icon name="Settings" size="medium" color="primary" />
-<Icon name="Search" size="medium" color="primary" />
-<Icon name="Calendar" size="medium" color="primary" />
-<Icon name="Camera" size="medium" color="primary" />
-<Icon name="Camera" size="medium" color="primary" />
-`
+// Cores neutras
+<Icon name="Heart" color="base" size="large" />
+<Icon name="Heart" color="white" size="large" />
+<Icon name="Heart" color="black" size="large" />
+
+// Tons de cinza
+<Icon name="Heart" color="gray100" size="large" />
+<Icon name="Heart" color="gray200" size="large" />
+<Icon name="Heart" color="gray300" size="large" />
+<Icon name="Heart" color="gray400" size="large" />
+<Icon name="Heart" color="gray500" size="large" />
+<Icon name="Heart" color="gray600" size="large" />`
       }
     }
   },
   render: () => {
-    const sampleIcons = ['House', 'Star', 'Heart', 'User', 'Settings', 'Search', 'Bell', 'Calendar', 'Camera', 'Chat'] as const;
+    const colorGroups = {
+      'Cores Principais': ['primary', 'secondary', 'accent', 'soft'],
+      'Cores de Estado': ['success', 'warning', 'error', 'info', 'disabled'],
+      'Cores Neutras': ['base', 'white', 'black'],
+      'Tons de Cinza': ['gray100', 'gray200', 'gray300', 'gray400', 'gray500', 'gray600']
+    } as const;
     
     return (
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
-        gap: '24px', 
+       <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column',
+        gap: '32px', 
         padding: '32px',
         background: 'white',
         borderRadius: '8px',
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
       }}>
-        {sampleIcons.map((iconName) => (
-          <div key={iconName} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-            <Icon name={iconName} size="medium" color="primary" />
-            <span style={{ 
-              fontSize: '12px', 
-              color: '#666',
-              textAlign: 'center',
-              wordBreak: 'break-word'
+        {Object.entries(colorGroups).map(([groupName, colors]) => (
+          <div key={groupName}>
+            <h3 style={{ margin: '0 0 16px 0', color: '#333' }}>{groupName}</h3>
+            <div style={{ 
+              display: 'flex', 
+              flexWrap: 'wrap',
+              gap: '16px',
+              alignItems: 'center'
             }}>
-              {iconName}
-            </span>
+              {colors.map((color) => (
+                <div 
+                  key={color} 
+                  style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    gap: '8px',
+                    padding: '16px',
+                    backgroundColor: color === 'white' ? '#1a1a1a' : 
+                                   color.includes('gray') ? '#f8f9fa' : 'transparent',
+                    borderRadius: '8px',
+                    border: color === 'white' ? '1px solid #e0e0e0' : 
+                           color.includes('gray') ? '1px solid #e0e0e0' : 'none',
+                    minWidth: '100px'
+                  }}
+                >
+                  <Icon name="Heart" color={color} size="medium" />
+                  <span style={{ 
+                    fontSize: '12px', 
+                    fontWeight: '600',
+                    textTransform: 'capitalize',
+                    color: color === 'white' ? '#fff' : '#333',
+                    textAlign: 'center'
+                  }}>
+                    {color.replace(/([A-Z])/g, ' $1').toLowerCase()}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

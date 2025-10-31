@@ -5,10 +5,10 @@ $drawer-shadow:
   0 4px 24px rgba(0, 0, 0, 0.08),
   0 0 1px rgba(0, 0, 0, 0.12);
 
-$overlay-bg: $gray-300;
+$overlay-bg: $color-gray300;
 
 $hover-bg: $color-soft;
-$active-bg: $gray-200;
+$active-bg: $color-gray200;
 $focus-ring: rgba($color-primary, 0.5);
 
 $drawer-sizes: (
@@ -108,7 +108,7 @@ $drawer-sizes: (
 }
 
 .navdrawer__content {
-  background-color: $gray-100;
+  background-color: $color-gray100;
   color: $color-black;
   flex: 1;
   overflow-y: auto;
@@ -128,7 +128,7 @@ $drawer-sizes: (
     border-radius: 3px;
 
     &:hover {
-      background-color: $gray-400;
+      background-color: $color-gray400;
     }
   }
 }
@@ -152,7 +152,7 @@ $drawer-sizes: (
   align-items: center;
   gap: $spacing-sm + $spacing-xs;
   padding: $spacing-sm + $spacing-xs $spacing-xs;
-  background: $gray-100;
+  background: $color-gray100;
   border: none;
   border-radius: 8px;
   color: $color-black;
@@ -183,7 +183,7 @@ $drawer-sizes: (
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: $gray-700;
+  color: $color-gray700;
   transition: color 0.2s ease;
 
   .navdrawer__button:hover &,
@@ -205,7 +205,7 @@ $drawer-sizes: (
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: $gray-700;
+  color: $color-gray700;
   transition: all 0.2s ease;
 
   .navdrawer__button:hover & {

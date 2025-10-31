@@ -2,17 +2,20 @@ import { DropdownMenu } from 'radix-ui';
 import { Icon } from '@components/Icon/Icon';
 import { useState } from 'react';
 import './Dropdown.scss';
-import { DropdownItem, DropdownProps } from './interfaces';
+import { DropdownItemProps, DropdownProps } from './interfaces';
 
-export const Dropdown = ({ 
-  trigger, 
+const Dropdown = ({ 
   items,
   placeholder = "Selecione uma opção",
-  onValueChange
+  onValueChange,
+  label,
+  width = 'auto',
+  status = 'default',
+  helperText
 }: DropdownProps) => {
-  const [selectedItem, setSelectedItem] = useState<DropdownItem | null>(null);
+  const [selectedItem, setSelectedItem] = useState<DropdownItemProps | null>(null);
 
-  const handleItemClick = (item: DropdownItem) => {
+  const handleItemClick = (item: DropdownItemProps) => {
     setSelectedItem(item);
     if (item.onClick) {
       item.onClick();
@@ -22,8 +25,11 @@ export const Dropdown = ({
     }
   };
 
-  const defaultTrigger = (
-    <button className={`dropdown-default-trigger ${selectedItem ? 'has-selection' : ''}`}>
+  const trigger = (
+    <button 
+      className={`dropdown-default-trigger ${selectedItem ? 'has-selection' : ''} ${status !== 'default' ? `dropdown-default-trigger--${status}` : ''}`}
+      style={{ width }}
+    >
       <span className={`dropdown-trigger-text ${selectedItem ? 'selected' : ''}`}>
         {selectedItem ? selectedItem.label : placeholder}
       </span>
@@ -32,44 +38,64 @@ export const Dropdown = ({
   );
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
-        {trigger || defaultTrigger}
-      </DropdownMenu.Trigger>
+    <div className="dropdown-wrapper" style={{ width }}>
+      {label && (
+        <label className="dropdown-label">
+          {label}
+        </label>
+      )}
+      
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>
+          {trigger}
+        </DropdownMenu.Trigger>
 
-      <DropdownMenu.Content 
-        className="dropdown-menu" 
-        sideOffset={4}
-        align="start"
-      >       
-        {items.map((item, index) => {
-          if ('label' in item && item.label === 'divider') {
+        <DropdownMenu.Content 
+          className="dropdown-menu" 
+          sideOffset={4}
+          align="start"
+          style={{ width: 'var(--radix-dropdown-menu-trigger-width)' }}
+        >       
+          {items.map((item, index) => {
+            if ('label' in item && item.label === 'divider') {
+              return (
+                <DropdownMenu.Separator 
+                  key={index} 
+                  className="dropdown-separator" 
+                />
+              );
+            }
+
+            const dropdownItem = item as DropdownItemProps;
+            const isSelected = selectedItem?.value === dropdownItem.value;
+            
             return (
-              <DropdownMenu.Separator 
-                key={index} 
-                className="dropdown-separator" 
-              />
+              <DropdownMenu.Item
+                key={index}
+                className={`dropdown-item ${dropdownItem.disabled ? 'disabled' : ''} ${isSelected ? 'selected' : ''}`}
+                onClick={dropdownItem.disabled ? undefined : () => handleItemClick(dropdownItem)}
+                disabled={dropdownItem.disabled}
+              >
+                <div className="dropdown-item-content">
+                  {dropdownItem.icon && <Icon name={dropdownItem.icon} size='small' className="dropdown-icon" />}
+                  <span className="dropdown-item-label">{dropdownItem.label}</span>
+                </div>
+              </DropdownMenu.Item>
             );
-          }
+          })}
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
 
-          const dropdownItem = item as DropdownItem;
-          const isSelected = selectedItem?.value === dropdownItem.value;
-          
-          return (
-            <DropdownMenu.Item
-              key={index}
-              className={`dropdown-item ${dropdownItem.disabled ? 'disabled' : ''} ${isSelected ? 'selected' : ''}`}
-              onClick={dropdownItem.disabled ? undefined : () => handleItemClick(dropdownItem)}
-              disabled={dropdownItem.disabled}
-            >
-              <div className="dropdown-item-content">
-                {dropdownItem.icon && <span className="dropdown-icon">{dropdownItem.icon}</span>}
-                <span className="dropdown-label">{dropdownItem.label}</span>
-              </div>
-            </DropdownMenu.Item>
-          );
-        })}
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      {helperText && (
+        <span className={`dropdown-helper-text dropdown-helper-text--${status}`}>
+          {helperText}
+        </span>
+      )}
+    </div>
   );
 };
+
+Dropdown.displayName = 'Dropdown';
+
+export { Dropdown };
+export type { DropdownProps } from './interfaces';

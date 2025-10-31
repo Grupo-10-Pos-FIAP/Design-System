@@ -1,4 +1,4 @@
-import { SpinnerProps } from '../Spinner/interface';
+import { SpinnerProps } from '../Spinner/interfaces';
 
 export interface LoadingProps {
   text?: string;

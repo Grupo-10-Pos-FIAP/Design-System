@@ -13,6 +13,30 @@ O componente `Dropdown` é usado para exibir uma lista de ações ou opções qu
 Um dropdown simples com itens de texto, acionado por um `Button`.
 <Canvas of={DropdownStories.SelectTransactionType} />
 
+### Com Label
+Dropdown com um label descritivo acima do trigger.
+<Canvas of={DropdownStories.WithLabel} />
+
+### Com Status e Helper Text
+Dropdown com estados visuais e texto de ajuda.
+<Canvas of={DropdownStories.WithStatusAndHelper} />
+
+### Com Erro
+Dropdown em estado de erro com mensagem de validação.
+<Canvas of={DropdownStories.WithError} />
+
+### Com Alerta
+Dropdown em estado de alerta com mensagem de atenção.
+<Canvas of={DropdownStories.WithWarning} />
+
+### Com Largura Customizada
+Dropdown com largura personalizada que se adapta ao conteúdo.
+<Canvas of={DropdownStories.WithCustomWidth} />
+
+### Largura Total
+Dropdown que ocupa 100% da largura do container pai.
+<Canvas of={DropdownStories.FullWidth} />
+
 ### Com Ícones
 É possível adicionar ícones ao lado do texto de cada item para melhorar a identificação visual.
 <Canvas of={DropdownStories.WithIcons} />
@@ -21,6 +45,14 @@ Um dropdown simples com itens de texto, acionado por um `Button`.
 Qualquer item da lista pode ser desabilitado.
 <Canvas of={DropdownStories.WithDisabledItem} />
 
-### Com Gatilho de Ícone
-O `trigger` é uma propriedade flexível e pode ser qualquer elemento, como um `IconButton`.
-<Canvas of={DropdownStories.CustomTrigger} />
+### Ações de Arquivo
+Dropdown com ações específicas para arquivos e documentos.
+<Canvas of={DropdownStories.FileActions} />
+
+### Variações de Status
+Comparação entre diferentes estados visuais do dropdown.
+<Canvas of={DropdownStories.StatusVariants} />
+
+### Variações de Largura
+Comparação entre diferentes tamanhos de dropdown.
+<Canvas of={DropdownStories.WidthVariants} />

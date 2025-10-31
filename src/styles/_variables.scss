@@ -16,7 +16,7 @@ $font-size-h5: 30px;
 // Font Weights
 $font-weight-regular: 400;
 $font-weight-medium: 500;
-$font-weight-semimedium: 510;
+$font-weight-510: 510;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
@@ -43,19 +43,19 @@ $color-white: #ffffff;
 $color-black: #000000;
 
 // Gray scale
-$gray-100: #f8f9fa;
-$gray-200: #e0e0e0;
-$gray-300: #c0c0c0;
-$gray-400: #a0a0a0;
-$gray-500: #808080;
-$gray-600: #606060;
-$gray-700: #404040;
-$gray-800: #202020;
-$gray-900: #101010;
+$color-gray100: #f8f9fa;
+$color-gray200: #e0e0e0;
+$color-gray300: #c0c0c0;
+$color-gray400: #a0a0a0;
+$color-gray500: #808080;
+$color-gray600: #606060;
+$color-gray700: #404040;
+$color-gray800: #202020;
+$color-gray900: #101010;
 
 // Base colors
 $color-base: #1A1A1A;
-$color-disabled: $gray-600; 
+$color-disabled: $color-gray600; 
 
 // Brand palette
 $color-primary: #1c6ea4;   
@@ -141,20 +141,20 @@ $color-link-visited: #0f3c5c;
 $background-primary: $color-primary;
 $background-base: $color-white;
 $background-secondary: $color-soft;
-$background-disabled: $gray-300;
+$background-disabled: $color-gray300;
 
 // System Feedback
 $feedback-success: $color-success;
 $feedback-warning: $color-warning;
 $feedback-error: $color-error;
 $feedback-info: $color-info;
-$feedback-muted: $gray-100;
+$feedback-muted: $color-gray100;
 
 // Borders
-$border-base: $gray-300;
-$border-primary: $gray-200;
-$border-secondary: $gray-400;
-$border-disabled: $gray-300;
+$border-base: $color-gray300;
+$border-primary: $color-gray200;
+$border-secondary: $color-gray400;
+$border-disabled: $color-gray300;
 
 // Spacing
 $spacing-xs: 4px;

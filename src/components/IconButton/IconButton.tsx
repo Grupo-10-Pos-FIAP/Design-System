@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
-import { IconButtonProps } from './interface';
+import { IconButtonProps } from './interfaces';
 import './IconButton.scss';
 import { Icon } from '../Icon/Icon';
 
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
     { icon, variant = 'default', size = 'md', className = '', disabled = false, 'aria-label': ariaLabel, ...props },
     ref
@@ -19,3 +19,6 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 );
 
 IconButton.displayName = 'IconButton';
+
+export { IconButton };
+export type { IconButtonProps } from './interfaces';

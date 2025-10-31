@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, CSSProperties } from 'react';
 import { Dialog as RadixDialog } from "radix-ui";
 import { IconButton } from '@components/IconButton/IconButton';
-import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './Interface';
+import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './interfaces';
 import './Dialog.scss';
 
 const SIZE_MAP: Record<DialogSize, string> = {
@@ -35,7 +35,7 @@ const ALIGN_MAP: Record<ContentAlign, string> = {
   end: 'flex-end',
 };
 
-export const Dialog = ({
+const Dialog = ({
   isOpen = false,
   onClose,
   children,
@@ -147,21 +147,26 @@ export const Dialog = ({
   );
 };
 
-export const DialogHeader: React.FC<SectionProps> = ({ children, className = '', align }) => {
+const DialogHeader: React.FC<SectionProps> = ({ children, className = '', align }) => {
   const classes = ['dialog__header', className, align ? `dialog__header--align-${align}` : '']
     .filter(Boolean)
     .join(' ');
   return <div className={classes}>{children}</div>;
 };
 
-export const DialogBody: React.FC<SectionProps> = ({ children, className = '', align }) => {
+const DialogBody: React.FC<SectionProps> = ({ children, className = '', align }) => {
   const classes = ['dialog__body', className, align ? `dialog__body--align-${align}` : ''].filter(Boolean).join(' ');
   return <div className={classes}>{children}</div>;
 };
 
-export const DialogFooter: React.FC<SectionProps> = ({ children, className = '', align }) => {
+const DialogFooter: React.FC<SectionProps> = ({ children, className = '', align }) => {
   const classes = ['dialog__footer', className, align ? `dialog__footer--align-${align}` : '']
     .filter(Boolean)
     .join(' ');
   return <div className={classes}>{children}</div>;
 };
+
+Dialog.displayName = 'Dialog';
+
+export { Dialog, DialogHeader, DialogBody, DialogFooter };
+export type { DialogProps } from './interfaces';
