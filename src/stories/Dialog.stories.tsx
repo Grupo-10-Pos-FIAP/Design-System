@@ -6,7 +6,92 @@ import { Button } from '@components/Button/Button';
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
   component: Dialog,
+  argTypes: {
+    isOpen: {
+      control: 'boolean',
+      description: 'Controls the visibility of the dialog',
+    },
+    onClose: {
+      action: 'onClose',
+      description: 'Callback function when dialog is closed',
+    },
+    children: {
+      control: 'text',
+      description: 'Dialog content',
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS classes',
+    },
+    position: {
+      control: 'select',
+      options: ['center', 'top', 'bottom', 'left', 'right'],
+      description: 'Position of the dialog on the screen',
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large', 'fullscreen'],
+      description: 'Predefined size variants',
+    },
+    contentAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the content',
+    },
+    headerAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the header content',
+    },
+    bodyAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the body content',
+    },
+    footerAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the footer content',
+    },
+    overlay: {
+      control: 'boolean',
+      description: 'Show/hide the overlay background',
+    },
+    overlayOpacity: {
+      control: { type: 'range', min: 0, max: 1, step: 0.1 },
+      description: 'Opacity level of the overlay (0 to 1)',
+    },
+    closeOnOverlayClick: {
+      control: 'boolean',
+      description: 'Close dialog when clicking on overlay',
+    },
+    showCloseButton: {
+      control: 'boolean',
+      description: 'Show/hide the close button',
+    },
+    title: {
+      control: 'text',
+      description: 'Dialog title text',
+    },
+    description: {
+      control: 'text',
+      description: 'Dialog description text',
+    },
+    width: {
+      control: 'text',
+      description: 'Custom width (e.g., "500px", "80%")',
+    },
+    maxWidth: {
+      control: 'text',
+      description: 'Maximum width (e.g., "500px", "80%")',
+    },
+    fullScreenBreakpoint: {
+      control: 'number',
+      description: 'Breakpoint in pixels for fullscreen mode on mobile',
+    },
+  },
 };
+
 export default meta;
 
 type Story = StoryObj<typeof Dialog>;
