@@ -5,7 +5,7 @@ import './Divider.scss';
 
 const Divider: React.FC<DividerProps> = ({
   orientation = 'horizontal',
-  color = 'default',
+  color = 'neutral',
 }) => {
   return (
     <div
