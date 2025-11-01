@@ -11,11 +11,6 @@ const meta = {
       options: ['default', 'filled', 'outlined'],
       description: 'Variante visual do input',
     },
-    size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-      description: 'Tamanho do input',
-    },
     status: {
       control: 'select',
       options: ['default', 'success', 'warning', 'error'],
@@ -62,20 +57,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const iconNames = {
-  Search: 'Search' as const,
-  Eye: 'Eye' as const,
-  User: 'User' as const,
-  Check: 'Check' as const,
-  Mail: 'Mail' as const,
-  Lock: 'Lock' as const,
-  Phone: 'Phone' as const,
-};
-
 export const Default: Story = {
   args: {
     placeholder: 'Digite algo...',
     label: 'Input padrão',
+    variant: 'default',
+    status: 'default',
+    disabled: false,
   },
   parameters: {
     docs: {
@@ -124,43 +112,6 @@ export const Variants: Story = {
   ),
 };
 
-export const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<Input 
-  size="small" 
-  placeholder="Digite algo..." 
-  label="Input Small" 
-/>
-<Input 
-  size="medium" 
-  placeholder="Digite algo..." 
-  label="Input Medium" 
-/>
-<Input 
-  size="large" 
-  placeholder="Digite algo..." 
-  label="Input Large" 
-/>`,
-      },
-    },
-  },
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
-      <div>
-        <Input {...args} size="small" label="Input Small" />
-      </div>
-      <div>
-        <Input {...args} size="medium" label="Input Medium" />
-      </div>
-      <div>
-        <Input {...args} size="large" label="Input Large" />
-      </div>
-    </div>
-  ),
-};
 
 export const Status: Story = {
   parameters: {
@@ -244,7 +195,7 @@ export const WithIcons: Story = {
       <div>
         <Input
           {...args}
-          startIcon={iconNames.Search}
+          startIcon='Search'
           endIcon={undefined}
           label="Input com ícone no início"
           placeholder="Buscar..."
@@ -254,7 +205,7 @@ export const WithIcons: Story = {
         <Input
           {...args}
           startIcon={undefined}
-          endIcon={iconNames.Eye}
+          endIcon='Eye'
           label="Input com ícone no final"
           type="password"
           placeholder="Digite sua senha..."
@@ -263,8 +214,8 @@ export const WithIcons: Story = {
       <div>
         <Input
           {...args}
-          startIcon={iconNames.User}
-          endIcon={iconNames.Check}
+          startIcon='User'
+          endIcon='Check'
           label="Input com ícones em ambos"
           status="success"
           placeholder="Digite seu nome..."
@@ -434,13 +385,13 @@ export const FormExample: Story = {
       <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <h3 style={{ margin: '0 0 16px 0', color: '#1a1a1a' }}>Formulário de Exemplo</h3>
 
-        <Input label="Nome completo" placeholder="Digite seu nome completo..." startIcon={iconNames.User} required />
+        <Input label="Nome completo" placeholder="Digite seu nome completo..." startIcon='User' required />
 
         <Input
           label="Email"
           type="email"
           placeholder="seu@email.com"
-          startIcon={iconNames.Mail}
+          startIcon='Mail'
           status="success"
           helperText="Email válido"
         />
@@ -449,12 +400,12 @@ export const FormExample: Story = {
           label="Senha"
           type="password"
           placeholder="Crie uma senha segura..."
-          startIcon={iconNames.Lock}
+          startIcon='Lock'
           status="error"
           helperText="Senha deve ter pelo menos 8 caracteres"
         />
 
-        <Input label="Telefone" type="tel" placeholder="(11) 99999-9999" startIcon={iconNames.Phone} />
+        <Input label="Telefone" type="tel" placeholder="(11) 99999-9999" startIcon='Phone' />
 
         <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
           <button
@@ -489,7 +440,6 @@ export const FormExample: Story = {
 export const Playground: Story = {
   args: {
     variant: 'default',
-    size: 'medium',
     status: 'default',
     disabled: false,
     fullWidth: false,

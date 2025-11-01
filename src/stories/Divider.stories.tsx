@@ -12,7 +12,7 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: ['base', 'primary', 'secondary', 'neutral', 'accent', 'soft'],
+      options: ['base', 'primary', 'secondary', 'neutral', 'soft'],
       description: 'Cor do divider'
     },
   }
@@ -24,6 +24,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     orientation: 'horizontal',
+    color: 'neutral',
   },
   parameters: {
     docs: {

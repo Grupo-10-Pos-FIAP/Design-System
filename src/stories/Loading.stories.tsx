@@ -57,6 +57,8 @@ export const Default: Story = {
       color: "primary",
       variant: "default",
     },
+    overlay: false,
+    fullScreen: false,
   },
   parameters: {
     docs: {

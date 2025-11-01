@@ -158,6 +158,7 @@ const defaultDialogCode = `
 export const Default: Story = {
   render: (args) => <DialogTemplate {...args} />,
   args: {
+    title: 'Dialog padrão',
     position: 'center',
     size: 'medium',
     contentAlign: 'center',
@@ -165,7 +166,7 @@ export const Default: Story = {
     overlayOpacity: 0.25,
     closeOnOverlayClick: true,
     showCloseButton: true,
-    title: 'Dialog padrão',
+    isOpen: false,
   },
   parameters: {
     docs: {

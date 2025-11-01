@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Primary, Controls } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Primary, Controls,  } from '@storybook/addon-docs/blocks';
 import { Tabs } from '../components/Tabs/Tabs';
 import * as TabsStories from './Tabs.stories';
 
@@ -7,6 +7,27 @@ import * as TabsStories from './Tabs.stories';
 # Tabs
 
 O componente Tabs organiza conteúdo em diferentes seções visualmente distintas, permitindo aos usuários alternar entre visualizações sem sair da página atual.
+
+## Props
+
+#### Tabs.Root
+- `width`: Largura do container (padrão: "100%")
+- `defaultValue`: Tab ativa inicial
+- `value`: Tab ativa (uso controlado)
+- `onValueChange`: Callback quando a tab muda
+
+#### Tabs.List
+- `scrollable`: Habilita scroll horizontal (padrão: false)
+
+#### Tabs.Trigger
+- `value`: Valor único da tab (obrigatório)
+- `label`: Texto exibido (obrigatório)
+- `disabled`: Desabilita a tab
+
+#### Tabs.Content
+- `value`: Valor correspondente à tab (obrigatório)
+- `children`: Conteúdo da tab (obrigatório)
+
 
 <Primary />
 
@@ -20,3 +41,8 @@ Exemplo com múltiplas tabs e comportamento scrollable:
 
 <Canvas of={TabsStories.Default} />
 
+### Tabs sem Scroll
+
+Exemplo com largura fixa e sem scroll:
+
+<Canvas of={TabsStories.WithoutScroll} />
