@@ -5,11 +5,11 @@ import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } f
 import './Dialog.scss';
 
 const SIZE_MAP: Record<DialogSize, string> = {
-  sm: '360px',
-  md: '600px',
-  lg: '900px',
-  xl: '1200px',
-  full: '100%',
+  'extra-small': '360px',
+  'medium': '600px',
+  'large': '900px',
+  'extra-large': '1200px',
+  'full': '100%',
 };
 
 const getPositionStyle = (position: DialogPosition): CSSProperties => {
@@ -41,7 +41,7 @@ const Dialog = ({
   children,
   className = '',
   position = 'center',
-  size = 'md',
+  size = 'medium',
   contentAlign = 'center',
   headerAlign,
   bodyAlign,

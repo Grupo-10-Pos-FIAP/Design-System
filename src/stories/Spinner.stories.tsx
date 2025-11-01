@@ -11,7 +11,7 @@ type Story = StoryObj<typeof Spinner>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     variant: 'default',
     ariaLabel: 'Carregando...',
@@ -19,7 +19,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando..." />'
+        code: '<Spinner size="medium" color="primary" variant="default" ariaLabel="Carregando..." />'
       }
     }
   },
@@ -30,17 +30,17 @@ export const Sizes: Story = {
     docs: {
       source: {
         code: `
-<Spinner size="sm" color="primary" variant="default" ariaLabel="Carregando pequeno" />
-<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando médio" />
-<Spinner size="lg" color="primary" variant="default" ariaLabel="Carregando grande" />`
+<Spinner size="small" color="primary" variant="default" ariaLabel="Carregando pequeno" />
+<Spinner size="medium" color="primary" variant="default" ariaLabel="Carregando médio" />
+<Spinner size="large" color="primary" variant="default" ariaLabel="Carregando grande" />`
       }
     }
   },
   render: () => (
     <div style={{ display: 'flex', gap: '26px', alignItems: 'center' }}>
-      <Spinner size="sm" color="primary" variant="default" ariaLabel="Carregando pequeno" />
-      <Spinner size="md" color="primary" variant="default" ariaLabel="Carregando médio" />
-      <Spinner size="lg" color="primary" variant="default" ariaLabel="Carregando grande" />
+      <Spinner size="small" color="primary" variant="default" ariaLabel="Carregando pequeno" />
+      <Spinner size="medium" color="primary" variant="default" ariaLabel="Carregando médio" />
+      <Spinner size="large" color="primary" variant="default" ariaLabel="Carregando grande" />
     </div>
   ),
 };
@@ -50,19 +50,19 @@ export const Colors: Story = {
     docs: {
       source: {
         code: `
-<Spinner size="md" color="secondary" variant="dots" ariaLabel="Carregando secundário" />
-<Spinner size="md" color="primary" variant="ring" ariaLabel="Carregando primário" />
-<Spinner size="md" color="success" variant="pulse" ariaLabel="Carregando sucesso" />
-<Spinner size="md" color="alert" variant="default" ariaLabel="Carregando alerta" />`
+<Spinner size="medium" color="secondary" variant="dots" ariaLabel="Carregando secundário" />
+<Spinner size="medium" color="primary" variant="ring" ariaLabel="Carregando primário" />
+<Spinner size="medium" color="success" variant="pulse" ariaLabel="Carregando sucesso" />
+<Spinner size="medium" color="alert" variant="default" ariaLabel="Carregando alerta" />`
       }
     }
   },
   render: () => (
     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-      <Spinner size="md" color="secondary" variant="dots" ariaLabel="Carregando secundário" />
-      <Spinner size="md" color="primary" variant="ring" ariaLabel="Carregando primário" />
-      <Spinner size="md" color="success" variant="pulse" ariaLabel="Carregando sucesso" />
-      <Spinner size="md" color="alert" variant="default" ariaLabel="Carregando alerta" />
+      <Spinner size="medium" color="secondary" variant="dots" ariaLabel="Carregando secundário" />
+      <Spinner size="medium" color="primary" variant="ring" ariaLabel="Carregando primário" />
+      <Spinner size="medium" color="success" variant="pulse" ariaLabel="Carregando sucesso" />
+      <Spinner size="medium" color="alert" variant="default" ariaLabel="Carregando alerta" />
     </div>
   ),
 };
@@ -72,29 +72,29 @@ export const Variants: Story = {
     docs: {
       source: {
         code: `
-<Spinner size="md" color="primary" variant="default" ariaLabel="Spinner padrão" />
-<Spinner size="md" color="primary" variant="pulse" ariaLabel="Spinner pulsante" />
-<Spinner size="md" color="primary" variant="dots" ariaLabel="Spinner com pontos" />
-<Spinner size="lg" color="primary" variant="ring" ariaLabel="Spinner em anel" />`
+<Spinner size="medium" color="primary" variant="default" ariaLabel="Spinner padrão" />
+<Spinner size="medium" color="primary" variant="pulse" ariaLabel="Spinner pulsante" />
+<Spinner size="medium" color="primary" variant="dots" ariaLabel="Spinner com pontos" />
+<Spinner size="large" color="primary" variant="ring" ariaLabel="Spinner em anel" />`
       }
     }
   },
   render: () => (
     <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
       <div style={{ textAlign: 'center' }}>
-        <Spinner size="md" color="primary" variant="default" ariaLabel="Default" />
+        <Spinner size="medium" color="primary" variant="default" ariaLabel="Default" />
         <div>Default</div>
       </div>
       <div style={{ textAlign: 'center' }}>
-        <Spinner size="md" color="primary" variant="pulse" ariaLabel="Pulse" />
+        <Spinner size="medium" color="primary" variant="pulse" ariaLabel="Pulse" />
         <div>Pulse</div>
       </div>
       <div style={{ textAlign: 'center' }}>
-        <Spinner size="md" color="primary" variant="dots" ariaLabel="Dots" />
+        <Spinner size="medium" color="primary" variant="dots" ariaLabel="Dots" />
         <div>Dots</div>
       </div>
       <div style={{ textAlign: 'center' }}>
-        <Spinner size="lg" color="primary" variant="ring" ariaLabel="Ring" />
+        <Spinner size="large" color="primary" variant="ring" ariaLabel="Ring" />
         <div>Ring</div>
       </div>
     </div>
@@ -103,7 +103,7 @@ export const Variants: Story = {
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: 'small',
     color: 'primary',
     variant: 'default',
     ariaLabel: 'Carregando pequeno',
@@ -111,7 +111,7 @@ export const Small: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="sm" color="primary" variant="default" ariaLabel="Carregando pequeno" />'
+        code: '<Spinner size="small" color="primary" variant="default" ariaLabel="Carregando pequeno" />'
       }
     }
   },
@@ -119,7 +119,7 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     variant: 'default',
     ariaLabel: 'Carregando médio',
@@ -127,7 +127,7 @@ export const Medium: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando médio" />'
+        code: '<Spinner size="medium" color="primary" variant="default" ariaLabel="Carregando médio" />'
       }
     }
   },
@@ -135,7 +135,7 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: 'large',
     color: 'primary',
     variant: 'default',
     ariaLabel: 'Carregando grande',
@@ -143,7 +143,7 @@ export const Large: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="lg" color="primary" variant="default" ariaLabel="Carregando grande" />'
+        code: '<Spinner size="large" color="primary" variant="default" ariaLabel="Carregando grande" />'
       }
     }
   },
@@ -151,7 +151,7 @@ export const Large: Story = {
 
 export const PrimaryColor: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     variant: 'default',
     ariaLabel: 'Carregando primário',
@@ -159,7 +159,7 @@ export const PrimaryColor: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Carregando primário" />'
+        code: '<Spinner size="medium" color="primary" variant="default" ariaLabel="Carregando primário" />'
       }
     }
   },
@@ -167,7 +167,7 @@ export const PrimaryColor: Story = {
 
 export const SecondaryColor: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'secondary',
     variant: 'default',
     ariaLabel: 'Carregando secundário',
@@ -175,7 +175,7 @@ export const SecondaryColor: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="secondary" variant="default" ariaLabel="Carregando secundário" />'
+        code: '<Spinner size="medium" color="secondary" variant="default" ariaLabel="Carregando secundário" />'
       }
     }
   },
@@ -183,7 +183,7 @@ export const SecondaryColor: Story = {
 
 export const SuccessColor: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'success',
     variant: 'default',
     ariaLabel: 'Carregando sucesso',
@@ -191,7 +191,7 @@ export const SuccessColor: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="success" variant="default" ariaLabel="Carregando sucesso" />'
+        code: '<Spinner size="medium" color="success" variant="default" ariaLabel="Carregando sucesso" />'
       }
     }
   },
@@ -199,7 +199,7 @@ export const SuccessColor: Story = {
 
 export const AlertColor: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'alert',
     variant: 'default',
     ariaLabel: 'Carregando alerta',
@@ -207,7 +207,7 @@ export const AlertColor: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="alert" variant="default" ariaLabel="Carregando alerta" />'
+        code: '<Spinner size="medium" color="alert" variant="default" ariaLabel="Carregando alerta" />'
       }
     }
   },
@@ -215,7 +215,7 @@ export const AlertColor: Story = {
 
 export const DefaultVariant: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     variant: 'default',
     ariaLabel: 'Spinner padrão',
@@ -223,7 +223,7 @@ export const DefaultVariant: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="primary" variant="default" ariaLabel="Spinner padrão" />'
+        code: '<Spinner size="medium" color="primary" variant="default" ariaLabel="Spinner padrão" />'
       }
     }
   },
@@ -231,7 +231,7 @@ export const DefaultVariant: Story = {
 
 export const PulseVariant: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     variant: 'pulse',
     ariaLabel: 'Spinner pulsante',
@@ -239,7 +239,7 @@ export const PulseVariant: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="primary" variant="pulse" ariaLabel="Spinner pulsante" />'
+        code: '<Spinner size="medium" color="primary" variant="pulse" ariaLabel="Spinner pulsante" />'
       }
     }
   },
@@ -247,7 +247,7 @@ export const PulseVariant: Story = {
 
 export const DotsVariant: Story = {
   args: {
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     variant: 'dots',
     ariaLabel: 'Spinner com pontos',
@@ -255,7 +255,7 @@ export const DotsVariant: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="md" color="primary" variant="dots" ariaLabel="Spinner com pontos" />'
+        code: '<Spinner size="medium" color="primary" variant="dots" ariaLabel="Spinner com pontos" />'
       }
     }
   },
@@ -263,7 +263,7 @@ export const DotsVariant: Story = {
 
 export const RingVariant: Story = {
   args: {
-    size: 'lg',
+    size: 'large',
     color: 'primary',
     variant: 'ring',
     ariaLabel: 'Spinner em anel',
@@ -271,7 +271,7 @@ export const RingVariant: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Spinner size="lg" color="primary" variant="ring" ariaLabel="Spinner em anel" />'
+        code: '<Spinner size="large" color="primary" variant="ring" ariaLabel="Spinner em anel" />'
       }
     }
   },

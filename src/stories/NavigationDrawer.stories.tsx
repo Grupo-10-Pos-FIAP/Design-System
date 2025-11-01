@@ -13,7 +13,7 @@ const meta: Meta<typeof NavigationDrawer> = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'medium', 'large'],
     },
   },
 };
@@ -34,7 +34,7 @@ export const Default: StoryObj = {
           open={open}
           onClose={() => setOpen(false)}
           position="left"
-          size="md"
+          size="medium"
           showCloseButton
           closeOnOverlayClick
           header={<h3 style={{ margin: 0 }}>Menu default</h3>}
@@ -78,7 +78,7 @@ export const Playground: StoryObj<typeof NavigationDrawer> = {
   args: {
     open: true,
     position: 'left',
-    size: 'md',
+    size: 'medium',
     showCloseButton: true,
     closeOnOverlayClick: true,
     header: <h3 style={{ margin: 0 }}>Menu Controlado</h3>,

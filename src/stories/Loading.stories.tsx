@@ -53,7 +53,7 @@ export const Default: Story = {
   args: {
     text: "Loading...",
     spinnerProps: {
-      size: "md",
+      size: "medium",
       color: "primary",
       variant: "default",
     },
@@ -64,7 +64,7 @@ export const Default: Story = {
         code: `<Loading 
   text="Loading..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary", 
     variant: "default"
   }} 
@@ -82,7 +82,7 @@ export const SpinnerVariants: Story = {
 <Loading 
   text="Loading with default spinner..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary",
     variant: "default"
   }} 
@@ -91,7 +91,7 @@ export const SpinnerVariants: Story = {
 <Loading 
   text="Loading with dots spinner..." 
   spinnerProps={{
-    size: "md", 
+    size: "medium", 
     color: "primary",
     variant: "dots"
   }} 
@@ -100,7 +100,7 @@ export const SpinnerVariants: Story = {
 <Loading 
   text="Loading with ring spinner..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary", 
     variant: "ring"
   }} 
@@ -109,7 +109,7 @@ export const SpinnerVariants: Story = {
 <Loading 
   text="Loading with pulse spinner..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary",
     variant: "pulse" 
   }} 
@@ -132,7 +132,7 @@ export const SpinnerVariants: Story = {
               <Loading
                 text={`Loading with ${variant} spinner...`}
                 spinnerProps={{
-                  size: "md",
+                  size: "medium",
                   color: "primary",
                   variant: variant,
                 }}
@@ -151,27 +151,27 @@ export const Sizes: Story = {
       source: {
         code: `
 <Loading 
-  text="Loading (sm)..." 
+  text="Loading (small)..." 
   spinnerProps={{
-    size: "sm",
+    size: "small",
     color: "primary",
     variant: "default"
   }} 
 />
 
 <Loading 
-  text="Loading (md)..." 
+  text="Loading (medium)..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary", 
     variant: "default"
   }} 
 />
 
 <Loading 
-  text="Loading (lg)..." 
+  text="Loading (large)..." 
   spinnerProps={{
-    size: "lg",
+    size: "large",
     color: "primary",
     variant: "default"
   }} 
@@ -180,7 +180,7 @@ export const Sizes: Story = {
     }
   },
   render: () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["small", "medium", "large"] as const;
     const [activeSize, setActiveSize] = useState<string | null>(null);
 
     return (
@@ -220,7 +220,7 @@ export const WithOverlay: Story = {
     text="Processing..."
     overlay
     spinnerProps={{
-      size: "lg",
+      size: "large",
       color: "primary", 
       variant: "ring"
     }}
@@ -245,7 +245,7 @@ export const WithOverlay: Story = {
             text="Processing..."
             overlay
             spinnerProps={{
-              size: "lg",
+              size: "large",
               color: "primary",
               variant: "ring",
             }}
@@ -265,7 +265,7 @@ export const FullScreen: Story = {
   text="Loading application..."
   fullScreen
   spinnerProps={{
-    size: "lg",
+    size: "large",
     color: "primary",
     variant: "default"
   }}
@@ -288,7 +288,7 @@ export const FullScreen: Story = {
             text="Loading application..."
             fullScreen
             spinnerProps={{
-              size: "lg",
+              size: "large",
               color: "primary",
               variant: "default",
             }}
@@ -302,7 +302,7 @@ export const FullScreen: Story = {
 export const WithoutText: Story = {
   args: {
     spinnerProps: {
-      size: "md",
+      size: "medium",
       color: "primary",
       variant: "default",
     },
@@ -312,7 +312,7 @@ export const WithoutText: Story = {
       source: {
         code: `<Loading 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary",
     variant: "default"
   }} 
@@ -326,7 +326,7 @@ export const CustomText: Story = {
   args: {
     text: "Carregando dados...",
     spinnerProps: {
-      size: "md",
+      size: "medium",
       color: "primary",
       variant: "default",
     },
@@ -337,7 +337,7 @@ export const CustomText: Story = {
         code: `<Loading 
   text="Carregando dados..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary",
     variant: "default"
   }} 
@@ -355,7 +355,7 @@ export const DifferentColors: Story = {
 <Loading 
   text="Loading primary..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "primary",
     variant: "default"
   }} 
@@ -364,7 +364,7 @@ export const DifferentColors: Story = {
 <Loading 
   text="Loading secondary..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "secondary", 
     variant: "default"
   }} 
@@ -373,7 +373,7 @@ export const DifferentColors: Story = {
 <Loading 
   text="Loading success..." 
   spinnerProps={{
-    size: "md",
+    size: "medium",
     color: "success",
     variant: "default"
   }} 
@@ -396,7 +396,7 @@ export const DifferentColors: Story = {
               <Loading
                 text={`Loading ${color}...`}
                 spinnerProps={{
-                  size: "md",
+                  size: "medium",
                   color: color,
                   variant: "default",
                 }}

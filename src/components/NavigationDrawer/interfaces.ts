@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { IconName } from '@components/Icon/interfaces';
 
 export type NavDrawerPosition = 'left' | 'right';
-export type NavDrawerSize = 'sm' | 'md' | 'lg' | 'full';
+export type NavDrawerSize = 'small' | 'medium' | 'large' | 'full';
 
 export interface NavDrawerItem {
   label: string;

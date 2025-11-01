@@ -12,9 +12,9 @@ $active-bg: $color-gray200;
 $focus-ring: rgba($color-primary, 0.5);
 
 $drawer-sizes: (
-  'sm': 220px,
-  'md': 280px,
-  'lg': 320px,
+  'small': 220px,
+  'medium': 280px,
+  'large': 320px,
   'full': 100%,
 );
 
@@ -268,13 +268,13 @@ $drawer-sizes: (
 
 @media (max-width: $breakpoint-tablet) {
   .navdrawer {
-    &--sm,
-    &--md {
+    &--small,
+    &--medium {
       width: 85vw;
       max-width: 320px;
     }
 
-    &--lg {
+    &--large {
       width: 90vw;
       max-width: 400px;
     }
@@ -293,9 +293,9 @@ $drawer-sizes: (
 
 @media (max-width: $breakpoint-mobile) {
   .navdrawer {
-    &--sm,
-    &--md,
-    &--lg {
+    &--small,
+    &--medium,
+    &--large {
       width: 90vw;
       max-width: 100vw;
     }

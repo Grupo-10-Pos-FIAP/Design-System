@@ -21,7 +21,7 @@ const NavigationDrawer: FC<NavigationDrawerProps> & {
   onClose,
   items,
   position = 'left',
-  size = 'md',
+  size = 'medium',
   showCloseButton = true,
   closeOnOverlayClick = true,
   className = '',
