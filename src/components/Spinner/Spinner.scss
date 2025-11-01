@@ -30,10 +30,10 @@ $spinner-animation-duration: 1s;
     color: $color-secondary;
   }
   &--alert {
-    color: $color-alert;
+    color: $color-feedback-alert;
   }
   &--success {
-    color: $color-success;
+    color: $color-feedback-success;
   }
   &--neutral {
     color: $color-neutral;

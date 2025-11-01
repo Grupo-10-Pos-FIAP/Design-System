@@ -1,20 +1,7 @@
-@mixin input-focus {
-  outline: none;
-  border-color: $color-primary;
-  box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
-}
-
-@mixin input-disabled {
-  background-color: $background-disabled;
-  border-color: $border-disabled;
-  color: $color-disabled;
-  cursor: not-allowed;
-}
-
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px; 
+  gap: 8px;
 }
 
 .input-label {
@@ -23,9 +10,9 @@
   font-weight: $font-weight-medium;
   color: $color-base;
   margin-bottom: 0;
-  
+
   .input--disabled + & {
-    color: $color-disabled;
+    color: $color-content-disabled;
   }
 }
 
@@ -37,106 +24,93 @@
 }
 
 .input {
-  font-family: $font-family-default;
-  font-size: $font-size-small; 
-  font-weight: $font-weight-regular;
-  
-  border: 1px solid $border-primary;
-  border-radius: 8px; 
-  background-color: $color-white; 
+  background-color: $color-bg-default;
   color: $color-gray700;
-  transition: all 0.2s ease;
-  width: 100%;
-  min-height: 40px;
-
+  border: 1px solid $color-border-default;
+  border-radius: 8px;
   padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 310px;
+  min-height: 40px;
+  height: 40px; 
+  font-family: $font-family-default;
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
+  width: 100%;
   box-sizing: border-box;
 
   &:focus {
-    @include input-focus;
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
   }
-  
+
   &:hover:not(:disabled, .input--error) {
-    border-color: $border-base;
+    border-color: $color-border-default;
     background: $color-gray100;
   }
-  
+
   &:disabled {
-    @include input-disabled;
+    background-color: $color-bg-disabled;
+    border-color: $color-border-disabled;
+    color: $color-content-disabled;
+    cursor: not-allowed;
   }
-  
+
   &::placeholder {
     color: $color-gray600;
     font-weight: $font-weight-regular;
   }
-  
+
   &--filled {
     background-color: $color-gray100;
     border-color: transparent;
-    
+
     &:focus {
       background-color: $color-white;
       border-color: $color-primary;
     }
   }
-  
+
   &--outlined {
     background-color: transparent;
     border-width: 2px;
-    
+
     &:focus {
       border-width: 2px;
     }
   }
-  
-  &--small {
-    font-size: $font-size-small;
-    padding: 8px 12px;
-    height: 36px;
-    min-height: 36px;
-  }
-  
-  &--medium {
-    font-size: $font-size-small;
-    padding: 10px 12px;
-    height: 40px;
-    min-height: 40px;
-  }
-  
-  &--large {
-    font-size: $font-size-body;
-    padding: 12px 16px;
-    height: 48px;
-    min-height: 48px;
-  }
-  
+
   &--success {
-    border-color: $feedback-success;
-    
+    border-color: $color-feedback-success;
+
     &:focus {
-      border-color: $feedback-success;
-      box-shadow: 0 0 0 2px rgba($feedback-success, 0.1);
+      border-color: $color-feedback-success;
+      box-shadow: 0 0 0 2px rgba($color-feedback-success, 0.1);
     }
   }
-  
+
   &--warning {
-    border-color: $feedback-warning;
-    
+    border-color: $color-feedback-warning;
+
     &:focus {
-      border-color: $feedback-warning;
-      box-shadow: 0 0 0 2px rgba($feedback-warning, 0.1);
+      border-color: $color-feedback-warning;
+      box-shadow: 0 0 0 2px rgba($color-feedback-warning, 0.1);
     }
   }
-  
+
   &--error {
-    border-color: $color-error;
-    
+    border-color: $color-feedback-error;
+
     &:focus {
-      border-color: $color-error;
-      box-shadow: 0 0 0 2px rgba($color-error, 0.1);
+      border-color: $color-feedback-error;
+      box-shadow: 0 0 0 2px rgba($color-feedback-error, 0.1);
     }
   }
-  
+
   &--full-width {
     width: 100%;
   }
@@ -147,41 +121,41 @@
     &.input--small {
       padding-left: 40px;
     }
-    
+
     &.input--medium {
       padding-left: 40px;
     }
-    
+
     &.input--large {
       padding-left: 48px;
     }
   }
-  
+
   &.input--has-end-icon {
     &.input--small {
       padding-right: 40px;
     }
-    
+
     &.input--medium {
       padding-right: 40px;
     }
-    
+
     &.input--large {
       padding-right: 48px;
     }
   }
-  
+
   &.input--has-start-icon.input--has-end-icon {
     &.input--small {
       padding-left: 40px;
       padding-right: 40px;
     }
-    
+
     &.input--medium {
       padding-left: 40px;
       padding-right: 40px;
     }
-    
+
     &.input--large {
       padding-left: 48px;
       padding-right: 48px;
@@ -197,47 +171,46 @@
   align-items: center;
   justify-content: center;
   color: $color-gray600;
-  pointer-events: none;
   z-index: 1;
-  
+
   &--start {
     left: 12px;
-    
+
     .input--small & {
       left: 12px;
     }
-    
+
     .input--large & {
       left: 16px;
     }
   }
-  
+
   &--end {
     right: 12px;
-    
+
     .input--small & {
       right: 12px;
     }
-    
+
     .input--large & {
       right: 16px;
     }
   }
-  
+
   .input:disabled ~ & {
-    color: $color-disabled;
+    color: $color-content-disabled;
   }
-  
+
   .input--success ~ & {
-    color: $feedback-success;
+    color: $color-feedback-success;
   }
-  
+
   .input--warning ~ & {
-    color: $feedback-warning;
+    color: $color-feedback-warning;
   }
-  
+
   .input--error ~ & {
-    color: $color-error;
+    color: $color-feedback-error;
   }
 }
 
@@ -246,28 +219,28 @@
   font-size: $font-size-caption;
   color: $color-gray600;
   margin-top: 4px;
-  
+
   &--default {
     color: $color-gray600;
   }
-  
+
   &--success {
-    color: $feedback-success;
+    color: $color-feedback-success;
   }
-  
+
   &--warning {
-    color: $feedback-warning;
+    color: $color-feedback-warning;
   }
-  
+
   &--error {
-    color: $color-error;
+    color: $color-feedback-error;
   }
 }
 
 .input--with-selection {
   background: rgba($color-soft, 0.3);
   border-color: $color-primary;
-  
+
   &:hover {
     background: rgba($color-soft, 0.5);
   }
@@ -280,14 +253,14 @@
       font-size: $font-size-small;
       height: 44px;
     }
-    
+
     &.input--has-start-icon {
       &.input--medium,
       &.input--large {
         padding-left: 40px;
       }
     }
-    
+
     &.input--has-end-icon {
       &.input--medium,
       &.input--large {
@@ -295,7 +268,7 @@
       }
     }
   }
-  
+
   .input-icon {
     &--start {
       .input--medium &,
@@ -303,7 +276,7 @@
         left: 12px;
       }
     }
-    
+
     &--end {
       .input--medium &,
       .input--large & {

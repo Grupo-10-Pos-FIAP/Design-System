@@ -3,8 +3,7 @@
   flex-direction: column;
   border-radius: 8px;
   padding: $spacing-md;
-  background-color: $color-white;
-  color: $color-black;
+  color: $color-content-default;
   transition:
     box-shadow 0.2s ease-in-out,
     opacity 0.2s ease-out,
@@ -37,7 +36,7 @@
     background: transparent;
     border: none;
     border-radius: 8px;
-    color: $color-black;
+    color: $color-content-default;
     cursor: pointer;
     transition:
       background-color 0.2s ease,
@@ -89,6 +88,16 @@
     text-align: center;
   }
 
+  &--base {
+    background-color: $color-bg-default;
+  }
+
+  &--gradient {
+    color: $color-content-inverse;
+    background: $color-bg-gradient !important;
+  }
+
+
   &--elevated {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.096);
 
@@ -98,10 +107,10 @@
   }
 
   &--outlined {
-    border: 1px solid $border-base;
+    border: 1px solid $color-border-default;
 
     .card__section:not(:first-child) {
-      border-top-color: $border-base;
+      border-top-color: $color-border-default;
     }
   }
 

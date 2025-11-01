@@ -1,16 +1,5 @@
 @use 'sass:color';
 
-$drawer-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-$drawer-shadow:
-  0 4px 24px rgba(0, 0, 0, 0.08),
-  0 0 1px rgba(0, 0, 0, 0.12);
-
-$overlay-bg: $color-gray300;
-
-$hover-bg: $color-soft;
-$active-bg: $color-gray200;
-$focus-ring: rgba($color-primary, 0.5);
-
 $drawer-sizes: (
   'small': 220px,
   'medium': 280px,
@@ -24,11 +13,11 @@ $drawer-sizes: (
   left: 0;
   right: 0;
   bottom: 0;
-  background: $color-base-gray;
+  background: $color-neutral;
   backdrop-filter: blur(2px);
   z-index: $z-index-modal-backdrop;
   opacity: 0;
-  transition: opacity $drawer-transition;
+  transition: opacity $nav-drawer-color-transition;
 
   &--visible {
     opacity: 1;
@@ -42,10 +31,10 @@ $drawer-sizes: (
   position: fixed;
   top: 0;
   bottom: 0;
-  background: $background-base;
-  box-shadow: $drawer-shadow;
+  background: $color-bg-default;
+  box-shadow: $nav-drawer-color-shadow;
   z-index: $z-index-modal;
-  transition: transform $drawer-transition;
+  transition: transform $nav-drawer-color-transition;
   overflow: hidden;
 
   &--left {
@@ -88,16 +77,16 @@ $drawer-sizes: (
   z-index: 10;
 
   &:hover {
-    background: $hover-bg;
+    background: $nav-drawer-color-bg-hovered;
     color: $color-black;
   }
 
   &:active {
-    background: $active-bg;
+    background: $nav-drawer-color-bg-actived;
   }
 
   &:focus-visible {
-    outline: 2px solid $focus-ring;
+    outline: 2px solid $color-border-focused;
     outline-offset: 2px;
   }
 }
@@ -165,15 +154,15 @@ $drawer-sizes: (
   position: relative;
 
   &:hover {
-    background: $hover-bg;
+    background: $nav-drawer-color-bg-hovered;
   }
 
   &:active {
-    background: $active-bg;
+    background: $nav-drawer-color-bg-actived;
   }
 
   &:focus-visible {
-    outline: 2px solid $focus-ring;
+    outline: 2px solid $color-border-focused;
     outline-offset: -2px;
   }
 }
@@ -193,7 +182,7 @@ $drawer-sizes: (
 }
 
 .navdrawer__label {
-  color: $color-disabled;
+  color: $color-content-disabled;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -218,7 +207,7 @@ $drawer-sizes: (
   margin: $spacing-xs 0 0 0;
   padding: 0;
   padding-left: $spacing-sm;
-  border-left: 2px solid $border-primary;
+  border-left: 2px solid $color-border-default;
   margin-left: $spacing-md;
 }
 
@@ -245,16 +234,16 @@ $drawer-sizes: (
   transition: all 0.2s ease;
 
   &:hover {
-    background: $hover-bg;
+    background: $nav-drawer-color-bg-hovered;
     color: $color-black;
   }
 
   &:active {
-    background: $active-bg;
+    background: $nav-drawer-color-bg-actived;
   }
 
   &:focus-visible {
-    outline: 2px solid $focus-ring;
+    outline: 2px solid $color-border-focused;
     outline-offset: -2px;
   }
 }
@@ -319,7 +308,7 @@ $drawer-sizes: (
 
 .navdrawer__button--disabled,
 .navdrawer__subbutton--disabled {
-  color: $color-disabled;
+  color: $color-content-disabled;
   cursor: not-allowed;
   opacity: 0.6;
 
@@ -328,6 +317,6 @@ $drawer-sizes: (
   }
 
   .navdrawer__icon {
-    color: $color-disabled;
+    color: $color-content-disabled;
   }
 }
