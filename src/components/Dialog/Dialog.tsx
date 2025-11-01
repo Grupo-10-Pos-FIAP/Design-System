@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, CSSProperties } from 'react';
-import { Dialog as RadixDialog } from "radix-ui";
+import { Dialog as RadixDialog } from 'radix-ui';
 import { IconButton } from '@components/IconButton/IconButton';
 import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './interfaces';
 import './Dialog.scss';
@@ -126,17 +126,13 @@ const Dialog = ({
               e.preventDefault();
             }
           }}>
-          <RadixDialog.Title asChild>
-            {title}
-          </RadixDialog.Title>
+          <RadixDialog.Title asChild>{title}</RadixDialog.Title>
 
-          <RadixDialog.Description asChild>
-            {description || ' '}
-          </RadixDialog.Description>
+          <RadixDialog.Description asChild>{description || ' '}</RadixDialog.Description>
 
           {showCloseButton && (
             <RadixDialog.Close asChild>
-              <IconButton icon="X" variant="ghost" className="dialog__close" aria-label="Fechar" />
+              <IconButton icon="X" variant="transparent" className="dialog__close" aria-label="Fechar" />
             </RadixDialog.Close>
           )}
 

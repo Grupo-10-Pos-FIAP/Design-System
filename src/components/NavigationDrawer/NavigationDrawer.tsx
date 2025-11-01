@@ -1,5 +1,6 @@
 import { useState, useEffect, FC } from 'react';
 import { Icon } from '@components/Icon/Icon';
+import { ListItem } from '@components/ListItem/ListItem';
 import './NavigationDrawer.scss';
 import type { NavigationDrawerProps, NavDrawerHeaderProps, NavDrawerFooterProps } from './interfaces';
 
@@ -92,73 +93,30 @@ const NavigationDrawer: FC<NavigationDrawerProps> & {
                 }
               };
 
-              const ButtonOrLink = item.href ? 'a' : 'button';
-
               return (
                 <li
                   key={`${item.label}-${index}`}
                   className={`navdrawer__item ${isOpen ? 'navdrawer__item--open' : ''}`}
                   role="listitem">
-                  <ButtonOrLink
-                    className={`navdrawer__button 
-                    ${item.active ? 'navdrawer__button--active' : ''} 
-                    ${item.disabled ? 'navdrawer__button--disabled' : ''}`}
-                    {...(item.href
-                      ? { href: item.href }
-                      : {
-                          onClick: item.disabled ? undefined : handleItemClick,
-                        })}
-                    type={item.href ? undefined : 'button'}
-                    aria-label={item.label}
-                    aria-current={item.active ? 'page' : undefined}
-                    disabled={item.disabled}
-                    aria-disabled={item.disabled}>
-                    {item.icon && (
-                      <span className="navdrawer__icon" aria-hidden="true">
-                        <Icon name={item.icon} size="small" />
-                      </span>
-                    )}
-                    <span className="navdrawer__label">{item.label}</span>
-                    {hasChildren && (
-                      <span
-                        className={`navdrawer__chevron ${isOpen ? 'navdrawer__chevron--open' : ''}`}
-                        aria-hidden="true">
-                        <Icon name="ChevronDown" size="extra-small" />
-                      </span>
-                    )}
-                  </ButtonOrLink>
+                  <ListItem
+                    label={item.label}
+                    icon={item.icon}
+                    isActive={item.active}
+                    onClick={handleItemClick}
+                  />
 
                   {hasChildren && isOpen && (
                     <ul className="navdrawer__submenu" role="list">
-                      {item.children?.map((sub, subIndex) => {
-                        const SubButtonOrLink = sub.href ? 'a' : 'button';
-
-                        return (
-                          <li key={`${sub.label}-${subIndex}`} className="navdrawer__subitem" role="listitem">
-                            <SubButtonOrLink
-                              className={`navdrawer__subbutton 
-                              ${sub.active ? 'navdrawer__subbutton--active' : ''} 
-                              ${sub.disabled ? 'navdrawer__subbutton--disabled' : ''}`}
-                              {...(sub.href
-                                ? { href: sub.href }
-                                : {
-                                    onClick: sub.disabled ? undefined : sub.onClick,
-                                  })}
-                              type={sub.href ? undefined : 'button'}
-                              aria-label={sub.label}
-                              aria-current={sub.active ? 'page' : undefined}
-                              disabled={sub.disabled}
-                              aria-disabled={sub.disabled}>
-                              {sub.icon && (
-                                <span className="navdrawer__icon" aria-hidden="true">
-                                  <Icon name={sub.icon} size="extra-small" />
-                                </span>
-                              )}
-                              <span className="navdrawer__label">{sub.label}</span>
-                            </SubButtonOrLink>
-                          </li>
-                        );
-                      })}
+                      {item.children?.map((sub, subIndex) => (
+                        <li key={`${sub.label}-${subIndex}`} className="navdrawer__subitem" role="listitem">
+                          <ListItem
+                            label={sub.label}
+                            icon={sub.icon}
+                            isActive={sub.active}
+                            onClick={() => sub.onClick}
+                          />
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </li>

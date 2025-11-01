@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
-import { IconName } from '@components/Icon/interfaces';
+import { IconKeys } from '@components/Icon/interfaces';
 
 export type NavDrawerPosition = 'left' | 'right';
 export type NavDrawerSize = 'small' | 'medium' | 'large' | 'full';
 
 export interface NavDrawerItem {
   label: string;
-  icon?: IconName;
+  icon?: IconKeys;
   onClick?: () => void;
   href?: string;
   children?: NavDrawerItem[];

@@ -6,7 +6,7 @@ interface DividerProps {
   /**
    * Color types of the divider.
    */
-  color?: 'base' | 'primary' | 'secondary' | 'neutral' | 'accent' | 'soft';
+  color?: 'base' | 'primary' | 'secondary' | 'neutral'  | 'soft';
   
 }
 

@@ -1,4 +1,181 @@
 @use 'sass:color';
+@use 'sass:map';
+
+$icon-btn-color-map: (
+  'primary': $color-primary,
+  'secondary': $color-secondary,
+  'success': $color-feedback-success,
+  'alert': $color-feedback-alert,
+  'base': $color-base,
+  'white': $color-white,
+  'gray100': $color-gray100,
+  'gray200': $color-gray200,
+);
+
+$icon-btn-size-map: (
+  'small': (
+    'size': 32px,
+    'padding': $spacing-xs,
+    'icon-size': 16px,
+  ),
+  'medium': (
+    'size': 40px,
+    'padding': $spacing-sm,
+    'icon-size': 20px,
+  ),
+  'large': (
+    'size': 52px,
+    'padding': $spacing-md,
+    'icon-size': 26px,
+  ),
+);
+
+@function icon-btn-color($variant, $property: 'background') {
+  @if map.has-key($icon-btn-color-map, $variant) {
+    @return map.get($icon-btn-color-map, $variant);
+  }
+  
+  @warn "Variante '#{$variant}' não encontrada no mapa de cores do botão";
+  @return map.get($icon-btn-color-map, 'primary');
+}
+
+@mixin icon-btn-variants {
+  &--primary {
+    background-color: icon-btn-color('primary');
+    color: $color-white;
+    border: 1px solid icon-btn-color('primary');
+
+    &:not(:disabled):hover {
+      background-color: color.adjust(icon-btn-color('primary'), $lightness: -8%);
+      border-color: color.adjust(icon-btn-color('primary'), $lightness: -8%);
+    }
+
+    &:not(:disabled):active {
+      background-color: color.adjust(icon-btn-color('primary'), $lightness: -12%);
+      border-color: color.adjust(icon-btn-color('primary'), $lightness: -12%);
+    }
+  }
+
+  &--secondary {
+    background-color: icon-btn-color('secondary');
+    color: $color-white;
+    border: 1px solid icon-btn-color('secondary');
+
+    &:not(:disabled):hover {
+      background-color: color.adjust(icon-btn-color('secondary'), $lightness: -8%);
+      border-color: color.adjust(icon-btn-color('secondary'), $lightness: -8%);
+    }
+
+    &:not(:disabled):active {
+      background-color: color.adjust(icon-btn-color('secondary'), $lightness: -12%);
+      border-color: color.adjust(icon-btn-color('secondary'), $lightness: -12%);
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+    color: icon-btn-color('primary');
+    border: 1px solid icon-btn-color('primary');
+
+    &:not(:disabled):hover {
+      background-color: icon-btn-color('primary');
+      color: $color-white;
+    }
+
+    &:not(:disabled):active {
+      background-color: color.adjust(icon-btn-color('primary'), $lightness: -8%);
+      border-color: color.adjust(icon-btn-color('primary'), $lightness: -8%);
+    }
+  }
+
+  &--transparent {
+    background-color: transparent;
+    color: icon-btn-color('base');
+    border: 1px solid transparent;
+
+    &:not(:disabled):hover {
+      background-color: icon-btn-color('gray100');
+      color: icon-btn-color('primary');
+    }
+
+    &:not(:disabled):active {
+      background-color: icon-btn-color('gray200');
+    }
+  }
+}
+
+@mixin icon-btn-sizes {
+  @each $size, $properties in $icon-btn-size-map {
+    &--#{$size} {
+      width: map.get($properties, 'size');
+      height: map.get($properties, 'size');
+      padding: map.get($properties, 'padding');
+
+      .icon-btn__icon {
+        width: map.get($properties, 'icon-size');
+        height: map.get($properties, 'icon-size');
+      }
+    }
+  }
+}
+
+@mixin icon-btn-states {
+  &:focus-visible {
+    outline: 2px solid icon-btn-color('primary');
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+
+  &:not(:disabled):active {
+    transform: translateY(0);
+  }
+}
+
+@mixin icon-btn-responsive {
+  @media (max-width: $breakpoint-mobile) {
+    @each $size, $properties in $icon-btn-size-map {
+      $mobile-size: map.get($properties, 'size') + 4px;
+      $mobile-icon-size: map.get($properties, 'icon-size') + 2px;
+
+      &--#{$size} {
+        width: $mobile-size;
+        height: $mobile-size;
+
+        .icon-btn__icon {
+          width: $mobile-icon-size;
+          height: $mobile-icon-size;
+        }
+      }
+    }
+  }
+}
+
+@mixin icon-btn-accessibility {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+
+  @media (prefers-contrast: high) {
+    border-width: 2px;
+
+    &--transparent {
+      border-color: currentColor;
+    }
+  }
+}
 
 .icon-btn {
   display: inline-flex;
@@ -13,208 +190,16 @@
   position: relative;
   background: transparent;
 
-  &:focus-visible {
-    outline: 2px solid $color-primary;
-    outline-offset: 2px;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
-  &:not(:disabled):hover {
-    transform: translateY(-1px);
-  }
-
-  &:not(:disabled):active {
-    transform: translateY(0);
-  }
+  @include icon-btn-states;
+  @include icon-btn-variants;
+  @include icon-btn-sizes;
+  @include icon-btn-accessibility;
+  @include icon-btn-responsive;
 
   &__icon {
     transition: opacity 0.2s ease-in-out;
-  }
-}
-.icon-btn--default {
-  background-color: $color-primary;
-  color: $color-white;
-  border: 1px solid $color-primary;
-
-  &:hover {
-    background-color: color.adjust($color-primary, $lightness: -8%);
-    border-color: color.adjust($color-primary, $lightness: -8%);
-  }
-
-  &:active {
-    background-color: color.adjust($color-primary, $lightness: -12%);
-    border-color: color.adjust($color-primary, $lightness: -12%);
-  }
-}
-
-.icon-btn--secondary {
-  background-color: $color-secondary;
-  color: $color-white;
-  border: 1px solid $color-secondary;
-
-  &:hover {
-    background-color: color.adjust($color-secondary, $lightness: -8%);
-    border-color: color.adjust($color-secondary, $lightness: -8%);
-  }
-
-  &:active {
-    background-color: color.adjust($color-secondary, $lightness: -12%);
-    border-color: color.adjust($color-secondary, $lightness: -12%);
-  }
-}
-
-.icon-btn--outline {
-  background-color: transparent;
-  color: $color-primary;
-  border: 1px solid $color-primary;
-
-  &:hover {
-    background-color: $color-primary;
-    color: $color-white;
-  }
-
-  &:active {
-    background-color: color.adjust($color-primary, $lightness: -8%);
-    border-color: color.adjust($color-primary, $lightness: -8%);
-  }
-}
-
-.icon-btn--ghost {
-  background-color: transparent;
-  color: $color-base;
-  border: 1px solid transparent;
-
-  &:hover {
-    background-color: $color-gray100;
-    color: $color-primary;
-  }
-
-  &:active {
-    background-color: $color-gray200;
-  }
-}
-
-.icon-btn--alert {
-  background-color: $color-alert;
-  color: $color-white;
-  border: 1px solid $color-alert;
-
-  &:hover {
-    background-color: color.adjust($color-alert, $lightness: -8%);
-    border-color: color.adjust($color-alert, $lightness: -8%);
-  }
-
-  &:active {
-    background-color: color.adjust($color-alert, $lightness: -12%);
-    border-color: color.adjust($color-alert, $lightness: -12%);
-  }
-}
-
-.icon-btn--success {
-  background-color: $color-success;
-  color: $color-white;
-  border: 1px solid $color-success;
-
-  &:hover {
-    background-color: color.adjust($color-success, $lightness: -8%);
-    border-color: color.adjust($color-success, $lightness: -8%);
-  }
-
-  &:active {
-    background-color: color.adjust($color-success, $lightness: -12%);
-    border-color: color.adjust($color-success, $lightness: -12%);
-  }
-}
-
-/* Sizes */
-.icon-btn--small {
-  width: 32px;
-  height: 32px;
-  padding: $spacing-xs;
-
-  .icon-btn__icon {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.icon-btn--medium {
-  width: 40px;
-  height: 40px;
-  padding: $spacing-sm;
-
-  .icon-btn__icon {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.icon-btn--large {
-  width: 52px;
-  height: 52px;
-  padding: $spacing-md;
-
-  .icon-btn__icon {
-    width: 26px;
-    height: 26px;
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .icon-btn {
-    transition: none;
-
-    &:hover,
-    &:active {
-      transform: none;
-    }
-  }
-}
-
-@media (prefers-contrast: high) {
-  .icon-btn {
-    border-width: 2px;
-  }
-
-  .icon-btn--ghost {
-    border-color: currentColor;
-  }
-}
-
-@media (max-width: $breakpoint-mobile) {
-  .icon-btn--sm {
-    width: 36px;
-    height: 36px;
-
-    .icon-btn__icon {
-      width: 18px;
-      height: 18px;
-    }
-  }
-
-  .icon-btn--medium {
-    width: 44px;
-    height: 44px;
-
-    .icon-btn__icon {
-      width: 22px;
-      height: 22px;
-    }
-  }
-
-  .icon-btn--large {
-    width: 52px;
-    height: 52px;
-
-    .icon-btn__icon {
-      width: 26px;
-      height: 26px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

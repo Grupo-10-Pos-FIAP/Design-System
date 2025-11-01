@@ -19,7 +19,6 @@ export interface DialogProps {
   position?: DialogPosition;
   size?: DialogSize;
   contentAlign?: ContentAlign;
-  /* novos: */
   headerAlign?: AlignOptions;
   bodyAlign?: AlignOptions;
   footerAlign?: AlignOptions;
