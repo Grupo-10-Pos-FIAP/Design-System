@@ -1,9 +1,5 @@
 # Design System
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?logo=typescript)
-
 Uma biblioteca de componentes React moderna e acessível para criação de interfaces consistentes e escaláveis. Desenvolvido como projeto acadêmico para a Pós-graduação em Engineering Frontend da FIAP.
 
 ## Pré-requisitos
