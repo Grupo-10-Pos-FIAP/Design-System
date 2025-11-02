@@ -10,6 +10,7 @@
   font-weight: $font-weight-medium;
   color: $color-base;
   margin-bottom: 0;
+  
   .input--disabled + & {
     color: $color-content-disabled;
   }
@@ -63,6 +64,7 @@
     color: $color-gray600;
     font-weight: $font-weight-regular;
   }
+
   &--filled {
     background-color: $color-gray100;
     border-color: transparent;
@@ -81,6 +83,7 @@
       border-width: $border-width-size-small;
     }
   }
+
   &--success {
     border-color: $color-feedback-success;
 
@@ -111,50 +114,53 @@
   &--full-width {
     width: 100%;
   }
-}
 
-.input {
   &.input--has-start-icon {
-    &.input--small {
-      padding-left: 40px;
-    }
-
-    &.input--medium {
-      padding-left: 40px;
-    }
-
-    &.input--large {
-      padding-left: 48px;
-    }
+    padding-left: 40px; 
   }
 
   &.input--has-end-icon {
-    &.input--small {
-      padding-right: 40px;
-    }
+    padding-right: 40px; 
+  }
 
-    &.input--medium {
-      padding-right: 40px;
+  &.input--small {
+    min-height: 32px;
+    height: 32px;
+    padding: 6px 12px;
+    
+    &.input--has-start-icon {
+      padding-left: 36px;
     }
-
-    &.input--large {
-      padding-right: 48px;
+    
+    &.input--has-end-icon {
+      padding-right: 36px;
     }
   }
 
-  &.input--has-start-icon.input--has-end-icon {
-    &.input--small {
+  &.input--medium {
+    min-height: 40px;
+    height: 40px;
+    padding: 10px 12px;
+    
+    &.input--has-start-icon {
       padding-left: 40px;
+    }
+    
+    &.input--has-end-icon {
       padding-right: 40px;
     }
+  }
 
-    &.input--medium {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    &.input--large {
+  &.input--large {
+    min-height: 48px;
+    height: 48px;
+    padding: 12px 16px;
+    
+    &.input--has-start-icon {
       padding-left: 48px;
+    }
+    
+    &.input--has-end-icon {
       padding-right: 48px;
     }
   }
@@ -168,12 +174,14 @@
   align-items: center;
   justify-content: center;
   color: $color-gray600;
-  z-index: 1;
+  z-index: 2; /* Aumentei o z-index para garantir que fique acima */
+  pointer-events: none; /* Impede que o ícone interfira com cliques no input */
 
   &--start {
     left: 12px;
+    
     .input--small & {
-      left: 12px;
+      left: 10px;
     }
 
     .input--large & {
@@ -183,8 +191,9 @@
 
   &--end {
     right: 12px;
+    
     .input--small & {
-      right: 12px;
+      right: 10px;
     }
 
     .input--large & {
@@ -214,6 +223,7 @@
   font-size: $font-size-caption;
   color: $color-gray600;
   margin-top: 4px;
+  
   &--default {
     color: $color-gray600;
   }
@@ -234,6 +244,7 @@
 .input--with-selection {
   background: rgba($color-soft, 0.3);
   border-color: $color-border-focused;
+  
   &:hover {
     background: rgba($color-soft, 0.5);
   }
