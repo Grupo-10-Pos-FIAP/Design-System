@@ -74,7 +74,7 @@
 
       [data-state='active'] & {
         background-color: $color-primary;
-        border-radius: 5px 5px 0px 0px;
+        border-radius: $border-width-size-large $border-width-size-large 0px 0px;
         height: 4px;
       }
     }
@@ -89,7 +89,7 @@
     }
 
     &:focus-visible {
-      border: 2px solid $color-primary;
+      border: $border-width-size-small solid $color-primary;
     }
 
     &:hover:not([data-disabled]) {

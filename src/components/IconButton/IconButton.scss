@@ -43,7 +43,7 @@ $icon-btn-size-map: (
   &--primary {
     background-color: icon-btn-color('primary');
     color: $color-white;
-    border: 1px solid icon-btn-color('primary');
+    border: $border-width-size-default solid icon-btn-color('primary');
 
     &:not(:disabled):hover {
       background-color: color.adjust(icon-btn-color('primary'), $lightness: -8%);
@@ -75,7 +75,7 @@ $icon-btn-size-map: (
   &--outlined {
     background-color: transparent;
     color: icon-btn-color('primary');
-    border: 1px solid icon-btn-color('primary');
+    border: $border-width-size-default solid icon-btn-color('primary');
 
     &:not(:disabled):hover {
       background-color: icon-btn-color('primary');
@@ -91,7 +91,7 @@ $icon-btn-size-map: (
   &--transparent {
     background-color: transparent;
     color: icon-btn-color('base');
-    border: 1px solid transparent;
+    border: $border-width-size-default solid transparent;
 
     &:not(:disabled):hover {
       background-color: icon-btn-color('gray100');
@@ -169,7 +169,7 @@ $icon-btn-size-map: (
   }
 
   @media (prefers-contrast: high) {
-    border-width: 2px;
+    border-width: $border-width-size-small;
 
     &--transparent {
       border-color: currentColor;
@@ -182,7 +182,7 @@ $icon-btn-size-map: (
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: $spacing-xs;
+  border-radius: $border-radius-size-default;
   cursor: pointer;
   font-family: $font-family-default;
   font-weight: $font-weight-medium;

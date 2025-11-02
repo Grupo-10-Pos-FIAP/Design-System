@@ -20,7 +20,7 @@ $divider-colors: (
 
     .divider__line--horizontal {
       width: 100%;
-      border-bottom: 1px solid;
+      border-bottom: $border-width-size-default solid;
       
       @each $name, $value in $divider-colors {
         &.divider__line--#{$name} {
@@ -37,7 +37,7 @@ $divider-colors: (
 
     .divider__line--vertical {
       height: 100%;
-      border-right: 1px solid;
+      border-right: $border-width-size-default solid;
       
       @each $name, $value in $divider-colors {
         &.divider__line--#{$name} {

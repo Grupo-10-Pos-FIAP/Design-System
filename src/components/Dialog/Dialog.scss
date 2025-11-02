@@ -10,9 +10,9 @@
   &__content {
     position: fixed;
     background: $color-bg-default;
-    border-radius: $spacing-sm;
+    border-radius: $border-radius-size-default;
     box-shadow: 0 $spacing-sm $spacing-xl rgba($color-black, 0.12);
-    border: 1px solid $color-border-default;
+    border: $border-width-size-default solid $color-border-default;
     padding: $spacing-lg;
     z-index: $z-index-modal;
 

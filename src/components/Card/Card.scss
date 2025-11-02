@@ -1,7 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: $border-radius-size-default;
   padding: $spacing-md;
   color: $color-content-default;
   transition:
@@ -35,7 +35,7 @@
     padding: 0;
     background: transparent;
     border: none;
-    border-radius: 8px;
+    border-radius: $border-radius-size-default;
     color: $color-content-default;
     cursor: pointer;
     transition:
@@ -70,7 +70,7 @@
     padding: $spacing-sm 0;
 
     &:not(:first-child) {
-      border-top: 1px dashed rgba(0, 0, 0, 0.12);
+      border-top: $border-width-size-default dashed rgba(0, 0, 0, 0.12);
       padding-top: $spacing-md;
       margin-top: $spacing-sm;
     }
@@ -107,7 +107,7 @@
   }
 
   &--outlined {
-    border: 1px solid $color-border-default;
+    border: $border-width-size-default solid $color-border-default;
 
     .card__section:not(:first-child) {
       border-top-color: $color-border-default;
@@ -115,7 +115,7 @@
   }
 
   &--dashed {
-    border: 1px dashed rgba(0, 0, 0, 0.12);
+    border: $border-width-size-default dashed rgba(0, 0, 0, 0.12);
     border-top-color: rgba(0, 0, 0, 0.12);
   }
 

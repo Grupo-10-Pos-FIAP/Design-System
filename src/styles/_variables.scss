@@ -93,7 +93,6 @@ $color-feedback-info: #1c6ea4;
 $color-feedback-alert: #d32f2f;      
 $color-feedback-muted: $color-gray100;
 
-
 // Spacing
 $spacing-xs: 4px;
 $spacing-sm: 8px;
@@ -102,6 +101,14 @@ $spacing-lg: 24px;
 $spacing-xl: 32px;
 $spacing-2xl: 48px;
 $spacing-3xl: 64px;
+
+$border-radius-size-default: $spacing-sm;
+
+$border-width-size-default: 1px;
+$border-width-size-small: 2px;
+$border-width-size-medium: 3px;
+$border-width-size-large: $spacing-xs;
+
 
 // Breakpoints
 $breakpoint-mobile: 480px;
@@ -120,7 +127,6 @@ $z-index-tooltip: 1070;
 $z-index-loading: 9999;
 
 // Button tokens
-$button-border-width: 1px;
 $button-color-brand-bg-default: #1C6EA4;
 $button-color-brand-bg-hovered: #2395DF;
 $button-color-brand-bg-pressed: #0C4165;
@@ -167,3 +173,8 @@ $nav-drawer-color-bg-overlay: $color-gray300;
 $nav-drawer-color-bg-hovered: $color-soft;
 $nav-drawer-color-bg-actived: $color-gray200;
 $nav-drawer-color-border-focused: rgba($color-primary, 0.5);
+
+// Spinner Tokens
+$spinner-border-radius-size: 50%;
+$spinner-animation-duration: 1s;
+

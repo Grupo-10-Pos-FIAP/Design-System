@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-radius: 8px;
+  border-radius: $border-radius-size-default;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   cursor: pointer;
   padding: 6px;

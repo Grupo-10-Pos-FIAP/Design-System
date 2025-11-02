@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: space-between;
   padding: $spacing-sm $spacing-md;
-  border-radius: 8px;
+  border-radius: $border-radius-size-default;
   font-family: $font-family-default;
   font-size: $font-size-body;
   font-weight: $font-weight-medium;

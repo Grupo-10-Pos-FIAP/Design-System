@@ -14,23 +14,23 @@
 .dropdown-default-trigger {
   background-color: $color-bg-default;
   color: $color-gray700;
-  border: 1px solid $color-border-default;
-  border-radius: 8px;
+  border: $border-width-size-default solid $color-border-default;
+  border-radius: $border-radius-size-default;
   padding: 10px 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: $spacing-sm;
   min-width: 310px;
-  min-height: 40px; // Mantém consistente com o Input
-  height: 40px; // Adiciona altura fixa para consistência
+  min-height: 40px;
+  height: 40px;
   transition: all 0.2s ease;
   font-family: $font-family-default;
   font-size: $font-size-small;
   font-weight: $font-weight-regular;
   width: 100%;
-  box-sizing: border-box; // Importante: garante que padding não afete a altura
+  box-sizing: border-box;
   
   &:hover {
     border-color: $color-border-default;
@@ -100,8 +100,8 @@
 
 .dropdown-menu {
   background: $color-white;
-  border: 1px solid $color-border-default;
-  border-radius: 8px;
+  border: $border-width-size-default solid $color-border-default;
+  border-radius: $border-radius-size-default;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: var(--radix-dropdown-menu-trigger-width);
   min-width: var(--radix-dropdown-menu-trigger-width) !important;
@@ -116,13 +116,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: $spacing-md;
   padding: 10px 12px;
   cursor: pointer;
   outline: none;
   color: $color-base;
   transition: all 0.1s ease;
-  border-radius: 6px;
+  border-radius: $border-radius-size-default;
   font-family: $font-family-default;
   font-size: $font-size-small;
   font-weight: $font-weight-regular;
@@ -168,7 +168,7 @@
 .dropdown-item-content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: $spacing-md;
   width: 100%;
   height: 100%;
 }
