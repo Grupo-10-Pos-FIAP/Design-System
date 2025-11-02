@@ -8,7 +8,11 @@ const Loading: React.FC<LoadingProps> = ({
   overlay = false,
   fullScreen = false,
   className = '',
-  spinnerProps
+  size = 'medium',
+  color = 'primary',
+  variant = 'circle',
+  ariaLabel,
+  ...restSpinnerProps
 }) => {
   const loadingClasses = [
     "loading",
@@ -22,7 +26,13 @@ const Loading: React.FC<LoadingProps> = ({
   const loadingContent = (
     <div className={loadingClasses}>
       <div className="loading--content">
-        <Spinner {...spinnerProps} />
+        <Spinner 
+          size={size}
+          color={color}
+          variant={variant}
+          ariaLabel={ariaLabel}
+          {...restSpinnerProps}
+        />
         {text && <span className="loading--text">{text}</span>}
       </div>
     </div>

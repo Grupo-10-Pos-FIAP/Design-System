@@ -46,14 +46,14 @@ const PulseSpinner: FC<SpinnerProps> = ({ size, color }) => {
 };
 
 const SPINNER_VARIANTS: Record<SpinnerVariant, FC<SpinnerProps>> = {
-  default: DefaultSpinner,
+  circle: DefaultSpinner,
   dots: DotsSpinner,
   ring: RingSpinner,
   pulse: PulseSpinner,
 };
 
 const Spinner: FC<SpinnerProps> = ({
-  variant = 'default',
+  variant = 'circle',
   size = 'medium',
   color = 'primary',
   ariaLabel = 'Carregando...',
