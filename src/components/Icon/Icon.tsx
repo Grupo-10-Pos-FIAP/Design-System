@@ -1,12 +1,18 @@
 import { forwardRef, useMemo } from 'react';
-import { IconProps } from './interfaces';
+import { FilledIcons, IconProps } from './interfaces';
 import { icons } from 'lucide-react';
 import './Icon.scss';
+import { HeartFilled } from '@assets/HeartFilled';
+
+const filledIcons = {
+  HeartFilled
+};
 
 const Icon = forwardRef<SVGSVGElement, IconProps>(
   ({ name, color = 'base', size = 'medium', disabled = false, ...props }, ref) => {
     const SelectedIcon = useMemo(() => {
-      return icons[name as keyof typeof icons];
+      // Primeiro tenta ícones do Lucide, depois customizados
+      return icons[name as keyof typeof icons] || filledIcons[name as FilledIcons];
     }, [name]);
 
     const sizeMap = {
@@ -24,11 +30,19 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(
       .join(' ');
 
     if (!SelectedIcon) {
-      console.warn(`Icon "${name}" not found in lucide-react`);
+      console.warn(`Icon "${name}" not found in lucide-react or custom icons.`);
       return null;
     }
 
-    return <SelectedIcon aria-disabled={disabled} ref={ref} size={iconSize} className={iconClasses} {...props} />;
+    return (
+      <SelectedIcon 
+        aria-disabled={disabled} 
+        ref={ref} 
+        size={iconSize} 
+        className={iconClasses} 
+        {...props} 
+      />
+    );
   }
 );
 

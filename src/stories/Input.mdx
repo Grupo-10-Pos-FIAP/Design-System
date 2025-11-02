@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas, Primary, Controls } from '@storybook/addon-docs/blocks';
-import {Input} from '../components/Input/Input';
+import { Input } from '../components/Input/Input';
 import * as InputStories from './Input.stories';
 
 <Meta of={InputStories} />
@@ -8,50 +8,77 @@ import * as InputStories from './Input.stories';
 
 O componente Input é um campo de entrada de dados versátil e acessível para formulários, com suporte a múltiplas variantes visuais, estados de validação e ícones.
 
+## Visão Geral
+
+O Input fornece uma interface consistente para coleta de dados do usuário, com foco em acessibilidade, usabilidade e customização. É ideal para uso em formulários, sistemas de busca e qualquer cenário que requeira entrada de dados.
 
 <Primary />
 
 <Controls />
 
-
-## Exemplos
-
-### Input Padrão
+## Uso Básico
 
 <Canvas of={InputStories.Default} />
 
-### Variantes Visuais
+## Variantes Visuais
 
-O Input oferece três variantes visuais para diferentes contextos de design:
+O Input oferece três variantes visuais para diferentes contextos de design e necessidades de UI:
+
+### Quando usar cada variante:
+
+- **Outlined** (Padrão): Ideal para a maioria dos formulários, oferece boa hierarquia visual
+- **Filled**: Para interfaces mais densas ou quando se deseja um visual mais "preenchido"
+- **Transparent**: Perfect para overlays, headers ou situações onde o fundo não deve interferir
 
 <Canvas of={InputStories.Variants} />
 
-### Estados de Validação
+## Estados de Validação
 
-Feedback visual claro para diferentes estados de validação:
+Feedback visual claro para diferentes estados de validação, ajudando os usuários a entender o status do campo:
 
-<Canvas of={InputStories.Status} />
+<Canvas of={InputStories.ValidationStates} />
 
-### Inputs com Ícones
+## Inputs com Ícones
 
-Suporte a ícones no início e final do campo para melhor contexto:
+Suporte a ícones no início (leading) e final (trailing) do campo para fornecer contexto adicional e melhorar a usabilidade:
+
+### Casos de uso comuns:
+
+- **Leading Icon**: Identificação do tipo de dado (User, Mail, Phone, etc.)
+- **Trailing Icon**: Ações (Eye para senha, Search, Clear, etc.)
+- **Ambos**: Estados complexos (User + Check para verificação)
 
 <Canvas of={InputStories.WithIcons} />
 
-### Diferentes Estados
+## Estados Interativos
+
+Diferentes estados para cobrir todos os cenários de interação do usuário:
+
+### Comportamento dos estados:
+
+- **Normal**: Campo interativo e editável
+- **Disabled**: Não interativo, para ações não disponíveis
+- **Required**: Indica obrigatoriedade com indicador visual
+- **Read-only**: Exibe valor sem permitir edição
 
 <Canvas of={InputStories.States} />
 
-### Tipos de Input
+## Tipos de Input
 
-Suporte nativo a todos os tipos de input HTML5:
+Suporte nativo a todos os tipos de input HTML5, com comportamentos específicos para cada tipo:
 
 <Canvas of={InputStories.InputTypes} />
 
-### Exemplo de Formulário
+
+## Customização de Tamanho
+
+Controle flexível sobre as dimensões do input para diferentes layouts:
+
+<Canvas of={InputStories.Sizing} />
+
+
+## Exemplo de Formulário Completo
+
+Implementação real em um contexto de formulário com múltiplos campos e validações:
 
 <Canvas of={InputStories.FormExample} />
-
-### Playground
-
-<Canvas of={InputStories.Playground} />

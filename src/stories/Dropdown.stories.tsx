@@ -20,7 +20,7 @@ const meta: Meta<typeof Dropdown> = {
     },
     status: {
       control: 'select',
-      options: ['default', 'success', 'warning', 'error'],
+      options: ['neutral', 'success', 'warning', 'error'],
       description: 'Status visual do dropdown',
     },
     helperText: {
@@ -379,7 +379,7 @@ export const StatusVariants = {
     docs: {
       source: {
         code: `
-<Dropdown status="default" helperText="Texto de ajuda padrão" {...props} />
+<Dropdown status="neutral" helperText="Texto de ajuda padrão" {...props} />
 <Dropdown status="success" helperText="Operação realizada com sucesso" {...props} />
 <Dropdown status="warning" helperText="Atenção: ação necessária" {...props} />
 <Dropdown status="error" helperText="Erro: campo obrigatório" {...props} />`,

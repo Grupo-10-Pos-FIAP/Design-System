@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type SpinnerVariant = 'default' | 'dots' | 'ring' | 'pulse';
+export type SpinnerVariant = 'circle' | 'dots' | 'ring' | 'pulse';
 export type SpinnerSize = 'small' | 'medium' | 'large';
 export type SpinnerColor = 'primary' | 'secondary' | 'alert' | 'success' | 'neutral';
 

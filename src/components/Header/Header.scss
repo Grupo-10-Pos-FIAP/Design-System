@@ -7,6 +7,15 @@
   background-color: $color-bg-default;
   color: $color-white;
   width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 
   &__logo {
     cursor: pointer;

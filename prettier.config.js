@@ -8,4 +8,5 @@ export default {
   arrowParens: 'always',
   endOfLine: 'lf',
   jsxSingleQuote: true,
+  quoteProps: 'consistent',
 };

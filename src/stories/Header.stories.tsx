@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Header } from "@components/Header/Header";
+import logo from '../assets/logo.svg';
 
 const meta: Meta<typeof Header> = {
   title: "Components/Header",
@@ -32,7 +33,7 @@ const UserAvatar = () => (
 
 const Logo = () => (
   <img 
-    src="/logo.svg" 
+    src={logo} 
     alt="Logo" 
     style={{ height: "40px", width: "auto" }}
   />
@@ -67,7 +68,7 @@ export const Default: Story = {
   }
   logo={
     <img 
-      src="/logo.svg" 
+      src={logo} 
       alt="Logo" 
       style={{ height: "40px", width: "auto" }}
     />
@@ -82,7 +83,7 @@ export const Default: Story = {
 export const WithSvgUrl: Story = {
   args: {
     avatar: <UserAvatar />,
-    logo: "/logo.svg",
+    logo: <Logo />,
   },
   parameters: {
     docs: {
@@ -90,7 +91,7 @@ export const WithSvgUrl: Story = {
         code: `
 <Header 
   avatar={<UserAvatar />}
-  logo="/logo.svg"
+  logo={logo}
 />
         `.trim()
       }
@@ -101,7 +102,7 @@ export const WithSvgUrl: Story = {
 export const WithClickActions: Story = {
   args: {
     avatar: <UserAvatar />,
-    logo: "/logo.svg",
+    logo: <Logo />,
     onLogoClick: () => console.log("Logo clicked!"),
     onAvatarClick: () => console.log("Avatar clicked!"),
   },
@@ -111,7 +112,7 @@ export const WithClickActions: Story = {
         code: `
 <Header 
   avatar={<UserAvatar />}
-  logo="/logo.svg"
+  logo={logo}
   onLogoClick={() => console.log("Logo clicked!")}
   onAvatarClick={() => console.log("Avatar clicked!")}
 />
@@ -123,7 +124,7 @@ export const WithClickActions: Story = {
 
 export const WithoutAvatar: Story = {
   args: {
-    logo: "/logo.svg",
+    logo: <Logo />,
     onLogoClick: () => console.log("Logo clicked!"),
   },
   parameters: {
@@ -131,7 +132,7 @@ export const WithoutAvatar: Story = {
       source: {
         code: `
 <Header 
-  logo="/logo.svg"
+  logo={logo}
   onLogoClick={() => console.log("Logo clicked!")}
 />
         `.trim()
