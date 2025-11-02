@@ -11,9 +11,9 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(
 
     const sizeMap = {
       'extra-small': 16,
-      small: 20,
-      medium: 24,
-      large: 32,
+      'small': 20,
+      'medium': 24,
+      'large': 32,
       'extra-large': 40,
     };
 
