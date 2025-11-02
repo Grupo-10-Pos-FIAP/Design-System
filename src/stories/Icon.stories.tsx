@@ -51,7 +51,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    name: 'House',
+    name: 'HeartFilled',
     size: 'medium',
     color: 'base',
     disabled: false,
@@ -59,7 +59,7 @@ export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<Icon name="House" size="medium" color="base" />',
+        code: '<Icon name="HeartFilled" size="medium" color="base" />',
       },
     },
   },

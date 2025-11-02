@@ -1,10 +1,11 @@
 import { SVGProps } from 'react';
 import { icons } from 'lucide-react';
 
-type LucideIcons = keyof typeof icons;
+export type LucideIcons = keyof typeof icons;
 
+export type FilledIcons = 'HeartFilled';
 
-export type IconKeys = LucideIcons;
+export type IconKeys = LucideIcons | FilledIcons;
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size'> {
   /**
