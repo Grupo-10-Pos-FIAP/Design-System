@@ -5,24 +5,37 @@ import { iconKeys } from '@utils/iconKeys';
 const meta = {
   title: 'Components/Input',
   component: Input,
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'Componente de input para coleta de dados do usuário com várias variantes e estados.',
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'filled', 'outlined'],
+      options: ['outlined', 'filled', 'transparent'],
       description: 'Variante visual do input',
+      table: {
+        defaultValue: { summary: 'outlined' },
+      },
     },
-    status: {
+    validationStatus: {
       control: 'select',
-      options: ['default', 'success', 'warning', 'error'],
-      description: 'Status visual do input',
+      options: ['neutral', 'success', 'warning', 'error'],
+      description: 'Status visual de validação',
+      table: {
+        defaultValue: { summary: 'neutral' },
+      },
     },
     disabled: {
       control: 'boolean',
       description: 'Estado desabilitado',
-    },
-    fullWidth: {
-      control: 'boolean',
-      description: 'Largura total do container',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
     },
     label: {
       control: 'text',
@@ -38,19 +51,36 @@ const meta = {
     },
     type: {
       control: 'select',
-      options: ['text', 'email', 'password', 'number', 'tel', 'url'],
+      options: ['text', 'email', 'password', 'number', 'tel', 'url', 'date', 'time', 'checkbox', 'radio'],
       description: 'Tipo do input',
+      table: {
+        defaultValue: { summary: 'text' },
+      },
     },
-    startIcon: {
+    leadingIcon: {
       control: 'select',
-      options: iconKeys,
+      options: [null, ...iconKeys],
       description: 'Ícone no início do input',
     },
-    endIcon: {
+    trailingIcon: {
       control: 'select',
-      options: iconKeys,
+      options: [null, ...iconKeys],
       description: 'Ícone no final do input',
     },
+    width: {
+      control: 'text',
+      description: 'Largura customizada do input',
+    },
+    required: {
+      control: 'boolean',
+      description: 'Campo obrigatório',
+    },
+  },
+  args: {
+    variant: 'outlined',
+    validationStatus: 'neutral',
+    disabled: false,
+    type: 'text',
   },
 } satisfies Meta<typeof Input>;
 
@@ -61,103 +91,136 @@ export const Default: Story = {
   args: {
     placeholder: 'Digite algo...',
     label: 'Input padrão',
-    variant: 'default',
-    status: 'default',
-    disabled: false,
-  },
-  parameters: {
-    docs: {
-      source: {
-        code: '<Input placeholder="Digite algo..." label="Input padrão" />',
-      },
-    },
   },
 };
 
 export const Variants: Story = {
   parameters: {
     docs: {
-      source: {
-        code: `
-<Input 
-  variant="default" 
-  placeholder="Digite algo..." 
-  label="Variante Default" 
-/>
-<Input 
-  variant="filled" 
-  placeholder="Digite algo..." 
-  label="Variante Filled" 
-/>
-<Input 
-  variant="outlined" 
-  placeholder="Digite algo..." 
-  label="Variante Outlined" 
-/>`,
+      description: {
+        story: 'Diferentes variantes visuais do input.',
       },
     },
   },
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', width: '300px' }}>
-      <div>
-        <Input {...args} variant="default" label="Variante Default" />
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Ativo */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
+        <Input
+          variant="outlined"
+          placeholder="Digite algo..."
+          label="Outlined"
+          helperText="Borda visível com fundo transparente"
+        />
+        <Input variant="filled" placeholder="Digite algo..." label="Filled" helperText="Fundo cinza claro sem borda" />
+        <Input
+          variant="transparent"
+          placeholder="Digite algo..."
+          label="Transparent"
+          helperText="Totalmente transparente, ideal para overlays"
+        />
       </div>
-      <div>
-        <Input {...args} variant="filled" label="Variante Filled" />
-      </div>
-      <div>
-        <Input {...args} variant="outlined" label="Variante Outlined" />
+      
+      {/* Coluna Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
+        <Input
+          variant="outlined"
+          placeholder="Digite algo..."
+          label="Outlined"
+          helperText="Borda visível com fundo transparente"
+          disabled
+        />
+        <Input 
+          variant="filled" 
+          placeholder="Digite algo..." 
+          label="Filled" 
+          helperText="Fundo cinza claro sem borda" 
+          disabled 
+        />
+        <Input
+          variant="transparent"
+          placeholder="Digite algo..."
+          label="Transparent"
+          helperText="Totalmente transparente, ideal para overlays"
+          disabled
+        />
       </div>
     </div>
   ),
 };
 
-
-export const Status: Story = {
+export const ValidationStates: Story = {
   parameters: {
     docs: {
-      source: {
-        code: `
-<Input 
-  status="default" 
-  placeholder="Digite algo..." 
-  label="Status Default" 
-  helperText="Texto de ajuda" 
-/>
-<Input 
-  status="success" 
-  placeholder="Digite algo..." 
-  label="Status Success" 
-  helperText="Tudo certo!" 
-/>
-<Input 
-  status="warning" 
-  placeholder="Digite algo..." 
-  label="Status Warning" 
-  helperText="Atenção necessária" 
-/>
-<Input 
-  status="error" 
-  placeholder="Digite algo..." 
-  label="Status Error" 
-  helperText="Erro no campo" 
-/>`,
+      description: {
+        story: 'Estados visuais para diferentes situações de validação.',
       },
     },
   },
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
-      <div>
-        <Input {...args} status="default" label="Status Default" helperText="Texto de ajuda" />
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Ativo */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
+        <Input
+          validationStatus="neutral"
+          placeholder="Digite algo..."
+          label="Neutral"
+          helperText="Estado padrão do campo"
+        />
+        <Input
+          validationStatus="success"
+          placeholder="Digite algo..."
+          label="Success"
+          helperText="Campo validado com sucesso"
+        />
+        <Input
+          validationStatus="warning"
+          placeholder="Digite algo..."
+          label="Warning"
+          helperText="Atenção necessária neste campo"
+        />
+        <Input
+          validationStatus="error"
+          placeholder="Digite algo..."
+          label="Error"
+          helperText="Erro que precisa ser corrigido"
+        />
       </div>
-      <div>
-        <Input {...args} status="success" label="Status Success" helperText="Tudo certo!" />
-      </div>
-      <div>
-        <Input {...args} status="warning" label="Status Warning" helperText="Atenção necessária" />
-      </div>
-      <div>
-        <Input {...args} status="error" label="Status Error" helperText="Erro no campo" />
+      
+      {/* Coluna Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
+        <Input
+          validationStatus="neutral"
+          placeholder="Digite algo..."
+          label="Neutral"
+          helperText="Estado padrão do campo"
+          disabled
+        />
+        <Input
+          validationStatus="success"
+          placeholder="Digite algo..."
+          label="Success"
+          helperText="Campo validado com sucesso"
+          disabled
+        />
+        <Input
+          validationStatus="warning"
+          placeholder="Digite algo..."
+          label="Warning"
+          helperText="Atenção necessária neste campo"
+          disabled
+        />
+        <Input
+          validationStatus="error"
+          placeholder="Digite algo..."
+          label="Error"
+          helperText="Erro que precisa ser corrigido"
+          disabled
+        />
       </div>
     </div>
   ),
@@ -166,60 +229,82 @@ export const Status: Story = {
 export const WithIcons: Story = {
   parameters: {
     docs: {
-      source: {
-        code: `
-<Input 
-  startIcon="Search" 
-  placeholder="Buscar..." 
-  label="Input com ícone no início" 
-/>
-<Input 
-  endIcon="Eye" 
-  type="password" 
-  placeholder="Digite sua senha..." 
-  label="Input com ícone no final" 
-/>
-<Input 
-  startIcon="User" 
-  endIcon="Check" 
-  status="success" 
-  placeholder="Digite seu nome..." 
-  label="Input com ícones em ambos" 
-  helperText="Usuário válido" 
-/>`,
+      description: {
+        story: 'Inputs com ícones leading (início) e trailing (final).',
       },
     },
   },
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
-      <div>
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Ativo */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
         <Input
-          {...args}
-          startIcon='Search'
-          endIcon={undefined}
-          label="Input com ícone no início"
-          placeholder="Buscar..."
+          leadingIcon="Search"
+          placeholder="Buscar usuários..."
+          label="Search Input"
+          helperText="Input com ícone de busca"
         />
-      </div>
-      <div>
         <Input
-          {...args}
-          startIcon={undefined}
-          endIcon='Eye'
-          label="Input com ícone no final"
+          trailingIcon="Eye"
           type="password"
           placeholder="Digite sua senha..."
+          label="Password Input"
+          helperText="Input com ícone para mostrar senha"
+        />
+        <Input
+          leadingIcon="Mail"
+          trailingIcon="Check"
+          validationStatus="success"
+          placeholder="email@exemplo.com"
+          label="Email Verified"
+          helperText="Email verificado com sucesso"
+        />
+        <Input
+          leadingIcon="User"
+          trailingIcon="CircleAlert"
+          validationStatus="error"
+          placeholder="Digite seu nome..."
+          label="User Input"
+          helperText="Nome de usuário inválido"
         />
       </div>
-      <div>
+      
+      {/* Coluna Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
         <Input
-          {...args}
-          startIcon='User'
-          endIcon='Check'
-          label="Input com ícones em ambos"
-          status="success"
+          leadingIcon="Search"
+          placeholder="Buscar usuários..."
+          label="Search Input"
+          helperText="Input com ícone de busca"
+          disabled
+        />
+        <Input
+          trailingIcon="Eye"
+          type="password"
+          placeholder="Digite sua senha..."
+          label="Password Input"
+          helperText="Input com ícone para mostrar senha"
+          disabled
+        />
+        <Input
+          leadingIcon="Mail"
+          trailingIcon="Check"
+          validationStatus="success"
+          placeholder="email@exemplo.com"
+          label="Email Verified"
+          helperText="Email verificado com sucesso"
+          disabled
+        />
+        <Input
+          leadingIcon="User"
+          trailingIcon="CircleAlert"
+          validationStatus="error"
           placeholder="Digite seu nome..."
-          helperText="Usuário válido"
+          label="User Input"
+          helperText="Nome de usuário inválido"
+          disabled
         />
       </div>
     </div>
@@ -229,50 +314,28 @@ export const WithIcons: Story = {
 export const States: Story = {
   parameters: {
     docs: {
-      source: {
-        code: `
-<Input 
-  placeholder="Digite algo..." 
-  label="Input normal" 
-/>
-<Input 
-  disabled 
-  placeholder="Campo desabilitado..." 
-  label="Input desabilitado" 
-/>
-<Input 
-  fullWidth 
-  placeholder="Digite algo..." 
-  label="Input com largura total" 
-/>
-<Input 
-  required 
-  placeholder="Digite algo..." 
-  label="Input obrigatório" 
-  helperText="Este campo é obrigatório" 
-/>`,
+      description: {
+        story: 'Diferentes estados interativos do input.',
       },
     },
   },
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
-      <div>
-        <Input {...args} label="Input normal" placeholder="Digite algo..." />
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Ativo */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
+        <Input placeholder="Digite algo..." label="Normal" helperText="Estado padrão e ativo" />
+        <Input required placeholder="Campo obrigatório..." label="Required Field" helperText="Este campo é obrigatório" />
+        <Input defaultValue="Valor pré-preenchido" label="With Default Value" helperText="Input com valor inicial" />
       </div>
-      <div>
-        <Input {...args} disabled label="Input desabilitado" placeholder="Campo desabilitado..." />
-      </div>
-      <div>
-        <Input {...args} fullWidth label="Input com largura total" placeholder="Digite algo..." />
-      </div>
-      <div>
-        <Input
-          {...args}
-          required
-          label="Input obrigatório"
-          placeholder="Digite algo..."
-          helperText="Este campo é obrigatório"
-        />
+      
+      {/* Coluna Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
+        <Input placeholder="Digite algo..." label="Normal" helperText="Estado padrão e ativo" disabled />
+        <Input disabled placeholder="Campo desabilitado..." label="Disabled" helperText="Campo não interativo" />
+        <Input required placeholder="Campo obrigatório..." label="Required Field" helperText="Este campo é obrigatório" disabled />
+        <Input defaultValue="Valor pré-preenchido" label="With Default Value" helperText="Input com valor inicial" disabled />
       </div>
     </div>
   ),
@@ -281,52 +344,79 @@ export const States: Story = {
 export const InputTypes: Story = {
   parameters: {
     docs: {
-      source: {
-        code: `
-<Input 
-  type="email" 
-  placeholder="email@exemplo.com" 
-  label="Campo de email" 
-/>
-<Input 
-  type="password" 
-  placeholder="Digite sua senha..." 
-  label="Campo de senha" 
-/>
-<Input 
-  type="number" 
-  placeholder="Digite um número..." 
-  label="Campo numérico" 
-/>
-<Input 
-  type="tel" 
-  placeholder="(11) 99999-9999" 
-  label="Campo de telefone" 
-/>
-<Input 
-  type="url" 
-  placeholder="https://exemplo.com" 
-  label="Campo de URL" 
-/>`,
+      description: {
+        story: 'Diferentes tipos de input para vários cenários de uso.',
       },
     },
   },
-  render: (args) => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
-      <div>
-        <Input {...args} type="email" placeholder="email@exemplo.com" label="Campo de email" />
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Ativo */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
+        <Input type="email" placeholder="email@exemplo.com" label="Email" />
+        <Input type="password" placeholder="••••••••" label="Password" />
+        <Input type="number" placeholder="0" label="Number" />
+        <Input type="tel" placeholder="(11) 99999-9999" label="Telephone" />
+        <Input type="url" placeholder="https://exemplo.com" label="URL" />
+        <Input type="date" label="Date" />
+        <Input type="time" label="Time" />
+        <Input type="checkbox" label="Checkbox" />
+        <Input type="radio" label="Radio" />
       </div>
-      <div>
-        <Input {...args} type="password" placeholder="Digite sua senha..." label="Campo de senha" />
+      
+      {/* Coluna Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
+        <Input type="email" placeholder="email@exemplo.com" label="Email" disabled />
+        <Input type="password" placeholder="••••••••" label="Password" disabled />
+        <Input type="number" placeholder="0" label="Number" disabled />
+        <Input type="tel" placeholder="(11) 99999-9999" label="Telephone" disabled />
+        <Input type="url" placeholder="https://exemplo.com" label="URL" disabled />
+        <Input type="date" label="Date" disabled />
+        <Input type="time" label="Time" disabled />
+        <Input type="checkbox" label="Checkbox" disabled />
+        <Input type="radio" label="Radio" disabled />
       </div>
-      <div>
-        <Input {...args} type="number" placeholder="Digite um número..." label="Campo numérico" />
+    </div>
+  ),
+};
+
+export const Sizing: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exemplos de inputs com diferentes larguras.',
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Ativo */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
+        <Input placeholder="Largura total..." label="Full Width" helperText="Ocupa 100% do container pai" />
+        <Input width={200} placeholder="200px de largura..." label="Custom Width" helperText="Largura fixa de 200px" />
+        <Input
+          width="50%"
+          placeholder="50% de largura..."
+          label="Percentage Width"
+          helperText="50% da largura do container"
+        />
       </div>
-      <div>
-        <Input {...args} type="tel" placeholder="(11) 99999-9999" label="Campo de telefone" />
-      </div>
-      <div>
-        <Input {...args} type="url" placeholder="https://exemplo.com" label="Campo de URL" />
+      
+      {/* Coluna Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
+        <Input placeholder="Largura total..." label="Full Width" helperText="Ocupa 100% do container pai" disabled />
+        <Input width={200} placeholder="200px de largura..." label="Custom Width" helperText="Largura fixa de 200px" disabled />
+        <Input
+          width="50%"
+          placeholder="50% de largura..."
+          label="Percentage Width"
+          helperText="50% da largura do container"
+          disabled
+        />
       </div>
     </div>
   ),
@@ -335,134 +425,164 @@ export const InputTypes: Story = {
 export const FormExample: Story = {
   parameters: {
     docs: {
-      source: {
-        code: `
-<form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-  <Input
-    label="Nome completo"
-    placeholder="Digite seu nome completo..."
-    startIcon="User"
-    required
-  />
-  
-  <Input
-    label="Email"
-    type="email"
-    placeholder="seu@email.com"
-    startIcon="Mail"
-    status="success"
-    helperText="Email válido"
-  />
-  
-  <Input
-    label="Senha"
-    type="password"
-    placeholder="Crie uma senha segura..."
-    startIcon="Lock"
-    status="error"
-    helperText="Senha deve ter pelo menos 8 caracteres"
-  />
-  
-  <Input
-    label="Telefone"
-    type="tel"
-    placeholder="(11) 99999-9999"
-    startIcon="Phone"
-  />
-</form>`,
+      description: {
+        story: 'Exemplo de uso em um formulário real com diferentes tipos de campos.',
       },
     },
   },
   render: () => (
-    <div
-      style={{
-        width: '400px',
-        padding: '24px',
-        background: 'white',
-        borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-      }}>
-      <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <h3 style={{ margin: '0 0 16px 0', color: '#1a1a1a' }}>Formulário de Exemplo</h3>
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Formulário Ativo */}
+      <div style={{ width: '400px', padding: '24px', background: 'white', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
+        <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <h3 style={{ margin: '0 0 16px 0', color: '#1a1a1a', fontSize: '20px' }}>Formulário de Cadastro</h3>
 
-        <Input label="Nome completo" placeholder="Digite seu nome completo..." startIcon='User' required />
+          <Input
+            label="Nome completo"
+            placeholder="Digite seu nome completo..."
+            leadingIcon="User"
+            required
+            helperText="Digite seu nome como no documento"
+          />
 
-        <Input
-          label="Email"
-          type="email"
-          placeholder="seu@email.com"
-          startIcon='Mail'
-          status="success"
-          helperText="Email válido"
-        />
+          <Input
+            label="Email"
+            type="email"
+            placeholder="seu@email.com"
+            leadingIcon="Mail"
+            validationStatus="success"
+            helperText="Email válido e disponível"
+          />
 
-        <Input
-          label="Senha"
-          type="password"
-          placeholder="Crie uma senha segura..."
-          startIcon='Lock'
-          status="error"
-          helperText="Senha deve ter pelo menos 8 caracteres"
-        />
+          <Input
+            label="Senha"
+            type="password"
+            placeholder="Crie uma senha segura..."
+            leadingIcon="Lock"
+            validationStatus="error"
+            helperText="A senha deve ter pelo menos 8 caracteres"
+          />
 
-        <Input label="Telefone" type="tel" placeholder="(11) 99999-9999" startIcon='Phone' />
+          <Input label="Data de Nascimento" type="date" leadingIcon="Calendar" />
 
-        <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
-          <button
-            type="button"
-            style={{
-              padding: '12px 24px',
-              border: '1px solid #e0e0e0',
-              borderRadius: '4px',
-              background: 'white',
-              cursor: 'pointer',
-            }}>
-            Cancelar
-          </button>
-          <button
-            type="submit"
-            style={{
-              padding: '12px 24px',
-              border: 'none',
-              borderRadius: '4px',
-              background: '#1c6ea4',
-              color: 'white',
-              cursor: 'pointer',
-            }}>
-            Enviar
-          </button>
+          <Input
+            label="Telefone"
+            type="tel"
+            placeholder="(11) 99999-9999"
+            leadingIcon="Phone"
+            helperText="Com DDD e número"
+          />
+
+          <div style={{ display: 'flex', gap: '12px', marginTop: '24px', justifyContent: 'flex-end' }}>
+            <button
+              type="button"
+              style={{
+                padding: '12px 24px',
+                border: '1px solid #e0e0e0',
+                borderRadius: '6px',
+                background: 'white',
+                color: '#666',
+                cursor: 'pointer',
+                fontSize: '14px',
+              }}>
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              style={{
+                padding: '12px 24px',
+                border: 'none',
+                borderRadius: '6px',
+                background: '#1c6ea4',
+                color: 'white',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: '500',
+              }}>
+              Cadastrar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {/* Formulário Desabilitado */}
+      <div style={{ width: '400px', padding: '24px', background: '#f8f9fa', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <h3 style={{ margin: '0 0 16px 0', color: '#666', fontSize: '20px' }}>Formulário Desabilitado</h3>
+
+          <Input
+            label="Nome completo"
+            placeholder="Digite seu nome completo..."
+            leadingIcon="User"
+            required
+            helperText="Digite seu nome como no documento"
+            disabled
+          />
+
+          <Input
+            label="Email"
+            type="email"
+            placeholder="seu@email.com"
+            leadingIcon="Mail"
+            validationStatus="success"
+            helperText="Email válido e disponível"
+            disabled
+          />
+
+          <Input
+            label="Senha"
+            type="password"
+            placeholder="Crie uma senha segura..."
+            leadingIcon="Lock"
+            validationStatus="error"
+            helperText="A senha deve ter pelo menos 8 caracteres"
+            disabled
+          />
+
+          <Input label="Data de Nascimento" type="date" leadingIcon="Calendar" disabled />
+
+          <Input
+            label="Telefone"
+            type="tel"
+            placeholder="(11) 99999-9999"
+            leadingIcon="Phone"
+            helperText="Com DDD e número"
+            disabled
+          />
+
+          <div style={{ display: 'flex', gap: '12px', marginTop: '24px', justifyContent: 'flex-end' }}>
+            <button
+              type="button"
+              style={{
+                padding: '12px 24px',
+                border: '1px solid #e0e0e0',
+                borderRadius: '6px',
+                background: '#f5f5f5',
+                color: '#999',
+                cursor: 'not-allowed',
+                fontSize: '14px',
+              }}
+              disabled>
+              Cancelar
+            </button>
+            <button
+              type="button"
+              style={{
+                padding: '12px 24px',
+                border: 'none',
+                borderRadius: '6px',
+                background: '#ccc',
+                color: '#999',
+                cursor: 'not-allowed',
+                fontSize: '14px',
+                fontWeight: '500',
+              }}
+              disabled>
+              Cadastrar
+            </button>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   ),
-};
-
-export const Playground: Story = {
-  args: {
-    variant: 'default',
-    status: 'default',
-    disabled: false,
-    fullWidth: false,
-    label: 'Label do input',
-    placeholder: 'Digite algo...',
-    helperText: 'Texto de ajuda opcional',
-    startIcon: undefined,
-    endIcon: undefined,
-  },
-  parameters: {
-    docs: {
-      source: {
-        code: `<Input
-  variant="default"
-  size="medium"
-  status="default"
-  disabled={false}
-  fullWidth={false}
-  label="Label do input"
-  placeholder="Digite algo..."
-  helperText="Texto de ajuda opcional"
-/>`,
-      },
-    },
-  },
 };

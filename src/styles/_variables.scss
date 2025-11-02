@@ -64,7 +64,7 @@ $color-soft: #e1f0fb;
 $color-bg-default: $color-white;
 $color-bg-primary: $color-primary;
 $color-bg-secondary: $color-secondary;
-$color-bg-disabled: $color-gray300;
+$color-bg-disabled: $color-gray200;
 $color-bg-hovered: $color-soft;  
 $color-bg-gradient: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
 $color-bg-overlay: rgba(255, 255, 255, 0.8);
@@ -73,11 +73,12 @@ $color-bg-fullscreen: rgba(255, 255, 255, 0.9);
 // Content
 $color-content-default: $color-base;
 $color-content-inverse: $color-white;
-$color-content-disabled: $color-gray600;
+$color-content-disabled: $color-gray500;
 
 $color-border-default: $color-neutral;
 $color-border-disabled: #FFFFFF00;
-$color-border-focused: $color-primary;  
+$color-border-focused: $color-primary;
+$color-border-hovered: $color-neutral;  
  
 
 // Link colors

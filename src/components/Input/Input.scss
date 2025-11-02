@@ -10,10 +10,36 @@
   font-weight: $font-weight-medium;
   color: $color-base;
   margin-bottom: 0;
-  
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
   .input--disabled + & {
     color: $color-content-disabled;
   }
+
+  &.input-label--radio-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-weight: $font-weight-regular;
+
+    &.input-label--disabled {
+      color: $color-content-disabled;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.input-radio-checkbox-label {
+  order: 2;
+}
+
+.input-required {
+  color: $color-feedback-error;
+  font-size: $font-size-small;
 }
 
 .input-container {
@@ -29,18 +55,19 @@
   border: $border-width-size-default solid $color-border-default;
   border-radius: $border-radius-size-default;
   padding: 10px 12px;
-  cursor: pointer;
+  cursor: text;
   display: flex;
   align-items: center;
   gap: 8px;
   min-width: 310px;
   min-height: 40px;
-  height: 40px; 
+  height: 40px;
   font-family: $font-family-default;
   font-size: $font-size-small;
   font-weight: $font-weight-regular;
   width: 100%;
   box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 
   &:focus {
     outline: none;
@@ -49,7 +76,7 @@
   }
 
   &:hover:not(:disabled, .input--error) {
-    border-color: $color-border-default;
+    border-color: $color-border-hovered;
     background: $color-gray100;
   }
 
@@ -58,11 +85,98 @@
     border-color: $color-border-disabled;
     color: $color-content-disabled;
     cursor: not-allowed;
+
+    &::placeholder {
+      color: $color-content-disabled;
+    }
   }
 
   &::placeholder {
     color: $color-gray600;
     font-weight: $font-weight-regular;
+  }
+
+  &--radio {
+    width: auto;
+    min-width: auto;
+    min-height: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    // Esconde o radio nativo
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    // Cria o radio customizado
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 1px solid $color-border-default;
+      border-radius: 50%;
+      background: $color-white;
+      transition: all 0.1s ease-in-out;
+    }
+
+    &:checked::before {
+      border-color: $color-primary;
+      background: $color-primary;
+      box-shadow: inset 0 0 0 3px $color-white;
+    }
+
+    &:focus::before {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+    }
+
+    &:disabled::before {
+      border-color: $color-border-disabled;
+      background: $color-bg-disabled;
+      cursor: not-allowed;
+    }
+
+    &:checked:disabled::before {
+      border-color: $color-border-disabled;
+      background: $color-border-disabled;
+    }
+
+    &:focus,
+    &:hover {
+      border: none;
+      background: none;
+      box-shadow: none;
+    }
+  }
+
+  &--checkbox {
+    width: auto;
+    min-width: auto;
+    min-height: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  &--outlined {
+    background-color: $color-bg-default;
+    border-width: $border-width-size-default;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+    }
   }
 
   &--filled {
@@ -73,14 +187,19 @@
       background-color: $color-white;
       border-color: $color-primary;
     }
+
+    &:hover:not(:disabled) {
+      background-color: $color-gray100;
+    }
   }
 
-  &--outlined {
+  &--transparent {
     background-color: transparent;
-    border-width: $border-width-size-small;
+    border-color: transparent;
 
     &:focus {
-      border-width: $border-width-size-small;
+      background-color: $color-white;
+      border-color: $color-primary;
     }
   }
 
@@ -111,94 +230,84 @@
     }
   }
 
-  &--full-width {
-    width: 100%;
+  &.input--has-leading-icon {
+    padding-left: 40px;
   }
 
-  &.input--has-start-icon {
-    padding-left: 40px; 
+  &.input--has-trailing-icon {
+    padding-right: 40px;
+  }
+}
+
+.input-container.input--date,
+.input-container.input--time {
+  .input {
+    &[type='date'],
+    &[type='datetime-local'],
+    &[type='month'],
+    &[type='week'],
+    &[type='time'] {
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+      }
+
+      &::-webkit-time-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+      }
+
+      &::-webkit-clear-button {
+        display: none;
+      }
+
+      &::-webkit-inner-spin-button {
+        display: none;
+      }
+
+      // Para Firefox
+      &::-moz-focus-inner {
+        border: 0;
+      }
+    }
   }
 
-  &.input--has-end-icon {
-    padding-right: 40px; 
-  }
+  .picker-icon {
+    position: absolute;
+    right: 12px;
+    z-index: 2;
+    cursor: pointer;
 
-  &.input--small {
-    min-height: 32px;
-    height: 32px;
-    padding: 6px 12px;
-    
-    &.input--has-start-icon {
-      padding-left: 36px;
+    &:not(.picker-icon--disabled) {
+      svg {
+        stroke: $color-content-default;
+      }
     }
-    
-    &.input--has-end-icon {
-      padding-right: 36px;
-    }
-  }
 
-  &.input--medium {
-    min-height: 40px;
-    height: 40px;
-    padding: 10px 12px;
-    
-    &.input--has-start-icon {
-      padding-left: 40px;
-    }
-    
-    &.input--has-end-icon {
-      padding-right: 40px;
-    }
-  }
-
-  &.input--large {
-    min-height: 48px;
-    height: 48px;
-    padding: 12px 16px;
-    
-    &.input--has-start-icon {
-      padding-left: 48px;
-    }
-    
-    &.input--has-end-icon {
-      padding-right: 48px;
+    &.picker-icon--disabled {
+      cursor: not-allowed;
+      
+      svg {
+        stroke: $color-content-disabled;
+      }
     }
   }
 }
 
 .input-icon {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: $color-gray600;
-  z-index: 2; /* Aumentei o z-index para garantir que fique acima */
-  pointer-events: none; /* Impede que o ícone interfira com cliques no input */
+  z-index: 2;
 
-  &--start {
+  &--leading {
     left: 12px;
-    
-    .input--small & {
-      left: 10px;
-    }
-
-    .input--large & {
-      left: 16px;
-    }
   }
 
-  &--end {
+  &--trailing {
     right: 12px;
-    
-    .input--small & {
-      right: 10px;
-    }
-
-    .input--large & {
-      right: 16px;
-    }
   }
 
   .input:disabled ~ & {
@@ -221,10 +330,10 @@
 .input-helper-text {
   font-family: $font-family-default;
   font-size: $font-size-caption;
-  color: $color-gray600;
+  line-height: 1.4;
   margin-top: 4px;
-  
-  &--default {
+
+  &--neutral {
     color: $color-gray600;
   }
 
@@ -244,7 +353,7 @@
 .input--with-selection {
   background: rgba($color-soft, 0.3);
   border-color: $color-border-focused;
-  
+
   &:hover {
     background: rgba($color-soft, 0.5);
   }
@@ -252,40 +361,6 @@
 
 @media (max-width: $breakpoint-mobile) {
   .input {
-    &--medium,
-    &--large {
-      font-size: $font-size-small;
-      height: 44px;
-    }
-
-    &.input--has-start-icon {
-      &.input--medium,
-      &.input--large {
-        padding-left: 40px;
-      }
-    }
-
-    &.input--has-end-icon {
-      &.input--medium,
-      &.input--large {
-        padding-right: 40px;
-      }
-    }
-  }
-
-  .input-icon {
-    &--start {
-      .input--medium &,
-      .input--large & {
-        left: 12px;
-      }
-    }
-
-    &--end {
-      .input--medium &,
-      .input--large & {
-        right: 12px;
-      }
-    }
+    min-width: auto;
   }
 }

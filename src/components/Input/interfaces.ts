@@ -1,12 +1,15 @@
-import { InputHTMLAttributes } from "react";
+import { HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
 import { IconKeys } from "../Icon/interfaces";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  variant?: 'default' | 'filled' | 'outlined';
-  status?: 'default' | 'success' | 'warning' | 'error';
+  variant?: 'outlined' | 'filled' | 'transparent';
+  validationStatus?: 'neutral' | 'success' | 'warning' | 'error';
   label?: string;
   helperText?: string;
-  fullWidth?: boolean;
-  startIcon?: IconKeys;
-  endIcon?: IconKeys;
+  placeholder?: string;
+  leadingIcon?: IconKeys;
+  trailingIcon?: IconKeys;
+  width?: number | string;
+  type?: HTMLInputTypeAttribute;
+  ariaLabel?: string;
 }
