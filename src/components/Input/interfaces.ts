@@ -3,7 +3,7 @@ import { IconKeys } from "../Icon/interfaces";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   variant?: 'outlined' | 'filled' | 'transparent';
-  validationStatus?: 'neutral' | 'success' | 'warning' | 'error';
+  status?: 'neutral' | 'success' | 'warning' | 'error';
   label?: string;
   helperText?: string;
   placeholder?: string;

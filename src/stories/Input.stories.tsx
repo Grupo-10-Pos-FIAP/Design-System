@@ -22,7 +22,7 @@ const meta = {
         defaultValue: { summary: 'outlined' },
       },
     },
-    validationStatus: {
+    status: {
       control: 'select',
       options: ['neutral', 'success', 'warning', 'error'],
       description: 'Status visual de validação',
@@ -78,7 +78,7 @@ const meta = {
   },
   args: {
     variant: 'outlined',
-    validationStatus: 'neutral',
+    status: 'neutral',
     disabled: false,
     type: 'text',
   },
@@ -165,25 +165,25 @@ export const ValidationStates: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
         <Input
-          validationStatus="neutral"
+          status="neutral"
           placeholder="Digite algo..."
           label="Neutral"
           helperText="Estado padrão do campo"
         />
         <Input
-          validationStatus="success"
+          status="success"
           placeholder="Digite algo..."
           label="Success"
           helperText="Campo validado com sucesso"
         />
         <Input
-          validationStatus="warning"
+          status="warning"
           placeholder="Digite algo..."
           label="Warning"
           helperText="Atenção necessária neste campo"
         />
         <Input
-          validationStatus="error"
+          status="error"
           placeholder="Digite algo..."
           label="Error"
           helperText="Erro que precisa ser corrigido"
@@ -194,28 +194,28 @@ export const ValidationStates: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
         <Input
-          validationStatus="neutral"
+          status="neutral"
           placeholder="Digite algo..."
           label="Neutral"
           helperText="Estado padrão do campo"
           disabled
         />
         <Input
-          validationStatus="success"
+          status="success"
           placeholder="Digite algo..."
           label="Success"
           helperText="Campo validado com sucesso"
           disabled
         />
         <Input
-          validationStatus="warning"
+          status="warning"
           placeholder="Digite algo..."
           label="Warning"
           helperText="Atenção necessária neste campo"
           disabled
         />
         <Input
-          validationStatus="error"
+          status="error"
           placeholder="Digite algo..."
           label="Error"
           helperText="Erro que precisa ser corrigido"
@@ -255,7 +255,7 @@ export const WithIcons: Story = {
         <Input
           leadingIcon="Mail"
           trailingIcon="Check"
-          validationStatus="success"
+          status="success"
           placeholder="email@exemplo.com"
           label="Email Verified"
           helperText="Email verificado com sucesso"
@@ -263,7 +263,7 @@ export const WithIcons: Story = {
         <Input
           leadingIcon="User"
           trailingIcon="CircleAlert"
-          validationStatus="error"
+          status="error"
           placeholder="Digite seu nome..."
           label="User Input"
           helperText="Nome de usuário inválido"
@@ -291,7 +291,7 @@ export const WithIcons: Story = {
         <Input
           leadingIcon="Mail"
           trailingIcon="Check"
-          validationStatus="success"
+          status="success"
           placeholder="email@exemplo.com"
           label="Email Verified"
           helperText="Email verificado com sucesso"
@@ -300,7 +300,7 @@ export const WithIcons: Story = {
         <Input
           leadingIcon="User"
           trailingIcon="CircleAlert"
-          validationStatus="error"
+          status="error"
           placeholder="Digite seu nome..."
           label="User Input"
           helperText="Nome de usuário inválido"
@@ -450,7 +450,7 @@ export const FormExample: Story = {
             type="email"
             placeholder="seu@email.com"
             leadingIcon="Mail"
-            validationStatus="success"
+            status="success"
             helperText="Email válido e disponível"
           />
 
@@ -459,7 +459,7 @@ export const FormExample: Story = {
             type="password"
             placeholder="Crie uma senha segura..."
             leadingIcon="Lock"
-            validationStatus="error"
+            status="error"
             helperText="A senha deve ter pelo menos 8 caracteres"
           />
 
@@ -524,7 +524,7 @@ export const FormExample: Story = {
             type="email"
             placeholder="seu@email.com"
             leadingIcon="Mail"
-            validationStatus="success"
+            status="success"
             helperText="Email válido e disponível"
             disabled
           />
@@ -534,7 +534,7 @@ export const FormExample: Story = {
             type="password"
             placeholder="Crie uma senha segura..."
             leadingIcon="Lock"
-            validationStatus="error"
+            status="error"
             helperText="A senha deve ter pelo menos 8 caracteres"
             disabled
           />

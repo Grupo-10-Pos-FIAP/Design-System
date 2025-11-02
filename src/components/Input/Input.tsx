@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       variant = 'outlined',
-      validationStatus = 'neutral',
+      status = 'neutral',
       label,
       helperText,
       width,
@@ -50,7 +50,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputClasses = joinClassNames([
       'input',
       `input--${variant}`,
-      `input--${validationStatus}`,
+      `input--${status}`,
       disabled && 'input--disabled',
       leadingIcon && 'input--has-leading-icon',
       trailingIcon && 'input--has-trailing-icon',
@@ -76,7 +76,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               disabled={disabled}
               type={type}
               aria-label={ariaLabel}
-              aria-invalid={validationStatus === 'error'}
+              aria-invalid={status === 'error'}
               aria-describedby={helperTextId}
               {...props}
             />
@@ -89,7 +89,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {helperText && (
             <span 
               id={helperTextId}
-              className={`input-helper-text input-helper-text--${validationStatus}`}
+              className={`input-helper-text input-helper-text--${status}`}
             >
               {helperText}
             </span>
@@ -130,7 +130,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={type}
             placeholder={placeholder}
             aria-label={ariaLabel}
-            aria-invalid={validationStatus === 'error'}
+            aria-invalid={status === 'error'}
             aria-describedby={helperTextId}
             {...props}
           />
@@ -177,7 +177,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {helperText && (
           <span 
             id={helperTextId}
-            className={`input-helper-text input-helper-text--${validationStatus}`}
+            className={`input-helper-text input-helper-text--${status}`}
           >
             {helperText}
           </span>
