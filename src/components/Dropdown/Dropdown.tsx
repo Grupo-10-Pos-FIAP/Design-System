@@ -10,7 +10,7 @@ const Dropdown = ({
   onValueChange,
   label,
   width = 'auto',
-  status = 'default',
+  status = 'neutral',
   helperText
 }: DropdownProps) => {
   const [selectedItem, setSelectedItem] = useState<DropdownItemProps | null>(null);
@@ -27,7 +27,7 @@ const Dropdown = ({
 
   const trigger = (
     <button 
-      className={`dropdown-default-trigger ${selectedItem ? 'has-selection' : ''} ${status !== 'default' ? `dropdown-default-trigger--${status}` : ''}`}
+      className={`dropdown-default-trigger ${selectedItem ? 'has-selection' : ''} ${status !== 'neutral' ? `dropdown-default-trigger--${status}` : ''}`}
       style={{ width }}
     >
       <span className={`dropdown-trigger-text ${selectedItem ? 'selected' : ''}`}>

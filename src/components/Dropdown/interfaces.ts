@@ -14,6 +14,6 @@ export interface DropdownProps {
   onValueChange?: (value: string) => void;
   label?: string;
   width?: string | number;
-  status?: 'default' | 'success' | 'warning' | 'error';
+  status?: 'neutral' | 'success' | 'warning' | 'error';
   helperText?: string;
 }
