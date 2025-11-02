@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, CSSProperties } from 'react';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { Dialog as RadixDialog } from 'radix-ui';
 import { IconButton } from '@components/IconButton/IconButton';
 import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './interfaces';
@@ -126,9 +127,12 @@ const Dialog = ({
               e.preventDefault();
             }
           }}>
-          <RadixDialog.Title asChild>{title}</RadixDialog.Title>
-
-          <RadixDialog.Description asChild>{description || ' '}</RadixDialog.Description>
+          <VisuallyHidden>
+            <RadixDialog.Title>{title}</RadixDialog.Title>
+          </VisuallyHidden>
+          <VisuallyHidden>
+            <RadixDialog.Description>{description || ' '}</RadixDialog.Description>
+          </VisuallyHidden>
 
           {showCloseButton && (
             <RadixDialog.Close asChild>
