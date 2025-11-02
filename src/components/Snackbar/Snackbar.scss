@@ -63,20 +63,20 @@
   }
 
   &--info {
-    background-color: $feedback-info;
+    background-color: $color-feedback-info;
   }
 
   &--success {
-    background-color: $feedback-success;
+    background-color: $color-feedback-success;
   }
 
   &--warning {
-    background-color: $feedback-warning;
+    background-color: $color-feedback-warning;
     color: $color-white; 
   }
 
   &--error {
-    background-color: $feedback-error;
+    background-color: $color-feedback-error;
   }
 }
 

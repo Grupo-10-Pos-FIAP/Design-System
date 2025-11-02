@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type SpinnerVariant = 'default' | 'dots' | 'ring' | 'pulse';
-export type SpinnerSize = 'sm' | 'md' | 'lg';
+export type SpinnerSize = 'small' | 'medium' | 'large';
 export type SpinnerColor = 'primary' | 'secondary' | 'alert' | 'success' | 'neutral';
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {

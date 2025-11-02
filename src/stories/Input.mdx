@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas, Primary, Controls } from '@storybook/addon-docs/blocks';
 import {Input} from '../components/Input/Input';
 import * as InputStories from './Input.stories';
 
@@ -7,6 +7,11 @@ import * as InputStories from './Input.stories';
 # Input
 
 O componente Input é um campo de entrada de dados versátil e acessível para formulários, com suporte a múltiplas variantes visuais, estados de validação e ícones.
+
+
+<Primary />
+
+<Controls />
 
 
 ## Exemplos
@@ -20,12 +25,6 @@ O componente Input é um campo de entrada de dados versátil e acessível para f
 O Input oferece três variantes visuais para diferentes contextos de design:
 
 <Canvas of={InputStories.Variants} />
-
-### Tamanhos Disponíveis
-
-Disponível em três tamanhos para diferentes densidades de interface:
-
-<Canvas of={InputStories.Sizes} />
 
 ### Estados de Validação
 

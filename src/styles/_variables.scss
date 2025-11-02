@@ -53,108 +53,46 @@ $color-gray700: #404040;
 $color-gray800: #202020;
 $color-gray900: #101010;
 
-// Base colors
-$color-base: #1A1A1A;
-$color-disabled: $color-gray600; 
-
 // Brand palette
+$color-base: #1A1A1A;
 $color-primary: #1c6ea4;   
-$color-secondary: #658864; 
-$color-accent: #1c6ea4;    
+$color-secondary: #658864;  
+$color-neutral: $color-gray300;   
 $color-soft: #e1f0fb;      
-$color-neutral: #6b7280;   
-$color-base-gray: #F4F4F4; 
 
-// Semantic colors
-$color-success: #81BE7F;   
-$color-warning: #debb51;   
-$color-error: #e53935;     
-$color-info: #1c6ea4;      
-$color-alert: #d32f2f;    
+// Backgrounds
+$color-bg-default: $color-white;
+$color-bg-primary: $color-primary;
+$color-bg-secondary: $color-secondary;
+$color-bg-disabled: $color-gray300;
+$color-bg-hovered: $color-soft;  
+$color-bg-gradient: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+$color-bg-overlay: rgba(255, 255, 255, 0.8);
+$color-bg-fullscreen: rgba(255, 255, 255, 0.9);
 
-// Button tokens
-$button-border-width: 1px;
+// Content
+$color-content-default: $color-base;
+$color-content-inverse: $color-white;
+$color-content-disabled: $color-gray600;
 
-// Button background colors
-$button-color-brand-bg-default: #1C6EA4;
-$button-color-brand-bg-hovered: #2395DF;
-$button-color-brand-bg-pressed: #0C4165;
-$button-color-brand-bg-disabled: #CDE6F6;
-
-$button-color-secondary-bg-default: #658864;
-$button-color-secondary-bg-hovered: #81BE7F;
-$button-color-secondary-bg-pressed: #2C4D2B;
-$button-color-secondary-bg-disabled: #D6EED6;
-
-$button-color-outlined-bg-default: transparent;
-$button-color-outlined-bg-hovered: #FAFAFA;
-$button-color-outlined-bg-pressed: #3A3C3C;
-$button-color-outlined-bg-disabled: transparent;
-
-$button-color-negative-bg-default: transparent;
-$button-color-negative-bg-hovered: #1A1A1A;
-$button-color-negative-bg-pressed: #000000;
-$button-color-negative-bg-disabled: transparent;  
-
-
-// Button border colors
-$button-color-outlined-border-default: #1A1A1A33;
-$button-color-outlined-border-hovered: #1A1A1ACC;
-$button-color-outlined-border-pressed: #1A1A1ACC;
-$button-color-outlined-border-disabled: #1A1A1A1A;
-
-$button-color-negative-border-default: #FFFFFF;
-$button-color-negative-border-hovered:#555555;
-$button-color-negative-border-pressed: #1A1A1A;
-$button-color-negative-border-disabled: #FFFFFF; 
-
-
-// Button text and icon colors
-$button-color-brand-content-default: #FFFFFF;
-$button-color-brand-content-disabled: #FFFFFF;
-
-$button-color-secondary-content-default: #FFFFFF;
-$button-color-secondary-content-disabled: #FFFFFF; 
-
-$button-color-outlined-content-default: #555555;;
-$button-color-outlined-content-hovered: #1A1A1A;
-$button-color-outlined-content-pressed: #FFFFFF;
-$button-color-outlined-content-disabled: #C2C2C2;
-
-$button-color-negative-content-default: #FFFFFF;
-$button-color-negative-content-disabled: #FFFFFF; 
-
-
-// Gradient card
-$gradient-card: linear-gradient(135deg, #1c6ea4 0%, #658864 100%);
-
-// Background colors Overlay
-$overlay-bg-color: rgba(255, 255, 255, 0.8);
-$fullscreen-bg-color: rgba(255, 255, 255, 0.9);
+$color-border-default: $color-neutral;
+$color-border-disabled: #FFFFFF00;
+$color-border-focused: $color-primary;  
+ 
 
 // Link colors
 $color-link: #1c6ea4;
 $color-link-hover: #144b70;
 $color-link-visited: #0f3c5c;
 
-// Backgrounds
-$background-primary: $color-primary;
-$background-base: $color-white;
-$background-secondary: $color-soft;
-$background-disabled: $color-gray300;
-
 // System Feedback
-$feedback-success: $color-success;
-$feedback-warning: $color-warning;
-$feedback-error: $color-error;
-$feedback-info: $color-info;
-$feedback-muted: $color-gray100;
+$color-feedback-success: #81BE7F; 
+$color-feedback-warning: #debb51; 
+$color-feedback-error: #e53935;     
+$color-feedback-info: #1c6ea4;
+$color-feedback-alert: #d32f2f;      
+$color-feedback-muted: $color-gray100;
 
-// Borders
-$border-base: $color-gray300;
-$border-primary: $color-gray200;
-$border-secondary: $color-gray400;
-$border-disabled: $color-gray300;
 
 // Spacing
 $spacing-xs: 4px;
@@ -180,3 +118,52 @@ $z-index-modal: 1050;
 $z-index-popover: 1060;
 $z-index-tooltip: 1070;
 $z-index-loading: 9999;
+
+// Button tokens
+$button-border-width: 1px;
+$button-color-brand-bg-default: #1C6EA4;
+$button-color-brand-bg-hovered: #2395DF;
+$button-color-brand-bg-pressed: #0C4165;
+$button-color-brand-bg-disabled: #CDE6F6;
+$button-color-secondary-bg-default: #658864;
+$button-color-secondary-bg-hovered: #81BE7F;
+$button-color-secondary-bg-pressed: #2C4D2B;
+$button-color-secondary-bg-disabled: #D6EED6;
+$button-color-outlined-bg-default: transparent;
+$button-color-outlined-bg-hovered: #FAFAFA;
+$button-color-outlined-bg-pressed: #3A3C3C;
+$button-color-outlined-bg-disabled: transparent;
+$button-color-negative-bg-default: transparent;
+$button-color-negative-bg-hovered: #1A1A1A;
+$button-color-negative-bg-pressed: #000000;
+$button-color-negative-bg-disabled: transparent;  
+$button-color-outlined-border-default: #1A1A1A33;
+$button-color-outlined-border-hovered: #1A1A1ACC;
+$button-color-outlined-border-pressed: #1A1A1ACC;
+$button-color-outlined-border-disabled: #1A1A1A1A;
+$button-color-negative-border-default: #FFFFFF;
+$button-color-negative-border-hovered:#555555;
+$button-color-negative-border-pressed: #1A1A1A;
+$button-color-negative-border-disabled: #FFFFFF; 
+$button-color-brand-content-default: #FFFFFF;
+$button-color-brand-content-disabled: #FFFFFF;
+$button-color-secondary-content-default: #FFFFFF;
+$button-color-secondary-content-disabled: #FFFFFF; 
+$button-color-outlined-content-default: #555555;;
+$button-color-outlined-content-hovered: #1A1A1A;
+$button-color-outlined-content-pressed: #FFFFFF;
+$button-color-outlined-content-disabled: #C2C2C2;
+$button-color-negative-content-default: #FFFFFF;
+$button-color-negative-content-disabled: #FFFFFF; 
+
+// ListItem Tokens
+$list-item-color-content-actived: #2563eb;
+$list-item-color-bg-hovered:#f3f4f6;
+
+// Navigation Drawer Tokens
+$nav-drawer-color-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+$nav-drawer-color-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
+$nav-drawer-color-bg-overlay: $color-gray300;
+$nav-drawer-color-bg-hovered: $color-soft;
+$nav-drawer-color-bg-actived: $color-gray200;
+$nav-drawer-color-border-focused: rgba($color-primary, 0.5);

@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, Primary, Controls } from '@storybook/addon-docs/blocks';
+import * as ListItemStories from './ListItem.stories';
+
+<Meta of={ListItemStories} />
+
+# ListItem
+
+O componente `ListItem` é usado para exibir itens em listas de navegação, menus e outras interfaces de lista com suporte para ícones e estados ativos.
+
+<Primary />
+
+<Controls />
+
+## Exemplos
+
+### Item Básico
+
+Item de lista simples sem ícone:
+
+<Canvas of={ListItemStories.Default} />
+
+### Com Ícone
+
+Item de lista com ícone à esquerda:
+
+<Canvas of={ListItemStories.WithIcon} />
+
+### Estado Ativo
+
+Item em estado ativo com destaque visual:
+
+<Canvas of={ListItemStories.Active} />
+
+### Sem Ícone
+
+Item de lista sem ícone:
+
+<Canvas of={ListItemStories.WithoutIcon} />
+
+### Exemplo de Navegação
+
+Uso em contexto de menu de navegação:
+
+<Canvas of={ListItemStories.NavigationExample} />
+
+### Todos os Ícones
+
+Demonstração de todos os ícones disponíveis:
+
+<Canvas of={ListItemStories.AllIcons} />
+
+### Texto Longo
+
+Comportamento com textos extensos:
+
+<Canvas of={ListItemStories.LongText} />

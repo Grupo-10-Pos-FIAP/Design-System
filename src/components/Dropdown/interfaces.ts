@@ -1,9 +1,9 @@
-import { IconName } from "../Icon/interfaces";
+import { IconKeys } from "../Icon/interfaces";
 
 export interface DropdownItemProps {
   label: string;
   value?: string;
-  icon?: IconName;
+  icon?: IconKeys;
   disabled?: boolean;
   onClick?: () => void;
 }

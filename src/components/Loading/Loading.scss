@@ -22,7 +22,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $overlay-bg-color;
+    background-color: $color-bg-overlay;
     z-index: $z-index-loading - 1;
   }
 
@@ -32,7 +32,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $fullscreen-bg-color;
+    background-color: $color-bg-fullscreen;
     z-index: $z-index-loading;
   }
 }

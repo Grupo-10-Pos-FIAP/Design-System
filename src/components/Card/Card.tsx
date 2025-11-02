@@ -12,6 +12,7 @@ const CardSection = ({ children, className = '' }: CardSectionProps) => {
 
 const Card = ({
   title,
+  color = 'base',
   variant = 'elevated',
   children,
   className = '',
@@ -21,7 +22,7 @@ const Card = ({
 }: CardProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
-  const cardClasses = ['card', `card--${variant}`, className].filter(Boolean).join(' ');
+  const cardClasses = ['card', `card--${variant}`, `card--${color}`, className].filter(Boolean).join(' ');
 
   const handleClose = () => {
     setIsVisible(false);

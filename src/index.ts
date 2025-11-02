@@ -7,6 +7,7 @@ export * from './components/Header/Header';
 export * from "./components/Icon/Icon";
 export * from "./components/IconButton/IconButton";
 export * from "./components/Input/Input";
+export * from "./components/ListItem/ListItem";
 export * from "./components/Loading/Loading";
 export * from './components/NavigationDrawer/NavigationDrawer';
 export * from "./components/Snackbar/Snackbar";

@@ -1,103 +1,183 @@
-.btn {
+@use 'sass:map';
+
+$btn-color-tokens: (
+  'primary': (
+    'bg-default': $button-color-brand-bg-default,
+    'bg-hovered': $button-color-brand-bg-hovered,
+    'bg-pressed': $button-color-brand-bg-pressed,
+    'bg-disabled': $button-color-brand-bg-disabled,
+    'content-default': $button-color-brand-content-default,
+    'content-hovered': $button-color-brand-content-default,
+    'content-pressed': $button-color-brand-content-default,
+    'content-disabled': $button-color-brand-content-disabled,
+    'border-default': none,
+    'border-hovered': none,
+    'border-pressed': none,
+    'border-disabled': none,
+  ),
+  'secondary': (
+    'bg-default': $button-color-secondary-bg-default,
+    'bg-hovered': $button-color-secondary-bg-hovered,
+    'bg-pressed': $button-color-secondary-bg-pressed,
+    'bg-disabled': $button-color-secondary-bg-disabled,
+    'content-default': $button-color-secondary-content-default,
+    'content-hovered': $button-color-secondary-content-default,
+    'content-pressed': $button-color-secondary-content-default,
+    'content-disabled': $button-color-secondary-content-disabled,
+    'border-default': none,
+    'border-hovered': none,
+    'border-pressed': none,
+    'border-disabled': none,
+  ),
+  'outlined': (
+    'bg-default': $button-color-outlined-bg-default,
+    'bg-hovered': $button-color-outlined-bg-hovered,
+    'bg-pressed': $button-color-outlined-bg-pressed,
+    'bg-disabled': $button-color-outlined-bg-disabled,
+    'content-default': $button-color-outlined-content-default,
+    'content-hovered': $button-color-outlined-content-hovered,
+    'content-pressed': $button-color-outlined-content-pressed,
+    'content-disabled': $button-color-outlined-content-disabled,
+    'border-default': $button-color-outlined-border-default,
+    'border-hovered': $button-color-outlined-border-hovered,
+    'border-pressed': $button-color-outlined-border-pressed,
+    'border-disabled': $button-color-outlined-border-disabled,
+  ),
+  'negative': (
+    'bg-default': $button-color-negative-bg-default,
+    'bg-hovered': $button-color-negative-bg-hovered,
+    'bg-pressed': $button-color-negative-bg-pressed,
+    'bg-disabled': $button-color-negative-bg-disabled,
+    'content-default': $button-color-negative-content-default,
+    'content-hovered': $button-color-negative-content-default,
+    'content-pressed': $button-color-negative-content-default,
+    'content-disabled': $button-color-negative-content-disabled,
+    'border-default': $button-color-negative-border-default,
+    'border-hovered': $button-color-negative-border-hovered,
+    'border-pressed': $button-color-negative-border-pressed,
+    'border-disabled': $button-color-negative-border-disabled,
+  ),
+);
+
+@function btn-color($variant, $state: 'default', $property: 'bg') {
+  $variant-map: map.get($btn-color-tokens, $variant);
+  
+  @if not $variant-map {
+    @warn "Variante '#{$variant}' não encontrada no mapa de cores do botão";
+    @return null;
+  }
+  
+  $token-key: #{$property}-#{$state};
+  $value: map.get($variant-map, $token-key);
+  
+  @if not $value {
+    @warn "Token '#{$token-key}' não encontrado para variante '#{$variant}'";
+    @return map.get($variant-map, #{$property}-default);
+  }
+  
+  @return $value;
+}
+
+@function btn-content-color($variant, $state: 'default') {
+  $color: btn-color($variant, $state, 'content');
+  
+  @if not $color and $state != 'default' {
+    @return btn-color($variant, 'default', 'content');
+  }
+  
+  @return $color;
+}
+
+@mixin btn-variants {
+  @each $variant, $tokens in $btn-color-tokens {
+    &--#{$variant} {
+      background-color: btn-color($variant, 'default', 'bg');
+      color: btn-content-color($variant, 'default');
+      border-color: btn-color($variant, 'default', 'border');
+
+      @if btn-color($variant, 'default', 'border') == none {
+        border: none;
+      }
+
+      &:not(:disabled):hover {
+        background-color: btn-color($variant, 'hovered', 'bg');
+        color: btn-content-color($variant, 'hovered');
+        border-color: btn-color($variant, 'hovered', 'border');
+      }
+
+      &:not(:disabled):focus,
+      &:not(:disabled):focus-within {
+        background-color: btn-color($variant, 'pressed', 'bg');
+        color: btn-content-color($variant, 'pressed');
+        border-color: btn-color($variant, 'pressed', 'border');
+      }
+
+      &:disabled {
+        background-color: btn-color($variant, 'disabled', 'bg');
+        color: btn-content-color($variant, 'disabled');
+        border-color: btn-color($variant, 'disabled', 'border');
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@mixin btn-states {
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@mixin btn-accessibility {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    
+    &:not(:disabled):hover,
+    &:not(:disabled):active {
+      transform: none;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid btn-color('primary', 'default', 'bg');
+    outline-offset: 2px;
+  }
+}
+
+.btn { 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: $spacing-sm;
   border: $button-border-width solid;
-  width: 179px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
   height: 48px;
   gap: 12px;
   padding: 16px 8px;
   cursor: pointer;
-  box-sizing: border-box; 
-  font-family: inherit;
-  font-size: inherit;;
 
-  &:disabled {
-    cursor: not-allowed;
-  }
+  @include btn-states;
+  @include btn-variants;
+  @include btn-accessibility;
 
-  &--primary {
-    background-color: $button-color-brand-bg-default;
-    color: $button-color-brand-content-default;
-    border: none;
-
-    &:hover {
-      background-color: $button-color-brand-bg-hovered;
-    }
-
-    &:focus-within {
-      background-color: $button-color-brand-bg-pressed;
-    }
-
-    &:disabled {
-      background-color: $button-color-brand-bg-disabled;
-      color: $button-color-brand-content-disabled
-    }
-  }
-
-  &--secondary {
-    background-color: $button-color-secondary-bg-default;
-    color: $button-color-secondary-content-default;
-    border-color: none;
-
-    &:hover {
-      background-color: $button-color-secondary-bg-hovered;
-    }
-
-    &:focus {
-      background-color: $button-color-secondary-bg-pressed;
-    }
-
-    &:disabled {
-      background-color: $button-color-secondary-bg-disabled;
-      color: $button-color-secondary-content-disabled;
-    }
-  }
-
-  &--outlined {
-    background-color: $button-color-outlined-bg-default;
-    color: $button-color-outlined-content-default;
-    border-color: $button-color-outlined-border-default;
-
-    &:hover {
-      background-color: $button-color-outlined-bg-hovered;
-      color: $button-color-outlined-content-hovered;
-      border-color: $button-color-outlined-border-hovered;
-    }
-
-    &:focus {
-      background-color: $button-color-outlined-bg-pressed;
-      color: $button-color-outlined-content-pressed;
-      border-color: $button-color-outlined-border-pressed;
-    }
-
-    &:disabled {
-      background-color: $button-color-outlined-bg-disabled;
-      color: $button-color-outlined-content-disabled;
-      border-color: $button-color-outlined-border-disabled
-    }
-  }
-
-  &--negative {
-    background-color: $button-color-negative-bg-default;
-    color: $button-color-negative-content-default;
-    border-color: $button-color-negative-border-default;
-
-    &:hover {
-      background-color: $button-color-negative-bg-hovered;
-      border-color: $button-color-negative-border-hovered
-    }
-
-    &:focus {
-      background-color: $button-color-negative-bg-pressed;
-      border-color: $button-color-negative-border-pressed;
-    }
-
-    &:disabled {
-      background-color: $button-color-negative-bg-disabled;
-      color: $button-color-negative-content-disabled;
-      border-color: $button-color-negative-border-disabled;
-    }
+  &:focus {
+    outline: none;
   }
 }

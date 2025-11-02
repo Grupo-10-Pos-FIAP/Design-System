@@ -6,7 +6,92 @@ import { Button } from '@components/Button/Button';
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
   component: Dialog,
+  argTypes: {
+    isOpen: {
+      control: 'boolean',
+      description: 'Controls the visibility of the dialog',
+    },
+    onClose: {
+      action: 'onClose',
+      description: 'Callback function when dialog is closed',
+    },
+    children: {
+      control: 'text',
+      description: 'Dialog content',
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS classes',
+    },
+    position: {
+      control: 'select',
+      options: ['center', 'top', 'bottom', 'left', 'right'],
+      description: 'Position of the dialog on the screen',
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large', 'fullscreen'],
+      description: 'Predefined size variants',
+    },
+    contentAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the content',
+    },
+    headerAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the header content',
+    },
+    bodyAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the body content',
+    },
+    footerAlign: {
+      control: 'select',
+      options: ['left', 'center', 'right'],
+      description: 'Horizontal alignment of the footer content',
+    },
+    overlay: {
+      control: 'boolean',
+      description: 'Show/hide the overlay background',
+    },
+    overlayOpacity: {
+      control: { type: 'range', min: 0, max: 1, step: 0.1 },
+      description: 'Opacity level of the overlay (0 to 1)',
+    },
+    closeOnOverlayClick: {
+      control: 'boolean',
+      description: 'Close dialog when clicking on overlay',
+    },
+    showCloseButton: {
+      control: 'boolean',
+      description: 'Show/hide the close button',
+    },
+    title: {
+      control: 'text',
+      description: 'Dialog title text',
+    },
+    description: {
+      control: 'text',
+      description: 'Dialog description text',
+    },
+    width: {
+      control: 'text',
+      description: 'Custom width (e.g., "500px", "80%")',
+    },
+    maxWidth: {
+      control: 'text',
+      description: 'Maximum width (e.g., "500px", "80%")',
+    },
+    fullScreenBreakpoint: {
+      control: 'number',
+      description: 'Breakpoint in pixels for fullscreen mode on mobile',
+    },
+  },
 };
+
 export default meta;
 
 type Story = StoryObj<typeof Dialog>;
@@ -43,7 +128,7 @@ const defaultDialogCode = `
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="md"
+  size="medium"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -56,7 +141,7 @@ const defaultDialogCode = `
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -73,14 +158,15 @@ const defaultDialogCode = `
 export const Default: Story = {
   render: (args) => <DialogTemplate {...args} />,
   args: {
+    title: 'Dialog padrão',
     position: 'center',
-    size: 'md',
+    size: 'medium',
     contentAlign: 'center',
     overlay: true,
     overlayOpacity: 0.25,
     closeOnOverlayClick: true,
     showCloseButton: true,
-    title: 'Dialog padrão',
+    isOpen: false,
   },
   parameters: {
     docs: {
@@ -106,7 +192,7 @@ export const TopDialog: Story = {
   isOpen={true}
   onClose={() => {}}
   position="top"
-  size="md"
+  size="medium"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -119,7 +205,7 @@ export const TopDialog: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: top</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -152,7 +238,7 @@ export const BottomDialog: Story = {
   isOpen={true}
   onClose={() => {}}
   position="bottom"
-  size="md"
+  size="medium"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -165,7 +251,7 @@ export const BottomDialog: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: bottom</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -188,7 +274,7 @@ export const LeftDialog: Story = {
   args: {
     ...Default.args,
     position: 'left',
-    size: 'lg',
+    size: 'large',
     title: 'Dialog à esquerda (drawer)',
   },
   parameters: {
@@ -199,7 +285,7 @@ export const LeftDialog: Story = {
   isOpen={true}
   onClose={() => {}}
   position="left"
-  size="lg"
+  size="large"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -212,7 +298,7 @@ export const LeftDialog: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: left</p>
-    <p>Tamanho: lg</p>
+    <p>Tamanho: large</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -235,7 +321,7 @@ export const RightDialog: Story = {
   args: {
     ...Default.args,
     position: 'right',
-    size: 'lg',
+    size: 'large',
     title: 'Dialog à direita (drawer)',
   },
   parameters: {
@@ -246,7 +332,7 @@ export const RightDialog: Story = {
   isOpen={true}
   onClose={() => {}}
   position="right"
-  size="lg"
+  size="large"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -259,7 +345,7 @@ export const RightDialog: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: right</p>
-    <p>Tamanho: lg</p>
+    <p>Tamanho: large</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -281,7 +367,7 @@ export const LargeDialog: Story = {
   render: (args) => <DialogTemplate {...args} />,
   args: {
     ...Default.args,
-    size: 'lg',
+    size: 'large',
     title: 'Dialog grande',
   },
   parameters: {
@@ -292,7 +378,7 @@ export const LargeDialog: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="lg"
+  size="large"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -305,7 +391,7 @@ export const LargeDialog: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: lg</p>
+    <p>Tamanho: large</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -327,7 +413,7 @@ export const ExtraLargeDialog: Story = {
   render: (args) => <DialogTemplate {...args} />,
   args: {
     ...Default.args,
-    size: 'xl',
+    size: 'extra-large',
     title: 'Dialog extra grande',
   },
   parameters: {
@@ -338,7 +424,7 @@ export const ExtraLargeDialog: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="xl"
+  size="extra-large"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -384,7 +470,7 @@ export const StartAligned: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="md"
+  size="medium"
   contentAlign="start"
   overlay={true}
   overlayOpacity={0.25}
@@ -397,7 +483,7 @@ export const StartAligned: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: start</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -430,7 +516,7 @@ export const EndAligned: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="md"
+  size="medium"
   contentAlign="end"
   overlay={true}
   overlayOpacity={0.25}
@@ -443,7 +529,7 @@ export const EndAligned: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: end</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -476,7 +562,7 @@ export const FooterCentered: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="md"
+  size="medium"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -489,7 +575,7 @@ export const FooterCentered: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="center">
@@ -523,7 +609,7 @@ export const NoOverlay: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="md"
+  size="medium"
   contentAlign="center"
   overlay={false}
   overlayOpacity={0}
@@ -536,7 +622,7 @@ export const NoOverlay: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -569,7 +655,7 @@ export const NoCloseOnOverlayClick: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="md"
+  size="medium"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}
@@ -582,7 +668,7 @@ export const NoCloseOnOverlayClick: Story = {
   <DialogBody>
     <p>Este é um exemplo de conteúdo do Dialog.</p>
     <p>Posição: center</p>
-    <p>Tamanho: md</p>
+    <p>Tamanho: medium</p>
     <p>Alinhamento: center</p>
   </DialogBody>
   <DialogFooter align="end">
@@ -605,7 +691,7 @@ export const FullScreenResponsive: Story = {
   args: {
     ...Default.args,
     fullScreenBreakpoint: 1024,
-    size: 'xl',
+    size: 'extra-large',
     title: 'Dialog responsivo em tela cheia',
   },
   parameters: {
@@ -616,7 +702,7 @@ export const FullScreenResponsive: Story = {
   isOpen={true}
   onClose={() => {}}
   position="center"
-  size="xl"
+  size="extra-large"
   contentAlign="center"
   overlay={true}
   overlayOpacity={0.25}

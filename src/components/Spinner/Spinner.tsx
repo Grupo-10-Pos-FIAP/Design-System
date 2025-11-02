@@ -15,8 +15,8 @@ const DotsSpinner: FC<SpinnerProps> = ({ size, color }) => (
 );
 
 const RingSpinner: FC<SpinnerProps> = ({ size, color }) => {
-  const sizeMap = { sm: 35, md: 45, lg: 65 };
-  const containerSize = sizeMap[size || 'md'];
+  const sizeMap = { small: 35, medium: 45, large: 65 };
+  const containerSize = sizeMap[size || 'medium'];
   return (
     <div
       className={`spinner spinner--ring spinner--${size} spinner--${color}`}
@@ -29,10 +29,10 @@ const RingSpinner: FC<SpinnerProps> = ({ size, color }) => {
 };
 
 const PulseSpinner: FC<SpinnerProps> = ({ size, color }) => {
-  const sizeMap = { sm: 35, md: 45, lg: 65 };
-  const containerSize = sizeMap[size || 'md'];
-  const barHeightMap = { sm: 0.5, md: 0.7, lg: 0.8 };
-  const barHeightRatio = barHeightMap[size || 'md'];
+  const sizeMap = { small: 35, medium: 45, large: 65 };
+  const containerSize = sizeMap[size || 'medium'];
+  const barHeightMap = { small: 0.5, medium: 0.7, large: 0.8 };
+  const barHeightRatio = barHeightMap[size || 'medium'];
 
   return (
     <div
@@ -54,7 +54,7 @@ const SPINNER_VARIANTS: Record<SpinnerVariant, FC<SpinnerProps>> = {
 
 const Spinner: FC<SpinnerProps> = ({
   variant = 'default',
-  size = 'md',
+  size = 'medium',
   color = 'primary',
   ariaLabel = 'Carregando...',
   ...props

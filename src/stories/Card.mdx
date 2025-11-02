@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Primary, Controls } from '@storybook/addon-docs/blocks';
 import * as CardStories from './Card.stories';
 
 <Meta of={CardStories} />
@@ -9,6 +9,9 @@ O componente Card é usado para agrupar conteúdo e ações sobre um único tóp
 Ele pode ser configurado para ter diferentes estilos visuais, como elevado, contornado ou plano,
 e pode incluir um ou mais subcomponentes conforme a necessidade.
 
+<Primary />
+
+<Controls />
 
 ## Principais Variantes
 
@@ -30,6 +33,26 @@ A variante `flat` não tem sombra nem borda, integrando-se mais ao fundo.
 
 <Canvas of={CardStories.Flat} />
 
+## Esquemas de Cores
+
+### Base
+
+O esquema de cores padrão do card.
+
+<Canvas of={CardStories.Elevated} />
+
+### Gradient
+
+O esquema de cores com gradiente para um visual mais destacado.
+
+<Canvas of={CardStories.GradientCard} />
+
+### Combinações
+
+Você pode combinar variantes com esquemas de cores:
+
+<Canvas of={CardStories.GradientOutlined} />
+
 ## Funcionalidades e Composições
 
 ### Com Seções
@@ -37,6 +60,12 @@ A variante `flat` não tem sombra nem borda, integrando-se mais ao fundo.
 O card pode ser dividido em várias seções para organizar o conteúdo.
 
 <Canvas of={CardStories.WithSections} />
+
+### Com Seções e Gradiente
+
+Seções com esquema de cores em gradiente.
+
+<Canvas of={CardStories.GradientWithSections} />
 
 ### Fechável
 
@@ -63,5 +92,7 @@ Um exemplo de como compor um formulário simples dentro de um card.
 <Canvas of={CardStories.FormCard} />
 
 ### Exemplo de Transferência
+
 Um exemplo mais complexo de formulário para simular uma transferência bancária.
+
 <Canvas of={CardStories.TransferCard} />

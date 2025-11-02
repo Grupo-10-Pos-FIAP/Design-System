@@ -1,15 +1,15 @@
 import { useEffect, useState, useCallback, CSSProperties } from 'react';
-import { Dialog as RadixDialog } from "radix-ui";
+import { Dialog as RadixDialog } from 'radix-ui';
 import { IconButton } from '@components/IconButton/IconButton';
 import { DialogProps, DialogPosition, DialogSize, ContentAlign, SectionProps } from './interfaces';
 import './Dialog.scss';
 
 const SIZE_MAP: Record<DialogSize, string> = {
-  sm: '360px',
-  md: '600px',
-  lg: '900px',
-  xl: '1200px',
-  full: '100%',
+  'extra-small': '360px',
+  'medium': '600px',
+  'large': '900px',
+  'extra-large': '1200px',
+  'full': '100%',
 };
 
 const getPositionStyle = (position: DialogPosition): CSSProperties => {
@@ -41,7 +41,7 @@ const Dialog = ({
   children,
   className = '',
   position = 'center',
-  size = 'md',
+  size = 'medium',
   contentAlign = 'center',
   headerAlign,
   bodyAlign,
@@ -126,17 +126,13 @@ const Dialog = ({
               e.preventDefault();
             }
           }}>
-          <RadixDialog.Title asChild>
-            {title}
-          </RadixDialog.Title>
+          <RadixDialog.Title asChild>{title}</RadixDialog.Title>
 
-          <RadixDialog.Description asChild>
-            {description || ' '}
-          </RadixDialog.Description>
+          <RadixDialog.Description asChild>{description || ' '}</RadixDialog.Description>
 
           {showCloseButton && (
             <RadixDialog.Close asChild>
-              <IconButton icon="X" variant="ghost" className="dialog__close" aria-label="Fechar" />
+              <IconButton icon="X" variant="transparent" className="dialog__close" aria-label="Fechar" />
             </RadixDialog.Close>
           )}
 
