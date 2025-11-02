@@ -3,7 +3,7 @@ import { ButtonProps } from './interfaces';
 import './Button.scss';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', disabled = false, width, ...props }, ref) => {
+  ({ variant = 'primary', disabled = false, width = '179px', ...props }, ref) => {
     const buttonStyle = width ? { width } : {};
 
     return (

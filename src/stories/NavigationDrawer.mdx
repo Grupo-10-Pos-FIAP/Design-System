@@ -1,5 +1,5 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { NavigationDrawer } from '../components/NavigationDrawer/NavigationDrawer';
+import { Meta, Story, Canvas, Primary, Controls } from '@storybook/addon-docs/blocks';
+import { NavigationDrawer } from '@components/NavigationDrawer/NavigationDrawer';
 import * as NavigationDrawerStories from './NavigationDrawer.stories';
 
 <Meta of={NavigationDrawerStories} />
@@ -8,6 +8,10 @@ import * as NavigationDrawerStories from './NavigationDrawer.stories';
 
 O componente NavigationDrawer é um painel lateral deslizante que fornece navegação principal e acesso a funcionalidades da aplicação.
 
+<Primary />
+
+<Controls />
+
 ## Exemplos
 
 ### NavigationDrawer Padrão
@@ -15,3 +19,21 @@ O componente NavigationDrawer é um painel lateral deslizante que fornece navega
 Exemplo com controle interno de estado e estrutura completa:
 
 <Canvas of={NavigationDrawerStories.Default} />
+
+### Menu Controlado via Args
+
+Exemplo onde todas as propriedades são controladas via argumentos:
+
+<Canvas of={NavigationDrawerStories.Playground} />
+
+### Com Header e Footer Customizados
+
+Demonstra o uso dos componentes `Header` e `Footer` para personalização:
+
+<Canvas of={NavigationDrawerStories.WithCustomHeaderAndFooter} />
+
+### Posição à Direita
+
+Exemplo do drawer posicionado no lado direito da tela:
+
+<Canvas of={NavigationDrawerStories.RightPosition} />

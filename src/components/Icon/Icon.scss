@@ -5,15 +5,14 @@ $icon-color-map: (
   'base': $color-base,
   'white': $color-white,
   'black': $color-black,
-  'disabled': $color-disabled,
+  'disabled': $color-content-disabled,
   'primary': $color-primary,
   'secondary': $color-secondary,
-  'accent': $color-accent,
   'soft': $color-soft,
-  'success': $color-success,
-  'warning': $color-warning,
-  'error': $color-error,
-  'info': $color-info,
+  'success': $color-feedback-success,
+  'warning': $color-feedback-warning,
+  'error': $color-feedback-error,
+  'info': $color-feedback-info,
   'gray100': $color-gray100,
   'gray200': $color-gray200,
   'gray300': $color-gray300,
@@ -24,7 +23,7 @@ $icon-color-map: (
 
 @function icon-color($color: 'base', $disabled: false) {
   @if $disabled {
-    @return $color-disabled;
+    @return $color-content-disabled;
   }
 
   @if map.has-key($icon-color-map, $color) {
@@ -79,8 +78,8 @@ $icon-color-map: (
   @include icon-colors;
 
   &--disabled {
-    pointer-events: none;
     opacity: 0.6;
+    cursor: not-allowed;
 
     @include icon-colors(true);
   }

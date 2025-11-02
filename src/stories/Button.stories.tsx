@@ -11,7 +11,7 @@ const meta = {
     },
     width: {
       control: { type: 'text' },
-      description: 'Largura do botão (ex: 100%, 200px, 50%) - default: 179px',
+      description: 'Largura do botão (ex: 100%, 200px, 50%)',
     },
     disabled: {
       control: 'boolean',
@@ -38,6 +38,8 @@ export const Primary: Story = {
   args: {
     children: 'Primary Button',
     variant: 'primary',
+    disabled: false,
+    width: '179px',
   },
   parameters: {
     docs: {
@@ -130,44 +132,6 @@ export const Disabled: Story = {
     docs: {
       description: {
         story: 'Botão desabilitado - não pode ser interagido.',
-      },
-    },
-  },
-};
-
-export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '300px' }}>
-      <Button variant="primary" width="100%">
-        Primary Full Width
-      </Button>
-      <Button variant="secondary" width="250px">
-        Secondary 250px
-      </Button>
-      <Button variant="outlined" width="200px">
-        Outlined 200px
-      </Button>
-      <Button variant="negative" width="150px">
-        Negative 150px
-      </Button>
-      <Button variant="primary" disabled width="100%">
-        Disabled Full Width
-      </Button>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Exemplo de todos os variants com diferentes larguras em um container.',
-      },
-      source: {
-        code: `
-<Button variant="primary" width="100%">Primary Full Width</Button>
-<Button variant="secondary" width="250px">Secondary 250px</Button>
-<Button variant="outlined" width="200px">Outlined 200px</Button>
-<Button variant="negative" width="150px">Negative 150px</Button>
-<Button variant="primary" disabled width="100%">Disabled Full Width</Button>
-        `,
       },
     },
   },

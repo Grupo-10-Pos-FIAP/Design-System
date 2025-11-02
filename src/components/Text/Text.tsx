@@ -5,7 +5,7 @@ import './Text.scss';
 const Text: React.FC<TextProps> = ({
   variant = 'body',
   color = 'base',
-  weight,
+  weight = 'regular',
   align = 'left',
   as = 'p',
   letterSpacing,

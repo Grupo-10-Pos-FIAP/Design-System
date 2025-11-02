@@ -8,7 +8,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       variant = 'default',
-      size = 'medium',
       status = 'default',
       label,
       helperText,
@@ -41,7 +40,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className={joinClassNames([
               'input',
               `input--${variant}`,
-              `input--${size}`,
               `input--${status}`,
               fullWidth && 'input--full-width',
               disabled && 'input--disabled',

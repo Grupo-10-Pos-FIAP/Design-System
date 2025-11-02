@@ -5,7 +5,7 @@ import { Icon } from '../Icon/Icon';
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
-    { icon, variant = 'default', size = 'md', className = '', disabled = false, 'aria-label': ariaLabel, ...props },
+    { icon, variant = 'base', size = 'medium', className = '', disabled = false, 'aria-label': ariaLabel, ...props },
     ref
   ) => {
     const classes = ['icon-btn', `icon-btn--${variant}`, `icon-btn--${size}`, className].filter(Boolean).join(' ');

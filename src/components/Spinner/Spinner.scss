@@ -6,19 +6,19 @@ $spinner-animation-duration: 1s;
 .spinner {
   display: inline-block;
 
-  &--xs {
+  &--extra-small {
     width: 25px;
     height: 25px;
   }
-  &--sm {
+  &--small {
     width: 35px;
     height: 35px;
   }
-  &--md {
+  &--medium {
     width: 45px;
     height: 45px;
   }
-  &--lg {
+  &--large {
     width: 65px;
     height: 65px;
   }
@@ -30,10 +30,10 @@ $spinner-animation-duration: 1s;
     color: $color-secondary;
   }
   &--alert {
-    color: $color-alert;
+    color: $color-feedback-alert;
   }
   &--success {
-    color: $color-success;
+    color: $color-feedback-success;
   }
   &--neutral {
     color: $color-neutral;

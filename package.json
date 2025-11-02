@@ -1,6 +1,6 @@
 {
   "name": "@grupo10-pos-fiap/design-system",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Design System do Grupo 10 - FIAP",
   "type": "module",
   "main": "dist/index.cjs.js",

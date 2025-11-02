@@ -14,7 +14,7 @@ const meta = {
       control: 'select',
       options: [
         'base', 'white', 'black', 'disabled',
-        'primary', 'secondary', 'accent', 'soft',
+        'primary', 'secondary', 'soft',
         'success', 'warning', 'error', 'info', 'link',
         'gray100', 'gray200', 'gray300', 'gray400', 'gray500',
         'gray600', 'gray700', 'gray800', 'gray900'

@@ -3,13 +3,14 @@ import { icons } from 'lucide-react';
 
 type LucideIcons = keyof typeof icons;
 
-export type IconName = LucideIcons;
+
+export type IconKeys = LucideIcons;
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size'> {
   /**
    * Name of the icon from lucide-react library
    */
-  name: IconName;
+  name: IconKeys;
 
   /**
    * Color variant of the icon
@@ -22,7 +23,6 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'color' | 'size
     | 'disabled'
     | 'primary'
     | 'secondary'
-    | 'accent'
     | 'soft'
     | 'success'
     | 'warning'

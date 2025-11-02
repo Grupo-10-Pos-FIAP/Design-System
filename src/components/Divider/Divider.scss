@@ -1,7 +1,9 @@
 $divider-colors: (
-  default: $border-base,
-  primary: $color-primary,
   base: $color-base,
+  primary: $color-primary,
+  secondary: $color-secondary,
+  neutral: $color-neutral,
+  soft: $color-soft,
 );
 
 .divider {
