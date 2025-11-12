@@ -5,10 +5,9 @@
 }
 
 .input-label {
-  font-family: $font-family-default;
   font-size: $font-size-small;
   font-weight: $font-weight-medium;
-  color: $color-base;
+  color: $color-content-default;
   margin-bottom: 0;
   display: flex;
   align-items: center;
@@ -25,6 +24,8 @@
     cursor: pointer;
     margin-bottom: 0;
     font-weight: $font-weight-regular;
+    font-size: $font-size-body;
+    color: $color-gray700;
 
     &.input-label--disabled {
       color: $color-content-disabled;
