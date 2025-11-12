@@ -27,6 +27,10 @@ const meta: Meta<typeof Dropdown> = {
       control: 'text',
       description: 'Texto de ajuda abaixo do dropdown',
     },
+    defaultValue: {
+      control: 'text',
+      description: 'Valor pré-selecionado do dropdown',
+    },
   },
   decorators: [
     (Story) => (
@@ -87,6 +91,31 @@ export const WithLabel: Story = {
   args: {
     label: 'Tipo de Transação',
     placeholder: 'Selecione o tipo de transação',
+    items: [
+      {
+        label: 'Transferência',
+        value: 'transfer',
+        icon: 'ArrowLeftRight',
+      },
+      {
+        label: 'Pagamento',
+        value: 'payment',
+        icon: 'CreditCard',
+      },
+      {
+        label: 'Depósito',
+        value: 'deposit',
+        icon: 'ArrowDownToLine',
+      },
+    ],
+  },
+};
+
+export const WithPreSelectedValue: Story = {
+  args: {
+    label: 'Tipo de Transação',
+    placeholder: 'Selecione o tipo de transação',
+    defaultValue: 'transfer',
     items: [
       {
         label: 'Transferência',

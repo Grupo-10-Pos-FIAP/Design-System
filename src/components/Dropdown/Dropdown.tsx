@@ -3,6 +3,7 @@ import { Icon } from '@components/Icon/Icon';
 import { useState } from 'react';
 import './Dropdown.scss';
 import { DropdownItemProps, DropdownProps } from './interfaces';
+import { Text } from '../Text/Text';
 
 const Dropdown = ({ 
   items,
@@ -11,9 +12,20 @@ const Dropdown = ({
   label,
   width = 'auto',
   status = 'neutral',
-  helperText
+  helperText,
+  defaultValue
 }: DropdownProps) => {
-  const [selectedItem, setSelectedItem] = useState<DropdownItemProps | null>(null);
+  const getInitialSelectedItem = (): DropdownItemProps | null => {
+    if (defaultValue) {
+      const item = items.find(
+        (item) => !('label' in item && item.label === 'divider') && (item as DropdownItemProps).value === defaultValue
+      );
+      return item ? (item as DropdownItemProps) : null;
+    }
+    return null;
+  };
+
+  const [selectedItem, setSelectedItem] = useState<DropdownItemProps | null>(getInitialSelectedItem());
 
   const handleItemClick = (item: DropdownItemProps) => {
     setSelectedItem(item);
@@ -77,8 +89,8 @@ const Dropdown = ({
                 disabled={dropdownItem.disabled}
               >
                 <div className="dropdown-item-content">
-                  {dropdownItem.icon && <Icon name={dropdownItem.icon} size='small' className="dropdown-icon" />}
-                  <span className="dropdown-item-label">{dropdownItem.label}</span>
+                  {dropdownItem.icon && <Icon name={dropdownItem.icon} size='small' className={`dropdown-icon ${isSelected ? 'selected' : ''}`} />}
+                  <span className={`dropdown-item-label ${isSelected ? 'selected' : ''}`}>{dropdownItem.label}</span>
                 </div>
               </DropdownMenu.Item>
             );

@@ -16,4 +16,5 @@ export interface DropdownProps {
   width?: string | number;
   status?: 'neutral' | 'success' | 'warning' | 'error';
   helperText?: string;
+  defaultValue?: string;
 }
