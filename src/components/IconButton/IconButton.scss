@@ -10,7 +10,7 @@ $icon-btn-color-map: (
   'white': $color-white,
   'gray100': $color-gray100,
   'gray200': $color-gray200,
-);
+); 
 
 $icon-btn-size-map: (
   'small': (
@@ -201,5 +201,7 @@ $icon-btn-size-map: (
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
   }
 }
