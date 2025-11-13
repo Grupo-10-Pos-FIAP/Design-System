@@ -7,8 +7,7 @@ export interface CardSectionProps {
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
-  variant?: 'elevated' | 'outlined' | 'flat';
-  color?: 'base' | 'gradient';
+  variant?: 'elevated' | 'outlined' | 'flat' | 'gradient';
   children?: ReactNode;
   className?: string;
   closable?: boolean;

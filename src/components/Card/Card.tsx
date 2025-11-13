@@ -3,6 +3,7 @@ import { Icon } from '@components/Icon/Icon';
 import './Card.scss';
 
 import type { CardProps, CardSectionProps } from './interfaces';
+import { IconButton } from '../IconButton/IconButton';
 
 const CardSection = ({ children, className = '' }: CardSectionProps) => {
   const sectionClasses = ['card__section', className].filter(Boolean).join(' ');
@@ -12,7 +13,6 @@ const CardSection = ({ children, className = '' }: CardSectionProps) => {
 
 const Card = ({
   title,
-  color = 'base',
   variant = 'elevated',
   children,
   className = '',
@@ -22,7 +22,7 @@ const Card = ({
 }: CardProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
-  const cardClasses = ['card', `card--${variant}`, `card--${color}`, className].filter(Boolean).join(' ');
+  const cardClasses = ['card', `card--${variant}`, className].filter(Boolean).join(' ');
 
   const handleClose = () => {
     setIsVisible(false);
@@ -41,9 +41,9 @@ const Card = ({
         <div className="card__header">
           {title && <h3 className="card__title">{title}</h3>}
           {closable && (
-            <button className="card__close-button" onClick={handleClose} aria-label="Fechar card" type="button">
-              <Icon name="X" color="black" />
-            </button>
+            <div className="card__close-button">
+              <IconButton icon="X" size="medium" onClick={handleClose} type="button" aria-label="Fechar card" />
+            </div>
           )}
         </div>
       )}

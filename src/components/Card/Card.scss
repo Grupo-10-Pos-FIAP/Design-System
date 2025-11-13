@@ -1,8 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: $border-radius-size-default;
-  padding: $spacing-md;
+  border-radius: $card-border-radius-size-default;
+  padding: $spacing-lg;
   color: $color-content-default;
   transition:
     box-shadow 0.2s ease-in-out,
@@ -11,47 +11,24 @@
   position: relative;
   animation: fadeIn 0.2s ease-in;
 
-  &__header {
+  .card__header {
+    margin: 0;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-start;
-    margin: 0 $spacing-sm;
-    gap: $spacing-sm;
   }
 
-  &__title {
-    font-size: $font-size-title;
-    font-weight: $font-weight-semibold;
+  .card__title {
+    font-size: $font-size-h3;
+    font-weight: $font-weight-bold;
+    margin-top: 0;
     flex: 1;
-    margin-top: $spacing-lg;
   }
 
   &__close-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    background: transparent;
-    border: none;
-    border-radius: $border-radius-size-default;
-    color: $color-content-default;
-    cursor: pointer;
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease,
-      transform 0.1s ease;
-    flex-shrink: 0;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.06);
-      transform: scale(1.1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
 
     &:focus-visible {
       outline: 2px solid $color-primary;
@@ -95,8 +72,12 @@
   &--gradient {
     color: $color-content-inverse;
     background: $color-bg-gradient !important;
-  }
+    color: $color-white;
 
+    svg {
+      stroke: #f4f4f4;
+    }
+  }
 
   &--elevated {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.096);

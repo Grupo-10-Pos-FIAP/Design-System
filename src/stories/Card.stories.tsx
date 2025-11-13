@@ -4,6 +4,7 @@ import { Button } from '@components/Button/Button';
 import { Input } from '@components/Input/Input';
 import { Dropdown } from '@components/Dropdown/Dropdown';
 import { Text } from '@components/Text/Text';
+import { IconButton } from '@components/IconButton/IconButton';
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
@@ -11,11 +12,7 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['elevated', 'outlined', 'flat'],
-    },
-    color: {
-      control: { type: 'select' },
-      options: ['base', 'gradient'],
+      options: ['elevated', 'outlined', 'flat', 'gradient'],
     },
     title: { control: 'text' },
     closable: { control: 'boolean' },
@@ -116,7 +113,7 @@ export const FormCard: Story = {
     title: 'Formulário de Contato',
     color: 'base',
     children: (
-      <div style={{ padding: '16px', width: '300px' }}>
+      <div style={{ padding: '16px' }}>
         <Card.Section>
           <Input label="Nome" placeholder="Digite seu nome" />
         </Card.Section>
@@ -134,10 +131,10 @@ export const FormCard: Story = {
 };
 
 const transferValues = [
-  { label: 'R$ 50,00' },
-  { label: 'R$ 100,00' },
-  { label: 'R$ 200,00' },
-  { label: 'Outro valor', disabled: true },
+  { label: 'R$ 50,00', value: '50-reais' },
+  { label: 'R$ 100,00' , value: '100-reais'},
+  { label: 'R$ 200,00', value: '200-reais' },
+  { label: 'Outro valor',value: 'outro-valor', disabled: true },
 ];
 
 export const TransferCard: Story = {
@@ -145,10 +142,10 @@ export const TransferCard: Story = {
     title: 'Fazer Transferência',
     color: 'base',
     children: (
-      <div style={{ padding: '16px', width: '350px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ padding: '16px',  display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <Input label="Chave PIX ou dados da conta" placeholder="Digite a chave" />
 
-        <Dropdown items={transferValues} placeholder="Selecione o valor da transferência" label="teste" />
+        <Dropdown items={transferValues} width='100%' placeholder="Selecione o valor da transferência" label="Selecione o valor da transferência" />
 
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button variant="primary">Transferir</Button>
@@ -158,30 +155,39 @@ export const TransferCard: Story = {
   },
 };
 
-// NOVAS STORIES PARA A PROPRIEDADE color
 export const GradientCard: Story = {
   args: {
-    title: 'Card com Gradiente',
-    color: 'gradient',
+    variant: 'gradient',
     children: (
-      <p>Este card usa a variante de cores com gradiente. Perfeito para destacar conteúdos especiais!</p>
+      <Card.Section>
+        <div style={{ width: '350px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <p style={{ fontWeight: 'bold', fontSize: '2rem' }}>Saldo</p>
+          <IconButton
+          style={{backgroundColor: 'transparent' }}
+            icon="Eye"
+            size="medium"
+            variant="transparent"
+            onClick={() => {}}
+          />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <p style={{ fontWeight: 'bold', fontSize: '1.25rem'}}>R$ 5.000,00</p>
+          </div>
+          <p style={{ fontWeight: 'normal', fontSize: '0.75rem'}}>
+            Rendeu 3% desde o mês passado
+          </p>
+        </div></div>
+      </Card.Section>
     ),
-  },
-};
-
-export const GradientOutlined: Story = {
-  args: {
-    title: 'Card Outlined com Gradiente',
-    variant: 'outlined',
-    color: 'gradient',
-    children: <p>Combinação de outlined com gradiente para um visual moderno.</p>,
   },
 };
 
 export const GradientWithSections: Story = {
   args: {
     title: 'Card com Gradiente e Seções',
-    color: 'gradient',
+    variant: 'gradient',
     children: (
       <>
         <Card.Section>
