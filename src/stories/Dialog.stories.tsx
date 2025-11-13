@@ -133,7 +133,6 @@ const defaultDialogCode = `
   overlay={true}
   overlayOpacity={0.25}
   closeOnOverlayClick={true}
-  showCloseButton={true}
 >
   <DialogHeader>
     <h3>Dialog padrão</h3>
@@ -165,7 +164,7 @@ export const Default: Story = {
     overlay: true,
     overlayOpacity: 0.25,
     closeOnOverlayClick: true,
-    showCloseButton: true,
+    showCloseButton: false,
     isOpen: false,
   },
   parameters: {
@@ -183,6 +182,7 @@ export const TopDialog: Story = {
     ...Default.args,
     position: 'top',
     title: 'Dialog no topo',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -229,6 +229,7 @@ export const BottomDialog: Story = {
     ...Default.args,
     position: 'bottom',
     title: 'Dialog na parte inferior',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -276,6 +277,7 @@ export const LeftDialog: Story = {
     position: 'left',
     size: 'large',
     title: 'Dialog à esquerda (drawer)',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -323,6 +325,7 @@ export const RightDialog: Story = {
     position: 'right',
     size: 'large',
     title: 'Dialog à direita (drawer)',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -369,6 +372,7 @@ export const LargeDialog: Story = {
     ...Default.args,
     size: 'large',
     title: 'Dialog grande',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -415,6 +419,7 @@ export const ExtraLargeDialog: Story = {
     ...Default.args,
     size: 'extra-large',
     title: 'Dialog extra grande',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -461,6 +466,7 @@ export const StartAligned: Story = {
     ...Default.args,
     contentAlign: 'start',
     title: 'Conteúdo alinhado à esquerda',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -507,6 +513,7 @@ export const EndAligned: Story = {
     ...Default.args,
     contentAlign: 'end',
     title: 'Conteúdo alinhado à direita',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -553,6 +560,7 @@ export const FooterCentered: Story = {
     ...Default.args,
     footerAlign: 'center',
     title: 'Footer centralizado',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -600,6 +608,7 @@ export const NoOverlay: Story = {
     overlay: false,
     overlayOpacity: 0,
     title: 'Dialog sem overlay',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -646,6 +655,7 @@ export const NoCloseOnOverlayClick: Story = {
     ...Default.args,
     closeOnOverlayClick: false,
     title: 'Overlay não fecha',
+    showCloseButton: true,
   },
   parameters: {
     docs: {
@@ -693,6 +703,7 @@ export const FullScreenResponsive: Story = {
     fullScreenBreakpoint: 1024,
     size: 'extra-large',
     title: 'Dialog responsivo em tela cheia',
+    showCloseButton: true,
   },
   parameters: {
     docs: {

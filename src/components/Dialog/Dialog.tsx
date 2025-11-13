@@ -50,7 +50,7 @@ const Dialog = ({
   overlay = true,
   overlayOpacity = 0.5,
   closeOnOverlayClick = true,
-  showCloseButton = true,
+  showCloseButton = false,
   title = 'Dialog',
   description = '',
   width,
