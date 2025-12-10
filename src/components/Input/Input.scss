@@ -1,7 +1,55 @@
+// Input.scss CORRIGIDO
 .input-wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  &--white {
+    .input-label {
+      color: $color-contrast;
+    }
+
+    .input--outlined {
+      border-color: $color-contrast;
+      color: $color-contrast;
+      background-color: transparent;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      &:focus {
+        border-color: $color-contrast;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .input-icon {
+      color: $color-contrast;
+    }
+
+    .input-helper-text {
+      color: rgba(255, 255, 255, 0.8);
+
+      &--error {
+        color: #fca5a5;
+      }
+
+      &--success {
+        color: #86efac;
+      }
+
+      &--warning {
+        color: #fde047;
+      }
+    }
+  }
+
+  &--black {
+    .input-label {
+      color: $color-content-default;
+    }
+  }
 }
 
 .input-label {
@@ -13,8 +61,9 @@
   align-items: center;
   gap: 4px;
 
-  .input--disabled + & {
+  &--disabled {
     color: $color-content-disabled;
+    cursor: not-allowed;
   }
 
   &.input-label--radio-checkbox {
@@ -34,6 +83,7 @@
   }
 }
 
+// ... resto do seu código SCSS permanece igual
 .input-radio-checkbox-label {
   order: 2;
 }
@@ -76,27 +126,6 @@
     box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
   }
 
-  &:hover:not(:disabled, .input--error) {
-    border-color: $color-border-hovered;
-    background: $color-gray100;
-  }
-
-  &:disabled {
-    background-color: $color-bg-disabled;
-    border-color: $color-border-disabled;
-    color: $color-content-disabled;
-    cursor: not-allowed;
-
-    &::placeholder {
-      color: $color-content-disabled;
-    }
-  }
-
-  &::placeholder {
-    color: $color-gray600;
-    font-weight: $font-weight-regular;
-  }
-
   &--radio {
     width: auto;
     min-width: auto;
@@ -109,12 +138,10 @@
     box-shadow: none;
     cursor: pointer;
 
-    // Esconde o radio nativo
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 
-    // Cria o radio customizado
     &::before {
       content: '';
       display: inline-block;
@@ -238,6 +265,62 @@
   &.input--has-trailing-icon {
     padding-right: 40px;
   }
+
+  &--white {
+    &:hover:not(:disabled, .input--error) {
+      border-color: $color-border-hovered;
+      background: $color-gray500;
+    }
+
+    &:disabled {
+      background-color: $color-bg-disabled;
+      border-color: $color-border-disabled;
+      color: $color-content-disabled;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $color-content-disabled;
+      }
+    }
+
+    &::placeholder {
+      color: $color-gray600;
+      font-weight: $font-weight-regular;
+    }
+
+    &.input--outlined {
+      border-color: $color-contrast;
+      color: $color-contrast;
+    }
+  }
+
+  &--black {
+    &:hover:not(:disabled, .input--error) {
+      border-color: $color-border-hovered;
+      background: $color-gray100;
+    }
+
+    &:disabled {
+      background-color: $color-bg-disabled;
+      border-color: $color-border-disabled;
+      color: $color-content-disabled;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $color-content-disabled;
+      }
+    }
+
+    &::placeholder {
+      color: $color-gray600;
+      font-weight: $font-weight-regular;
+    }
+
+    &.input--outlined {
+      border-color: $color-content-default;
+      color: $color-content-default;
+    }
+  }
 }
 
 .input-container.input--date,
@@ -266,7 +349,6 @@
         display: none;
       }
 
-      // Para Firefox
       &::-moz-focus-inner {
         border: 0;
       }
@@ -287,7 +369,7 @@
 
     &.picker-icon--disabled {
       cursor: not-allowed;
-      
+
       svg {
         stroke: $color-content-disabled;
       }
@@ -326,6 +408,14 @@
   .input--error ~ & {
     color: $color-feedback-error;
   }
+
+  &--white {
+    color: $color-contrast;
+  }
+
+  &--black {
+    color: $color-content-default;
+  }
 }
 
 .input-helper-text {
@@ -348,6 +438,38 @@
 
   &--error {
     color: $color-feedback-error;
+  }
+
+  &--white {
+    color: $color-contrast;
+
+    &.input-helper-text--error {
+      color: #fca5a5;
+    }
+
+    &.input-helper-text--success {
+      color: #86efac;
+    }
+
+    &.input-helper-text--warning {
+      color: #fde047;
+    }
+  }
+
+  &--black {
+    color: $color-gray600;
+
+    &.input-helper-text--error {
+      color: $color-feedback-error;
+    }
+
+    &.input-helper-text--success {
+      color: $color-feedback-success;
+    }
+
+    &.input-helper-text--warning {
+      color: $color-feedback-warning;
+    }
   }
 }
 

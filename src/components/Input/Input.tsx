@@ -1,3 +1,4 @@
+// Input.tsx
 import { forwardRef, useRef, useImperativeHandle } from 'react';
 import { Icon } from '../Icon/Icon';
 import './Input.scss';
@@ -21,6 +22,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       style,
       placeholder,
       ariaLabel,
+      colorMode = 'black',
       ...props
     },
     ref
@@ -47,10 +49,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       ...(width && { width: typeof width === 'number' ? `${width}px` : width }),
     };
 
+    // Classes baseadas no colorMode
+    const containerClasses = joinClassNames(['input-wrapper', `input-wrapper--${colorMode}`]);
+
+    const labelClasses = joinClassNames([
+      'input-label',
+      `input-label--${colorMode}`,
+      disabled && 'input-label--disabled',
+    ]);
+
     const inputClasses = joinClassNames([
       'input',
       `input--${variant}`,
       `input--${status}`,
+      `input--${colorMode}`,
       disabled && 'input--disabled',
       leadingIcon && 'input--has-leading-icon',
       trailingIcon && 'input--has-trailing-icon',
@@ -64,12 +76,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     /* Se for radio ou checkbox, invertemos a estrutura do label */
     if (isRadioType || isCheckboxType) {
       return (
-        <div className="input-wrapper" style={containerStyle}>
-          <label className={joinClassNames([
-            "input-label",
-            "input-label--radio-checkbox",
-            disabled && "input-label--disabled"
-          ])}>
+        <div className={containerClasses} style={containerStyle}>
+          <label className={joinClassNames([labelClasses, 'input-label--radio-checkbox'])}>
             <input
               ref={inputRef}
               className={inputClasses}
@@ -87,10 +95,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
 
           {helperText && (
-            <span 
-              id={helperTextId}
-              className={`input-helper-text input-helper-text--${status}`}
-            >
+            <span id={helperTextId} className={`input-helper-text input-helper-text--${status}`}>
               {helperText}
             </span>
           )}
@@ -100,27 +105,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     /* Para outros tipos de input (text, date, etc.) */
     return (
-      <div className="input-wrapper" style={containerStyle}>
+      <div className={containerClasses} style={containerStyle}>
         {label && (
-          <label className="input-label" htmlFor={props.id}>
+          <label className={labelClasses} htmlFor={props.id}>
             {label}
             {props.required && <span className="input-required">*</span>}
           </label>
         )}
 
-        <div className={joinClassNames([
-          "input-container", 
-          isDateType && 'input--date', 
-          isTimeType && 'input--time'
-        ])}>
+        <div className={joinClassNames(['input-container', isDateType && 'input--date', isTimeType && 'input--time'])}>
           {leadingIcon && (
-            <span className="input-icon input-icon--leading">
-              <Icon 
-                name={leadingIcon} 
-                size="small" 
-                disabled={disabled} 
-              />
-            </span>
+            <Icon
+              name={leadingIcon}
+              size="small"
+              disabled={disabled}
+              className={`input-icon input-icon--leading input-icon--${colorMode}`}
+            />
           )}
 
           <input
@@ -154,6 +154,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               icon="Clock"
               className={joinClassNames([
                 'input-icon',
+                `input-icon--${colorMode}`,
                 'input-icon--trailing',
                 'picker-icon',
                 disabled && 'picker-icon--disabled',
@@ -164,21 +165,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
 
           {trailingIcon && (
-            <span className="input-icon input-icon--trailing">
-              <Icon 
-                name={trailingIcon} 
-                size="small" 
-                disabled={disabled} 
-              />
-            </span>
+            <Icon
+              name={trailingIcon}
+              className={`input-icon input-icon--trailing input-icon--${colorMode}`}
+              size="small"
+              disabled={disabled}
+            />
           )}
         </div>
 
         {helperText && (
-          <span 
+          <span
             id={helperTextId}
-            className={`input-helper-text input-helper-text--${status}`}
-          >
+            className={`input-helper-text input-helper-text--${status} input-helper-text--${colorMode}`}>
             {helperText}
           </span>
         )}

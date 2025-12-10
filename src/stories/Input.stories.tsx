@@ -30,6 +30,14 @@ const meta = {
         defaultValue: { summary: 'neutral' },
       },
     },
+    colorMode: {
+      control: 'select',
+      options: ['black', 'white'],
+      description: 'Modo de cor para label e borda (apenas para variant outlined)',
+      table: {
+        defaultValue: { summary: 'black' },
+      },
+    },
     disabled: {
       control: 'boolean',
       description: 'Estado desabilitado',
@@ -79,6 +87,7 @@ const meta = {
   args: {
     variant: 'outlined',
     status: 'neutral',
+    colorMode: 'black',
     disabled: false,
     type: 'text',
   },
@@ -92,6 +101,78 @@ export const Default: Story = {
     placeholder: 'Digite algo...',
     label: 'Input padrão',
   },
+};
+
+export const ColorModes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Diferentes modos de cor para label e borda.',
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Modo Preto (padrão) */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Modo Preto</h4>
+        <Input
+          colorMode="black"
+          placeholder="Digite algo..."
+          label="Label em preto"
+          helperText="Label e borda em preto"
+        />
+        <Input
+          colorMode="black"
+          status="success"
+          placeholder="Campo validado..."
+          label="Sucesso em preto"
+          helperText="Estado de sucesso com cores escuras"
+        />
+        <Input
+          colorMode="black"
+          leadingIcon="User"
+          placeholder="Com ícone..."
+          label="Com ícone preto"
+          helperText="Ícones também seguem o modo de cor"
+        />
+      </div>
+      
+      {/* Coluna Modo Branco (para fundos escuros) */}
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '16px', 
+        width: '300px',
+        padding: '24px',
+        backgroundColor: '#1a1a1a',
+        borderRadius: '8px'
+      }}>
+        <h4 style={{ margin: 0, color: '#ffffff', marginBottom: '8px' }}>Modo Branco</h4>
+        <Input
+          colorMode="white"
+          placeholder="Digite algo..."
+          label="Label em branco"
+          helperText="Label e borda em branco"
+        />
+        <Input
+          colorMode="white"
+          status="error"
+          placeholder="Campo inválido..."
+          label="Erro em branco"
+          helperText="Estado de erro com cores claras"
+        />
+        <Input
+          colorMode="white"
+          leadingIcon="Mail"
+          trailingIcon="CircleAlert"
+          placeholder="Email inválido..."
+          label="Email com ícones"
+          helperText="Ícones em branco para contraste"
+        />
+      </div>
+    </div>
+  ),
 };
 
 export const Variants: Story = {
@@ -311,6 +392,71 @@ export const WithIcons: Story = {
   ),
 };
 
+export const ColorModesWithIcons: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Inputs com ícones em diferentes modos de cor.',
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Modo Preto com Ícones */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Modo Preto</h4>
+        <Input
+          colorMode="black"
+          leadingIcon="Search"
+          placeholder="Buscar..."
+          label="Busca"
+          helperText="Ícones em preto"
+        />
+        <Input
+          colorMode="black"
+          leadingIcon="Mail"
+          trailingIcon="Check"
+          placeholder="Email..."
+          label="Email"
+          helperText="Ícones leading e trailing"
+        />
+        <Input colorMode="black" trailingIcon="Calendar" type="date" label="Data" helperText="Ícone para date picker" />
+      </div>
+
+      {/* Coluna Modo Branco com Ícones */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          width: '300px',
+          padding: '24px',
+          backgroundColor: '#1a1a1a',
+          borderRadius: '8px',
+        }}>
+        <h4 style={{ margin: 0, color: '#ffffff', marginBottom: '8px' }}>Modo Branco</h4>
+        <Input
+          colorMode="white"
+          leadingIcon="Search"
+          placeholder="Buscar..."
+          label="Busca"
+          helperText="Ícones em branco"
+        />
+        <Input
+          colorMode="white"
+          leadingIcon="Mail"
+          trailingIcon="CircleAlert"
+          status="error"
+          placeholder="Email inválido..."
+          label="Email"
+          helperText="Ícones em modo de erro"
+        />
+        <Input colorMode="white" trailingIcon="Clock" type="time" label="Hora" helperText="Ícone para time picker" />
+      </div>
+    </div>
+  ),
+};
+
 export const States: Story = {
   parameters: {
     docs: {
@@ -431,11 +577,18 @@ export const FormExample: Story = {
     },
   },
   render: () => (
-    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
-      {/* Formulário Ativo */}
-      <div style={{ width: '400px', padding: '24px', background: 'white', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Formulário Padrão (Modo Preto) */}
+      <div
+        style={{
+          width: '400px',
+          padding: '24px',
+          background: 'white',
+          borderRadius: '8px',
+          border: '1px solid #e0e0e0',
+        }}>
         <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h3 style={{ margin: '0 0 16px 0', color: '#1a1a1a', fontSize: '20px' }}>Formulário de Cadastro</h3>
+          <h3 style={{ margin: '0 0 16px 0', color: '#1a1a1a', fontSize: '20px' }}>Formulário Padrão (Modo Preto)</h3>
 
           <Input
             label="Nome completo"
@@ -443,6 +596,7 @@ export const FormExample: Story = {
             leadingIcon="User"
             required
             helperText="Digite seu nome como no documento"
+            colorMode="black"
           />
 
           <Input
@@ -452,6 +606,7 @@ export const FormExample: Story = {
             leadingIcon="Mail"
             status="success"
             helperText="Email válido e disponível"
+            colorMode="black"
           />
 
           <Input
@@ -461,16 +616,7 @@ export const FormExample: Story = {
             leadingIcon="Lock"
             status="error"
             helperText="A senha deve ter pelo menos 8 caracteres"
-          />
-
-          <Input label="Data de Nascimento" type="date" leadingIcon="Calendar" />
-
-          <Input
-            label="Telefone"
-            type="tel"
-            placeholder="(11) 99999-9999"
-            leadingIcon="Phone"
-            helperText="Com DDD e número"
+            colorMode="black"
           />
 
           <div style={{ display: 'flex', gap: '12px', marginTop: '24px', justifyContent: 'flex-end' }}>
@@ -505,49 +651,47 @@ export const FormExample: Story = {
         </form>
       </div>
 
-      {/* Formulário Desabilitado */}
-      <div style={{ width: '400px', padding: '24px', background: '#f8f9fa', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
+      {/* Formulário Dark Theme (Modo Branco) */}
+      <div
+        style={{
+          width: '400px',
+          padding: '24px',
+          background: '#2e2e2e',
+          borderRadius: '8px',
+          border: '1px solid #333',
+        }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h3 style={{ margin: '0 0 16px 0', color: '#666', fontSize: '20px' }}>Formulário Desabilitado</h3>
+          <h3 style={{ margin: '0 0 16px 0', color: '#ffffff', fontSize: '20px' }}>
+            Formulário Dark Theme (Modo Branco)
+          </h3>
 
           <Input
-            label="Nome completo"
-            placeholder="Digite seu nome completo..."
+            label="Nome de usuário"
+            placeholder="Digite seu usuário..."
             leadingIcon="User"
             required
-            helperText="Digite seu nome como no documento"
-            disabled
+            helperText="Mínimo 3 caracteres"
+            colorMode="white"
           />
 
           <Input
-            label="Email"
+            label="Email corporativo"
             type="email"
-            placeholder="seu@email.com"
+            placeholder="usuario@empresa.com"
             leadingIcon="Mail"
             status="success"
-            helperText="Email válido e disponível"
-            disabled
+            helperText="Email corporativo verificado"
+            colorMode="white"
           />
 
           <Input
-            label="Senha"
+            label="Código de acesso"
             type="password"
-            placeholder="Crie uma senha segura..."
+            placeholder="Digite o código..."
             leadingIcon="Lock"
-            status="error"
-            helperText="A senha deve ter pelo menos 8 caracteres"
-            disabled
-          />
-
-          <Input label="Data de Nascimento" type="date" leadingIcon="Calendar" disabled />
-
-          <Input
-            label="Telefone"
-            type="tel"
-            placeholder="(11) 99999-9999"
-            leadingIcon="Phone"
-            helperText="Com DDD e número"
-            disabled
+            trailingIcon="Eye"
+            helperText="Código de 6 dígitos"
+            colorMode="white"
           />
 
           <div style={{ display: 'flex', gap: '12px', marginTop: '24px', justifyContent: 'flex-end' }}>
@@ -555,33 +699,92 @@ export const FormExample: Story = {
               type="button"
               style={{
                 padding: '12px 24px',
-                border: '1px solid #e0e0e0',
+                border: '1px solid #444',
                 borderRadius: '6px',
-                background: '#f5f5f5',
-                color: '#999',
-                cursor: 'not-allowed',
+                background: '#2d2d2d',
+                color: '#aaa',
+                cursor: 'pointer',
                 fontSize: '14px',
-              }}
-              disabled>
+              }}>
               Cancelar
             </button>
             <button
-              type="button"
+              type="submit"
               style={{
                 padding: '12px 24px',
                 border: 'none',
                 borderRadius: '6px',
-                background: '#ccc',
-                color: '#999',
-                cursor: 'not-allowed',
+                background: '#3b82f6',
+                color: 'white',
+                cursor: 'pointer',
                 fontSize: '14px',
                 fontWeight: '500',
-              }}
-              disabled>
-              Cadastrar
+              }}>
+              Acessar
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  ),
+};
+
+export const ColorModeDisabled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Modos de cor em estado desabilitado.',
+      },
+    },
+  },
+  render: () => (
+    <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
+      {/* Coluna Modo Preto Desabilitado */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Modo Preto (Desabilitado)</h4>
+        <Input
+          colorMode="black"
+          disabled
+          placeholder="Campo desabilitado..."
+          label="Input Desabilitado"
+          helperText="Modo preto em estado inativo"
+        />
+        <Input
+          colorMode="black"
+          disabled
+          leadingIcon="User"
+          placeholder="Com ícone..."
+          label="Com Ícone"
+          helperText="Ícones também desabilitados"
+        />
+      </div>
+      
+      {/* Coluna Modo Branco Desabilitado */}
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '16px', 
+        width: '300px',
+        padding: '24px',
+        backgroundColor: '#1a1a1a',
+        borderRadius: '8px'
+      }}>
+        <h4 style={{ margin: 0, color: '#ffffff', marginBottom: '8px' }}>Modo Branco (Desabilitado)</h4>
+        <Input
+          colorMode="white"
+          disabled
+          placeholder="Campo desabilitado..."
+          label="Input Desabilitado"
+          helperText="Modo branco em estado inativo"
+        />
+        <Input
+          colorMode="white"
+          disabled
+          leadingIcon="Mail"
+          placeholder="Email..."
+          label="Email"
+          helperText="Ícones em modo desabilitado"
+        />
       </div>
     </div>
   ),
