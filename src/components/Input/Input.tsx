@@ -3,10 +3,14 @@ import { forwardRef, useRef, useImperativeHandle } from 'react';
 import { Icon } from '../Icon/Icon';
 import './Input.scss';
 import { InputProps } from './interfaces';
+
+type ExtendedInputProps = InputProps & {
+  trailingIconOnClick?: () => void;
+};
 import { joinClassNames } from '@utils/joinClassNames';
 import { IconButton } from '../IconButton/IconButton';
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const Input = forwardRef<HTMLInputElement, ExtendedInputProps>(
   (
     {
       variant = 'outlined',
@@ -17,12 +21,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       type = 'text',
       leadingIcon,
       trailingIcon,
+      trailingIconOnClick,
       disabled = false,
       className = '',
       style,
       placeholder,
       ariaLabel,
-      colorMode = 'black',
+      colorMode = 'default',
       ...props
     },
     ref
@@ -164,14 +169,25 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             />
           )}
 
-          {trailingIcon && (
-            <Icon
-              name={trailingIcon}
-              className={`input-icon input-icon--trailing input-icon--${colorMode}`}
-              size="small"
-              disabled={disabled}
-            />
-          )}
+          {trailingIcon &&
+            (trailingIconOnClick ? (
+              <button
+                type="button"
+                className={`input-icon-button input-icon input-icon--trailing input-icon--${colorMode}`}
+                disabled={disabled}
+                onClick={trailingIconOnClick}
+                tabIndex={disabled ? -1 : 0}
+                aria-label={typeof trailingIcon === 'string' ? trailingIcon : 'icon'}>
+                <Icon name={trailingIcon} size="small" disabled={disabled} className={`input-icon--${colorMode}`} />
+              </button>
+            ) : (
+              <Icon
+                name={trailingIcon}
+                className={`input-icon input-icon--trailing input-icon--${colorMode}`}
+                size="small"
+                disabled={disabled}
+              />
+            ))}
         </div>
 
         {helperText && (

@@ -1,3 +1,39 @@
+import { useState } from 'react';
+// Exemplo de ação para trailingIconOnClick
+const handleTrailingIconClick = () => {
+  alert('Ícone clicado!');
+};
+export const WithTrailingIconOnClick: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exemplo de trailingIcon clicável usando trailingIconOnClick.',
+      },
+    },
+  },
+  render: () => {
+    const [showPassword, setShowPassword] = useState(false);
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
+        <Input
+          type={showPassword ? 'text' : 'password'}
+          trailingIcon={showPassword ? 'EyeOff' : 'Eye'}
+          trailingIconOnClick={() => setShowPassword((v) => !v)}
+          placeholder="Digite sua senha..."
+          label="Senha com toggle"
+          helperText="Clique no ícone para mostrar/ocultar senha"
+        />
+        <Input
+          trailingIcon="Search"
+          trailingIconOnClick={handleTrailingIconClick}
+          placeholder="Buscar..."
+          label="Com trailingIcon clicável"
+          helperText="Clique no ícone para ação customizada"
+        />
+      </div>
+    );
+  },
+};
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Input } from '@components/Input/Input';
 import { iconKeys } from '@utils/iconKeys';
@@ -32,10 +68,10 @@ const meta = {
     },
     colorMode: {
       control: 'select',
-      options: ['black', 'white'],
+      options: ['default', 'black', 'white'],
       description: 'Modo de cor para label e borda (apenas para variant outlined)',
       table: {
-        defaultValue: { summary: 'black' },
+        defaultValue: { summary: 'default' },
       },
     },
     disabled: {
@@ -137,17 +173,18 @@ export const ColorModes: Story = {
           helperText="Ícones também seguem o modo de cor"
         />
       </div>
-      
+
       {/* Coluna Modo Branco (para fundos escuros) */}
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
-        gap: '16px', 
-        width: '300px',
-        padding: '24px',
-        backgroundColor: '#1a1a1a',
-        borderRadius: '8px'
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          width: '300px',
+          padding: '24px',
+          backgroundColor: '#1a1a1a',
+          borderRadius: '8px',
+        }}>
         <h4 style={{ margin: 0, color: '#ffffff', marginBottom: '8px' }}>Modo Branco</h4>
         <Input
           colorMode="white"
@@ -202,7 +239,7 @@ export const Variants: Story = {
           helperText="Totalmente transparente, ideal para overlays"
         />
       </div>
-      
+
       {/* Coluna Desabilitado */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
@@ -213,12 +250,12 @@ export const Variants: Story = {
           helperText="Borda visível com fundo transparente"
           disabled
         />
-        <Input 
-          variant="filled" 
-          placeholder="Digite algo..." 
-          label="Filled" 
-          helperText="Fundo cinza claro sem borda" 
-          disabled 
+        <Input
+          variant="filled"
+          placeholder="Digite algo..."
+          label="Filled"
+          helperText="Fundo cinza claro sem borda"
+          disabled
         />
         <Input
           variant="transparent"
@@ -245,32 +282,17 @@ export const ValidationStates: Story = {
       {/* Coluna Ativo */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
-        <Input
-          status="neutral"
-          placeholder="Digite algo..."
-          label="Neutral"
-          helperText="Estado padrão do campo"
-        />
-        <Input
-          status="success"
-          placeholder="Digite algo..."
-          label="Success"
-          helperText="Campo validado com sucesso"
-        />
+        <Input status="neutral" placeholder="Digite algo..." label="Neutral" helperText="Estado padrão do campo" />
+        <Input status="success" placeholder="Digite algo..." label="Success" helperText="Campo validado com sucesso" />
         <Input
           status="warning"
           placeholder="Digite algo..."
           label="Warning"
           helperText="Atenção necessária neste campo"
         />
-        <Input
-          status="error"
-          placeholder="Digite algo..."
-          label="Error"
-          helperText="Erro que precisa ser corrigido"
-        />
+        <Input status="error" placeholder="Digite algo..." label="Error" helperText="Erro que precisa ser corrigido" />
       </div>
-      
+
       {/* Coluna Desabilitado */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
@@ -350,7 +372,7 @@ export const WithIcons: Story = {
           helperText="Nome de usuário inválido"
         />
       </div>
-      
+
       {/* Coluna Desabilitado */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
@@ -471,17 +493,33 @@ export const States: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Ativo</h4>
         <Input placeholder="Digite algo..." label="Normal" helperText="Estado padrão e ativo" />
-        <Input required placeholder="Campo obrigatório..." label="Required Field" helperText="Este campo é obrigatório" />
+        <Input
+          required
+          placeholder="Campo obrigatório..."
+          label="Required Field"
+          helperText="Este campo é obrigatório"
+        />
         <Input defaultValue="Valor pré-preenchido" label="With Default Value" helperText="Input com valor inicial" />
       </div>
-      
+
       {/* Coluna Desabilitado */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
         <Input placeholder="Digite algo..." label="Normal" helperText="Estado padrão e ativo" disabled />
         <Input disabled placeholder="Campo desabilitado..." label="Disabled" helperText="Campo não interativo" />
-        <Input required placeholder="Campo obrigatório..." label="Required Field" helperText="Este campo é obrigatório" disabled />
-        <Input defaultValue="Valor pré-preenchido" label="With Default Value" helperText="Input com valor inicial" disabled />
+        <Input
+          required
+          placeholder="Campo obrigatório..."
+          label="Required Field"
+          helperText="Este campo é obrigatório"
+          disabled
+        />
+        <Input
+          defaultValue="Valor pré-preenchido"
+          label="With Default Value"
+          helperText="Input com valor inicial"
+          disabled
+        />
       </div>
     </div>
   ),
@@ -510,7 +548,7 @@ export const InputTypes: Story = {
         <Input type="checkbox" label="Checkbox" />
         <Input type="radio" label="Radio" />
       </div>
-      
+
       {/* Coluna Desabilitado */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
@@ -550,12 +588,18 @@ export const Sizing: Story = {
           helperText="50% da largura do container"
         />
       </div>
-      
+
       {/* Coluna Desabilitado */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '300px' }}>
         <h4 style={{ margin: 0, color: '#1a1a1a', marginBottom: '8px' }}>Desabilitado</h4>
         <Input placeholder="Largura total..." label="Full Width" helperText="Ocupa 100% do container pai" disabled />
-        <Input width={200} placeholder="200px de largura..." label="Custom Width" helperText="Largura fixa de 200px" disabled />
+        <Input
+          width={200}
+          placeholder="200px de largura..."
+          label="Custom Width"
+          helperText="Largura fixa de 200px"
+          disabled
+        />
         <Input
           width="50%"
           placeholder="50% de largura..."
@@ -758,17 +802,18 @@ export const ColorModeDisabled: Story = {
           helperText="Ícones também desabilitados"
         />
       </div>
-      
+
       {/* Coluna Modo Branco Desabilitado */}
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
-        gap: '16px', 
-        width: '300px',
-        padding: '24px',
-        backgroundColor: '#1a1a1a',
-        borderRadius: '8px'
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          width: '300px',
+          padding: '24px',
+          backgroundColor: '#1a1a1a',
+          borderRadius: '8px',
+        }}>
         <h4 style={{ margin: 0, color: '#ffffff', marginBottom: '8px' }}>Modo Branco (Desabilitado)</h4>
         <Input
           colorMode="white"

@@ -54,19 +54,19 @@ $color-gray800: #202020;
 $color-gray900: #101010;
 
 // Brand palette
-$color-base: #1A1A1A;
+$color-base: #1a1a1a;
 $color-contrast: rgba(255, 255, 255, 0.8);
-$color-primary: #1c6ea4;   
-$color-secondary: #658864;  
-$color-neutral: $color-gray300;   
-$color-soft: #e1f0fb;      
+$color-primary: #1c6ea4;
+$color-secondary: #658864;
+$color-neutral: $color-gray300;
+$color-soft: #e1f0fb;
 
 // Backgrounds
-$color-bg-default: $color-white;
+$color-bg-default: $color-gray100;
 $color-bg-primary: $color-primary;
 $color-bg-secondary: $color-secondary;
-$color-bg-disabled: $color-gray200;
-$color-bg-hovered: $color-soft;  
+$color-bg-disabled: $color-gray300;
+$color-bg-hovered: $color-soft;
 $color-bg-gradient: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
 $color-bg-overlay: rgba(255, 255, 255, 0.8);
 $color-bg-fullscreen: rgba(255, 255, 255, 0.9);
@@ -74,13 +74,14 @@ $color-bg-fullscreen: rgba(255, 255, 255, 0.9);
 // Content
 $color-content-default: $color-base;
 $color-content-inverse: $color-white;
-$color-content-disabled: $color-gray500;
+$color-content-disabled: $color-gray400;
 
-$color-border-default: $color-neutral;
-$color-border-disabled: #FFFFFF00;
+$color-border-default: $color-gray500;
+$color-border-disabled: $color-gray300;
 $color-border-focused: $color-primary;
-$color-border-hovered: $color-neutral;  
- 
+$color-border-hovered: $color-neutral;
+
+$color-placeholder-default: $color-gray400;
 
 // Link colors
 $color-link: #1c6ea4;
@@ -88,11 +89,11 @@ $color-link-hover: #144b70;
 $color-link-visited: #0f3c5c;
 
 // System Feedback
-$color-feedback-success: #81BE7F; 
-$color-feedback-warning: #debb51; 
-$color-feedback-error: #e53935;     
+$color-feedback-success: #81be7f;
+$color-feedback-warning: #debb51;
+$color-feedback-error: #e53935;
 $color-feedback-info: #1c6ea4;
-$color-feedback-alert: #d32f2f;      
+$color-feedback-alert: #d32f2f;
 $color-feedback-muted: $color-gray100;
 
 // Spacing
@@ -111,7 +112,6 @@ $border-width-size-small: 2px;
 $border-width-size-medium: 3px;
 $border-width-size-large: $spacing-xs;
 
-
 // Breakpoints
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
@@ -129,51 +129,53 @@ $z-index-tooltip: 1070;
 $z-index-loading: 9999;
 
 // Button tokens
-$button-color-brand-bg-default: #1C6EA4;
-$button-color-brand-bg-hovered: #2395DF;
-$button-color-brand-bg-pressed: #0C4165;
-$button-color-brand-bg-disabled: #CDE6F6;
+$button-color-brand-bg-default: #1c6ea4;
+$button-color-brand-bg-hovered: #2395df;
+$button-color-brand-bg-pressed: #0c4165;
+$button-color-brand-bg-disabled: #cde6f6;
 $button-color-secondary-bg-default: #658864;
-$button-color-secondary-bg-hovered: #81BE7F;
-$button-color-secondary-bg-pressed: #2C4D2B;
-$button-color-secondary-bg-disabled: #D6EED6;
+$button-color-secondary-bg-hovered: #81be7f;
+$button-color-secondary-bg-pressed: #2c4d2b;
+$button-color-secondary-bg-disabled: #d6eed6;
 $button-color-outlined-bg-default: transparent;
-$button-color-outlined-bg-hovered: #FAFAFA;
-$button-color-outlined-bg-pressed: #3A3C3C;
+$button-color-outlined-bg-hovered: #fafafa;
+$button-color-outlined-bg-pressed: #3a3c3c;
 $button-color-outlined-bg-disabled: transparent;
 $button-color-negative-bg-default: transparent;
-$button-color-negative-bg-hovered: #1A1A1A;
+$button-color-negative-bg-hovered: #1a1a1a;
 $button-color-negative-bg-pressed: #000000;
-$button-color-negative-bg-disabled: transparent;  
-$button-color-outlined-border-default: #1A1A1A33;
-$button-color-outlined-border-hovered: #1A1A1ACC;
-$button-color-outlined-border-pressed: #1A1A1ACC;
-$button-color-outlined-border-disabled: #1A1A1A1A;
-$button-color-negative-border-default: #FFFFFF;
-$button-color-negative-border-hovered:#555555;
-$button-color-negative-border-pressed: #1A1A1A;
-$button-color-negative-border-disabled: #FFFFFF; 
-$button-color-brand-content-default: #FFFFFF;
-$button-color-brand-content-disabled: #FFFFFF;
-$button-color-secondary-content-default: #FFFFFF;
-$button-color-secondary-content-disabled: #FFFFFF; 
-$button-color-outlined-content-default: #555555;;
-$button-color-outlined-content-hovered: #1A1A1A;
-$button-color-outlined-content-pressed: #FFFFFF;
-$button-color-outlined-content-disabled: #C2C2C2;
-$button-color-negative-content-default: #FFFFFF;
-$button-color-negative-content-disabled: #FFFFFF; 
+$button-color-negative-bg-disabled: transparent;
+$button-color-outlined-border-default: #1a1a1a33;
+$button-color-outlined-border-hovered: #1a1a1acc;
+$button-color-outlined-border-pressed: #1a1a1acc;
+$button-color-outlined-border-disabled: #1a1a1a1a;
+$button-color-negative-border-default: #ffffff;
+$button-color-negative-border-hovered: #555555;
+$button-color-negative-border-pressed: #1a1a1a;
+$button-color-negative-border-disabled: #ffffff;
+$button-color-brand-content-default: #ffffff;
+$button-color-brand-content-disabled: #ffffff;
+$button-color-secondary-content-default: #ffffff;
+$button-color-secondary-content-disabled: #ffffff;
+$button-color-outlined-content-default: #555555;
+$button-color-outlined-content-hovered: #1a1a1a;
+$button-color-outlined-content-pressed: #ffffff;
+$button-color-outlined-content-disabled: #c2c2c2;
+$button-color-negative-content-default: #ffffff;
+$button-color-negative-content-disabled: #ffffff;
 
 // Card Tokens
 $card-border-radius-size-default: $spacing-lg;
 
 // ListItem Tokens
 $list-item-color-content-actived: #2563eb;
-$list-item-color-bg-hovered:#f3f4f6;
+$list-item-color-bg-hovered: #f3f4f6;
 
 // Navigation Drawer Tokens
 $nav-drawer-color-transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-$nav-drawer-color-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
+$nav-drawer-color-shadow:
+  0 4px 24px rgba(0, 0, 0, 0.08),
+  0 0 1px rgba(0, 0, 0, 0.12);
 $nav-drawer-color-bg-overlay: $color-gray300;
 $nav-drawer-color-bg-hovered: $color-soft;
 $nav-drawer-color-bg-actived: $color-gray200;
@@ -182,4 +184,3 @@ $nav-drawer-color-border-focused: rgba($color-primary, 0.5);
 // Spinner Tokens
 $spinner-border-radius-size: 50%;
 $spinner-animation-duration: 1s;
-

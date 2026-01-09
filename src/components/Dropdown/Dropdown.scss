@@ -1,3 +1,9 @@
+// Estado disabled para outlined/default
+.dropdown-default-trigger.disabled {
+  background-color: $color-bg-disabled;
+  border-color: $color-border-disabled;
+  color: $color-content-disabled;
+}
 .dropdown-wrapper {
   display: inline-block;
   width: 100%;
@@ -12,6 +18,10 @@
 }
 
 .dropdown-default-trigger {
+  &::placeholder {
+    color: $color-placeholder-default;
+    font-weight: $font-weight-regular;
+  }
   background-color: $color-bg-default;
   color: $color-gray700;
   border: $border-width-size-default solid $color-border-default;
@@ -137,7 +147,7 @@
     .dropdown-item-label {
       color: $color-primary;
     }
-    
+
     .dropdown-icon {
       color: $color-primary;
     }

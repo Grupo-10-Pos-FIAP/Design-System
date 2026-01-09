@@ -38,6 +38,7 @@ Feedback visual claro para diferentes estados de validação, ajudando os usuár
 
 <Canvas of={InputStories.ValidationStates} />
 
+
 ## Inputs com Ícones
 
 Suporte a ícones no início (leading) e final (trailing) do campo para fornecer contexto adicional e melhorar a usabilidade:
@@ -49,6 +50,12 @@ Suporte a ícones no início (leading) e final (trailing) do campo para fornecer
 - **Ambos**: Estados complexos (User + Check para verificação)
 
 <Canvas of={InputStories.WithIcons} />
+
+### Ícone trailing clicável
+
+O Input agora aceita a prop `trailingIconOnClick`, tornando o ícone final interativo (útil para mostrar/ocultar senha, limpar campo, etc.):
+
+<Canvas of={InputStories.WithTrailingIconOnClick} />
 
 ## Estados Interativos
 

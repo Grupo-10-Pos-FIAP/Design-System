@@ -12,5 +12,5 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   width?: number | string;
   type?: HTMLInputTypeAttribute;
   ariaLabel?: string;
-  colorMode?: 'black' | 'white';
+  colorMode?: 'default'| 'black' | 'white';
 }
